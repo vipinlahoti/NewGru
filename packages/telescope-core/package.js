@@ -10,7 +10,7 @@ Package.onUse(function(api) {
   api.versionsFrom("METEOR@1.0");
   
   var packages = [
-    'telescope:lib@0.25.7', //  no dependencies
+    'telescope:lib', //  no dependencies
     'telescope:messages', // lib
     'telescope:i18n@0.25.7', // lib
     'telescope:events', // lib, i18n
@@ -80,11 +80,5 @@ Package.onUse(function(api) {
     'lib/server/fastrender.js',
     'lib/server/routes.js'
   ], ['server']);
-
-  var languages = ["ar", "bg", "cs", "da", "de", "el", "en", "es", "et", "fr", "hu", "id", "it", "ja", "kk", "ko", "nl", "pl", "pt-BR", "ro", "ru", "sl", "sv", "th", "tr", "vi", "zh-CN"];
-  var languagesPaths = languages.map(function (language) {
-    return "i18n/"+language+".i18n.json";
-  });
-  api.addFiles(languagesPaths, ["client", "server"]);
 
 });

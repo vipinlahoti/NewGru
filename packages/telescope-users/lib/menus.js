@@ -42,7 +42,7 @@ var userMenuItems = [
   }
 ];
 
-Telescope.menuItems.add('userMenu', Telescope.menuItems.internationalize(userMenuItems));
+Telescope.menuItems.add('userMenu', userMenuItems);
 
 // array containing items in the admin menu
 Telescope.menuItems.add('adminMenu', [
