@@ -1,0 +1,35 @@
+<template name="post_admin">
+  <div class="{{moduleClass}} post-admin" aria-live="off">
+
+    {{#if isAdmin}}
+
+      <div class="post-admin-stats">
+        <span title="score">{{{icon "score"}}} {{shortScore}}</span>
+        <span title="clicks">{{{icon "clicks"}}} {{clickCount}}</span>
+        <span title="views">{{{icon "views"}}} {{viewCount}}</span>
+      </div>
+
+      <div class="post-admin-actions">
+        <a href="{{pathFor 'postEdit' _id=_id}}" class="edit-link" title="Edit">{{{icon "edit"}}}</a>
+        {{#if showApprove}}
+          <a href="#" class="approve-link" title="Approve">{{{icon "approve"}}}</a>
+        {{/if}}
+        {{#if showReject}}
+          <a href="#" class="reject-link" title="Reject">{{{icon "reject"}}}</a>
+        {{/if}}
+        <a href="#" class="delete-link" title="Delete">{{{icon "delete"}}}</a>
+      </div>
+
+    {{else}}
+
+      {{#if canEdit this}}
+        <div class="post-admin-actions">
+          <a href="{{pathFor 'postEdit' _id=_id}}" class="edit-link" title="Edit">{{{icon "edit"}}}</a>
+          <a href="#" class="delete-link" title="Delete">{{{icon "delete"}}}</a>
+        </div>
+      {{/if}}
+
+    {{/if}}
+  
+  </div>
+</template>
