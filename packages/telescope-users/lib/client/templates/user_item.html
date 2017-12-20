@@ -19,14 +19,14 @@
 			{{/each}}
 		</ul>
 		{{/if}}
-		<p>({{inviteCount}} Invites left)</p>
+		<p>({{inviteCount}} invites left)</p>
 	</td>
 	<td>{{#if isInvited}}<i class="icon-check"></i>{{/if}}</td>
 	<td>{{#if userIsAdmin}}<i class="icon-check"></i>{{/if}}</td>
 	<td>
 		<ul>
 			<li>{{#if isInvited}}<a class="uninvite-link" href="#">Uninvite</a>{{else}}<a href="#" class="invite-link">Invite</a>{{/if}}</li>
-			<li>{{#if userIsAdmin}}<a class="unadmin-link" href="#">Unadmin</a>{{else}}<a href="#" class="admin-link">Make admin</a>{{/if}}</li>
+			<li>{{#if userIsAdmin}}<a class="unadmin-link" href="#">Un admin</a>{{else}}<a href="#" class="admin-link">Make admin</a>{{/if}}</li>
 			<li><a class="delete-link" href="#">Delete user</a></li>
 		</ul>
 	</td>

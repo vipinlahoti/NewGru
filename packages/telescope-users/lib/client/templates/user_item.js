@@ -6,10 +6,10 @@ Template.user_item.helpers({
     return Users.getEmail(this);
   },
   posts: function(){
-    return Posts.find({'userId':this._id});
+    return Posts.find({'userId': this._id});
   },
   comments: function(){
-    return Comments.find({'userId':this._id});
+    return Comments.find({'userId': this._id});
   },
   userIsAdmin: function(){
     return Users.is.admin(this);
@@ -18,7 +18,7 @@ Template.user_item.helpers({
     return Users.getProfileUrl(this);
   },
   getKarma: function() {
-    return Math.round(100*this.karma)/100;
+    return Math.round(100 * this.karma) / 100;
   },
   getInvitedUserProfileUrl: function () {
     var user = Meteor.users.findOne(this.invitedId);
@@ -49,7 +49,6 @@ Template.user_item.events({
   },
   'click .delete-link': function(e, instance){
     e.preventDefault();
-
     if(confirm('Are you sure you want to delete' + Users.getDisplayName(instance.data) + '?'))
       Meteor.users.remove(instance.data._id);
   }

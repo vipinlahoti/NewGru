@@ -5,7 +5,7 @@ Template.user_downvoted_posts.helpers({
       template: 'posts_list_compact',
       options: {
         currentUser: user,
-        fieldLabel: 'Down voted at',
+        fieldLabel: 'Downvoted at',
         fieldValue: function (post) {
           var user = this.currentUser;
           var vote = _.findWhere(user.telescope.downvotedPosts, {itemId: post._id});

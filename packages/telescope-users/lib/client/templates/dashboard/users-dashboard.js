@@ -13,7 +13,7 @@ Template.users_dashboard.helpers({
         { key: 'telescope.email', label: 'Email', tmpl: Template.users_list_email },
         { key: 'telescope.postCount', label: 'Posts' },
         { key: 'telescope.commentCount', label: 'Comments' },
-        { key: 'telescope.karma', label: 'Karma', fn: function(val){return Math.round(100*val)/100} },
+        { key: 'telescope.karma', label: 'Karma', fn: function(val){return Math.round(100 * val) / 100} },
         { key: 'telescope.inviteCount', label: 'Invites' },
         { key: 'telescope.isInvited', label: 'Invited', fn: function(val){return val ? 'Yes':'No'} },
         { key: 'actions', label: 'Actions', tmpl: Template.users_list_actions, sortable: false }

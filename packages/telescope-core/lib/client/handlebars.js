@@ -58,7 +58,7 @@ Template.registerHelper('sanitize', function(content) {
 
 Template.registerHelper('pluralize', function(count, string) {
   string = count === 1 ? string : string + 's';
-  return string;
+  return i18n.t(string);
 });
 
 Template.registerHelper('getProfileUrl', function(userOrUserId) {

@@ -5,7 +5,7 @@ Template.user_comments.helpers({
       template: 'comments_list_compact',
       options: {
         currentUser: user,
-        fieldLabel: 'commented at',
+        fieldLabel: 'Commented at',
         fieldValue: function (comment) {
           return moment(comment.createdAt).format('MM/DD/YYYY, HH:mm');
         }

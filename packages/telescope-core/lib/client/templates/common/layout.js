@@ -19,7 +19,7 @@ var init = _.once(function () {
 
 Template.layout.onCreated(function (){
 
-  DocHead.setTitle("Loading");
+  DocHead.setTitle(i18n.t("loading"));
 
   Tracker.autorun(function () {
 
@@ -48,18 +48,18 @@ Template.layout.helpers({
     }
 
     if (FlowRouter.current().route.group && FlowRouter.current().route.group.name === "admin" && !Users.is.admin(user)) {
-      return {template: "no_rights", data: {message: "Sorry you need to be an admin to view this page"}};
+      return {template: "no_rights", data: {message: i18n.t("sorry_you_need_to_be_an_admin_to_view_this_page")}};
     }
 
     if (!isOnUserRoute && !Users.can.view(user)) {
-      return {template: "no_rights", data: {message: "Sorry you dont have the rights to view this page"}};
+      return {template: "no_rights", data: {message: i18n.t("sorry_you_dont_have_the_rights_to_view_this_page")}};
     }
 
     if (FlowRouter.getRouteName() === "postSubmit") {
       if (!user) {
-        return {template: "no_rights", data: {message: "Please sign in first", link: FlowRouter.path("signIn")}};
+        return {template: "no_rights", data: {message: i18n.t("please_sign_in_first"), link: FlowRouter.path("signIn")}};
       } else if (!Users.can.post(user)) {
-        return {template: "no_rights", data: {message: "Sorry you dont have permissions to add new items"}};
+        return {template: "no_rights", data: {message: i18n.t("sorry_you_dont_have_permissions_to_add_new_items")}};
       }
     }
 
