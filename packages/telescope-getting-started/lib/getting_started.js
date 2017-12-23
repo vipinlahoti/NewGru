@@ -48,9 +48,9 @@ fieldSchema: {
  * @param {Object} options – user options
  */
 function copyDummyProperty (user, options) {
-  if (typeof user.profile.isDummy !== "undefined") {
+  if (typeof user.profile.isDummy !== 'undefined') {
     user.telescope.isDummy = user.profile.isDummy;
   }
   return user;
 }
-Telescope.callbacks.add("onCreateUser", copyDummyProperty);
+Telescope.callbacks.add('onCreateUser', copyDummyProperty);

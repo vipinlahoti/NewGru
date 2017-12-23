@@ -7,9 +7,7 @@ Events.analyticsRequest = function() {
   }
 };
 
-
 Events.analyticsInit = function() {
-
   // Google Analytics
   if (googleAnalyticsId = Settings.get('googleAnalyticsId')){
 

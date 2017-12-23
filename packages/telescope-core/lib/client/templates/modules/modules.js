@@ -3,7 +3,7 @@ Template.modules.helpers({
     return Session.get('debug');
   },
   getClass: function () {
-    var zoneClass = "zone-wrapper ";
+    var zoneClass = 'zone-wrapper ';
     if (this.zoneClass) {
       zoneClass += this.zoneClass;
     } else {

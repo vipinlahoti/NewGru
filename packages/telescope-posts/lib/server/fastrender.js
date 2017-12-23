@@ -17,9 +17,10 @@ Posts.fastRenderSubscribe = function (params) {
   // generate cat array
   var categories = [];
   var index = 0;
-  while (!!params.query['cat['+index+']']) {
+  
+  while (!!params.query['cat[' + index + ']']) {
     categories.push(params.query['cat['+index+']']);
-    delete params.query['cat['+index+']'];
+    delete params.query['cat[' + index + ']'];
     index++;
   }
 

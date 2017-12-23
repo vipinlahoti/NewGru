@@ -1,6 +1,5 @@
 Template.post_actions.events({
   'click .toggle-actions-link': function(e){
-
     e.preventDefault();
     
     var $post = $(e.target).parents('.post');

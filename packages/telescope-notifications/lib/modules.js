@@ -1,9 +1,9 @@
-Telescope.modules.add("secondaryNav", {
+Telescope.modules.add('secondaryNav', {
   template:'notifications_menu',
   order: 20
 });
 
-Telescope.modules.add("mobileNav", {
+Telescope.modules.add('mobileNav', {
   template:'notifications_menu',
   order: 20
 });

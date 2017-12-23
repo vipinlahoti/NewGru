@@ -16,7 +16,7 @@ AutoForm.hooks({
         // ------------------------------ Checks ------------------------------ //
 
         if (!Meteor.user()) {
-          Messages.flash('You must be logged in', 'error');
+          Messages.flash('You must be logged in', 'info');
           return false;
         }
 
@@ -33,8 +33,6 @@ AutoForm.hooks({
       comment = this.currentDoc;
       Events.track('edit comment', {'commentId': comment._id});
       FlowRouter.go('postPage', {_id: comment.postId});
-
-      console.log(comment);
     },
 
     onError: function(formType, error) {

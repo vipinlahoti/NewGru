@@ -1,7 +1,7 @@
 <template name="comment_submit">
   {{#if canComment}}
     <div class="comment-form comment-new module">
-      <h4 class="comment-new-heading">Add comment</h4>
+      <h4 class="comment-new-heading">Add Comment</h4>
       {{> quickForm collection="Comments" id="submitCommentForm" template="bootstrap3-horizontal" input-col-class="controls" type="method" meteormethod="submitComment" fields=commentFields parentContext=this}}
     </div>
   {{else}}

@@ -5,17 +5,11 @@ Meteor.startup(function () {
     var fr = this;
 
     Telescope.subscriptions.forEach(function (sub) {
-
       if (typeof sub === 'object'){
-
         fr.subscribe(sub.subName, sub.subArguments);
-
-      }else{
-
+      } else {
         fr.subscribe(sub);
-
       }
-
     });
 
   });

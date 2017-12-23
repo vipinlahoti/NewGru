@@ -27,6 +27,7 @@ Template.users_list_actions.events({
   },
   'click .delete-link': function(e){
     e.preventDefault();
+    
     if(confirm('Are you sure you want to delete' + Users.getDisplayName(this) + '?')) {
       if(confirm('Delete users posts comments as well')) {
         Meteor.call('removeUser', this._id, true, function (error, result) {

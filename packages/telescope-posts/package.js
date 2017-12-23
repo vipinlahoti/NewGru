@@ -1,8 +1,8 @@
 Package.describe({
-  name: "telescope:posts",
-  summary: "Telescope posts package",
-  version: "0.25.7",
-  git: "https://github.com/TelescopeJS/telescope-posts.git"
+  name: 'telescope:posts',
+  summary: 'Telescope posts package',
+  version: '0.25.7',
+  git: 'https://github.com/TelescopeJS/telescope-posts.git'
 });
 
 Package.onUse(function (api) {

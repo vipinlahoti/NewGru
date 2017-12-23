@@ -97,7 +97,7 @@ Template.posts_list_controller.onDataChanged(function (data) {
 
 Template.posts_list_controller.helpers({
   template: function () {
-    return !!this.template ? this.template : 'posts_list';
+    return !!this.template? this.template: 'posts_list';
   },
   data: function () {
 

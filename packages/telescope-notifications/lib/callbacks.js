@@ -24,7 +24,7 @@ function postSubmitNotification (post) {
   }
 
 }
-Telescope.callbacks.add("postSubmitAsync", postSubmitNotification);
+Telescope.callbacks.add('postSubmitAsync', postSubmitNotification);
 
 function postApprovedNotification (post) {
 
@@ -34,7 +34,7 @@ function postApprovedNotification (post) {
 
   Herald.createNotification(post.userId, {courier: 'postApproved', data: notificationData});
 }
-Telescope.callbacks.add("postApproveAsync", postApprovedNotification);
+Telescope.callbacks.add('postApproveAsync', postApprovedNotification);
 
 // ------------------------------------------------------------------------------------------- //
 // ---------------------------------------- Comments ----------------------------------------- //
@@ -57,7 +57,7 @@ function commentSubmitNotifications (comment) {
 
     // 1. Notify author of post (if they have new comment notifications turned on)
     //    but do not notify author of post if they're the ones posting the comment
-    if (Users.getSetting(postAuthor, "notifications.comments", true) && comment.userId !== postAuthor._id) {
+    if (Users.getSetting(postAuthor, 'notifications.comments', true) && comment.userId !== postAuthor._id) {
       Herald.createNotification(post.userId, {courier: 'newComment', data: notificationData});
       userIdsNotified.push(post.userId);
     }
@@ -74,7 +74,7 @@ function commentSubmitNotifications (comment) {
         var parentCommentAuthor = Users.findOne(parentComment.userId);
 
         // do not notify parent comment author if they have reply notifications turned off
-        if (Users.getSetting(parentCommentAuthor, "notifications.replies", true)) {
+        if (Users.getSetting(parentCommentAuthor, 'notifications.replies', true)) {
 
           // add parent comment to notification data
           notificationData.parentComment = _.pick(parentComment, '_id', 'userId', 'author', 'htmlBody');
@@ -101,4 +101,4 @@ function commentSubmitNotifications (comment) {
 
   }
 }
-Telescope.callbacks.add("commentSubmitAsync", commentSubmitNotifications);
+Telescope.callbacks.add('commentSubmitAsync', commentSubmitNotifications);

@@ -3,7 +3,7 @@ Template.post_item.helpers({
     var post = this;
     var postClass = 'post ';
     
-    postClass += 'author-' + Telescope.utils.slugify(post.author) + '';
+    postClass += 'author-' + Telescope.utils.slugify(this.author) + ' ';
 
     if (this.sticky) {
       postClass += 'sticky ';

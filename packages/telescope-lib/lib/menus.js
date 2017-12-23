@@ -10,14 +10,14 @@ Telescope.menuItems = {};
  * @param {Object|Object[]} item - The menu item object (or an array of items)
  *
  * @example <caption>Using a named route</caption>
- * Telescope.menuItems.add("viewsMenu", {
+ * Telescope.menuItems.add('viewsMenu', {
  *   route: 'postsDaily',
  *   label: 'daily',
  *   description: 'day_by_day_view'
  * });
  *
  * @example <caption>Using a route function</caption>
- * Telescope.menuItems.add("userMenu", {
+ * Telescope.menuItems.add('userMenu', {
  *   route: function () {
  *     return FlowRouter.path('user_profile', {_idOrSlug: Meteor.user().telescope.slug});
  *   },
@@ -29,20 +29,20 @@ Telescope.menuItems = {};
 Telescope.menuItems.add = function (menu, item) {
 
   // if menu items array doesn't exist yet, initialize it
-  if (typeof Telescope.menuItems[menu] === "undefined") {
+  if (typeof Telescope.menuItems[menu] === 'undefined') {
     Telescope.menuItems[menu] = [];
   }
 
   if (Array.isArray(item)) {
 
-    var items = item; // we're dealing with an Array, so let's add an "s"
+    var items = item; // we're dealing with an Array, so let's add an 's'
     items.forEach( function (item) {
-      Telescope.menuItems[menu].push(Telescope.menuItems.internationalize(item));
+      Telescope.menuItems[menu].push(item);
     });
 
   } else {
 
-    Telescope.menuItems[menu].push(Telescope.menuItems.internationalize(item));
+    Telescope.menuItems[menu].push(item);
 
   }
 };
@@ -71,25 +71,6 @@ Telescope.menuItems.removeAll = function (menu) {
  * @param {string} menu - The name of the menu
  */
 Telescope.menuItems.get = function (menu) {
-  return _.sortBy(Telescope.menuItems[menu], "order");
+  return _.sortBy(Telescope.menuItems[menu], 'order');
 };
 
-/**
- * Replace label and description strings by a function that calls
- * i18n.t on said string
- * @param {Object} item - The menu item
- */
-Telescope.menuItems.internationalize = function (item) {
-  var i18nItem = _.clone(item);
-  if (item.label && typeof item.label === "string") {
-    i18nItem.label = function () {
-      return i18n.t(item.label);
-    };
-  }
-  if (item.description && typeof item.description === "string") {
-    i18nItem.description = function () {
-      return i18n.t(item.description);
-    };
-  }
-  return i18nItem;
-};

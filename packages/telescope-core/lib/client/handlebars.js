@@ -26,7 +26,7 @@ Template.registerHelper('canComment', function() {
   return Users.can.comment(Meteor.user());
 });
 Template.registerHelper('isAdmin', function(user) {
-  var user = typeof user === "undefined" ? Meteor.user() : user;
+  var user = typeof user === 'undefined' ? Meteor.user() : user;
   if (Users.is.admin(Meteor.user())) {
     return true;
   }
@@ -58,7 +58,7 @@ Template.registerHelper('sanitize', function(content) {
 
 Template.registerHelper('pluralize', function(count, string) {
   string = count === 1 ? string : string + 's';
-  return i18n.t(string);
+  return string;
 });
 
 Template.registerHelper('getProfileUrl', function(userOrUserId) {
@@ -92,7 +92,7 @@ Template.registerHelper('moduleClass', function() {
   var zoneData = Template.parentData(4);
   if (zoneData) {
     // node: modules may not always be included from within a zone
-    var moduleClass = zoneData.zone + "-module ";
+    var moduleClass = zoneData.zone + '-module ';
     if (zoneData.moduleClass) {
       moduleClass += zoneData.moduleClass;
     }

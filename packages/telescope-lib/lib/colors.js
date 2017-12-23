@@ -12,10 +12,10 @@ Telescope.colorElements.colorTable = {
 };
 
 Telescope.colorElements.defaultColors = {
-  accentColor: "#DD3416", // red
-  accentContrastColor: "#ffffff", // white
-  secondaryColor: "#4e555d", // slate
-  secondaryContrastColor: "#ffffff" // white
+  accentColor: '#DD3416', // red
+  accentContrastColor: '#ffffff', // white
+  secondaryColor: '#4e555d', // slate
+  secondaryContrastColor: '#ffffff' // white
 };
 
 /**
@@ -27,7 +27,7 @@ Telescope.colorElements.defaultColors = {
 Telescope.colorElements.add = function (selector, color, property) {
   var element = {selector: selector};
 
-  if (typeof property !== "undefined")
+  if (typeof property !== 'undefined')
     element.property = property;
 
   Telescope.colorElements.colorTable[color].push(element);
@@ -47,60 +47,60 @@ var secondaryContrast = setShortcut('secondaryContrastColor');
 
 // accentColor
 
-accent("a:hover");
-accent(".post-content .post-heading .post-title:hover");
-accent(".upvoted .upvote-link");
-accent(".downvoted .downvote-link");
-accent(".upvoted .upvote");
-accent(".downvoted .downvote");
-accent(".toggle-actions-link");
-accent(".post-meta a:hover");
-accent(".action:hover");
-accent(".post-actions .icon");
+accent('a:hover');
+accent('.post-content .post-heading .post-title:hover');
+accent('.upvoted .upvote-link');
+accent('.downvoted .downvote-link');
+accent('.upvoted .upvote');
+accent('.downvoted .downvote');
+accent('.toggle-actions-link');
+accent('.post-meta a:hover');
+accent('.action:hover');
+accent('.post-actions .icon');
 
 accent('input[type="submit"]', 'background-color');
-accent("button", 'background-color');
-accent(".button", 'background-color');
-accent(".auth-buttons #login-buttons #login-buttons-password", 'background-color');
-accent(".btn-primary", 'background-color');
-accent(".header .btn-primary", 'background-color');
-accent(".header .btn-primary:link", 'background-color');
-accent(".header .btn-primary:visited", 'background-color');
-accent(".error", 'background-color');
-accent(".mobile-menu-button", 'background-color');
-accent(".login-link-text", 'background-color');
-accent(".post-category:hover", 'background-color');
+accent('button', 'background-color');
+accent('.button', 'background-color');
+accent('.auth-buttons #login-buttons #login-buttons-password', 'background-color');
+accent('.btn-primary', 'background-color');
+accent('.header .btn-primary', 'background-color');
+accent('.header .btn-primary:link', 'background-color');
+accent('.header .btn-primary:visited', 'background-color');
+accent('.error', 'background-color');
+accent('.mobile-menu-button', 'background-color');
+accent('.login-link-text', 'background-color');
+accent('.post-category:hover', 'background-color');
 
-accent(".icon-more", "border-color");
-accent(".post-admin a:hover", "background-color");
+accent('.icon-more', 'border-color');
+accent('.post-admin a:hover', 'background-color');
 
 // accentContrastColor
 
 accentContrast('input[type="submit"]');
-accentContrast("button");
-accentContrast(".button");
-accentContrast(".menu-dropdown .menu-wrapper a.button");
-accentContrast(".auth-buttons #login-buttons #login-buttons-password");
-accentContrast(".btn-primary");
-accentContrast(".btn-primary:link");
-accentContrast(".btn-primary:hover");
-accentContrast(".header .btn-primary:link");
-accentContrast(".header .btn-primary:visited");
-accentContrast(".error");
-accentContrast(".header a.mobile-menu-button");
-accentContrast("login-link-text");
-accentContrast(".post-category:hover");
-accentContrast(".post-admin a:hover", "color");
+accentContrast('button');
+accentContrast('.button');
+accentContrast('.menu-dropdown .menu-wrapper a.button');
+accentContrast('.auth-buttons #login-buttons #login-buttons-password');
+accentContrast('.btn-primary');
+accentContrast('.btn-primary:link');
+accentContrast('.btn-primary:hover');
+accentContrast('.header .btn-primary:link');
+accentContrast('.header .btn-primary:visited');
+accentContrast('.error');
+accentContrast('.header a.mobile-menu-button');
+accentContrast('login-link-text');
+accentContrast('.post-category:hover');
+accentContrast('.post-admin a:hover', 'color');
 
 // secondaryColor
 
-secondary(".header", "background-color");
+secondary('.header', 'background-color');
 
 // secondaryContrastColor
 
-secondaryContrast(".header");
-secondaryContrast(".header .logo a");
-secondaryContrast(".header .logo a:visited");
+secondaryContrast('.header');
+secondaryContrast('.header .logo a');
+secondaryContrast('.header .logo a:visited');
 
-secondaryContrast(".header .dropdown-top-level", "border-color");
-secondaryContrast(".header .dropdown-accordion .show-more", "border-color");
+secondaryContrast('.header .dropdown-top-level', 'border-color');
+secondaryContrast('.header .dropdown-accordion .show-more', 'border-color');

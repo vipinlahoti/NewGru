@@ -5,7 +5,7 @@ Telescope.getVotePower = function (user) {
 
 Telescope.operateOnItem = function (collection, itemId, user, operation) {
 
-  user = typeof user === "undefined" ? Meteor.user() : user;
+  user = typeof user === 'undefined' ? Meteor.user() : user;
 
   var item = collection.findOne(itemId);
   var votePower = Telescope.getVotePower(user);
@@ -23,8 +23,8 @@ Telescope.operateOnItem = function (collection, itemId, user, operation) {
     !item ||
     !user || 
     !user.canVote() || 
-    operation === "upvote" && hasUpvotedItem ||
-    operation === "downvote" && hasDownvotedItem
+    operation === 'upvote' && hasUpvotedItem ||
+    operation === 'downvote' && hasDownvotedItem
   ) {
     return false; 
   }
@@ -34,10 +34,10 @@ Telescope.operateOnItem = function (collection, itemId, user, operation) {
 
   switch (operation) {
 
-    case "upvote":
+    case 'upvote':
 
       if (hasDownvotedItem) {
-        Telescope.operateOnItem(collection, itemd, user, "cancelDownvote");
+        Telescope.operateOnItem(collection, itemd, user, 'cancelDownvote');
       }
       update = {
         $addToSet: {upvoters: user._id},
@@ -45,10 +45,10 @@ Telescope.operateOnItem = function (collection, itemId, user, operation) {
       }
       break;
 
-    case "downvote":
+    case 'downvote':
 
       if (hasUpvotedItem) {
-        Telescope.operateOnItem(collection, itemId, user, "cancelUpvote");
+        Telescope.operateOnItem(collection, itemId, user, 'cancelUpvote');
       }
       update = {
         $addToSet: {downvoters: user._id},
@@ -56,7 +56,7 @@ Telescope.operateOnItem = function (collection, itemId, user, operation) {
       }
       break;
 
-    case "cancelUpvote":
+    case 'cancelUpvote':
 
       update = {
         $pull: {upvoters: user._id},
@@ -64,7 +64,7 @@ Telescope.operateOnItem = function (collection, itemId, user, operation) {
       };
       break;
 
-    case "cancelDownvote":
+    case 'cancelDownvote':
 
       update = {
         $pull: {downvoters: user._id},
@@ -75,7 +75,7 @@ Telescope.operateOnItem = function (collection, itemId, user, operation) {
 
 
 
-  update["$set"] = {inactive: false};
+  update['$set'] = {inactive: false};
   var result = collection.update({_id: item._id}, update);
 
 
@@ -85,7 +85,7 @@ Telescope.operateOnItem = function (collection, itemId, user, operation) {
     item = _.extend(item, {baseScore: (item.baseScore + votePower)});
     
     // --------------------- Server-Side Async Callbacks --------------------- //
-    Telescope.callbacks.runAsync(operation+"Async", item, user, collection, operation);
+    Telescope.callbacks.runAsync(operation+'Async', item, user, collection, operation);
     
     return true;
 
@@ -96,34 +96,34 @@ Telescope.operateOnItem = function (collection, itemId, user, operation) {
 Meteor.methods({
   upvotePost: function (postId) {
     check(postId, String);
-    return Telescope.operateOnItem.call(this, Posts, postId, Meteor.user(), "upvote");
+    return Telescope.operateOnItem.call(this, Posts, postId, Meteor.user(), 'upvote');
   },
   downvotePost: function (postId) {
     check(postId, String);
-    return Telescope.operateOnItem.call(this, Posts, postId, Meteor.user(), "downvote");
+    return Telescope.operateOnItem.call(this, Posts, postId, Meteor.user(), 'downvote');
   },
   cancelUpvotePost: function (postId) {
     check(postId, String);
-    return Telescope.operateOnItem.call(this, Posts, postId, Meteor.user(), "cancelUpvote");
+    return Telescope.operateOnItem.call(this, Posts, postId, Meteor.user(), 'cancelUpvote');
   },
   cancelDownvotePost: function (postId) {
     check(postId, String);
-    return Telescope.operateOnItem.call(this, Posts, postId, Meteor.user(), "cancelDownvote");
+    return Telescope.operateOnItem.call(this, Posts, postId, Meteor.user(), 'cancelDownvote');
   },
   upvoteComment: function (commentId) {
     check(commentId, String);
-    return Telescope.operateOnItem.call(this, Comments, commentId, Meteor.user(), "upvote");
+    return Telescope.operateOnItem.call(this, Comments, commentId, Meteor.user(), 'upvote');
   },
   downvoteComment: function (commentId) {
     check(commentId, String);
-    return Telescope.operateOnItem.call(this, Comments, commentId, Meteor.user(), "downvote");
+    return Telescope.operateOnItem.call(this, Comments, commentId, Meteor.user(), 'downvote');
   },
   cancelUpvoteComment: function (commentId) {
     check(commentId, String);
-    return Telescope.operateOnItem.call(this, Comments, commentId, Meteor.user(), "cancelUpvote");
+    return Telescope.operateOnItem.call(this, Comments, commentId, Meteor.user(), 'cancelUpvote');
   },
   cancelDownvoteComment: function (commentId) {
     check(commentId, String);
-    return Telescope.operateOnItem.call(this, Comments, commentId, Meteor.user(), "cancelDownvote");
+    return Telescope.operateOnItem.call(this, Comments, commentId, Meteor.user(), 'cancelDownvote');
   }
 });

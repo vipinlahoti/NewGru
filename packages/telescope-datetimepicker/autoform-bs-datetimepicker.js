@@ -1,33 +1,33 @@
-AutoForm.addInputType("bootstrap-datetimepicker", {
-  template: "afBootstrapDateTimePicker",
+AutoForm.addInputType('bootstrap-datetimepicker', {
+  template: 'afBootstrapDateTimePicker',
   valueOut: function () {
     // var val = this.datepicker('getUTCDate');
-    if (!!this.data("DateTimePicker").date()) {
-      var val = this.data("DateTimePicker").date().toDate();
+    if (!!this.data('DateTimePicker').date()) {
+      var val = this.data('DateTimePicker').date().toDate();
       // console.log(val)
       return (val instanceof Date) ? val : this.val();
     }
   },
   valueConverters: {
-    "string": function (val) {
+    'string': function (val) {
       return (val instanceof Date) ? AutoForm.Utility.dateToDateStringUTC(val) : val;
     },
-    "stringArray": function (val) {
+    'stringArray': function (val) {
       if (val instanceof Date) {
         return [AutoForm.Utility.dateToDateStringUTC(val)];
       }
       return val;
     },
-    "number": function (val) {
+    'number': function (val) {
       return (val instanceof Date) ? val.getTime() : val;
     },
-    "numberArray": function (val) {
+    'numberArray': function (val) {
       if (val instanceof Date) {
         return [val.getTime()];
       }
       return val;
     },
-    "dateArray": function (val) {
+    'dateArray': function (val) {
       if (val instanceof Date) {
         return [val];
       }
@@ -40,7 +40,7 @@ Template.afBootstrapDateTimePicker.helpers({
     atts: function addFormControlAtts() {
       var atts = _.clone(this.atts);
       // Add bootstrap class
-      atts = AutoForm.Utility.addClass(atts, "form-control");
+      atts = AutoForm.Utility.addClass(atts, 'form-control');
       return atts;
     }
   });
@@ -60,10 +60,10 @@ Template.afBootstrapDateTimePicker.rendered = function () {
     if (data.value instanceof Date) {
       // $input.datepicker('setUTCDate', data.value);
 
-      $input.data("DateTimePicker").date(data.value);
-    } else if (typeof data.value === "string") {
+      $input.data('DateTimePicker').date(data.value);
+    } else if (typeof data.value === 'string') {
       // $input.datepicker('update', data.value);
-      $input.data("DateTimePicker").date(moment(data.value).toDate());
+      $input.data('DateTimePicker').date(moment(data.value).toDate());
     }
 
     // set start date if there's a min in the schema
@@ -71,7 +71,7 @@ Template.afBootstrapDateTimePicker.rendered = function () {
       // datepicker plugin expects local Date object, so convert UTC Date object to local
       var startDate = utcToLocal(data.min);
       // $input.datepicker('setStartDate', startDate);
-      $input.data("DateTimePicker").setMinDate(startDate);
+      $input.data('DateTimePicker').setMinDate(startDate);
     }
 
     // set end date if there's a max in the schema
@@ -79,7 +79,7 @@ Template.afBootstrapDateTimePicker.rendered = function () {
       // datepicker plugin expects local Date object, so convert UTC Date object to local
       var endDate = utcToLocal(data.max);
       // $input.datepicker('setEndDate', endDate);
-      $input.data("DateTimePicker").setMinDate(endDate);
+      $input.data('DateTimePicker').setMinDate(endDate);
     }
   });
 

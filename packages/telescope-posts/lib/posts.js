@@ -23,10 +23,10 @@ Posts.schema = new SimpleSchema({
   postedAt: {
     type: Date,
     optional: true,
-    editableBy: ["admin"],
+    editableBy: ['admin'],
     autoform: {
       group: 'admin',
-      type: "bootstrap-datetimepicker"
+      type: 'bootstrap-datetimepicker'
     }
   },
   /**
@@ -36,9 +36,9 @@ Posts.schema = new SimpleSchema({
     type: String,
     optional: true,
     max: 500,
-    editableBy: ["member", "admin"],
+    editableBy: ['member', 'admin'],
     autoform: {
-      type: "bootstrap-url",
+      type: 'bootstrap-url',
       order: 10
     }
   },
@@ -49,7 +49,7 @@ Posts.schema = new SimpleSchema({
     type: String,
     optional: false,
     max: 500,
-    editableBy: ["member", "admin"],
+    editableBy: ['member', 'admin'],
     autoform: {
       order: 20
     }
@@ -68,7 +68,7 @@ Posts.schema = new SimpleSchema({
     type: String,
     optional: true,
     max: 3000,
-    editableBy: ["member", "admin"],
+    editableBy: ['member', 'admin'],
     autoform: {
       rows: 5,
       order: 30
@@ -166,7 +166,7 @@ Posts.schema = new SimpleSchema({
   status: {
     type: Number,
     optional: true,
-    editableBy: ["admin"],
+    editableBy: ['admin'],
     autoValue: function () {
       // only provide a default value
       // 1) this is an insert operation
@@ -188,10 +188,10 @@ Posts.schema = new SimpleSchema({
     type: Boolean,
     optional: true,
     defaultValue: false,
-    editableBy: ["admin"],
+    editableBy: ['admin'],
     autoform: {
       group: 'admin',
-      leftLabel: "Sticky"
+      leftLabel: 'Sticky'
     }
   },
   /**
@@ -230,7 +230,7 @@ Posts.schema = new SimpleSchema({
     type: String,
     optional: true,
     // regEx: SimpleSchema.RegEx.Id,
-    editableBy: ["admin"],
+    editableBy: ['admin'],
     autoform: {
       group: 'admin',
       options: function () {

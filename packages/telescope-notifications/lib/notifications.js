@@ -5,9 +5,9 @@ var notifications = {
       return Posts.getNotificationProperties(this.data.post);
     },
     subject: function () {
-      return this.postAuthorName+' has created a new post: '+this.postTitle;
+      return this.postAuthorName + ' has created a new post: ' + this.postTitle;
     },
-    emailTemplate: "emailNewPost"
+    emailTemplate: 'emailNewPost'
   },
 
   newPendingPost: {
@@ -15,9 +15,9 @@ var notifications = {
       return Posts.getNotificationProperties(this.data.post);
     },
     subject: function () {
-      return this.postAuthorName+' has a new post pending approval: '+this.postTitle;
+      return this.postAuthorName + ' has a new post pending approval: ' + this.postTitle;
     },
-    emailTemplate: "emailNewPendingPost"
+    emailTemplate: 'emailNewPendingPost'
   },
 
   postApproved: {
@@ -25,10 +25,10 @@ var notifications = {
       return Posts.getNotificationProperties(this.data.post);
     },
     subject: function () {
-      return 'Your post “'+this.postTitle+'” has been approved';
+      return 'Your post "' + this.postTitle + '" has been approved';
     },
-    emailTemplate: "emailPostApproved",
-    onsiteTemplate: "notification_post_approved"
+    emailTemplate: 'emailPostApproved',
+    onsiteTemplate: 'notification_post_approved'
   },
 
   newComment: {
@@ -36,10 +36,10 @@ var notifications = {
       return Comments.getNotificationProperties(this.data.comment, this.data.post);
     },
     subject: function () {
-      return this.authorName+' left a new comment on your post "' + this.postTitle + '"';
+      return this.authorName + ' left a new comment on your post "' + this.postTitle + '"';
     },
-    emailTemplate: "emailNewComment",
-    onsiteTemplate: "notification_new_comment"
+    emailTemplate: 'emailNewComment',
+    onsiteTemplate: 'notification_new_comment'
   },
 
   newReply: {
@@ -47,10 +47,10 @@ var notifications = {
       return Comments.getNotificationProperties(this.data.comment, this.data.post);
     },
     subject: function () {
-      return this.authorName+' replied to your comment on "'+this.postTitle+'"';
+      return this.authorName + ' replied to your comment on "' + this.postTitle + '"';
     },
-    emailTemplate: "emailNewReply",
-    onsiteTemplate: "notification_new_reply"
+    emailTemplate: 'emailNewReply',
+    onsiteTemplate: 'notification_new_reply'
   },
 
   newCommentSubscribed: {
@@ -58,10 +58,10 @@ var notifications = {
       return Comments.getNotificationProperties(this.data.comment, this.data.post);
     },
     subject: function () {
-      return this.authorName+' left a new comment on "' + this.postTitle + '"';
+      return this.authorName + ' left a new comment on "' + this.postTitle + '"';
     },
-    emailTemplate: "notification_new_comment",
-    onsiteTemplate: "notification_new_comment"
+    emailTemplate: 'notification_new_comment',
+    onsiteTemplate: 'notification_new_comment'
   }
 
 };

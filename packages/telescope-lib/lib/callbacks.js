@@ -12,7 +12,7 @@ Telescope.callbacks = {};
 Telescope.callbacks.add = function (hook, callback) {
 
   // if callback array doesn't exist yet, initialize it
-  if (typeof Telescope.callbacks[hook] === "undefined") {
+  if (typeof Telescope.callbacks[hook] === 'undefined') {
     Telescope.callbacks[hook] = [];
   }
 
@@ -41,7 +41,7 @@ Telescope.callbacks.run = function (hook, item, constant) {
 
   var callbacks = Telescope.callbacks[hook];
 
-  if (typeof callbacks !== "undefined" && !!callbacks.length) { // if the hook exists, and contains callbacks to run
+  if (typeof callbacks !== 'undefined' && !!callbacks.length) { // if the hook exists, and contains callbacks to run
 
     return callbacks.reduce(function(result, callback) {
       // console.log(callback.name);
@@ -66,13 +66,13 @@ Telescope.callbacks.runAsync = function () {
   var args = Array.prototype.slice.call(arguments).slice(1);
   var callbacks = Telescope.callbacks[hook];
 
-  if (Meteor.isServer && typeof callbacks !== "undefined" && !!callbacks.length) {
+  if (Meteor.isServer && typeof callbacks !== 'undefined' && !!callbacks.length) {
 
     // use defer to avoid holding up client
     Meteor.defer(function () {
       // run all post submit server callbacks on post object successively
       callbacks.forEach(function(callback) {
-        // console.log("// "+hook+": running callback ["+callback.name+"] at "+moment().format("hh:mm:ss"))
+        // console.log('// '+hook+': running callback ['+callback.name+'] at '+moment().format('hh:mm:ss'))
         callback.apply(this, args)
       });
     });

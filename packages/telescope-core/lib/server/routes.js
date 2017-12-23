@@ -31,6 +31,6 @@ Picker.route('/out', function(params, req, res, next) {
       res.end('Invalid URL');
     }
   } else {
-    res.end("Please provide a URL");
+    res.end('Please provide a URL');
   }
 });

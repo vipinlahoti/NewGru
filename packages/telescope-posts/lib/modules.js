@@ -1,9 +1,9 @@
-Telescope.modules.add("postsListTop", {
-  template: "views_menu",
+Telescope.modules.add('postsListTop', {
+  template: 'views_menu',
   order: 1
 });
 
-Telescope.modules.add("postComponents", [
+Telescope.modules.add('postComponents', [
   {
     template: 'post_rank',
     order: 1
@@ -30,7 +30,7 @@ Telescope.modules.add("postComponents", [
   }
 ]);
 
-Telescope.modules.add("postHeading", [
+Telescope.modules.add('postHeading', [
   {
     template: 'post_title',
     order: 10
@@ -41,7 +41,7 @@ Telescope.modules.add("postHeading", [
   }
 ]);
 
-Telescope.modules.add("postMeta", [
+Telescope.modules.add('postMeta', [
   {
     template: 'post_author',
     order: 10

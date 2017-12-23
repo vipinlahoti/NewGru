@@ -37,7 +37,9 @@ AutoForm.hooks({
 
     onSuccess: function(operation, post) {
       Events.track('new post', {'postId': post._id});
+
       var template = this.template;
+
       Telescope.subsManager.subscribe('singlePost', post._id, function () {
         template.$('button[type=submit]').removeClass('loading');
         FlowRouter.go('postPage', post);
@@ -51,6 +53,7 @@ AutoForm.hooks({
       Messages.flash(error.message.split('|')[0], 'error'); // workaround because error.details returns undefined
       Messages.clearSeen();
       // $(e.target).removeClass('disabled');
+      
       if (error.error === '603') {
         var dupePostId = error.reason.split('|')[1];
         FlowRouter.go('postPage', {slug: '_', _id: dupePostId});

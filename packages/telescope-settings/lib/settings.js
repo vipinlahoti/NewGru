@@ -19,7 +19,7 @@ Settings.schema = new SimpleSchema({
     autoform: {
       group: '01_general',
       type: 'bootstrap-url',
-      instructions: 'Your site\'s URL (with trailing '/'). Will default to Meteor.absoluteUrl()'
+      instructions: 'Your site\'s URL (with trailing \'/\'). Will default to Meteor.absoluteUrl()'
     }
   },
   tagline: {
@@ -197,8 +197,8 @@ Settings.schema = new SimpleSchema({
     autoform: {
       group: '02_posts',
       options: [
-        {value: 'button', label: 'loadMoreButton'},
-        {value: 'scroll', label: 'infiniteScroll'}
+        {value: 'button', label: 'Load more button'},
+        {value: 'scroll', label: 'Infinite scroll'}
       ]
     }
   },

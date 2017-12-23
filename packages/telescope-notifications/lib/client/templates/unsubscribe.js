@@ -1,10 +1,11 @@
 Template.unsubscribe.created = function(){
-  var hash = FlowRouter.getParam("hash");
+  var hash = FlowRouter.getParam('hash');
+
   Meteor.call('unsubscribeUser', hash, function(error, result){
     if(result){
-      Session.set('unsubscribedMessage', __('you_have_been_unsubscribed_from_all_notifications'));
+      Session.set('unsubscribedMessage', 'You have been unsubscribed from all notifications');
     }else{
-      Session.set('unsubscribedMessage', __('user_not_found'));
+      Session.set('unsubscribedMessage', 'User not found');
     }
   });
   Events.track('notificationsUnsubcribe', {hash: hash});

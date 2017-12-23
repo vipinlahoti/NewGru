@@ -59,7 +59,7 @@ Template.commentsListController.onCreated(function () {
 
 Template.commentsListController.helpers({
   template: function () {
-    return !!this.template? this.template: 'comments_list';
+    return !!this.template ? this.template : 'comments_list';
   },
   data: function () {
 

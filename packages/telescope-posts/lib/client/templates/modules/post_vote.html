@@ -1,14 +1,12 @@
 <template name="post_vote">
   <div class="post-vote {{moduleClass}}">
     <div class="vote-actions {{actionsClass}}">
-      <a class="vote-action upvote-link" href="#" title="Upvote">
+      <a class="vote-action upvote-link" href="#">
         {{{icon "upvote"}}}
-        <span class="sr-only">Upvote</span>
       </a>
       {{#if enableDownvotes}}
-        <a class="vote-action downvote-link" href="#" title="Downvote">
+        <a class="vote-action downvote-link" href="#">
           {{{icon "downvote"}}}
-          <span class="sr-only">Downvote</span>
         </a>
       {{/if}}
     </div>

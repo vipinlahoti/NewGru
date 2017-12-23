@@ -12,11 +12,11 @@ Template.notifications_menu.helpers({
     var notifications = getNotifications();
 
     if(notifications.length === 0){
-      notificationsCount = i18n.t('no_notifications');
-    }else if(notifications.length === 1){
-      notificationsCount = i18n.t('1_notification');
-    }else{
-      notificationsCount = notifications.length+' '+ i18n.t('notifications');
+      notificationsCount = 'No notifications';
+    } else if(notifications.length === 1){
+      notificationsCount = '1 Notification';
+    } else {
+      notificationsCount = notifications.length + ' ' + 'Notifications';
     }
 
     return notificationsCount;
@@ -30,7 +30,7 @@ Template.notifications_menu.helpers({
     if (notifications.length) {
       menuItems = markAllAsRead.concat(_.map(notifications, function (notification) {
         return {
-          template: "notification_item",
+          template: 'notification_item',
           data: notification
         };
       }));
@@ -40,7 +40,7 @@ Template.notifications_menu.helpers({
     return menuItems;
   },
   menuType: function () {
-    if (this.zone === "mobileNav") {
+    if (this.zone === 'mobileNav') {
       return 'collapsible';
     } else if (Settings.get('navLayout', 'top-nav') === 'top-nav') {
       return 'dropdown';

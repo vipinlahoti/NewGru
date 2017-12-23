@@ -50,7 +50,7 @@ Telescope.utils.trimWords = function(s, numWords) {
 
   var expString = s.split(/\s+/,numWords);
   if(expString.length >= numWords)
-    return expString.join(" ")+"…";
+    return expString.join(' ') + '…';
   return s;
 };
 
@@ -73,7 +73,7 @@ Telescope.utils.capitalise = function(str) {
 
 Telescope.utils.t = function(message) {
   var d = new Date();
-  console.log("### "+message+" rendered at "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds());
+  console.log('### '+message+' rendered at '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds());
 };
 
 Telescope.utils.nl2br = function(str) {
@@ -91,8 +91,8 @@ Telescope.utils.getDateRange = function(pageNumber) {
   var range={};
   range.start = dayToDisplay.startOf('day').valueOf();
   range.end = dayToDisplay.endOf('day').valueOf();
-  // console.log("after: ", dayToDisplay.startOf('day').format("dddd, MMMM Do YYYY, h:mm:ss a"));
-  // console.log("before: ", dayToDisplay.endOf('day').format("dddd, MMMM Do YYYY, h:mm:ss a"));
+  // console.log('after: ', dayToDisplay.startOf('day').format('dddd, MMMM Do YYYY, h:mm:ss a'));
+  // console.log('before: ', dayToDisplay.endOf('day').format('dddd, MMMM Do YYYY, h:mm:ss a'));
   return range;
 };
 
@@ -112,7 +112,7 @@ Telescope.utils.getSiteUrl = function () {
  * @param {String} url - the URL to redirect
  */
 Telescope.utils.getOutgoingUrl = function (url) {
-  return Telescope.utils.getSiteUrl() + "out?url=" + encodeURIComponent(url);
+  return Telescope.utils.getSiteUrl() + 'out?url=' + encodeURIComponent(url);
 };
 
 // This function should only ever really be necessary server side
@@ -149,22 +149,22 @@ Telescope.utils.slugify = function (s) {
     truncate: 60
   });
 
-  // can't have posts with an "edit" slug
-  if (slug === "edit") {
-    slug = "edit-1";
+  // can't have posts with an 'edit' slug
+  if (slug === 'edit') {
+    slug = 'edit-1';
   }
 
   return slug;
 };
 
 Telescope.utils.getUnusedSlug = function (collection, slug) {
-  var suffix = "";
+  var suffix = '';
   var index = 0;
 
   // test if slug is already in use
   while (!!collection.findOne({slug: slug+suffix})) {
     index++;
-    suffix = "-"+index;
+    suffix = '-'+index;
   }
 
   return slug+suffix;
@@ -180,13 +180,13 @@ Telescope.utils.getDomain = function(url) {
 };
 
 Telescope.utils.invitesEnabled = function() {
-  return Settings.get("requireViewInvite") || Settings.get("requirePostInvite");
+  return Settings.get('requireViewInvite') || Settings.get('requirePostInvite');
 };
 
 // add http: if missing
 Telescope.utils.addHttp = function (url) {
-  if (url.substring(0, 5) !== "http:" && url.substring(0, 6) !== "https:") {
-    url = "http:"+url;
+  if (url.substring(0, 5) !== 'http:' && url.substring(0, 6) !== 'https:') {
+    url = 'http:'+url;
   }
   return url;
 };
@@ -241,14 +241,14 @@ Telescope.utils.checkNested = function(obj /*, level1, level2, ... levelN*/) {
 };
 
 Telescope.log = function (s) {
-  if(Settings.get('debug', false) || process.env.NODE_ENV === "development") {
+  if(Settings.get('debug', false) || process.env.NODE_ENV === 'development') {
     console.log(s);
   }
 };
 
 // see http://stackoverflow.com/questions/8051975/access-object-child-properties-using-a-dot-notation-string
 Telescope.getNestedProperty = function (obj, desc) {
-  var arr = desc.split(".");
+  var arr = desc.split('.');
   while(arr.length && (obj = obj[arr.shift()]));
   return obj;
 };

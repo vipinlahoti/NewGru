@@ -1,36 +1,36 @@
 Template.header.helpers({
   headerClass: function () {
-    var headerClass = "";
+    var headerClass = '';
     var bgBrightness = tinycolor(Settings.get('headerColor')).getBrightness();
     if (bgBrightness < 50) {
-      headerClass += " dark-bg";
+      headerClass += ' dark-bg';
     } else if (bgBrightness < 130) {
-      headerClass += " medium-dark-bg";
+      headerClass += ' medium-dark-bg';
     } else if (bgBrightness < 220) {
-      headerClass += " medium-light-bg";
+      headerClass += ' medium-light-bg';
     } else if (bgBrightness < 255) {
-      headerClass += " light-bg";
+      headerClass += ' light-bg';
     } else {
-      headerClass += " white-bg";
+      headerClass += ' white-bg';
     }
     return headerClass;
   },
   hasPrimaryNav: function () {
-    return !!Telescope.modules.get("primaryNav").length;
+    return !!Telescope.modules.get('primaryNav').length;
   },
   hasSecondaryNav: function () {
-    return !!Telescope.modules.get("secondaryNav").length;
+    return !!Telescope.modules.get('secondaryNav').length;
   },
   dropdownClass: function () {
-    var dropdownClass = "";
+    var dropdownClass = '';
     // only use dropdowns for top nav
     if (this.length > 3) {
-      dropdownClass += "long-dropdown";
+      dropdownClass += 'long-dropdown';
     }
     if (Settings.get('navLayout', 'top-nav') === 'top-nav' && getThemeSetting('useDropdowns', true)) {
-      dropdownClass += "has-dropdown";
+      dropdownClass += 'has-dropdown';
     } else {
-      dropdownClass += "no-dropdown";
+      dropdownClass += 'no-dropdown';
     }
     return dropdownClass;
   },

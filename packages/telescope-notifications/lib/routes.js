@@ -1,7 +1,7 @@
 FlowRouter.route('/unsubscribe/:hash', {
-  name: "unsubscribe",
+  name: 'unsubscribe',
   action: function(params, queryParams) {
     Meteor.logout();
-    BlazeLayout.render("layout", {main: "unsubscribe"});
+    BlazeLayout.render('layout', {main: 'unsubscribe'});
   }
 });

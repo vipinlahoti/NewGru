@@ -23,17 +23,17 @@ FlowRouter.notFound = {
   action: function() {
     if (Meteor.isClient) {
       DocHead.addMeta({
-        name: "name",
-        property: "prerender-status-code",
-        content: "404"
+        name: 'name',
+        property: 'prerender-status-code',
+        content: '404'
       });
       DocHead.addMeta({
-        name: "name",
-        property: "robots",
-        content: "noindex, nofollow"
+        name: 'name',
+        property: 'robots',
+        content: 'noindex, nofollow'
       });
     }
-    BlazeLayout.render("layout", {main: "not_found"});
+    BlazeLayout.render('layout', {main: 'not_found'});
   }
 };
 

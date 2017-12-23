@@ -1,5 +1,5 @@
 Meteor.startup(function () {
-  Herald.collection._ensureIndex({userId: 1, "media.email.send": 1, "media.email.sent": 1});
+  Herald.collection._ensureIndex({userId: 1, 'media.email.send': 1, 'media.email.sent': 1});
 });
 
 getUnsubscribeLink = function(user){
@@ -11,7 +11,7 @@ Meteor.methods({
     check(hash, String);
     // TO-DO: currently, if you have somebody's email you can unsubscribe them
     // A user-specific salt should be added to the hashing method to prevent this
-    var user = Meteor.users.findOne({"telescope.emailHash": hash});
+    var user = Meteor.users.findOne({'telescope.emailHash': hash});
     if(user){
       Meteor.users.update(user._id, {
         $set: {

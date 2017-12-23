@@ -2,7 +2,7 @@ Package.describe({
   name: 'telescope:users',
   summary: 'Telescope permissions.',
   version: '0.25.7',
-  git: "https://github.com/TelescopeJS/Telescope.git"
+  git: 'https://github.com/TelescopeJS/Telescope.git'
 });
 
 Package.onUse(function (api) {
@@ -11,7 +11,7 @@ Package.onUse(function (api) {
 
   api.use([
     'telescope:lib',
-    'telescope:settings'
+    'telescope:settings',
   ]);
 
   api.addFiles([

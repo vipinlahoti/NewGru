@@ -28,6 +28,7 @@ Events.schema = new SimpleSchema({
 
 Events.attachSchema(Events.schema);
 
+
 if (Meteor.isServer) {
   Events.log = function (event) {
 

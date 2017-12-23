@@ -1,7 +1,7 @@
 // New user email
 Picker.route('/email/new-user/:id?', function(params, req, res, next) {
   var html;
-  var user = typeof params.id === "undefined" ? Meteor.users.findOne() : Meteor.users.findOne(params.id);
+  var user = typeof params.id === 'undefined' ? Meteor.users.findOne() : Meteor.users.findOne(params.id);
   var emailProperties = {
     profileUrl: Users.getProfileUrl(user),
     username: Users.getUserName(user)
@@ -13,11 +13,11 @@ Picker.route('/email/new-user/:id?', function(params, req, res, next) {
 // New post email
 Picker.route('/email/new-post/:id?', function(params, req, res, next) {
   var html;
-  var post = typeof params.id === "undefined" ? Posts.findOne() : Posts.findOne(params.id);
+  var post = typeof params.id === 'undefined' ? Posts.findOne() : Posts.findOne(params.id);
   if (!!post) {
     html = Telescope.email.getTemplate('emailNewPost')(Posts.getNotificationProperties(post));
   } else {
-    html = "<h3>No post found.</h3>"
+    html = '<h3>No post found.</h3>'
   }
   res.end(Telescope.email.buildTemplate(html));
 });
@@ -25,11 +25,11 @@ Picker.route('/email/new-post/:id?', function(params, req, res, next) {
 // Post approved
 Picker.route('/email/post-approved/:id?', function(params, req, res, next) {
   var html;
-  var post = typeof params.id === "undefined" ? Posts.findOne() : Posts.findOne(params.id);
+  var post = typeof params.id === 'undefined' ? Posts.findOne() : Posts.findOne(params.id);
   if (!!post) {
     html = Telescope.email.getTemplate('emailPostApproved')(Posts.getNotificationProperties(post));
   } else {
-    html = "<h3>No post found.</h3>"
+    html = '<h3>No post found.</h3>'
   }
   res.end(Telescope.email.buildTemplate(html));
 });
@@ -37,12 +37,12 @@ Picker.route('/email/post-approved/:id?', function(params, req, res, next) {
 // New comment email
 Picker.route('/email/new-comment/:id?', function(params, req, res, next) {
   var html;
-  var comment = typeof params.id === "undefined" ? Comments.findOne() : Comments.findOne(params.id);
+  var comment = typeof params.id === 'undefined' ? Comments.findOne() : Comments.findOne(params.id);
   var post = Posts.findOne(comment.postId);
   if (!!comment) {
     html = Telescope.email.getTemplate('emailNewComment')(Comments.getNotificationProperties(comment, post));
   } else {
-    html = "<h3>No post found.</h3>"
+    html = '<h3>No post found.</h3>'
   }
   res.end(Telescope.email.buildTemplate(html));
 });
@@ -50,19 +50,19 @@ Picker.route('/email/new-comment/:id?', function(params, req, res, next) {
 // New reply email
 Picker.route('/email/new-reply/:id?', function(params, req, res, next) {
   var html;
-  var comment = typeof params.id === "undefined" ? Comments.findOne() : Comments.findOne(params.id);
+  var comment = typeof params.id === 'undefined' ? Comments.findOne() : Comments.findOne(params.id);
   var post = Posts.findOne(comment.postId);
   if (!!comment) {
     html = Telescope.email.getTemplate('emailNewReply')(Comments.getNotificationProperties(comment, post));
   } else {
-    html = "<h3>No post found.</h3>"
+    html = '<h3>No post found.</h3>'
   }
   res.end(Telescope.email.buildTemplate(html));
 });
 
 // Account approved email
 Picker.route('/email/account-approved/:id?', function(params, req, res, next) {
-  var user = typeof params.id === "undefined" ? Meteor.users.findOne() : Meteor.users.findOne(params.id);
+  var user = typeof params.id === 'undefined' ? Meteor.users.findOne() : Meteor.users.findOne(params.id);
   var emailProperties = {
     profileUrl: Users.getProfileUrl(user),
     username: Users.getUserName(user),

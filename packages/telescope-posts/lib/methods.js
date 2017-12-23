@@ -169,7 +169,7 @@ Meteor.methods({
 
       var field = schema[fieldName];
       if (!Users.can.submitField(user, field)) {
-        throw new Meteor.Error('disallowed_property', 'Disallowed property detected'  + ': ' + fieldName);
+        throw new Meteor.Error('disallowed_property', 'Disallowed property detected' + ': ' + fieldName);
       }
 
     });

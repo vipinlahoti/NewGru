@@ -88,7 +88,7 @@ Meteor.methods({
 
     // check that user can comment
     if (!user || !Users.can.comment(user))
-      throw new Meteor.Error('You need to login or be invited to post new Comments');
+      throw new Meteor.Error('You need to login or be invited to post new comments');
 
     // ------------------------------ Rate Limiting ------------------------------ //
 
@@ -98,7 +98,7 @@ Meteor.methods({
           commentInterval = Math.abs(parseInt(Settings.get('commentInterval',15)));
 
       // check that user waits more than 15 seconds between comments
-      if(timeSinceLastComment < commentInterval)
+      if((timeSinceLastComment < commentInterval))
         throw new Meteor.Error('Please wait' + (commentInterval - timeSinceLastComment) + 'seconds before commenting again');
 
     }

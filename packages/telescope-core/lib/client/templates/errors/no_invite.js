@@ -1,5 +1,5 @@
 Template.no_invite.helpers({
   afterSignupText: function(){
-    return Settings.get("afterSignupText");
+    return Settings.get('afterSignupText');
   }
 });

@@ -5,16 +5,21 @@ Template.post_vote.helpers({
   actionsClass: function () {
     var user = Meteor.user();
     var actionsClass = '';
+    
     if(!user) return false;
+
     if (user.hasUpvoted(this)) {
       actionsClass += ' voted upvoted';
     }
+
     if (user.hasDownvoted(this)) {
       actionsClass += ' voted downvoted';
     }
+    
     if (Settings.get('enableDownvotes', false)) {
       actionsClass += ' downvotes-enabled';
     }
+    
     return actionsClass;
   }
 });
@@ -23,9 +28,7 @@ Template.post_vote.events({
   'click .upvote-link': function(e){
     var post = this;
     var user = Meteor.user();
-
     e.preventDefault();
-
     if(!user){
       FlowRouter.go('signIn');
       Messages.flash('Please log in first', 'info');
@@ -42,9 +45,8 @@ Template.post_vote.events({
   'click .downvote-link': function(e){
     var post = this;
     var user = Meteor.user();
-
     e.preventDefault();
-
+    
     if(!user){
       FlowRouter.go('signIn');
       Messages.flash('Please log in first', 'info');

@@ -34,7 +34,7 @@ findQueueContainer = function($comment) {
     // A) we've hit a displayed comment or
     // B) we've haven't found any comments (i.e. we're at the beginning of the list)
     // so we put our queue container just before the comment
-    $container = $('<div class=\'queue-container\'><ul></ul></div>').insertBefore($comment);
+    $container = $('<div class="queue-container"><ul></ul></div>').insertBefore($comment);
     $container.click(function(e){
       e.preventDefault();
       var links = $(this).find('a');
@@ -55,6 +55,7 @@ findQueueContainer = function($comment) {
   // console.log('container', $container);
   return $container;
 };
+
 
 Template.comment_item.created = function() {
   // if comments are supposed to be queued, then queue this comment on create
@@ -108,9 +109,10 @@ Template.comment_item.helpers({
 var handleVoteClick = function (meteorMethodName, eventName, e, instance) {
   e.preventDefault();
   e.stopImmediatePropagation(); // needed to prevent the handler running multiple times in nested comments
+
   if (!Meteor.user()){
     FlowRouter.go('signIn');
-    Messages.flash('please log in first', 'info');
+    Messages.flash('Please log in first', 'info');
   } else {
     Meteor.call(meteorMethodName, this._id, function(error, result){
       Events.track(eventName, {

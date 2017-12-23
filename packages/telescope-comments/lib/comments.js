@@ -164,7 +164,6 @@ Comments.schema = new SimpleSchema({
   }
 });
 
-
 Comments.attachSchema(Comments.schema);
 
 Comments.allow({
