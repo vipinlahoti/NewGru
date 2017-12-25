@@ -1,3 +1,4 @@
+.eslintcache
 npm-debug.log
 *.scssc
 .sass-cache/*
@@ -34,3 +35,16 @@ mup.json
 packages_update.py
 
 versions
+
+get_file_list.sh
+packages_update.py
+publish_packages.sh
+
+node_modules
+
+bundle.tar.gz
+
+jsdoc-conf.json
+jsdoc.json
+packages/nova-router/.npm
+npm-debug.log

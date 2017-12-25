@@ -1,0 +1,151 @@
+.btn,
+.btn-floating,
+.btn-flat {
+  background-color: $primary-color;
+  border: 0;
+  border-radius: $border-round;
+  color: $white-color;
+  cursor: pointer;
+  display: inline-block;
+  height: $button-height;
+  line-height: $button-height;
+  font-size: $button-font-size;
+  outline: 0;
+  margin: 0 $padding-base / 5;
+  padding: 0 $padding-base * 2;
+  vertical-align: middle;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: .5px;
+  transition: .2s ease-out;
+  @extend .primary-shadow;
+
+  // Gets rid of tap active state
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    background-color: lighten($primary-color, 5%);
+    @extend .primary-shadow-hover;
+  }
+
+  i {
+    float: left;
+    font-size: $button-font-size * 1.3;
+    line-height: inherit;
+    margin-right: $padding-base / 3;
+  }
+
+  &.pink {
+    @extend .pink-shadow;
+
+    &:hover {
+      @extend .pink-shadow-hover;
+    }
+  }
+}
+
+// Disabled shared style
+.btn.disabled,
+.btn-floating.disabled,
+.btn-large.disabled,
+.btn-flat.disabled,
+.btn:disabled,
+.btn-floating:disabled,
+.btn-large:disabled,
+.btn-flat:disabled,
+.btn[disabled],
+.btn-floating[disabled],
+.btn-large[disabled],
+.btn-flat[disabled] {
+  pointer-events: none;
+  background-color: $button-disabled-background !important;
+  box-shadow: none;
+  color: $button-disabled-color !important;
+  cursor: default;
+
+  &:hover {
+    background-color: $button-disabled-background !important;
+    color: $button-disabled-color !important;
+  }
+}
+
+// Floating button
+.btn-floating {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  width: $button-floating-size;
+  height: $button-floating-size;
+  line-height: $button-floating-size;
+  padding: 0;
+  border-radius: $border-circle;
+  margin-top: -7rem;
+  @extend .pink;
+  @extend .pink-shadow;
+
+  &:hover {
+    @extend .pink;
+    @extend .pink-shadow-hover;
+  }
+
+  i {
+    width: inherit;
+    display: inline-block;
+    text-align: center;
+    font-size: 2rem;
+    line-height: $button-floating-size;
+  }
+}
+
+// Flat button
+.btn-flat {
+  box-shadow: none;
+  background-color: transparent;
+  color: $off-black;
+  
+  &:focus,
+  &:hover {
+    box-shadow: none;
+  }
+
+  &:hover {
+    background-color: rgba(0,0,0,.1);
+  }
+
+  &.disabled {
+    background-color: transparent !important;
+    color: lighten($off-black, 5%) !important;
+    cursor: default;
+  }
+}
+
+// Large button
+.btn-lg {
+  @extend .btn;
+  height: $button-height * 1.5;
+  line-height: $button-height * 1.5;
+
+  i {
+    font-size: $button-height * 1.5;
+  }
+}
+
+.btn-sm {
+  @extend .btn;
+  font-size: 1rem;
+  height: inherit;
+  line-height: inherit;
+  padding: $padding-base / 3 $padding-base;
+
+  i {
+    font-size: inherit;
+  }
+}
+
+.btn-block,
+button[type=submit] {
+  @extend .btn;
+  display: block;
+  margin: 0;
+  width: 100%;
+}

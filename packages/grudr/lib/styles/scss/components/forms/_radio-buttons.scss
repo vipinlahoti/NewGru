@@ -1,0 +1,100 @@
+.radio {
+  display: inline-block;
+  margin: $padding-base / 2 $padding-base * 3 0 0;
+
+  label {
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: normal;
+    font-size: 16px;
+    padding-left: $padding-base / 2;
+  }
+}
+
+// Remove default Radio Buttons
+[type="radio"] {
+  margin: 0 $padding-base / 4 30px 0;
+  // position: absolute;
+  // left: -9999px;
+  // opacity: 0;
+}
+
+[type="radio"]:not(:checked),
+[type="radio"]:checked {
+  position: relative;
+  left: -9999px;
+  padding-left: 35px;
+  cursor: pointer;
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  font-size: 1rem;
+  transition: .28s ease;
+
+  -khtml-user-select: none; /* webkit (konqueror) browsers */
+  user-select: none;
+}
+
+[type="radio"]:before,
+[type="radio"]:after {
+  content: '';
+  position: absolute;
+  left: 9990px;
+  top: 7px;
+  margin: 4px 0 0 0;
+  width: 16px;
+  height: 16px;
+  z-index: 0;
+  transition: .28s ease;
+}
+
+/* Unchecked styles */
+[type="radio"]:not(:checked):before,
+[type="radio"]:not(:checked):after,
+[type="radio"]:checked:before,
+[type="radio"]:checked:after {
+  border-radius: 50%;
+}
+
+[type="radio"]:not(:checked):before,
+[type="radio"]:not(:checked):after {
+  border: 2px solid $radio-empty-color;
+}
+
+[type="radio"]:not(:checked):after {
+  z-index: -1;
+  transform: scale(0);
+}
+
+/* Checked styles */
+[type="radio"]:checked:before {
+  border: 2px solid $primary-color;
+}
+
+[type="radio"]:checked:after {
+  border: $radio-border;
+  background-color: $primary-color;
+  z-index: 0;
+  transform: scale(0.5);
+}
+
+
+/* Disabled style */
+[type="radio"]:disabled:not(:checked):before,
+[type="radio"]:disabled:checked:before {
+  background-color: transparent;
+  border-color: $input-disabled-color;
+}
+
+[type="radio"]:disabled {
+  color: $input-disabled-color;
+}
+
+[type="radio"]:disabled:not(:checked):before {
+  border-color: $input-disabled-color;
+}
+
+[type="radio"]:disabled:checked:after {
+  background-color: $input-disabled-color;
+  border-color: $input-disabled-solid-color;
+}
