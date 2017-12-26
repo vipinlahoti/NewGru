@@ -1,3 +1,10 @@
+/* This is needed for some mobile phones to display the Google Icon font properly */
+.material-icons {
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'liga';
+}
+
+
 @mixin radial-gradient($extern-color, $center-color){
   background: $extern-color;
   background: -moz-radial-gradient(center, ellipse cover, $center-color 0%, $extern-color 100%); /* FF3.6+ */
@@ -640,4 +647,9 @@ td, th{
 
 .subscribe-line {
   color: $white-color;
+}
+
+.avatar {
+  border-radius: $border-circle;
+  @extend .z-depth-2;
 }

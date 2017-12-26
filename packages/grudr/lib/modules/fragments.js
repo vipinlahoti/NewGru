@@ -58,6 +58,11 @@ registerFragment(`
     postCount
     # vulcan:comments
     commentCount
+
+    # categories
+    # categories {
+    #  ...CategoriesMinimumInfo
+    # }
   }
 `);
 

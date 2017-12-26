@@ -74,33 +74,10 @@
   list-style: none;
 }
 
-
-.avatar {
-  border-radius: $border-circle;
-  @extend .z-depth-2;
-}
-
 .media-footer {
   margin: 0 0 $padding-base * 2.5;
 }
 
 .media-children {
   padding-left: $padding-base * 4;
-}
-
-.stories {
-  .section-components {
-    overflow: visible;
-  }
-  
-  .media {
-    margin-bottom: $padding-base * 3;
-    border-bottom: 1px solid $gray-light;
-  
-    &:last-child {
-      border: 0;
-      margin: 0;
-      padding: 0;
-    }
-  }
 }

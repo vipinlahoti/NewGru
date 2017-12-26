@@ -2,7 +2,7 @@
   color: $white-color;
   display:block;
   // position: fixed;
-  z-index: 10000;
+  // z-index: 10000;
 
   @extend .z-depth-1;
   border-radius: $border-small;
@@ -16,33 +16,13 @@
   word-break: break-all;
   // background-color: $toast-color;
   padding: $padding-base / 2 $padding-base;
-  font-size: 1.1rem;
-  font-weight: 300;
+  // font-size: 1.1rem;
+  // font-weight: 300;
   // color: $toast-text-color;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  .fa {
-    line-height: 5rem;
-  }
-}
-
-// Dismissible alerts
-.alert-dismissable,
-.alert-dismissible {
-  padding-right: $padding-base * 3;
-
-  // Adjust close link position
-  .close {
-    position: absolute;
-    top: 0;
-    right: 1rem;
-    padding: 0;
-    box-shadow: none;
-    background: transparent;
-  }
 }
 
 .alert-success {
@@ -59,13 +39,4 @@
 
 .alert-danger {
   background: $error-color;
-}
-
-
-.form-errors {
-  .alert {
-    .fa {
-      line-height: 2rem;
-    }
-  }
 }

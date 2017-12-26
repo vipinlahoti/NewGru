@@ -30,7 +30,7 @@ import { addCallback } from 'meteor/vulcan:lib';
 
 function userRoleAddPrefix (modifier) {
   if (modifier.$set && modifier.$set.userRole === 'Doctor') {
-    modifier.$set.userRolePrefix = 'Dr';
+    modifier.$set.userRolePrefix = 'Dr.';
     modifier.$set.isDoctor = true;
   } else {
     modifier.$set.userRolePrefix = ' ';

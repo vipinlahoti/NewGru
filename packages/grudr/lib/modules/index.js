@@ -14,5 +14,6 @@ import './helpers.js';
 export { Categories } from './categories/index.js';
 export { Comments }  from './comments/index.js';
 export { Posts }  from './posts/index.js';
+export { Questions }  from './questions/index.js';
 
 import './notifications/index.js';
