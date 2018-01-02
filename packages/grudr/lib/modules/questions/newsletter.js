@@ -39,22 +39,22 @@ VulcanEmail.addEmails({
           domain
           htmlBody
           thumbnailUrl
-          commentsCount
-          questionedAtFormatted
+          answersCount
+          postedAtFormatted
 
           user{
             pageUrl
             displayName
           }
 
-          comments(limit: 3){
+          answers(limit: 3){
             user{
               displayName
               avatarUrl
               pageUrl
             }
             htmlBody
-            questionedAt
+            postedAt
           }
           
         }

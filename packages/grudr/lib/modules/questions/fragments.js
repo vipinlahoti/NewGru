@@ -5,10 +5,13 @@ registerFragment(`
     # questions
     _id
     title
+    # url
     slug
-    questionedAt
+    postedAt
     createdAt
+    sticky
     status
+    excerpt
     viewCount
     clickCount
     # users
@@ -22,9 +25,9 @@ registerFragment(`
     categories {
       ...CategoriesMinimumInfo
     }
-    # comments
-    commentCount
-    commenters {
+    # answers
+    answerCount
+    answerers {
       ...UsersMinimumInfo
     }
     # voting
@@ -39,6 +42,8 @@ registerFragment(`
 registerFragment(`
   fragment QuestionsPage on Question {
     ...QuestionsList
+    body
+    htmlBody
   }
 `);
 

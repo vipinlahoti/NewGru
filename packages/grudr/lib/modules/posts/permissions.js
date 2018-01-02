@@ -12,9 +12,9 @@ const guestsActions = [
 Users.groups.guests.can(guestsActions);
 
 const membersActions = [
-  'posts.new',
-  'posts.edit.own', 
-  'posts.remove.own',
+  // 'posts.new',
+  // 'posts.edit.own', 
+  // 'posts.remove.own',
   'posts.upvote', 
   'posts.downvote',
 ];
@@ -25,7 +25,7 @@ const adminActions = [
   'posts.view.rejected',
   'posts.view.spam',
   'posts.view.deleted',
-  // 'posts.new',
+  'posts.new',
   'posts.new.approved',
   'posts.edit.all',
   'posts.remove.all'

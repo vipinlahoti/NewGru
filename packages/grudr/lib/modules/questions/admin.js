@@ -5,7 +5,7 @@ Admin dashboard extension
 */
 
 import { extendFragment, addAdminColumn, addStrings } from 'meteor/vulcan:core';
-// import AdminUsersQuestions from '../../components/admin/AdminUsersQuestions';
+import AdminUsersQuestions from '../../components/admin/AdminUsersQuestions';
 
 extendFragment('UsersAdmin', `
   questions(limit: 5){
@@ -16,7 +16,7 @@ extendFragment('UsersAdmin', `
 addAdminColumn({
   name: 'questions',
   order: 50,
-  // component: AdminUsersQuestions
+  component: AdminUsersQuestions
 });
 
 

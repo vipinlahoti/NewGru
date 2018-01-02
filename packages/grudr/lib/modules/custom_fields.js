@@ -1,9 +1,11 @@
 import React from 'react';
 // import Tags from 'meteor/vulcan:forms-tags';
 import { Posts } from './posts/index.js';
+import { Questions } from './questions/index.js';
 import Users from "meteor/vulcan:users";
 import FormsUpload from 'meteor/vulcan:forms-upload';
 import { userRole, gender, areaPractise, medicalCollege, certification, affiliation, awards } from './data';
+
 
 const formGroups = {
   admin: {
@@ -89,6 +91,55 @@ Posts.addField([
 ]);
 
 Posts.removeField('url');
+
+
+/*
+#### Questions fields #######################################
+*/
+Questions.addField([
+  {
+    fieldName: 'title',
+    fieldSchema: {
+      max: 80,
+      limit: 80
+    }
+  },
+  {
+    fieldName: 'body',
+    fieldSchema: {
+      max: 6000,
+      limit: 6000
+    }
+  },
+  // {
+  //   fieldName: 'categories',
+  //   fieldSchema: {
+  //     type: Array,
+  //     optional: true,
+  //     control: Tags,
+  //     // afterComponent: <a target="_blank" className="suggest-category-link" href="https://github.com/SachaG/SidebarFeedback/issues/1">Suggest new categories</a>
+  //   }
+  // },
+  {
+    fieldName: 'thumbnailUrl',
+    fieldSchema: {
+      type: String,
+      optional: true,
+      viewableBy: ['guests'],
+      insertableBy: ['members'],
+      editableBy: ['members'],
+      control: FormsUpload, // use the FormsUpload form component
+      form: {
+        options: {
+          preset: 'article_thumbnail'
+        },
+      },
+      hidden: false
+    }
+  }
+]);
+
+Questions.removeField('url');
 
 
 /*

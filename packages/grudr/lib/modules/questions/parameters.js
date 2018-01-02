@@ -13,9 +13,9 @@ function addTimeParameter (parameters, terms, apolloClient) {
 
   // console.log('// addTimeParameter')
 
-  if (typeof parameters.selector.questionedAt === 'undefined') {
+  if (typeof parameters.selector.postedAt === 'undefined') {
 
-    let questionedAt = {}, mAfter, mBefore, startOfDay, endOfDay, clientTimezoneOffset, serverTimezoneOffset, timeDifference;
+    let postedAt = {}, mAfter, mBefore, startOfDay, endOfDay, clientTimezoneOffset, serverTimezoneOffset, timeDifference;
 
     /*
 
@@ -57,9 +57,9 @@ function addTimeParameter (parameters, terms, apolloClient) {
         // console.log('// after add   ', startOfDay.toDate(), startOfDay.valueOf());
         // note: on the client, dates are stored as strings, 
         // so use strings for MongoDB filtering options too
-        questionedAt.$gte = startOfDay.toISOString();
+        postedAt.$gte = startOfDay.toISOString();
       } else {
-        questionedAt.$gte = startOfDay.toDate();
+        postedAt.$gte = startOfDay.toDate();
       }
 
     }
@@ -71,15 +71,15 @@ function addTimeParameter (parameters, terms, apolloClient) {
 
       if (Meteor.isClient) {
         endOfDay.add(timeDifference, 'minutes');
-        questionedAt.$lt = endOfDay.toISOString();
+        postedAt.$lt = endOfDay.toISOString();
       } else {
-        questionedAt.$lt = endOfDay.toDate();
+        postedAt.$lt = endOfDay.toDate();
       }
 
     }
 
-    if (!_.isEmpty(questionedAt)) {
-      parameters.selector.questionedAt = questionedAt;
+    if (!_.isEmpty(postedAt)) {
+      parameters.selector.postedAt = postedAt;
     }
 
   }

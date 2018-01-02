@@ -11,11 +11,13 @@ import './email/templates.js';
 import './seed/seed_posts.js';
 import './seed/seed_categories.js';
 
-import './comments/index.js';
-
 import './categories/index.js';
 
 import './posts/index.js';
+import './comments/index.js';
+
+import './questions/index.js';
+import './answers/index.js';
 
 import './api.js';
 import './rss.js';

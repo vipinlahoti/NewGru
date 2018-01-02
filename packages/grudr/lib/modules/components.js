@@ -48,6 +48,40 @@ import '../components/comments/CommentsEditForm.jsx';
 import '../components/comments/CommentsLoadMore.jsx';
 
 
+// Questions
+import '../components/questions/QuestionsHome.jsx';
+import '../components/questions/QuestionsSingle.jsx';
+import '../components/questions/QuestionsNewButton.jsx';
+import '../components/questions/QuestionsLoadMore.jsx';
+// import '../components/questions/QuestionsNoMore.jsx';
+import '../components/questions/QuestionsNoResults.jsx';
+import '../components/questions/QuestionsItem.jsx';
+// import '../components/questions/QuestionsLoading.jsx';
+// import '../components/questions/QuestionsViews.jsx';
+import '../components/questions/QuestionsList.jsx';
+import '../components/questions/QuestionsListHeader.jsx';
+import '../components/questions/QuestionsCategories.jsx';
+// import '../components/questions/QuestionsAnswerers.jsx';
+import '../components/questions/QuestionsPage.jsx';
+import '../components/questions/QuestionsStats.jsx';
+// import '../components/questions/QuestionsDaily.jsx';
+// import '../components/questions/QuestionsDailyList.jsx';
+// import '../components/questions/QuestionsDay.jsx';
+import '../components/questions/QuestionsThumbnail.jsx';
+import '../components/questions/QuestionsEditForm.jsx';
+import '../components/questions/QuestionsNewForm.jsx';
+import '../components/questions/QuestionsAnswersThread.jsx';
+
+
+// Answers
+import '../components/answers/AnswersItem.jsx';
+import '../components/answers/AnswersList.jsx';
+import '../components/answers/AnswersNode.jsx';
+import '../components/answers/AnswersNewForm.jsx';
+import '../components/answers/AnswersEditForm.jsx';
+import '../components/answers/AnswersLoadMore.jsx';
+
+
 // Categories
 import '../components/categories/CategoriesList.jsx';
 import '../components/categories/CategoriesNode.jsx';

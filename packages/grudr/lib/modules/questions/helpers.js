@@ -117,7 +117,7 @@ Questions.checkForSameUrl = function (url) {
 
   // check that there are no previous questions with the same link in the past 6 months
   var sixMonthsAgo = moment().subtract(6, 'months').toDate();
-  var questionWithSameLink = Questions.findOne({url: url, questionedAt: {$gte: sixMonthsAgo}});
+  var questionWithSameLink = Questions.findOne({url: url, postedAt: {$gte: sixMonthsAgo}});
 
   return !!questionWithSameLink;
 };

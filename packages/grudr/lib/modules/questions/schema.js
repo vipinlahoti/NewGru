@@ -50,7 +50,7 @@ const schema = {
   /**
     Timestamp of question first appearing on the site (i.e. being approved)
   */
-  questionedAt: {
+  postedAt: {
     type: Date,
     optional: true,
     viewableBy: ['guests'],
@@ -59,11 +59,25 @@ const schema = {
     control: 'datetime',
     group: formGroups.admin,
     onInsert: (question, currentUser) => {
-      // Set the question's questionedAt if it's going to be approved
-      if (!question.questionedAt && Questions.getDefaultStatus(currentUser) === Questions.config.STATUS_APPROVED) {
+      // Set the question's postedAt if it's going to be approved
+      if (!question.postedAt && Questions.getDefaultStatus(currentUser) === Questions.config.STATUS_APPROVED) {
         return new Date();
       }
     }
+  },
+  /**
+    URL
+  */
+  url: {
+    type: String,
+    optional: true,
+    max: 500,
+    viewableBy: ['guests'],
+    insertableBy: ['members'],
+    editableBy: ['members'],
+    control: 'url',
+    order: 10,
+    searchable: true
   },
   /**
     Title
@@ -75,7 +89,7 @@ const schema = {
     viewableBy: ['guests'],
     insertableBy: ['members'],
     editableBy: ['members'],
-    control: 'textarea',
+    control: 'text',
     order: 20,
     searchable: true
   },
@@ -96,6 +110,59 @@ const schema = {
     }
   },
   /**
+    Question body (markdown)
+  */
+  body: {
+    type: String,
+    optional: true,
+    max: 3000,
+    viewableBy: ['guests'],
+    insertableBy: ['members'],
+    editableBy: ['members'],
+    control: 'textarea',
+    order: 30
+  },
+  /**
+    HTML version of the question body
+  */
+  htmlBody: {
+    type: String,
+    optional: true,
+    viewableBy: ['guests'],
+    onInsert: (question) => {
+      if (question.body) {
+        return Utils.sanitize(marked(question.body));
+      }
+    },
+    onEdit: (modifier, question) => {
+      if (modifier.$set.body) {
+        return Utils.sanitize(marked(modifier.$set.body));
+      }
+    }
+  },
+  /**
+   Question Excerpt
+   */
+  excerpt: {
+    type: String,
+    optional: true,
+    viewableBy: ['guests'],
+    searchable: true,
+    onInsert: (question) => {
+      if (question.body) {
+        // excerpt length is configurable via the settings (30 words by default, ~255 characters)
+        const excerptLength = getSetting('forum.questionExcerptLength', 30); 
+        return Utils.trimHTML(Utils.sanitize(marked(question.body)), excerptLength);
+      }
+    },
+    onEdit: (modifier, question) => {
+      if (modifier.$set.body) {
+        const excerptLength = getSetting('forum.questionExcerptLength', 30); 
+        return Utils.trimHTML(Utils.sanitize(marked(modifier.$set.body)), excerptLength);
+      }
+    }
+  },
+  /**
     Count of how many times the question's page was viewed
   */
   viewCount: {
@@ -105,9 +172,9 @@ const schema = {
     defaultValue: 0
   },
   /**
-    Timestamp of the last comment
+    Timestamp of the last answer
   */
-  lastCommentedAt: {
+  lastAnsweredAt: {
     type: Date,
     optional: true,
     viewableBy: ['guests'],
@@ -158,24 +225,47 @@ const schema = {
     viewableBy: ['guests'],
     onInsert: (question) => {
       // Set the question's isFuture to true if necessary
-      if (question.questionedAt) {
-        const questionTime = new Date(question.questionedAt).getTime();
+      if (question.postedAt) {
+        const questionTime = new Date(question.postedAt).getTime();
         const currentTime = new Date().getTime() + 1000;
         return questionTime > currentTime; // round up to the second
       }
     },
     onEdit: (modifier, question) => {
       // Set the question's isFuture to true if necessary
-      if (modifier.$set.questionedAt) {
-        const questionTime = new Date(modifier.$set.questionedAt).getTime();
+      if (modifier.$set.postedAt) {
+        const questionTime = new Date(modifier.$set.postedAt).getTime();
         const currentTime = new Date().getTime() + 1000;
         if (questionTime > currentTime) {
-          // if a question's questionedAt date is in the future, set isFuture to true
+          // if a question's postedAt date is in the future, set isFuture to true
           return true;
         } else if (question.isFuture) {
           // else if a question has isFuture to true but its date is in the past, set isFuture to false
           return false;
         }
+      }
+    }
+  },
+  /**
+    Whether the question is sticky (pinned to the top of questions lists)
+  */
+  sticky: {
+    type: Boolean,
+    optional: true,
+    defaultValue: false,
+    viewableBy: ['guests'],
+    insertableBy: ['admins'],
+    editableBy: ['admins'],
+    control: 'checkbox',
+    group: formGroups.admin,
+    onInsert: (question) => {
+      if(!question.sticky) {
+        return false;
+      }
+    },
+    onEdit: (modifier, question) => {
+      if (!modifier.$set.sticky) {
+        return false;
       }
     }
   },
@@ -242,6 +332,19 @@ const schema = {
     viewableBy: ['admins'],
   },
 
+  // GraphQL-only fields
+
+  domain: {
+    type: String,
+    optional: true,
+    resolveAs: {
+      type: 'String',
+      resolver: (question, args, context) => {
+        return Utils.getDomain(question.url);
+      },
+    }  
+  },
+
   pageUrl: {
     type: String,
     optional: true,
@@ -253,43 +356,54 @@ const schema = {
     }  
   },
 
-  questionedAtFormatted: {
+  linkUrl: {
     type: String,
     optional: true,
     resolveAs: {
       type: 'String',
       resolver: (question, args, context) => {
-        return moment(question.questionedAt).format('dddd, MMMM Do YYYY');
-      }
-    }  
-  },
-
-  commentsCount: {
-    type: Number,
-    optional: true,
-    resolveAs: {
-      type: 'Int',
-      resolver: (question, args, { Comments }) => {
-        const commentsCount = Comments.find({ questionId: question._id }).count();
-        return commentsCount;
+        return question.url ? Utils.getOutgoingUrl(question.url) : Questions.getPageUrl(question, true);
       },
     }  
   },
 
-  comments: {
+  postedAtFormatted: {
+    type: String,
+    optional: true,
+    resolveAs: {
+      type: 'String',
+      resolver: (question, args, context) => {
+        return moment(question.postedAt).format('dddd, MMMM Do YYYY');
+      }
+    }  
+  },
+
+  answersCount: {
+    type: Number,
+    optional: true,
+    resolveAs: {
+      type: 'Int',
+      resolver: (question, args, { Answers }) => {
+        const answersCount = Answers.find({ questionId: question._id }).count();
+        return answersCount;
+      },
+    }  
+  },
+
+  answers: {
     type: Array,
     optional: true,
     resolveAs: {
         arguments: 'limit: Int = 5',
-        type: '[Comment]',
-        resolver: (question, { limit }, { currentUser, Users, Comments }) => {
-          const comments = Comments.find({ questionId: question._id }, { limit }).fetch();
+        type: '[Answer]',
+        resolver: (question, { limit }, { currentUser, Users, Answers }) => {
+          const answers = Answers.find({ questionId: question._id }, { limit }).fetch();
 
           // restrict documents fields
-          const viewableComments = _.filter(comments, comments => Comments.checkAccess(currentUser, comments));
-          const restrictedComments = Users.restrictViewableFields(currentUser, Comments, viewableComments);
+          const viewableAnswers = _.filter(answers, answers => Answers.checkAccess(currentUser, answers));
+          const restrictedAnswers = Users.restrictViewableFields(currentUser, Answers, viewableAnswers);
         
-          return restrictedComments;
+          return restrictedAnswers;
         }
       }
   },
@@ -303,7 +417,30 @@ const schema = {
         return Questions.getEmailShareUrl(question);
       }
     }
-  }
+  },
+
+  twitterShareUrl: {
+    type: String,
+    optional: true,
+    resolveAs: {
+      type: 'String',
+      resolver: (question) => {
+        return Questions.getTwitterShareUrl(question);
+      }
+    }
+  },
+
+  facebookShareUrl: {
+    type: String,
+    optional: true,
+    resolveAs: {
+      type: 'String',
+      resolver: (question) => {
+        return Questions.getFacebookShareUrl(question);
+      }
+    }
+  },
+  
 };
 
 export default schema;

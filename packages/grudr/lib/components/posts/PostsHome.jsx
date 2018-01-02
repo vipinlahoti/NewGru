@@ -7,6 +7,7 @@ import { Grid, Row, Col, Jumbotron } from 'react-bootstrap';
 const PostsHome = ({currentUser}, props, context) => {
   const terms = _.isEmpty(props.location && props.location.query) ? {view: 'top'}: props.location.query;
   
+
   return (
     <div>
       <Jumbotron>
@@ -22,7 +23,9 @@ const PostsHome = ({currentUser}, props, context) => {
       <div className="main">
         <Grid>
 
-            <Components.PostsNewButton/>
+            <Components.ShowIf check={Users.isAdmin} document={currentUser}>
+              <Components.PostsNewButton />
+            </Components.ShowIf>
           
           <Components.PostsList terms={terms}/>
         </Grid>

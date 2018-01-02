@@ -11,21 +11,21 @@ const guestsActions = [
 ];
 Users.groups.guests.can(guestsActions);
 
-// const doctorsActions = [
-//   'questions.new',
-//   'questions.edit.own', 
-//   'questions.remove.own',
-//   'questions.upvote', 
-//   'questions.downvote',
-// ];
-// Users.groups.doctors.can(doctorsActions);
+const membersActions = [
+  // 'questions.new',
+  // 'questions.edit.own', 
+  // 'questions.remove.own',
+  'questions.upvote', 
+  'questions.downvote',
+];
+Users.groups.members.can(membersActions);
 
 const adminActions = [
   'questions.view.pending',
   'questions.view.rejected',
   'questions.view.spam',
   'questions.view.deleted',
-  // 'questions.new',
+  'questions.new',
   'questions.new.approved',
   'questions.edit.all',
   'questions.remove.all'

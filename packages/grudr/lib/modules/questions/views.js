@@ -27,7 +27,7 @@ Questions.addView('top', terms => ({
  */
 Questions.addView('new', terms => ({
   options: {
-    sort: {sticky: -1, questionedAt: -1}
+    sort: {sticky: -1, postedAt: -1}
   }
 }));
 
@@ -73,7 +73,7 @@ Questions.addView('scheduled', terms => ({
     isFuture: true
   },
   options: {
-    sort: {questionedAt: -1}
+    sort: {postedAt: -1}
   }
 }));
 
@@ -89,7 +89,7 @@ Questions.addView('userQuestions', terms => ({
   options: {
     limit: 5,
     sort: {
-      questionedAt: -1
+      postedAt: -1
     }
   }
 }));
@@ -103,7 +103,7 @@ Questions.addView('userUpvotedQuestions', (terms, apolloClient) => {
   var questionsIds = _.pluck(user.upvotedQuestions, 'documentId');
   return {
     selector: {_id: {$in: questionsIds}, userId: {$ne: terms.userId}}, // exclude own questions
-    options: {limit: 5, sort: {questionedAt: -1}}
+    options: {limit: 5, sort: {postedAt: -1}}
   };
 });
 
@@ -114,10 +114,10 @@ Questions.addView('userDownvotedQuestions', (terms, apolloClient) => {
   var user = apolloClient ? Users.findOneInStore(apolloClient.store, terms.userId) : Users.findOne(terms.userId);
 
   var questionsIds = _.pluck(user.downvotedQuestions, 'documentId');
-  // TODO: sort based on votedAt timestamp and not questionedAt, if possible
+  // TODO: sort based on votedAt timestamp and not postedAt, if possible
   return {
     selector: {_id: {$in: questionsIds}},
-    options: {limit: 5, sort: {questionedAt: -1}}
+    options: {limit: 5, sort: {postedAt: -1}}
   };
 });
 
@@ -136,7 +136,7 @@ Questions.addView('newsletter', terms => {
   return {
     selector: {
       scheduledAt: {$exists: false},
-      questionedAt: {$gte: after}
+      postedAt: {$gte: after}
     },
     options: {
       sort: {baseScore: -1},
