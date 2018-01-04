@@ -1,0 +1,211 @@
+::placeholder {
+  color: lighten($off-black, 20%);
+}
+
+// Text inputs
+input:not([type]),
+input[type=text]:not(.browser-default),
+input[type=password]:not(.browser-default),
+input[type=email]:not(.browser-default),
+input[type=url]:not(.browser-default),
+input[type=time]:not(.browser-default),
+input[type=date]:not(.browser-default),
+input[type=datetime]:not(.browser-default),
+input[type=datetime-local]:not(.browser-default),
+input[type=tel]:not(.browser-default),
+input[type=number]:not(.browser-default),
+input[type=search]:not(.browser-default),
+textarea {
+
+  background-color: transparent;
+  background-image: linear-gradient($primary-color, $primary-color), linear-gradient(#D2D2D2, #D2D2D2);
+  background-size: 0 2px, 100% 1px;
+  background-repeat: no-repeat;
+  background-position: center bottom, center calc(100% - 1px);
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+  float: none;
+  height: $input-height;
+  margin: 0 0 $padding-base;
+  width: 100%;
+  // margin: $input-margin;
+  padding: 0;
+  box-shadow: none;
+  box-sizing: content-box;
+  transition: all .3s;
+
+  // Disabled input style
+  &:disabled,
+  &[readonly="readonly"] {
+    color: $input-disabled-color;
+    border-bottom: $input-disabled-border;
+  }
+
+  // Disabled label style
+  &:disabled+label,
+  &[readonly="readonly"]+label {
+    color: $input-disabled-color;
+  }
+
+  // Focused input style
+  &:focus:not([readonly]) {
+    outline: none;
+    background-image: linear-gradient($primary-color, $primary-color), linear-gradient(#D2D2D2, #D2D2D2);
+    background-size: 100% 2px, 100% 1px;
+    box-shadow: none;
+    transition-duration: 0.3s;
+  }
+
+  // Focused label style
+  &:focus:not([readonly])+label {
+    color: $primary-color;
+  }
+
+  // Valid Input Style
+  &.valid,
+  &:focus.valid {
+    @extend %valid-input-style;
+  }
+
+  // Custom Success Message
+  &.valid + label:after,
+  &:focus.valid + label:after {
+    @extend %custom-success-message;
+  }
+
+  // Invalid Input Style
+  &.invalid,
+  &:focus.invalid {
+    @extend %invalid-input-style;
+  }
+
+  // Custom Error message
+  &.invalid + label:after,
+  &:focus.invalid + label:after {
+    @extend %custom-error-message;
+  }
+
+  // Full width label when using validate for error messages
+  &.validate + label {
+    width: 100%;
+  }
+
+  // Form Message Shared Styles
+  & + label:after {
+    @extend %input-after-style;
+  }
+
+  // TODO: Remove once input fields are reworked to support validation messages better
+  &.invalid + label:after,
+  &.valid + label:after{
+    display: none;
+  }
+
+  &.invalid + label.active:after,
+  &.valid + label.active:after{
+    display: block;
+  }
+}
+
+
+/* Validation Sass Placeholders */
+%valid-input-style {
+  border-bottom: 1px solid $success-color;
+  box-shadow: 0 1px 0 0 $success-color;
+}
+%invalid-input-style {
+  border-bottom: 1px solid $error-color;
+  box-shadow: 0 1px 0 0 $error-color;
+}
+%custom-success-message {
+  content: attr(data-success);
+  // color: $success-color;
+  opacity: 1;
+  transform: translateY(9px);
+}
+%custom-error-message {
+  content: attr(data-error);
+  color: $error-color;
+  opacity: 1;
+  transform: translateY(9px);
+}
+%input-after-style {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  opacity: 0;
+  transition: .2s opacity ease-out, .2s color ease-out;
+}
+
+
+// Styling for input field wrapper
+.input-field {
+  // Inline styles
+  &.inline {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+
+    input,
+    .select-dropdown {
+      margin-bottom: 1rem;
+    }
+  }
+
+  // Gutter spacing
+  &.col {
+    label {
+      left: $gutter-width / 2;
+    }
+  }
+
+  position: relative;
+  margin-top: 1rem;
+
+  label {
+    color: $off-black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    font-size: 1rem;
+    cursor: text;
+    transition: transform .2s ease-out;
+    transform-origin: 0% 100%;
+    text-align: initial;
+    transform: translateY(12px);
+    pointer-events: none;
+
+    &:not(.label-icon).active {
+      transform: translateY(-14px) scale(.8);
+      transform-origin: 0 0;
+    }
+  }
+}
+
+/* Textarea */
+
+// Default textarea
+textarea {
+  background-color: transparent;
+  height: $input-height * 2.5;
+  resize: none;
+  width: 100%;
+}
+
+// For textarea autoresize
+.hiddendiv {
+  display: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word; /* future version of deprecated 'word-wrap' */
+  padding-top: 1.2rem; /* prevents text jump on Enter keypress */
+
+  // Reduces repaints
+  position: absolute;
+  top: 0;
+}
