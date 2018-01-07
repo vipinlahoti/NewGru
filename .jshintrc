@@ -145,20 +145,19 @@
     "SubsManager": false,
     "SyncedCron": false,
     "TAPi18n": false,
-    "FlowRouter": false,
 
-    // Telescope collections
+    // Grudr collections
     "Categories": true,
     "Comments": true,
     "Feeds": true,
     "Invites": true,
     "Migrations": true,
-    "Posts": true,
+    "Articles": true,
     "Releases": true,
     "Searches": true,
     "Users": true,
 
-    // Telescope objects
+    // Grudr objects
     "buildAndSendEmail": true,
     "buildEmailNotification": true,
     "buildEmailTemplate": true,
@@ -170,7 +169,7 @@
     "fetchFeeds": true,
     "getCategoryUrl": true,
     "getEmailTemplate": true,
-    "getPostCategories": true,
+    "getArticleCategories": true,
     "getTemplate": true,
     "getVotePower": true,
     "i18n": true,
@@ -182,9 +181,8 @@
     "sendEmail": true,
     "serveAPI": true,
     "Settings": true,
-    "Telescope": true,
+    "Grudr": true,
     "templates": true,
     "themeSettings": true
-  },
-  "esnext": true
+  }
 }

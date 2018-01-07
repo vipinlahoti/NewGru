@@ -1,0 +1,14 @@
+<template name="no_rights">
+  <div class="page-header"></div>
+  <div class="main z-depth-2">
+    <div class="profile-content">
+      <div class="container">
+        {{#if link}}
+          <a href="{{link}}">{{errorMessage}}</a>
+        {{else}}
+          {{errorMessage}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</template>

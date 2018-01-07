@@ -1,0 +1,29 @@
+<template name="story_edit">
+  <!-- Page header -->
+  <div class="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h1 class="title">Edit a story</h1>
+          <h5>Meet the amazing team behind this project and find out more about how we work.</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- page content -->
+  <div class="main z-depth-2">
+    <div class="container">
+      <div class="story-edit">
+        {{#checker check="edit" doc=story message="sorry_you_cannot_edit_this_story"}}
+
+          <div class="story-form">
+            {{> quickForm collection="Stories" doc=story id="editStoryForm" template="bootstrap3-horizontal" label-class="control-label" input-col-class="controls" type="method-update" meteormethod="editStory" fields=storyFields}}
+          </div>
+          
+          <a class="btn btn-flat btn-sm delete-link waves-effect waves-dark" href="{{pathFor 'userPage'}}">{{{icon "delete"}}} Delete story</a>
+        
+        {{/checker}}
+      </div>
+    </div>
+  </div>
+</template>

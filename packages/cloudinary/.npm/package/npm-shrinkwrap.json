@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "cloudinary": {
+      "version": "1.2.5",
+      "resolved": "https://registry.npmjs.org/cloudinary/-/cloudinary-1.2.5.tgz",
+      "from": "cloudinary@1.2.5",
+      "dependencies": {
+        "chunking-streams": {
+          "version": "0.0.8",
+          "resolved": "https://registry.npmjs.org/chunking-streams/-/chunking-streams-0.0.8.tgz",
+          "from": "chunking-streams@0.0.8"
+        },
+        "lodash": {
+          "version": "3.10.1",
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz",
+          "from": "lodash@3.10.1"
+        },
+        "q": {
+          "version": "1.4.1",
+          "resolved": "https://registry.npmjs.org/q/-/q-1.4.1.tgz",
+          "from": "q@1.4.1"
+        }
+      }
+    }
+  }
+}

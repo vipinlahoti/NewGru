@@ -1,0 +1,204 @@
+.template-homePage {
+  .page-header {
+    height: 100vh;
+
+    .container {
+      padding-top: 25vh;
+    }
+  }
+}
+
+.page-header {
+  background-image: url(http://grudr.com/slider-1.jpg);
+  background-size: cover;
+  background-position: center top;
+  height: 65vh;
+  position: relative;
+
+  .title {
+    color: $white-color;
+    font-weight: 500;
+  }
+  
+  .container {
+    z-index: 2;
+    position: relative;
+    padding-top: 25vh;
+    color: $white-color;
+  }
+
+  &:before, &:after {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: block;
+    left: 0;
+    top: 0;
+    content: "";
+  }
+
+  &:before {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .card {
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+
+    .card-title {
+      line-height: 1.2;
+      margin-bottom: $padding-base / 2;
+
+      a {
+        color: $white-color;
+      }
+    }
+
+    .card-footer {
+      margin: 0;
+
+      .author {
+        color: $white-color;
+
+        a {
+          color: inherit;
+        }
+      }
+
+      .stats {
+        display: inline-block;
+        float: none;
+        margin: 0;
+        position: static;
+      }
+
+      .stats:first-child {
+        margin-left: $padding-base;
+      }
+    }
+  }
+}
+
+.slider {
+  position: relative;
+  height: 400px;
+  width: 100%;
+
+  // Fullscreen slider
+  &.fullscreen {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    ul.slides {
+      height: 100%;
+    }
+
+    ul.indicators {
+      z-index: 2;
+      bottom: 30px;
+    }
+  }
+
+  .slides {
+    background-color: $slider-bg-color;
+    margin: 0;
+    height: 400px;
+
+    li {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: inherit;
+      overflow: hidden;
+
+      img {
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .caption {
+        color: #fff;
+        position: absolute;
+        top: 15%;
+        left: 15%;
+        width: 70%;
+        opacity: 0;
+
+        p { color: $slider-bg-color-light; }
+      }
+
+      &.active {
+        z-index: 2;
+      }
+    }
+  }
+
+
+  .indicators {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+
+    .indicator-item {
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      height: 16px;
+      width: 16px;
+      margin: 0 12px;
+      background-color: $slider-bg-color-light;
+
+      transition: background-color .3s;
+      border-radius: 50%;
+
+      &.active {
+        background-color: $slider-indicator-color;
+      }
+    }
+  }
+}
+
+.page-header {
+  .card-title {
+    font-size: $h3-fontsize;
+  }
+
+  a {
+    color: $white-color;
+  }
+
+  .author {
+    display: inline-block;
+    font-size: $h5-fontsize - 0.2;
+    font-weight: 300;
+    line-height: 150%;
+
+    a {
+      &:hover {
+        color: inherit;
+      }
+    }
+  }
+
+  .article-admin {
+    margin: $padding-base 0 0;
+  }
+}
+
+

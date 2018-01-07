@@ -1,0 +1,21 @@
+<template name="answers_list_compact">
+  {{#if answersCursor}}
+    {{#each answersCursor}}
+      <div class="card no-margin">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="{{pathFor 'questionPage' _id=questionId}}/">{{questionExcerpt}}</a><br>
+            <small>{{fieldValue}}</small>
+          </h4>
+        </div>
+      </div>
+    {{/each}}
+  {{else}}
+    Not Answered to any Question yet. <a href="{{pathFor '/questions'}}">Click here</a> to start answering a question.
+  {{/if}}
+
+  <!-- Load more button -->
+  {{#if hasMoreAnswers}}
+    <button class="more-button btn btn-lg btn-block">Load More</button>
+  {{/if}}
+</template>

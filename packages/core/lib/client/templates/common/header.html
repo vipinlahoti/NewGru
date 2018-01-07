@@ -1,0 +1,15 @@
+<template name="header">
+  <nav class="navbar">
+    <div class="nav-wrapper container-fluid">
+      {{> logo}}
+
+      {{#if hasPrimaryNav}}
+        {{> modules zone="primaryNav" zoneClass="hide-on-med-and-down primary-nav" moduleClass="header-submodule"}}
+      {{/if}}
+
+      {{#if hasSecondaryNav}}
+        {{> modules zone="secondaryNav" zoneClass="right hide-on-med-and-down secondary-nav" moduleClass="header-submodule"}}
+      {{/if}}
+    </div>
+  </nav>
+</template>

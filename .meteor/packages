@@ -1,29 +1,51 @@
-# see http://docs.vulcanjs.org/packages
+#####################################
+## Core                            ##
+#####################################
+grudr:core
+msavin:mongol
 
-vulcan:core
+#####################################
+## Features                        ##
+#####################################
+# grudr:migrations
+# grudr:api
+# grudr:cloudinary
+grudr:daily # singleday
+grudr:datetimepicker
+grudr:debug
+grudr:email
+# grudr:embedly
+grudr:getting-started
+grudr:invites
+grudr:kadira
+grudr:newsletter
+grudr:notifications
+grudr:pages
+# grudr:article-by-feed
+grudr:prerender
+grudr:releases
+# grudr:rss
+grudr:scoring
+# grudr:search 
+grudr:share
+# grudr:singleday
+# grudr:sitemap
+grudr:spiderable
+# grudr:subscribe-to-articles # notifications
+# grudr:follow-users
+grudr:tagline-banner
+grudr:tags
+grudr:update-prompt
 
-############ Language Packages ############
 
-vulcan:i18n-en-us
+#####################################
+## Themes                          ##
+#####################################
+grudr:theme-grudr
 
-############ Accounts Packages ############
 
-accounts-password@1.4.0
-accounts-twitter
-accounts-facebook
-accounts-google
-
-############ Your Packages ############
-
-# example-simple
-# example-movies
-# example-instagram
-# example-forum
-# example-customization
-# example-permissions
-# example-membership
-# example-interfaces
-# example-reactions
-
-grudr
-vulcan:debug
+#####################################
+## Custom                          ##
+#####################################
+# grudr:stories
+# cenk:useraccounts-password-strength

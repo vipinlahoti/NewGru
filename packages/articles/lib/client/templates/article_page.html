@@ -1,0 +1,77 @@
+<template name="article_page">
+  {{#if ready}}
+    {{#if article}}
+      {{#with article}}
+        {{#if canView}}
+          <!-- Article page header -->
+          <div class="page-header" style="background: url({{thumbnailUrl}}) no-repeat top center / cover">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="card"> 
+                    {{> modules zone="articleHeading" zoneClass="article-heading" moduleData=this}}
+                    {{> modules zone="articleMeta" zoneClass="card-footer" moduleData=this}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="main z-depth-2">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                  <!-- Article Approval message -->
+                  {{#if isPending}}
+                    <div class="error pending-message module">
+                      Thanks your article is awaiting approval
+                    </div>
+                  {{/if}}
+                  
+                  <!-- Article Thumbnail -->
+                  {{#if thumbnailUrl}}
+                    <div class="card card-single no-margin no-padding">
+                      <div class="card-image">
+                        <img src={{thumbnailUrl}} alt={{title}}>
+                      </div>
+                    </div>
+                  {{/if}}
+
+                  <!-- Article body -->
+                  {{#if body}}
+                    {{> article_body}}
+                  {{/if}}
+
+                  {{> modules zone="articleShare" zoneClass=articleClass wrapperId=_id moduleData=article}}
+
+                </div>
+              </div>
+              <div class="section-comments">
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                    <div class="media-area">
+                      <!-- Comment form -->
+                      {{> comment_submit}}
+
+                      <!-- comments node list -->
+                      <h3 class="title center-align">{{commentCount}} Comments</h3>
+                      {{> comment_list}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{else}}
+          <!-- Not authorised to view article -->
+          {{> no_rights}}
+        {{/if}}
+      {{/with}}
+    {{else}}
+      <!-- Article not found -->
+      {{> not_found}}
+    {{/if}}
+  {{else}}
+    <div class="articles-loading">{{> loading}}</div>
+  {{/if}}
+</template>

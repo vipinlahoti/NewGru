@@ -1,0 +1,10 @@
+<template name="article_info">
+  <div class="author {{moduleClass}}" aria-live="off">
+    <!-- Points score count -->
+    <!-- <span class="points">{{baseScore}}</span> -->
+    
+    <!-- Points unit -->
+    <!-- <span class="unit">{{pointsUnitDisplayText}}</span> -->
+    {{#if postedAt}}<span class="article-time">{{timeAgo postedAt}}</span>{{/if}}
+  </div>
+</template>

@@ -1,0 +1,51 @@
+<!-- 
+
+Question List Compact Component
+
+title (String)
+| The title of the question list
+
+incoming (Cursor)
+| A cursor containing the new questions since render
+
+questionsCursor (Cursor)
+| A cursor containing the question list
+
+questionsCount (Number)
+| How many questions are loaded
+
+questionsReady (Boolean)
+| Whether the subscription is ready
+
+hasMoreQuestions (Boolean)
+| Whether there are still more questions that can be loaded
+
+loadMoreHandler (Function)
+| What to do when the user clicks "load more"
+
+questionsField (Object)
+| An object cont
+
+-->
+
+<template name="questions_list_compact">
+  {{#if questionsCursor}}
+    {{#each questionsCursor}}
+      <div class="card profile-story">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="{{pathFor 'questionPage' _id=_id}}" class="questions-item-title-link">{{excerpt}}</a><br>
+            <small>{{fieldValue}}</small>
+          </h4>
+        </div>
+      </div>
+    {{/each}}
+  {{else}}
+    No Questions were asked yet. <a href="{{pathFor '/add-question'}}">Click here</a> to start asking a question.
+  {{/if}}
+
+  <!-- Load more button -->
+  {{#if hasMoreQuestions}}
+    <button class="more-button btn btn-lg btn-block">Load More</button>
+  {{/if}}
+</template>

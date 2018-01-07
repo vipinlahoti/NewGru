@@ -1,0 +1,7 @@
+<template name="admin_menu">
+  <div class="admin-menu">
+    {{#if isAdmin}}
+      {{> menuComponent menuName="admin" menuType="list" menuItems=adminMenuItems}}
+    {{/if}}
+  </div>
+</template>

@@ -1,0 +1,22 @@
+<template name="stories_list_compact">
+  {{#if storiesCursor}}
+    {{#each storiesCursor}}
+      <div class="card no-margin">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="{{pathFor 'userPage' _id=userId}}/">{{userTitle}}</a><br>
+            <small>{{fieldValue}}</small>
+          </h4>
+          <p>{{body}}</p>
+        </div>
+      </div>
+    {{/each}}
+  {{else}}
+    Not Storyed on any User yet. <a href="{{pathFor '/users'}}">Click here</a> to Story on an User.
+  {{/if}}
+
+  <!-- Load more button -->
+  {{#if hasMoreStories}}
+    <button class="more-button btn btn-lg btn-block">Load More</button>
+  {{/if}}
+</template>

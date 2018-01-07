@@ -1,0 +1,70 @@
+<!-- 
+
+Articles List Component
+
+title (String)
+| The title of the article list
+
+incoming (Cursor)
+| A cursor containing the new articles since render
+
+articlesCursor (Cursor)
+| A cursor containing the article list
+
+articlesCount (Number)
+| How many articles are loaded
+
+articlesReady (Boolean)
+| Whether the subscription is ready
+
+hasMoreArticles (Boolean)
+| Whether there are still more articles that can be loaded
+
+loadMoreHandler (Function)
+| What to do when the user clicks "load more"
+
+showFilters (Boolean)
+| Whether to show filters (views nav) (*not implemented yet*)
+-->
+
+<template name="articles_list">
+  {{#if articlesReady}}
+  <div class="card-columns {{articlesLayout}}" aria-live="polite">
+    {{#each articlesCursor}}
+      {{> before_article_item}}
+      {{> article_item article=this}}
+      {{> after_article_item}}
+    {{/each}}
+  </div>
+  {{/if}}
+  {{> articlesLoadMore}}
+</template>
+
+<template name="articlesListIncoming">
+  {{#if count}}
+    <a class="more-button show-new grid-module" href="">
+      <span>
+        View {{count}} New {{pluralize count "article"}}
+      </span>
+    </a>
+  {{/if}}
+</template>
+
+<template name="articlesLoadMore">
+  <div class="articles-load-more">
+    {{#if articlesReady}}
+      {{#if hasArticles}}
+        {{#if showLoadMoreButton}}
+          <a class="btn btn-block more-button waves-effect waves-light" href="#"><span>Load more</span></a>
+        {{/if}}
+        {{#if showInfiniteScroll}}
+          <div class="articles-loading">{{> loading}}</div>
+        {{/if}}
+      {{else}}
+        <div class="no-articles">Sorry we couldnt find any articles</div>
+      {{/if}}
+    {{else}}
+      <div class="articles-loading">{{> loading}}</div>
+    {{/if}}
+  </div>
+</template>

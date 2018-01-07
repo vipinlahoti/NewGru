@@ -1,1 +1,1 @@
-FROM abernix/meteord:onbuild
+FROM meteorhacks/meteord:onbuild

@@ -1,0 +1,9 @@
+<template name="user_follow">
+  {{#if canSubscribe}}
+    {{#if followed}}
+      <a class="unfollow-link btn btn-sm waves-effect waves-light deep-orange pull-right" href="#">{{{icon "favorite"}}} {{followerCount}}</a>
+    {{else}}
+      <a class="follow-link btn btn-sm waves-effect waves-light pink pull-right" href="#">{{{icon "favorite"}}} {{followerCount}}</a>
+    {{/if}}
+  {{/if}}
+</template>

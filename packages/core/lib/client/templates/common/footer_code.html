@@ -1,0 +1,11 @@
+<template name="footer_code">
+  <div class="container">
+    <div class="copyright center-align {{moduleClass}}">
+      {{#if footerCode}}
+        {{#markdown}}{{footerCode}}{{/markdown}}
+      {{else}}
+        <a href="http://grudr.com" target="_blank">Powered by Grudr</a>
+      {{/if}}
+    </div>
+  </div>
+</template>

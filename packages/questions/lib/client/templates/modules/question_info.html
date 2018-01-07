@@ -1,0 +1,8 @@
+<template name="question_info">
+  <div class="author {{moduleClass}}" aria-live="off">
+    <!-- Points score count -->
+    <span class="points">{{{icon "stars"}}} {{baseScore}},</span>
+
+    {{#if postedAt}}<span class="question-time">{{{icon "time"}}} {{timeAgo postedAt}}</span>{{/if}}
+  </div>
+</template>

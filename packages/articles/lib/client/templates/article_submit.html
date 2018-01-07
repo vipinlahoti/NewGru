@@ -1,0 +1,23 @@
+<template name="article_submit">
+  <!-- Page header -->
+  <div class="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h3 class="title">Add an Article</h3>
+          <h5>Meet the amazing team behind this project and find out more about how we work.</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- page content -->
+  <div class="main z-depth-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-8 col-xs-offset-2"> 
+          {{> quickForm collection="Articles" id="submitArticleForm" template="bootstrap3-horizontal" input-col-class="controls" type="method" meteormethod="submitArticle" fields=articleFields}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

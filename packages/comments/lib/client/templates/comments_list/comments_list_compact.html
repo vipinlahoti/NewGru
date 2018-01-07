@@ -1,0 +1,22 @@
+<template name="comments_list_compact">
+  {{#if commentsCursor}}
+    {{#each commentsCursor}}
+      <div class="card no-margin">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="{{pathFor 'articlePage' _id=articleId}}/">{{articleTitle}}</a><br>
+            <small>{{fieldValue}}</small>
+          </h4>
+          <p>{{body}}</p>
+        </div>
+      </div>
+    {{/each}}
+  {{else}}
+    Not Commented on any Article yet. <a href="{{pathFor '/articles'}}">Click here</a> to Comment on an Article.
+  {{/if}}
+
+  <!-- Load more button -->
+  {{#if hasMoreComments}}
+    <button class="more-button btn btn-lg btn-block">Load More</button>
+  {{/if}}
+</template>

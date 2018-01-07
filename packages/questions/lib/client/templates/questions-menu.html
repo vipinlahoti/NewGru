@@ -1,0 +1,11 @@
+<template name="questions_menu">
+  {{#if currentUser}}
+    <ul>
+      <li>
+        <a href="{{pathFor '/questions'}}" class="waves-effect waves-light">
+          {{{icon "forum"}}} Questions
+        </a>
+      </li>
+    </ul>
+  {{/if}}
+</template>

@@ -1,0 +1,53 @@
+<template name="answer_item">
+  <div class="{{answerClass}}" id="{{_id}}">
+   <div class="answer-body">
+      <div class="media">
+        {{#if isDeleted}}
+          <div class="section-quarter answer-deleted">This answer has been deleted.</div>
+        {{else}}
+        <div class="pull-left">
+        <!-- answer user avatar -->
+          {{> avatar userId=userId shape="circle"}}
+        </div>
+        <div class="media-body">
+          <h5 class="media-heading">
+            <!-- answer author -->
+            <a class="users-name" href="{{getProfileUrl userId}}">{{authorName}}</a>
+            <!-- answered time -->
+            <small>&middot; {{timeAgo ago}}</small>
+            {{#if isAdmin}}
+              <small>&middot; {{full_date}}</small>
+            {{/if}}
+          </h5>
+          
+          <!-- Answer content -->
+          <p>{{{htmlBody}}}</p>
+
+          <div class="media-footer">
+            <!-- Like button -->
+            <span class="answer-actions answer-vote {{#if upvoted}}upvoted{{else}}not-upvoted{{/if}} {{#if downvoted}}downvoted{{else}}not-downvoted{{/if}}">
+              <!-- upvote -->
+              <a class="btn btn-flat btn-sm upvote waves-effect waves-dark" href="#">
+                {{{icon "upvote"}}} {{upvotes}}
+                <span class="sr-only">{{pointsUnitDisplayText}}</span>
+              </a>
+
+              <!-- downvote -->
+              <!-- <a class="btn btn-flat btn-sm downvote waves-effect waves-dark" href="#">
+                {{{icon "downvote"}}}
+                <span class="sr-only">{{pointsUnitDisplayText}}</span>
+              </a> -->
+            </span>
+
+            <!-- Edit button -->
+            {{#if canEdit this}}
+              <a class="btn btn-flat btn-sm waves-effect waves-dark" href="{{pathFor 'answerEdit' _id=_id}}">{{{icon "edit"}}} Edit</a>
+            {{/if}}
+            
+          </div>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,56 @@
+<template name="comment_item">
+  <div class="{{commentClass}}" id="{{_id}}">
+   <div class="comment-body">
+      <div class="media">
+
+        {{#if isDeleted}}
+          <div class="section-quarter comment-deleted">This comment has been deleted.</div>
+        {{else}}
+        
+        <div class="pull-left">
+          <!-- comment user avatar -->
+          {{> avatar userId=userId shape="circle"}}
+        </div>
+
+        <div class="media-body">
+          <h5 class="media-heading">
+            <!-- comment author -->
+            <a class="users-name" href="{{getProfileUrl userId}}">Dr. {{authorName}}</a>
+            <!-- commented time -->
+            <small>&middot; {{timeAgo ago}}</small>
+            {{#if isAdmin}}
+              <small>&middot; {{full_date}}</small>
+            {{/if}}
+          </h5>
+          
+          <!-- Comment content -->
+          <p>{{{htmlBody}}}</p>
+
+          <div class="media-footer">
+            <!-- Reply button for logged in user -->
+            {{#if isLoggedIn}}
+              <a href="{{pathFor 'commentPage' _id=_id}}" class="btn btn-flat btn-sm upvote waves-effect waves-dark" rel="tooltip" title="" data-original-title="Reply to Comment">{{{icon "reply"}}} Reply</a>
+            {{/if}}
+            
+            <!-- Edit button -->
+            {{#if canEdit this}}
+              <a class="btn btn-flat btn-sm waves-effect waves-dark" href="{{pathFor 'commentEdit' _id=_id}}">{{{icon "edit"}}} Edit</a>
+            {{/if}}
+            
+          </div>
+        </div>
+        {{/if}}
+        <!-- Nested comment -->
+        {{#if showChildComments}}
+          <div class="media-children {{commentListClass}}">
+          {{#each childComments}}
+            {{#with this}}
+              {{> comment_item}}
+            {{/with}}
+          {{/each}}
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</template>

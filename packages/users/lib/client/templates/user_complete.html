@@ -1,0 +1,16 @@
+<template name="user_complete">
+  <div class="template-signUp-steps">
+    <nav class="navbar dark-bg">
+      <div class="nav-wrapper container-fluid">
+        <a class="brand-logo" href="/">Grudr</a>
+      </div>
+    </nav>
+    <div class="at-form complete-profile">
+      <h5 class="title">Please fill in missing information to finish signing up</h5>
+
+      {{> quickForm collection="Meteor.users" doc=user id="completeUserForm" template="bootstrap3-horizontal" input-col-class="controls" type="method-update" meteormethod="completeUserProfile" fields=requiredFields}} 
+
+      <span class="pull-right">or <a href="{{pathFor 'signOut'}}">Sign out</a></span>
+    </div>
+  </div>
+</template>

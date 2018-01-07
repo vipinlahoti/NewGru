@@ -25,8 +25,6 @@ settings.json.not-used
 
 scratch
 
-.deploy
-.deploy/*
 ### Meteor template
 .meteor/local
 .meteor/meteorite
@@ -34,7 +32,6 @@ mup.json
 
 packages_update.py
 
-versions
 
 get_file_list.sh
 packages_update.py
@@ -47,6 +44,3 @@ bundle.tar.gz
 jsdoc-conf.json
 jsdoc.json
 packages/nova-router/.npm
-npm-debug.log
-
-typings

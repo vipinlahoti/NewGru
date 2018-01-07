@@ -1,0 +1,16 @@
+<template name="question_avatars">
+  <div class="question-avatars {{moduleClass}}" aria-hidden="true" aria-live="off">
+    <a href="{{getProfileUrl userId}}" title="{{getDisplayName userId}}" class="avatar-link avatar-small author-avatar">
+      {{> avatar userId=userId shape="circle"}}
+    </a>
+    {{#if answerers}}
+      <div class="question-answerers">
+      {{#each answerers}}
+        <a href="{{getProfileUrl this}}" title="{{getDisplayName this}}" class="avatar-link avatar-small answerer-avatar">
+          {{> avatar userId=this shape="circle"}}
+        </a>
+      {{/each}}
+      </div>
+    {{/if}}
+  </div>
+</template>

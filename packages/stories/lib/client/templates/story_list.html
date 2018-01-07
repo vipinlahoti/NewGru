@@ -1,0 +1,8 @@
+<template name="story_list">
+  <div class="media-area">
+    {{#each childStories}}
+      {{> story_item}}
+    {{/each}}
+  </div>
+  {{> modules zone="storyThreadBottom" moduleData=this}}
+</template>

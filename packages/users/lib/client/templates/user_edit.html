@@ -1,0 +1,30 @@
+<template name="user_edit">
+	{{#with user}}
+
+    <div class="page-header" style="background: url({{grudr.avatar}}) no-repeat 50% center / cover">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <h1 class="title">Edit Account</h1>
+            <h5>Meet the amazing team behind this project and find out more about how we work.</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main z-depth-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-8 col-xs-offset-2"> 
+            {{#if canEdit this}}
+              {{> modules zone="profileEdit" moduleData=this}}
+            {{else}}
+              {{> no_rights}}
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  {{/with}}
+</template>

@@ -1,0 +1,263 @@
+.card-columns {
+  column-count: 2;
+  column-gap: 3.5rem;
+}
+
+.card {
+  border-radius: $border-small * 2;
+  display: inline-block;
+  padding: $padding-base * 1.2;
+  position: relative;
+  margin: $padding-base * 2 $padding-base;
+  background-color: $card-bg-color;
+  transition: box-shadow .25s;
+  width: 100%;
+  @extend .z-depth-1;
+
+  .content {
+    padding: $card-padding;
+  }
+
+  .card-title {
+    font-size: $h5-fontsize;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0;
+
+    a {
+      color: $off-black;
+    }
+  }
+
+  // Card Sizes
+  &.small, &.medium, &.large {
+    position: relative;
+
+    .card-image {
+      max-height: 60%;
+      overflow: hidden;
+    }
+    .card-image + .card-content {
+      max-height: 40%;
+    }
+    .card-content {
+      max-height: 100%;
+      overflow: hidden;
+    }
+    .card-action {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  &.small {
+    height: 300px;
+  }
+
+  &.medium {
+    height: 400px;
+  }
+
+  &.large {
+    height: 500px;
+  }
+
+  // Horizontal Cards
+  &.horizontal {
+    &.small, &.medium, &.large {
+      .card-image {
+        height: 100%;
+        max-height: none;
+        overflow: visible;
+
+        img {
+          height: 100%;
+        }
+      }
+    }
+
+    display: flex;
+
+    .card-image {
+      max-width: 50%;
+      img {
+        max-width: 100%;
+        width: auto;
+      }
+    }
+
+    .card-stacked {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      position: relative;
+
+      .card-content {
+        flex-grow: 1;
+      }
+    }
+  }
+
+  // Sticky Action Section
+  &.sticky-action {
+    .card-action {
+      z-index: 2;
+    }
+
+    .card-reveal {
+      z-index: 1;
+      padding-bottom: 64px;
+    }
+  }
+
+  .card-image {
+    background: $white-color;
+    border-radius: $border-base;
+    position: relative;
+    overflow: hidden;
+    position: relative;
+    @extend .z-depth-2;
+
+    a {
+      display: block;
+    }
+
+    // Image background for content
+    img {
+      display: block;
+      border-radius: $border-base;
+      position: relative;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .card-title {
+      color: $card-bg-color;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: $card-padding;
+    }
+  }
+
+  .card-content {
+    position: relative;
+    
+    p {
+      margin: 0;
+      color: inherit;
+    }
+  }
+
+  .card-action {
+    position: relative;
+    background-color: inherit;
+    border-top: 1px solid rgba(160,160,160,.2);
+    padding: $card-padding;
+
+    a:not(.btn):not(.btn-large):not(.btn-floating) {
+      color: $card-link-color;
+      margin-right: $card-padding;
+      transition: color .3s ease;
+      text-transform: uppercase;
+
+      &:hover { color: $card-link-color-light; }
+    }
+  }
+
+  .card-reveal {
+    padding: $card-padding;
+    position: absolute;
+    background-color: $card-bg-color;
+    width: 100%;
+    overflow-y: auto;
+    top: 100%;
+    height: 100%;
+    z-index: 3;
+    display: none;
+
+    .card-title {
+      cursor: pointer;
+      display: block;
+    }
+  }
+
+  .card-footer {
+    margin: $padding-base / 2 0;
+    text-align: left;
+    padding: 0;
+
+    i {
+      float: left;
+      font-size: inherit;
+      margin-right: $padding-base / 3.5;
+    }
+
+    .author {
+      color: $off-black;
+      display: inline-block;
+      line-height: 40px;
+
+      div {
+        display: inline-block;
+      }
+
+      a {
+        color: $off-black;
+        text-decoration: none;
+        font-weight: 500;
+      }
+    }
+
+    .stats {
+      float: right;
+    }
+  }
+
+  &:hover {
+    @extend .z-depth-2;
+  }
+
+  .article-thumbnail {
+    margin: -$padding-base * 2.5 0 $padding-base * 1.5;
+    min-height: 30px;
+  }
+
+  &.profile-story {
+    overflow: hidden;
+    margin: 0 0 $padding-base;
+
+    .card-image {
+      margin: -$padding-base * 2;
+      margin-top: 0;
+      margin-bottom: $padding-base * 1.5;
+      overflow: hidden;
+      position: relative;
+    }
+
+    img {
+      border-radius: 0;
+      position: relative;
+      // margin: -50% auto;
+      width: 100%;
+      height: auto;
+      vertical-align: middle;
+    }
+  }
+
+  &.card-single {
+    margin: 0 0 $padding-base * 5 !important;
+  }
+
+}
+
+.questions-list {
+  .card {
+    margin: 1rem;
+  }
+}

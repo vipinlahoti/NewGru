@@ -1,0 +1,88 @@
+// Navs
+// --------------------------------------------------
+.nav {
+  margin-bottom: 0;
+  padding-left: 0; // Override default ul/ol
+  list-style: none;
+
+  > li {
+    position: relative;
+    display: block;
+
+    > a {
+      position: relative;
+      display: block;
+      padding: $padding-base;
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        background-color: $gray-light;
+      }
+    }
+  }
+
+  // Prevent IE8 from misplacing imgs
+  //
+  // See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
+  > li > a > img {
+    max-width: none;
+  }
+}
+
+// Pills
+// -------------------------
+.nav-pills {
+  > li {
+    display: inline-block;
+
+    i {
+      display: block;
+      font-size: 30px;
+      padding: $padding-base / 1.8 0;
+    }
+
+    > a {
+      border-radius: $border-small;
+      line-height: 24px;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 500;
+      min-width: 100px;
+      text-align: center;
+      color: $off-black;
+      transition: all .3s;
+    }
+    + li {
+      margin-left: 2px;
+    }
+
+    // Active state
+    &.active > a {
+      background-color: $primary-color;
+      color: $white-color;
+      @extend .primary-shadow-hover;
+    }
+    &,
+    &:hover,
+    &:focus {
+      color: $off-black;
+      background-color: $white-color;
+    }
+  }
+}
+
+
+// Tabbable tabs
+// -------------------------
+
+// Hide tabbable panes to start, show them when `.active`
+.tab-content {
+  padding: $padding-base * 4 0 $padding-base;
+  
+  > .tab-pane {
+    display: none;
+  }
+  > .active {
+    display: block;
+  }
+}

@@ -1,0 +1,41 @@
+<template name="comment_reply">
+  <!-- Page header -->
+  <div class="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h1 class="title">Reply to a comment</h1>
+          <h5>Meet the amazing team behind this project and find out more about how we work.</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- page content -->
+  <div class="main z-depth-2">
+    <div class="container">
+      <div class="col-md-8 col-md-offset-2">
+        {{#with article}}
+          <div class="articles articles-list">
+            {{> article_item article=this}}
+          </div>
+        {{/with}}
+
+        {{#with comment}}
+          <ul class="selected-comment" aria-live="polite">
+           {{> comment_item}}
+          </ul>
+        {{/with}}
+
+        {{#if canComment}}
+          {{> comment_submit}}
+        {{/if}}
+
+        {{#if isLoggedIn}}
+        {{else}}
+          <p><a href="/sign-in">Please sign in to reply</a></p>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</template>

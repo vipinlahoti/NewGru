@@ -1,0 +1,7 @@
+<template name="submit_question">
+  {{#if currentUser}}
+    <a href="{{pathFor 'questionSubmit'}}" id="question-submit" class="btn-add btn-floating btn-large waves-effect waves-light pink pull-right {{moduleClass}}">
+      {{{icon "add"}}}
+    </a>
+  {{/if}}
+</template>

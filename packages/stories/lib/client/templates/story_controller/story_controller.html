@@ -1,0 +1,5 @@
+<template name="story_controller">
+  {{#loader ready=Template.subscriptionsReady}}
+    {{> Template.dynamic template=storyTemplate data=data}}
+  {{/loader}}
+</template>

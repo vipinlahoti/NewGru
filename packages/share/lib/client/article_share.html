@@ -1,0 +1,16 @@
+<template name="article_share">
+  <div class="article-share {{moduleClass}}">
+    <a class="btn btn-flat btn-sm btn-fb waves-effect waves-dark share-option-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{this.getShareableLink}}" target="_blank">
+      <i class="fa fa-facebook"></i>
+    </a>
+    <a class="btn btn-flat btn-sm btn-twitter waves-effect waves-dark share-option-twitter" href="//twitter.com/intent/tweet?text={{encodedTitle}}&url={{this.getShareableLink}}&{{viaTwitter}}" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+    <a class="btn btn-flat btn-sm btn-linkedin waves-effect waves-dark share-option-linkedin" href="//www.linkedin.com/shareArticle?mini=true&url={{this.getShareableLink}}&amp;summary={{encodedTitle}}" target="_blank">
+      <i class="fa fa-linkedin"></i>
+    </a>
+    <a class="btn btn-flat btn-sm btn-gplus waves-effect waves-dark share-option-google" href="https://plus.google.com/share?url={{this.getShareableLink}}" target="_blank">
+      <i class="fa fa-google"></i>
+    </a>
+  </div>
+</template>

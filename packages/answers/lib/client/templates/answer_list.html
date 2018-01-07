@@ -1,0 +1,8 @@
+<template name="answer_list">
+  <div class="media-area">
+    {{#each childAnswers}}
+      {{> answer_item}}
+    {{/each}}
+  </div>
+  {{> modules zone="answerThreadBottom" moduleData=this}}
+</template>

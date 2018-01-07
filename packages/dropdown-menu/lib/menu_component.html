@@ -1,0 +1,68 @@
+<template name="menuComponent">
+  <div class="dropdown {{menuClass}}">
+    {{#if showMenuLabel}}
+      {{#if menuLabelTemplate}}
+        {{> Template.dynamic template=menuLabelTemplate data=menuLabelData}}
+      {{else}}
+        {{> defaultMenuLabel}}
+      {{/if}}
+    {{/if}}
+
+    {{#if showRootMenuItems}}
+      {{#with rootMenuItems}}
+    <ul class="dropdown-menu">
+      {{#each this}}
+        {{> menuItem}}
+      {{/each}}
+    </ul>
+      {{/with}}
+    {{/if}}
+  </div>
+</template>
+
+<template name="defaultMenuLabel">
+  <a href="#pablo" class="btn waves-effect waves-light dropdown-toggle" data-toggle="dropdown">
+    <!-- Dropdown button text -->
+    {{{getMenuLabel}}}
+    <!-- Dropdown caret -->
+    <span class="dropdown-arrow">
+      {{{icon "down"}}}
+    </span>
+  </a>
+</template>
+
+<template name="menuItem">
+  <li class="{{itemClass}}">
+  
+    {{#if getTemplate}}
+      {{> Template.dynamic template=getTemplate}}
+    {{else}}
+      {{> defaultMenuItem}}
+    {{/if}}
+
+    {{#if showChildMenu}}
+      {{#with childMenuItems}}
+        <ul class="menu-child-items js-menu-items">
+          {{#each this}}
+            {{> menuItem}}
+          {{/each}}
+        </ul>
+      {{/with}}
+    {{/if}}
+
+  </li>
+</template>
+
+<template name="defaultMenuItem">
+  <a class="menu-item-label waves-effect waves-light" href="{{itemRoute}}">
+    <span class="menu-item-label-text">{{{getItemLabel}}}</span>
+    {{#if getItemDescription}}<span class="menu-item-label-description">{{getItemDescription}}</span>{{/if}}
+  </a>
+
+  {{#if childMenuItems}}
+    <a class="menu-items-toggle js-menu-toggle waves-effect waves-light" href="#">
+      <b class="caret"></b>
+    </a>
+  {{/if}}
+
+</template>

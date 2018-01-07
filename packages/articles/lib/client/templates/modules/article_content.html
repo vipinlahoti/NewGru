@@ -1,0 +1,9 @@
+<template name="article_content">
+  <div class="card-content {{moduleClass}}">
+    {{> modules zone="articleThumbnail" zoneClass="article-thumbnail" moduleData=this}}
+    {{> modules zone="articleHeading" zoneClass="article-heading" moduleData=this}}
+    {{> modules zone="articleExcerpt" zoneClass="article-excerpt" moduleData=this}}
+    
+    {{> modules zone="articleMeta" zoneClass="card-footer" moduleData=this}}
+  </div>
+</template>

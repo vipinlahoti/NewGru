@@ -1,0 +1,28 @@
+<template name="layout">
+  {{#if appIsReady}}
+    {{> css}}
+    <div class="{{currentPage}} {{navLayout}}">
+      <!-- Mobile nav -->
+      <!-- {{> mobile_nav}} -->
+      <div class="template-{{pageName}}">
+        {{> header}}
+        {{> modules zone="hero"}}
+
+        {{#if notAllowed}}
+          {{> Template.dynamic template=notAllowed.template data=notAllowed.data}}
+        {{else}}
+          {{> Template.dynamic template=adminMenu}}
+          {{> modules zone="contentTop"}}
+          {{> Template.dynamic template=main}}
+          {{> modules zone="contentBottom"}}
+        {{/if}}
+
+        {{> modules zone="footer"}}
+        <div class="overlay hidden"></div>
+      </div>
+      {{{extraCode}}}
+    </div>
+  {{else}}
+    <div class="app-loading">{{> loading}}</div>
+  {{/if}}
+</template>

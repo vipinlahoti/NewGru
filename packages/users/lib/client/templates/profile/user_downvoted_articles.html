@@ -1,0 +1,8 @@
+<template name="user_downvoted_articles">
+  {{#if getSetting "enableDownvotes"}}
+    <div class="user-profile-votes grid grid-module">
+      <h3>Downvoted articles</h3>
+      {{> articles_list_controller arguments}}
+    </div>
+  {{/if}}
+</template>

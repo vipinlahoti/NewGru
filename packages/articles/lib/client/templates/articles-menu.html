@@ -1,0 +1,11 @@
+<template name="articles_menu">
+  {{#if currentUser}}
+  <ul>
+    <li>
+      <a href="{{pathFor '/articles'}}" class="waves-effect waves-light">
+        {{{icon "books"}}} Articles
+      </a>
+    </li>
+  </ul>
+  {{/if}}
+</template>

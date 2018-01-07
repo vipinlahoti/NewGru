@@ -1,0 +1,245 @@
+// Remove Focus Boxes
+select:focus {
+  outline: $select-focus;
+}
+
+button:focus {
+  outline: none;
+  background-color: $primary-color;
+}
+
+label {
+  font-family: $heading-font-family;
+  color: $off-black;
+  font-weight: 600;
+
+  font-size: $input-font-size;
+  cursor: text;
+  transition: .2s ease-out;
+  text-transform: capitalize;
+}
+
+@import 'input-fields';
+@import 'radio-buttons';
+@import 'checkboxes';
+@import 'switches';
+@import 'select';
+@import 'file-input';
+@import 'range';
+
+.hide-label {
+  label {
+    display: none;
+  }
+}
+
+#at-btn {
+  padding: 0 $padding-base !important;
+}
+.template-signIn,
+.template-atForgotPwd,
+.template-signUp,
+.template-atChangePwd,
+.template-signUp-steps,
+.template-atResetPwd {
+  background-image: url(http://grudr.com/slider-1.jpg);
+  background-size: cover;
+  background-position: top center;
+  min-height: 100vh;
+  width: 100%;
+  position: absolute;
+
+  &:before,
+  &:after{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: block;
+    left: 0;
+    top: 0;
+    content: "";
+  }
+  &::before{
+    background-color: rgba(0, 0, 0, .5);
+  }
+
+  .messages {
+    position: absolute;
+    z-index: 9999;
+    right: 2em;
+
+    .info-message {
+      padding: .8em 2em;
+      border-radius: 3px;
+    }
+  }
+
+  .at-form {
+    background: $white-color;
+    border-radius: $border-base;
+    display: block;
+    padding: 3em;
+    width: 390px;
+    margin: 15vh auto 30px;
+    font-weight: 400;
+    text-align: center;
+    z-index: 99;
+    position: relative;
+
+    @extend .z-depth-3;
+
+    .at-title, p {
+      text-align: center;
+
+      h3 {
+        font-size: $h5-fontsize;
+        margin: 0 0 $padding-base * 2;
+      }
+    }
+
+    .at-btn {
+      margin: $padding-base 0 $padding-base * 2;
+    }
+
+    .at-input {
+      padding-bottom: 7px;
+      margin: $padding-base 0 0 0;
+
+      input {
+        border: 0;
+        background-image: linear-gradient($primary-color, $primary-color), linear-gradient(#D2D2D2, #D2D2D2);
+        background-size: 0 2px, 100% 1px;
+        background-repeat: no-repeat;
+        background-position: center bottom, center calc(100% - 1px);
+        background-color: rgba(0, 0, 0, 0);
+        transition: background 0s ease-out;
+        float: none;
+        box-shadow: none;
+        border-radius: 0;
+        width: 100%;
+        font-weight: 400;
+        margin-bottom: $padding-base;
+
+        // Placeholders and and labels-as-placeholders should look the same
+        // @include material-placeholder {
+        //   color: $mdb-input-placeholder-color;
+        //   font-weight: 400;
+        // }
+
+        &:focus {
+          outline: none;
+          background-image: linear-gradient($primary-color, $primary-color), linear-gradient(#D2D2D2, #D2D2D2);
+          background-size: 100% 2px, 100% 1px;
+          box-shadow: none;
+          transition-duration: 0.3s;
+
+          .material-input:after {
+            background-color: $primary-color;
+          }
+        }
+      }
+
+      &.has-feedback {
+        position: relative;
+        text-align: right;
+
+        span {
+          color: $error-color;
+          font-size: 14px;
+          position: absolute;
+          right: 0;
+          bottom: -5px;
+
+          &.fa {
+            top: 15px;
+            height: 16px;
+
+            &.fa-check {
+              color: $success-color;
+            }
+          }
+        }
+      }
+    }
+
+    .at-oauth {
+      margin: $padding-base * 1.5 0;
+
+      .at-social-btn {
+        font-size: 0px;
+        margin: 0 $padding-base / 2;
+        padding: 0 $padding-base * 1.5;
+
+        .fa {
+          font-size: 1.5rem;
+          line-height: $button-height;
+          margin: 0 0 0 $padding-base / 2;
+        }
+      }
+    }
+  }
+}
+
+.template-signUp-steps {
+  z-index: 99;
+  
+  .complete-profile {
+    text-align: left;
+    width: 720px;
+
+    .title {
+      margin: 0 0 $padding-base;
+    }
+
+    .af-fieldGroup {
+      margin: 0;
+    }
+  }
+}
+
+#editCommentForm, #editAnswerForm {
+  .controls {
+    .btn {
+      float: right;
+      width: auto;
+    }
+  }
+}
+
+.adminSettings {
+  .form-group {
+    margin-bottom: $padding-base * 3;
+
+    input {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.form-group {
+  .controls {
+    position: relative;
+
+    .help-block {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: block;
+      font-size: 14px;
+      color: $error-color;
+    }
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+.strengthLevelText {
+  margin-bottom: $padding-base / 2;
+}
+
+.g-recaptcha {
+  margin-top: $padding-base;
+}

@@ -1,0 +1,13 @@
+<template name="articles_daily">
+  <div class="articles-daily">
+    {{#each days}}
+      {{> before_day}}
+      <div class="articles-day">
+        {{> day_heading date=date}}
+        {{> articles_list_controller arguments}}
+      </div>
+      {{> after_day}}
+    {{/each}}
+    {{> load_more_days handler=loadMoreHandler}}
+  </div>
+</template>

@@ -1,0 +1,59 @@
+<!-- 
+
+Article List Compact Component
+
+title (String)
+| The title of the article list
+
+incoming (Cursor)
+| A cursor containing the new articles since render
+
+articlesCursor (Cursor)
+| A cursor containing the article list
+
+articlesCount (Number)
+| How many articles are loaded
+
+articlesReady (Boolean)
+| Whether the subscription is ready
+
+hasMoreArticles (Boolean)
+| Whether there are still more articles that can be loaded
+
+loadMoreHandler (Function)
+| What to do when the user clicks "load more"
+
+articlesField (Object)
+| An object cont
+
+-->
+
+<template name="articles_list_compact">
+  {{#if articlesCursor}}
+    {{#each articlesCursor}}
+      <div class="card profile-story">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <a href="{{pathFor 'articlePage' _id=_id}}" class="articles-item-title-link">{{title}}</a><br>
+            <small>{{fieldValue}}</small>
+          </h4>
+          
+          {{#if thumbnailUrl}}
+            <div class="card-image">
+              <img src={{thumbnailUrl}} alt={{title}} />
+            </div>
+          {{/if}}
+
+          <p>{{excerpt}}</p>
+        </div>
+      </div>
+    {{/each}}
+  {{else}}
+    No Articles written yet. <a href="{{pathFor '/add-article'}}">Click here</a> to start writing an article.
+  {{/if}}
+
+  <!-- Load more button -->
+  {{#if hasMoreArticles}}
+    <button class="downvoted-more more-button btn btn-lg btn-block">Load More</button>
+  {{/if}}
+</template>

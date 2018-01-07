@@ -1,0 +1,12 @@
+<template name="user_comments">
+  <div class="media">
+    <div class="pull-left">
+      {{> avatar user=this size="medium" shape="circle"}}
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">Dr. {{grudr.displayName}} <small>Commented on an <span class="badge">Article</span></small></h4>
+      <!-- Latest articles -->
+      {{> commentsListController arguments}}
+    </div>
+  </div>
+</template>

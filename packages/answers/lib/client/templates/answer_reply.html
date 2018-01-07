@@ -1,0 +1,41 @@
+<template name="answer_reply">
+  <!-- Page header -->
+  <div class="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h1 class="title">Reply to a answer</h1>
+          <h5>Meet the amazing team behind this project and find out more about how we work.</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- page content -->
+  <div class="main z-depth-2">
+    <div class="container">
+      <div class="col-md-8 col-md-offset-2">
+        {{#with question}}
+          <div class="questions questions-list">
+            {{> question_item question=this}}
+          </div>
+        {{/with}}
+
+        {{#with answer}}
+          <ul class="selected-answer" aria-live="polite">
+           {{> answer_item}}
+          </ul>
+        {{/with}}
+
+        {{#if canAnswer}}
+          {{> answer_submit}}
+        {{/if}}
+
+        {{#if isLoggedIn}}
+        {{else}}
+          <p><a href="/sign-in">Please sign in to reply</a></p>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</template>

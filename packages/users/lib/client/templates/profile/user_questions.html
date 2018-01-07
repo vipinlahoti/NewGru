@@ -1,0 +1,12 @@
+<template name="user_questions">
+  <div class="media">
+    <div class="pull-left">
+      {{> avatar user=this size="medium" shape="circle"}}
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">Dr. {{grudr.displayName}} <small>Asked a <span class="badge pink">Question</span></small></h4>
+      <!-- Latest Questions -->
+      {{> questions_list_controller arguments}}
+    </div>
+  </div>
+</template>
