@@ -4,27 +4,48 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { intlShape, FormattedMessage } from 'meteor/vulcan:i18n';
 import { withRouter } from 'react-router'
+import { Grid, Row, Col, Jumbotron } from 'react-bootstrap';
 
 const PostsNewForm = (props, context) => 
-  <Components.ShowIf
-      check={Posts.options.mutations.new.check}
-      failureComponent={<div><p className="posts-new-form-message"><FormattedMessage id="posts.sign_up_or_log_in_first" /></p><Components.AccountsLoginForm /></div>}
-    >
-      <div className="posts-new-form">
-        <Components.SmartForm
-          collection={Posts}
-          mutationFragment={getFragment('PostsPage')}
-          successCallback={post => {
-            props.closeModal();
-            props.router.push({pathname: props.redirect || Posts.getPageUrl(post)});
-            props.flash(context.intl.formatMessage({id: "posts.created_message"}), "success");
-          }}
-        />
-      </div>
-    </Components.ShowIf>
+  <div>
+    <Jumbotron>
+      <Grid>
+        <Row>
+          <Col md={8}>
+            <h3 className="title"><FormattedMessage id="posts.new_post"/></h3>
+          </Col>
+        </Row>
+      </Grid>
+    </Jumbotron>
+
+    <div className="main">
+      <Grid>
+        <Row>
+          <Col md={8} mdOffset={2}>
+            <Components.ShowIf
+              check={Posts.options.mutations.new.check}
+              failureComponent={<div><p className="posts-new-form-message"><FormattedMessage id="posts.sign_up_or_log_in_first" /></p><Components.AccountsLoginForm /></div>}
+            >
+              <div className="posts-new-form">
+                <Components.SmartForm
+                  collection={Posts}
+                  mutationFragment={getFragment('PostsPage')}
+                  successCallback={post => {
+                    // props.closeModal();
+                    props.router.push({pathname: props.redirect || Posts.getPageUrl(post)});
+                    props.flash(context.intl.formatMessage({id: "posts.created_message"}), "success");
+                  }}
+                />
+              </div>
+            </Components.ShowIf>
+          </Col>
+        </Row>
+      </Grid>
+    </div>
+  </div>
 
 PostsNewForm.propTypes = {
-  closeModal: React.PropTypes.func,
+  // closeModal: React.PropTypes.func,
   router: React.PropTypes.object,
   flash: React.PropTypes.func,
   redirect: React.PropTypes.string,

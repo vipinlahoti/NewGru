@@ -7,6 +7,7 @@ import { FormattedMessage } from 'meteor/vulcan:i18n';
 import { Grid, Row, Col, Jumbotron, Media } from 'react-bootstrap';
 import moment from 'moment';
 import Button from 'react-bootstrap/lib/Button';
+import { Link } from 'react-router';
 
 class QuestionsPage extends Component {
 
@@ -15,9 +16,12 @@ class QuestionsPage extends Component {
 
     return (
       <span className="stats">
-        <Components.ModalTrigger title="Edit an Article" component={ <Button className="pink pull-right waves-effect waves-light" bsSize="small"><Components.Icon name="mode_edit" /> <FormattedMessage id="questions.edit"/></Button> }>
+        {/*<Components.ModalTrigger title="Edit a Question" component={ <Button className="pink pull-right waves-effect waves-light" bsSize="small"><Components.Icon name="mode_edit" /> <FormattedMessage id="questions.edit"/></Button> }>
           <Components.QuestionsEditForm question={question} />
-        </Components.ModalTrigger>
+        </Components.ModalTrigger>*/}
+        <Link to={Questions.getEditPageUrl(question)} className="btn-sm pink pull-right waves-effect waves-light">
+          <Components.Icon name="mode_edit" /> <FormattedMessage id="questions.edit"/>
+        </Link>
       </span>
     )
   }
@@ -34,18 +38,17 @@ class QuestionsPage extends Component {
 
     } else {
       const question = this.props.document;
-      const htmlBody = {__html: question.htmlBody};
 
       return (
         <div>
 
-          <Components.HeadTags url={Questions.getPageUrl(question, true)} title={question.title} image={question.thumbnailUrl} description={question.excerpt} />
+          <Components.HeadTags url={Questions.getPageUrl(question, true)} title={question.excerpt} image={question.thumbnailUrl} description={question.excerpt} />
           
           <Jumbotron>
             <Grid>
               <Row>
                 <Col md={9}>
-                  <h3 className="title">{ question.title }</h3>
+                  <h3 className="title">{ question.excerpt }</h3>
                   <h5>
                     { question.user ? <div className="author"><Components.UsersAvatar user={question.user} size="xsmall"/> <Components.UsersName user={ question.user }/>, &nbsp;</div> : null }
                     <span className="stats">{ question.postedAt ? moment(new Date(question.postedAt)).fromNow() : <FormattedMessage id="questions.dateNotDefined"/> }</span>
@@ -72,6 +75,9 @@ class QuestionsPage extends Component {
             <Grid>
               <Row>
                 <Col md={8} mdOffset={2}>
+                  <h4 className="title center-align"><FormattedMessage id="questions.question"/></h4>
+                  <div className="section-components-md">{ question.title }</div>
+
                   {question.thumbnailUrl ?
                   <div className="card card-single no-margin no-padding">
                     <div className="card-image">
@@ -80,8 +86,6 @@ class QuestionsPage extends Component {
                   </div>
                   : null}
 
-                  {question.htmlBody ? <div className="section-components-md" dangerouslySetInnerHTML={htmlBody}></div> : null}
-                  
                 </Col>
               </Row>
 

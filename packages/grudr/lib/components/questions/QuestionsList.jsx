@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Questions } from '../../modules/questions/index.js';
 import Alert from 'react-bootstrap/lib/Alert'
 import { FormattedMessage, intlShape } from 'meteor/vulcan:i18n';
-import classNames from 'classnames';
 
 const Error = ({error}) => <Alert className="flash-message" bsStyle="danger"><FormattedMessage id={error.id} values={{value: error.value}}/>{error.message}</Alert>
 
@@ -18,12 +17,11 @@ const QuestionsList = ({className, results, loading, count, totalCount, loadMore
 
     return (
       <div>
-        <div className={classNames(className, 'card-columns')}>
         {showHeader ? <Components.QuestionsListHeader/> : null}
         {error ? <Error error={Utils.decodeIntlError(error)} /> : null }
         
         {results.map(question => <Components.QuestionsItem question={question} key={question._id} currentUser={currentUser} terms={terms} />)}
-      </div>
+      
         {showLoadMore ? 
           hasMore ? 
             <Components.QuestionsLoadMore loading={loadingMore} loadMore={loadMore} count={count} totalCount={totalCount} /> : 

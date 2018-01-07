@@ -52,6 +52,7 @@ Posts.getPageUrl = function(post, isAbsolute = false){
   return `${prefix}/posts/${post._id}/${post.slug}`;
 };
 
+
 ///////////////////
 // Other Helpers //
 ///////////////////

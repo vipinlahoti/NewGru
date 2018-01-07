@@ -1,4 +1,5 @@
 // Common
+import '../components/common/Loading.jsx';
 import '../components/common/Footer.jsx';
 import '../components/common/Header.jsx';
 import '../components/common/Layout.jsx';
@@ -34,6 +35,7 @@ import '../components/posts/PostsStats.jsx';
 // import '../components/posts/PostsDailyList.jsx';
 // import '../components/posts/PostsDay.jsx';
 import '../components/posts/PostsThumbnail.jsx';
+import '../components/posts/PostsEditSingle.jsx';
 import '../components/posts/PostsEditForm.jsx';
 import '../components/posts/PostsNewForm.jsx';
 import '../components/posts/PostsCommentsThread.jsx';
@@ -64,9 +66,11 @@ import '../components/questions/QuestionsCategories.jsx';
 // import '../components/questions/QuestionsAnswerers.jsx';
 import '../components/questions/QuestionsPage.jsx';
 import '../components/questions/QuestionsStats.jsx';
-// import '../components/questions/QuestionsDaily.jsx';
-// import '../components/questions/QuestionsDailyList.jsx';
-// import '../components/questions/QuestionsDay.jsx';
+
+import '../components/questions/QuestionsDaily.jsx';
+import '../components/questions/QuestionsDailyList.jsx';
+import '../components/questions/QuestionsDay.jsx';
+
 import '../components/questions/QuestionsThumbnail.jsx';
 import '../components/questions/QuestionsEditForm.jsx';
 import '../components/questions/QuestionsNewForm.jsx';

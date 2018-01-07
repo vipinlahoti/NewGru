@@ -3,9 +3,10 @@ import React, { PropTypes, Component } from 'react';
 import Users from 'meteor/vulcan:users';
 import { FormattedMessage } from 'meteor/vulcan:i18n';
 import { Grid, Row, Col, Jumbotron } from 'react-bootstrap';
+import { Link } from 'react-router';
 
 const PostsHome = ({currentUser}, props, context) => {
-  const terms = _.isEmpty(props.location && props.location.query) ? {view: 'top'}: props.location.query;
+  const terms = _.isEmpty(props.location && props.location.query) ? {view: 'new'}: props.location.query;
   
 
   return (
@@ -23,10 +24,13 @@ const PostsHome = ({currentUser}, props, context) => {
       <div className="main">
         <Grid>
 
-            <Components.ShowIf check={Users.isAdmin} document={currentUser}>
+            {/*<Components.ShowIf check={Users.isAdmin} document={currentUser}>
               <Components.PostsNewButton />
-            </Components.ShowIf>
-          
+            </Components.ShowIf>*/}
+          {/*<Components.PostsNewButton />*/}
+          <Link to={`/posts/new`} className="btn btn-floating pull-right waves-effect waves-light">
+            <Components.Icon name="add"/>
+          </Link>
           <Components.PostsList terms={terms}/>
         </Grid>
       </div>

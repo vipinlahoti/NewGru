@@ -4,6 +4,7 @@ import moment from 'moment';
 import { FormattedMessage } from 'meteor/vulcan:i18n';
 import { Questions } from '../../modules/questions/index.js';
 import { withCurrentUser, withList, getSetting, registerSetting, Components, getRawComponent, registerComponent } from 'meteor/vulcan:core';
+import { Grid, Row, Col, Button } from 'react-bootstrap';
 
 class QuestionsDailyList extends PureComponent {
 
@@ -89,11 +90,20 @@ class QuestionsDailyList extends PureComponent {
     const dates = this.getDateRange(this.state.afterLoaded, this.state.before);
 
     return (
-      <div className="questions-daily">
-        <Components.QuestionsListHeader />
-        {dates.map((date, index) => <Components.QuestionsDay key={index} number={index} date={date} questions={this.getDateQuestions(questions, date)} networkStatus={this.props.networkStatus} currentUser={this.props.currentUser} />)}
-        {this.state.loading? <Components.QuestionsLoading /> : <a className="questions-load-more questions-load-more-days" onClick={this.loadMoreDays}><FormattedMessage id="questions.load_more_days"/></a>}
-      </div>
+      <Grid>
+        <Row>
+          <Col md={8} mdOffset={4}>
+            <div className="questions-daily">
+              <Components.QuestionsListHeader />
+              {dates.map((date, index) => <Components.QuestionsDay key={index} number={index} date={date} questions={this.getDateQuestions(questions, date)} networkStatus={this.props.networkStatus} currentUser={this.props.currentUser} />)}
+              {this.state.loading? <Components.Loading /> : 
+                <Button className="waves-effect waves-light" block onClick={this.loadMoreDays}>
+                  <FormattedMessage id="questions.load_more_days"/>
+                </Button>}
+            </div>
+          </Col>
+        </Row>
+      </Grid>
     )
   }
 }

@@ -12,9 +12,9 @@ const guestsActions = [
 Users.groups.guests.can(guestsActions);
 
 const membersActions = [
-  // 'posts.new',
-  // 'posts.edit.own', 
-  // 'posts.remove.own',
+  'posts.new',
+  'posts.edit.own', 
+  'posts.remove.own',
   'posts.upvote', 
   'posts.downvote',
 ];

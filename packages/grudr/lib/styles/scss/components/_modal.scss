@@ -79,10 +79,11 @@
 // Modal header
 // Top section of the modal w/ title and dismiss
 .modal-header {
-  background: $primary-color;
+  background: $white-color;
   border-radius: $border-base $border-base 0 0;
-  padding: $padding-base $padding-base * 2;
+  // padding: $padding-base $padding-base * 2;
   // margin-bottom: $padding-base * 2;
+  padding-top: $padding-base / 2;
 }
 // Close icon
 .modal-header .close {
@@ -100,6 +101,7 @@
 .modal-title {
   color: $white-color;
   margin: 0;
+  font-size: 1px;
 }
 
 // Modal body

@@ -20,6 +20,11 @@ const UsersProfile = (props) => {
     const user = props.document;
     const postTerms = {view: "userPosts", userId: user._id};
     const commentsTerms = {view: "userComments", userId: user._id};
+    const questionTerms = {view: "userQuestions", userId: user._id};
+    const answersTerms = {view: "userAnswers", userId: user._id};
+    
+    // const newsFeed = postTerms.concat(questionTerms);
+
     const avatarUrl = user.avatarUrl || Users.avatar.getUrl(user);
     const headerBg = {
       background: `url(${avatarUrl}) no-repeat 50% center / cover`
@@ -29,7 +34,6 @@ const UsersProfile = (props) => {
       <div>
         <Components.HeadTags url={Users.getProfileUrl(user, true)} title={Users.getDisplayName(user)} />
         
-
         <Jumbotron>
           <Grid>
           </Grid>
@@ -85,22 +89,24 @@ const UsersProfile = (props) => {
                 <Row>
                   <Col md={7}>
                     <div className="section-components-sm">
-                      { user.postCount > 0 ?
+                      { (user.postCount > 0 || user.questionCount > 0 || user.commentCount > 0 || user.answerCount > 0 ) ?
                         <div className="media">
                           <div className="pull-left">
                             <Components.UsersAvatar size="small" user={user} link={false} />
                           </div>
                           <div className="media-body">
-                            <div>
+                            
                               <h4 className="media-heading">{Users.getDisplayName(user)} <small>Posted an <span className="badge">Article</span></small></h4>
                               <div className="profile-story">
                                 <Components.PostsList terms={postTerms} showHeader={false} />
+                                <Components.QuestionsList terms={questionTerms} showHeader={false} />
+
                               </div>
-                            </div>
+                            
                           </div>
                         </div>
                         :
-                        <h5>No articles to display</h5>
+                        <h5 className="title">No articles to display</h5>
                       }
                     </div>
 

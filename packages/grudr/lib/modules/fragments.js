@@ -58,6 +58,10 @@ registerFragment(`
     postCount
     # vulcan:comments
     commentCount
+    # vulcan:questions
+    questionCount
+    # vulcan:answers
+    answerCount
 
     # categories
     # categories {

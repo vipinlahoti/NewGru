@@ -18,7 +18,7 @@ Questions.addDefaultView(terms => ({
  */
 Questions.addView('top', terms => ({
   options: {
-    sort: {sticky: -1, score: -1}
+    sort: {score: -1}
   }
 }));
 
@@ -27,7 +27,7 @@ Questions.addView('top', terms => ({
  */
 Questions.addView('new', terms => ({
   options: {
-    sort: {sticky: -1, postedAt: -1}
+    sort: {postedAt: -1}
   }
 }));
 
@@ -36,7 +36,7 @@ Questions.addView('new', terms => ({
  */
 Questions.addView('best', terms => ({
   options: {
-    sort: {sticky: -1, baseScore: -1}
+    sort: {baseScore: -1}
   }
 }));
 

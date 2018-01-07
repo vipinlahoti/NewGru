@@ -19,7 +19,7 @@ class AnswersItem extends PureComponent {
 
   showReply(event) {
     event.preventDefault();
-    this.setState({showReply: true});
+    this.setState({showReply: false});
   }
 
   replyCancelCallback(event) {
@@ -64,13 +64,13 @@ class AnswersItem extends PureComponent {
             <div>
               {/*
               <Components.Vote collection={Answers} document={this.props.answer} currentUser={this.props.currentUser}/>
-              */}
+              
               { showReplyButton ?
               <Button bsSize="xsmall" className="btn btn-flat btn-sm waves-effect waves-dark" onClick={this.showReply} title="Reply a Answer">
                 <Components.Icon name="reply"/> <FormattedMessage id="answers.reply"/>
               </Button>
               : null}
-
+              */}
               <Components.ShowIf check={Answers.options.mutations.edit.check} document={this.props.answer}>
                 <span>
                   <a className="btn btn-flat btn-sm waves-effect waves-dark" onClick={this.showEdit} title="Edit answer"><Components.Icon name="edit"/> <FormattedMessage id="answers.edit"/></a>

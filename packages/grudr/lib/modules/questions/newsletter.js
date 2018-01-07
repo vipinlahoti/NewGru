@@ -33,11 +33,9 @@ VulcanEmail.addEmails({
 
           _id
           title
-          url
           pageUrl
           linkUrl
           domain
-          htmlBody
           thumbnailUrl
           answersCount
           postedAtFormatted
@@ -53,7 +51,6 @@ VulcanEmail.addEmails({
               avatarUrl
               pageUrl
             }
-            htmlBody
             postedAt
           }
           

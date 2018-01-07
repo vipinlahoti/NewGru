@@ -14,7 +14,7 @@ const QuestionsHome = ({currentUser}, props, context) => {
         <Grid>
           <Row>
             <Col md={8}>
-              <h3 className="title">Questions</h3>
+              <h3 className="title"><FormattedMessage id="questions.questions"/></h3>
               <h5>Meet the amazing team behind this project and find out more about how we work.</h5>
             </Col>
           </Row>
@@ -23,7 +23,6 @@ const QuestionsHome = ({currentUser}, props, context) => {
       <div className="main">
         <Grid>    
           <Components.QuestionsNewButton />
-            
           <Components.QuestionsList terms={terms}/>
         </Grid>
       </div>

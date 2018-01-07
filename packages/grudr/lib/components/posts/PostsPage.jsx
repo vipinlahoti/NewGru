@@ -7,6 +7,7 @@ import { FormattedMessage } from 'meteor/vulcan:i18n';
 import { Grid, Row, Col, Jumbotron, Media } from 'react-bootstrap';
 import moment from 'moment';
 import Button from 'react-bootstrap/lib/Button';
+import { Link } from 'react-router';
 
 class PostsPage extends Component {
 
@@ -15,9 +16,13 @@ class PostsPage extends Component {
 
     return (
       <span className="stats">
-        <Components.ModalTrigger title="Edit an Article" component={ <Button className="pink pull-right waves-effect waves-light" bsSize="small"><Components.Icon name="mode_edit" /> <FormattedMessage id="posts.edit"/></Button> }>
+        {/*<Components.ModalTrigger title="Edit an Article" component={ <Button className="pink pull-right waves-effect waves-light" bsSize="small"><Components.Icon name="mode_edit" /> <FormattedMessage id="posts.edit"/></Button> }>
           <Components.PostsEditForm post={post} />
-        </Components.ModalTrigger>
+        </Components.ModalTrigger>*/}
+        <Link to={Posts.getEditPageUrl(post)} className="btn-sm pink pull-right waves-effect waves-light">
+          <Components.Icon name="mode_edit" /> <FormattedMessage id="posts.edit"/>
+        </Link>
+
       </span>
     )
   }

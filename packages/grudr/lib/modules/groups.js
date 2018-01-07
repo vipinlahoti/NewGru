@@ -19,7 +19,6 @@ Users.createGroup('doctors');
 const doctorsActions = [
   'users.new', 
   'users.edit.own',
-  
   'questions.new',
   'questions.edit.own', 
   'questions.remove.own',

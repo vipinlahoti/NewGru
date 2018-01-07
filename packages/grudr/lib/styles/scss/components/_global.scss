@@ -2,6 +2,9 @@
 .material-icons {
   text-rendering: optimizeLegibility;
   font-feature-settings: 'liga';
+  float: left;
+  line-height: inherit;
+  margin-right: $padding-base / 4;
 }
 
 
@@ -656,4 +659,35 @@ td, th{
 .avatar {
   border-radius: $border-circle;
   @extend .z-depth-2;
+}
+
+.questions-day {
+  margin-bottom: $padding-base * 3;
+  position: relative;
+
+  .questions-day-heading-wrapper {
+    position: absolute;
+    right: 100%;
+    padding-right: 40px;
+    top: 0.5rem;
+    bottom: 0;
+
+    .questions-day-heading {
+      color: $gray-light;
+      text-align: right;
+      position: sticky;
+      top: 0;
+      margin: 0;
+
+      .questions-day-heading-date {
+        font-size: 1.5rem;
+        display: block;
+      }
+
+      .questions-day-heading-day {
+        font-size: 4rem;
+        white-space: nowrap;
+      }
+    }
+  }
 }

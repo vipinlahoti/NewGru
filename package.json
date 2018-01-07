@@ -1,6 +1,6 @@
 {
   "name": "Vulcan",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "engines": {
     "npm": "^3.0"
   },
@@ -44,6 +44,7 @@
     "import": "0.0.6",
     "intl": "^1.2.4",
     "intl-locales-supported": "^1.0.0",
+    "jquery": "^3.2.1",
     "juice": "^1.11.0",
     "mailchimp": "^1.1.6",
     "marked": "^0.3.5",
@@ -51,7 +52,6 @@
     "meteor-node-stubs": "^0.2.3",
     "mingo": "^0.8.1",
     "moment": "^2.13.0",
-    "optics-agent": "^1.0.5",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-addons-pure-render-mixin": "^15.4.1",
@@ -71,7 +71,8 @@
     "react-router-bootstrap": "^0.23.1",
     "react-router-scroll": "^0.4.1",
     "react-stripe-checkout": "2.4.0",
-    "react-tag-input": "^4.7.2",
+    "react-summernote": "^2.0.0",
+    "react-tinymce": "^0.7.0",
     "recompose": "^0.21.2",
     "redux": "^3.6.0",
     "rss": "^1.2.1",

@@ -5,7 +5,7 @@ import { Questions } from './questions/index.js';
 import Users from "meteor/vulcan:users";
 import FormsUpload from 'meteor/vulcan:forms-upload';
 import { userRole, gender, areaPractise, medicalCollege, certification, affiliation, awards } from './data';
-
+import TinyMCE from 'react-tinymce';
 
 const formGroups = {
   admin: {
@@ -59,7 +59,8 @@ Posts.addField([
     fieldName: 'body',
     fieldSchema: {
       max: 6000,
-      limit: 6000
+      limit: 6000,
+      // control: TinyMCE
     }
   },
   // {
@@ -100,15 +101,7 @@ Questions.addField([
   {
     fieldName: 'title',
     fieldSchema: {
-      max: 80,
-      limit: 80
-    }
-  },
-  {
-    fieldName: 'body',
-    fieldSchema: {
-      max: 6000,
-      limit: 6000
+      limit: 3000
     }
   },
   // {
@@ -138,8 +131,6 @@ Questions.addField([
     }
   }
 ]);
-
-Questions.removeField('url');
 
 
 /*

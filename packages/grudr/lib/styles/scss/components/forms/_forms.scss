@@ -36,6 +36,10 @@ label {
 // @import 'file-input';
 // @import 'range';
 
+textarea {
+  padding: $padding-base / 1.5 0;
+}
+
 .comments-item-reply,
 .comments-edit-form {
   textarea {
@@ -267,4 +271,10 @@ label {
 .message {
   color: $error-color;
   font-size: 14px;
+}
+
+.posts-new-form {
+  textarea {
+    height: 15rem;
+  }
 }

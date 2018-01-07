@@ -17,7 +17,7 @@ const FormSubmit = ({
                     }) => (
   <div className="form-submit">
     
-    <Button type="submit" bsStyle="primary" className="waves-effect waves-light">
+    <Button type="submit" bsStyle="primary">
       {submitLabel ? submitLabel : <FormattedMessage id="forms.submit"/>}
     </Button>
     
@@ -37,10 +37,10 @@ const FormSubmit = ({
       deleteDocument
         ?
         <div>
-          <a href="javascript:void()" onClick={deleteDocument}
-             className={`delete-link ${collectionName}-delete-link`}>
+          <br />
+          <Button onClick={deleteDocument} className={`delete-link ${collectionName}-delete-link btn-flat waves-effect waves-light`} bsSize="small">
             <Components.Icon name="delete"/> <FormattedMessage id="forms.delete"/>
-          </a>
+          </Button>
         </div>
         :
         null

@@ -1,7 +1,5 @@
 /*
-
 Questions schema
-
 */
 
 import Users from 'meteor/vulcan:users';
@@ -10,7 +8,7 @@ import { Utils, getSetting, registerSetting } from 'meteor/vulcan:core';
 import moment from 'moment';
 import marked from 'marked';
 
-registerSetting('forum.questionExcerptLength', 30, 'Length of questions excerpts in words');
+registerSetting('forum.questionExcerptLength', 20, 'Length of questions excerpts in words');
 
 /**
  * @summary Questions config namespace
@@ -66,30 +64,16 @@ const schema = {
     }
   },
   /**
-    URL
-  */
-  url: {
-    type: String,
-    optional: true,
-    max: 500,
-    viewableBy: ['guests'],
-    insertableBy: ['members'],
-    editableBy: ['members'],
-    control: 'url',
-    order: 10,
-    searchable: true
-  },
-  /**
     Title
   */
   title: {
     type: String,
     optional: false,
-    max: 500,
+    max: 3000,
     viewableBy: ['guests'],
     insertableBy: ['members'],
     editableBy: ['members'],
-    control: 'text',
+    control: 'textarea',
     order: 20,
     searchable: true
   },
@@ -110,37 +94,6 @@ const schema = {
     }
   },
   /**
-    Question body (markdown)
-  */
-  body: {
-    type: String,
-    optional: true,
-    max: 3000,
-    viewableBy: ['guests'],
-    insertableBy: ['members'],
-    editableBy: ['members'],
-    control: 'textarea',
-    order: 30
-  },
-  /**
-    HTML version of the question body
-  */
-  htmlBody: {
-    type: String,
-    optional: true,
-    viewableBy: ['guests'],
-    onInsert: (question) => {
-      if (question.body) {
-        return Utils.sanitize(marked(question.body));
-      }
-    },
-    onEdit: (modifier, question) => {
-      if (modifier.$set.body) {
-        return Utils.sanitize(marked(modifier.$set.body));
-      }
-    }
-  },
-  /**
    Question Excerpt
    */
   excerpt: {
@@ -149,16 +102,16 @@ const schema = {
     viewableBy: ['guests'],
     searchable: true,
     onInsert: (question) => {
-      if (question.body) {
-        // excerpt length is configurable via the settings (30 words by default, ~255 characters)
-        const excerptLength = getSetting('forum.questionExcerptLength', 30); 
-        return Utils.trimHTML(Utils.sanitize(marked(question.body)), excerptLength);
+      if (question.title) {
+        // excerpt length is configurable via the settings (20 words by default, ~255 characters)
+        const excerptLength = getSetting('forum.questionExcerptLength', 20); 
+        return Utils.trimHTML(Utils.sanitize(marked(question.title)), excerptLength);
       }
     },
     onEdit: (modifier, question) => {
-      if (modifier.$set.body) {
-        const excerptLength = getSetting('forum.questionExcerptLength', 30); 
-        return Utils.trimHTML(Utils.sanitize(marked(modifier.$set.body)), excerptLength);
+      if (modifier.$set.title) {
+        const excerptLength = getSetting('forum.questionExcerptLength', 20); 
+        return Utils.trimHTML(Utils.sanitize(marked(modifier.$set.title)), excerptLength);
       }
     }
   },
@@ -210,9 +163,7 @@ const schema = {
       }
     },
     form: {
-      noselect: true,
       options: () => Questions.statuses,
-      group: 'admin'
     },
     group: formGroups.admin
   },
@@ -356,17 +307,6 @@ const schema = {
     }  
   },
 
-  linkUrl: {
-    type: String,
-    optional: true,
-    resolveAs: {
-      type: 'String',
-      resolver: (question, args, context) => {
-        return question.url ? Utils.getOutgoingUrl(question.url) : Questions.getPageUrl(question, true);
-      },
-    }  
-  },
-
   postedAtFormatted: {
     type: String,
     optional: true,
@@ -417,29 +357,7 @@ const schema = {
         return Questions.getEmailShareUrl(question);
       }
     }
-  },
-
-  twitterShareUrl: {
-    type: String,
-    optional: true,
-    resolveAs: {
-      type: 'String',
-      resolver: (question) => {
-        return Questions.getTwitterShareUrl(question);
-      }
-    }
-  },
-
-  facebookShareUrl: {
-    type: String,
-    optional: true,
-    resolveAs: {
-      type: 'String',
-      resolver: (question) => {
-        return Questions.getFacebookShareUrl(question);
-      }
-    }
-  },
+  }
   
 };
 

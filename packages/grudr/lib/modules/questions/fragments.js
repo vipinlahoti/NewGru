@@ -5,11 +5,9 @@ registerFragment(`
     # questions
     _id
     title
-    # url
     slug
     postedAt
     createdAt
-    sticky
     status
     excerpt
     viewCount
@@ -42,8 +40,6 @@ registerFragment(`
 registerFragment(`
   fragment QuestionsPage on Question {
     ...QuestionsList
-    body
-    htmlBody
   }
 `);
 

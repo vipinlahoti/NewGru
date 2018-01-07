@@ -52,6 +52,24 @@ Posts.getPageUrl = function(post, isAbsolute = false){
   return `${prefix}/posts/${post._id}/${post.slug}`;
 };
 
+
+/**
+ * @summary Get URL of a new post page.
+ * @param {Object} post
+ */
+Posts.getNewPageUrl = function(post, isAbsolute = false){
+  const prefix = isAbsolute ? Utils.getSiteUrl().slice(0,-1) : '';
+  return `${prefix}/posts/new`;
+};
+
+/**
+ * @summary Get URL of a edit post page.
+ * @param {Object} post
+ */
+Posts.getEditPageUrl = function(post, isAbsolute = false){
+  const prefix = isAbsolute ? Utils.getSiteUrl().slice(0,-1) : '';
+  return `${prefix}/posts/${post._id}/${post.slug}/edit`;
+};
 ///////////////////
 // Other Helpers //
 ///////////////////

@@ -37,23 +37,13 @@ class QuestionsItem extends PureComponent {
     return (
       <div className={questionClass}>
         
-        {question.thumbnailUrl ?
-          <div className="card-image">
-            <Components.QuestionsThumbnail question={question}/>
-          </div>
-        : null}
-
         <div className="card-content">
           <h3 className="card-title">
             <Link to={Questions.getPageUrl(question)}>
-              {question.title}
+              {question.excerpt}
             </Link>
             {/* {this.renderCategories()} */}
           </h3>
-          
-          <div className="card-excerpt">
-            {question.excerpt}
-          </div>
           
           <div className="card-footer">
             <div className="author">

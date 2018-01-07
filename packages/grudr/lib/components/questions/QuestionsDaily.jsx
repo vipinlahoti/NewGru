@@ -1,6 +1,9 @@
 import { Components, registerComponent, getSetting, registerSetting } from 'meteor/vulcan:core';
 import React, { PropTypes, Component } from 'react';
 import moment from 'moment';
+import { FormattedMessage } from 'meteor/vulcan:i18n';
+import { Grid, Row, Col, Jumbotron } from 'react-bootstrap';
+import { Link } from 'react-router';
 
 registerSetting('forum.numberOfDays', 5, 'Number of days to display in Daily view');
 
@@ -13,7 +16,28 @@ const QuestionsDaily = props => {
     before: moment().format('YYYY-MM-DD'),
   };
 
-  return <Components.QuestionsDailyList terms={terms}/>
+  return (
+    <div>
+      <Jumbotron>
+        <Grid>
+          <Row>
+            <Col md={8}>
+              <h3 className="title"><FormattedMessage id="questions.questions"/></h3>
+              <h5>Meet the amazing team behind this project and find out more about how we work.</h5>
+            </Col>
+          </Row>
+        </Grid>
+      </Jumbotron>
+      <div className="main">
+        <Grid>    
+          <Link to={`/questions/new`} className="btn btn-floating pull-right waves-effect waves-light">
+            <Components.Icon name="add"/>
+          </Link>
+          <Components.QuestionsDailyList terms={terms}/>
+        </Grid>
+      </div>
+    </div>
+  )
 };
 
 QuestionsDaily.displayName = 'QuestionsDaily';

@@ -26,7 +26,7 @@ class FormGroup extends PureComponent {
       <div className="form-section-heading" onClick={this.toggle}>
         <h3 className="form-section-heading-title">{this.props.label}</h3>
         <span className="form-section-heading-toggle">
-          {this.state.collapsed ? <Components.Icon name="down" /> : <Components.Icon name="up" />}
+          {this.state.collapsed ? <Components.Icon name="expand" /> : <Components.Icon name="collapse" />}
         </span>
       </div>
     )
