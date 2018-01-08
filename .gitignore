@@ -1,4 +1,3 @@
-.eslintcache
 npm-debug.log
 *.scssc
 .sass-cache/*
@@ -25,6 +24,8 @@ settings.json.not-used
 
 scratch
 
+.deploy
+.deploy/*
 ### Meteor template
 .meteor/local
 .meteor/meteorite
@@ -32,15 +33,4 @@ mup.json
 
 packages_update.py
 
-
-get_file_list.sh
-packages_update.py
-publish_packages.sh
-
-node_modules
-
-bundle.tar.gz
-
-jsdoc-conf.json
-jsdoc.json
-packages/nova-router/.npm
+versions

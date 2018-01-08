@@ -10,7 +10,7 @@ Package.onUse(function (api) {
   api.versionsFrom("METEOR@1.0");
 
   api.use([
-    'grudr:core@1.0.0'
+    'telescope:core'
   ]);
 
   api.addFiles([

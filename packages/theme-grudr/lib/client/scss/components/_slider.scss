@@ -3,13 +3,13 @@
     height: 100vh;
 
     .container {
-      padding-top: 25vh;
+      padding-top: 35vh;
     }
   }
 }
 
 .page-header {
-  background-image: url(http://grudr.com/slider-1.jpg);
+  background-image: url(http://demos.creative-tim.com/now-ui-kit/assets/img/header.jpg);
   background-size: cover;
   background-position: center top;
   height: 65vh;
@@ -39,7 +39,7 @@
   }
 
   &:before {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.3);
   }
 
   .card {

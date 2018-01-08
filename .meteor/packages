@@ -1,51 +1,18 @@
-#####################################
-## Core                            ##
-#####################################
-grudr:core
-msavin:mongol
+### Telescope Core ###
 
-#####################################
-## Features                        ##
-#####################################
-# grudr:migrations
-# grudr:api
-# grudr:cloudinary
-grudr:daily # singleday
-grudr:datetimepicker
-grudr:debug
-grudr:email
-# grudr:embedly
-grudr:getting-started
-grudr:invites
-grudr:kadira
-grudr:newsletter
-grudr:notifications
-grudr:pages
-# grudr:article-by-feed
-grudr:prerender
-grudr:releases
-# grudr:rss
-grudr:scoring
-# grudr:search 
-grudr:share
-# grudr:singleday
-# grudr:sitemap
-grudr:spiderable
-# grudr:subscribe-to-articles # notifications
-# grudr:follow-users
-grudr:tagline-banner
-grudr:tags
-grudr:update-prompt
+telescope:core
 
 
-#####################################
-## Themes                          ##
-#####################################
-grudr:theme-grudr
+### Telescope Packages ###
+
+telescope:datetimepicker
+telescope:email
+telescope:getting-started
+telescope:notifications
+telescope:scoring
+telescope:tags
+telescope:theme-base
+telescope:theme-hubble
 
 
-#####################################
-## Custom                          ##
-#####################################
-# grudr:stories
-# cenk:useraccounts-password-strength
+telescope:components

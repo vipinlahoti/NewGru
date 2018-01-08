@@ -1,1 +1,0 @@
-Grudr.debug = {};
