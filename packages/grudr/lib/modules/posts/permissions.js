@@ -11,16 +11,26 @@ const guestsActions = [
 ];
 Users.groups.guests.can(guestsActions);
 
+
 const membersActions = [
-  'posts.new',
-  'posts.edit.own', 
-  'posts.remove.own',
   'posts.upvote', 
   'posts.downvote',
 ];
 Users.groups.members.can(membersActions);
 
-const adminActions = [
+
+// Article Writer
+// Users.createGroup("writers");
+const writersActions = [
+  'posts.new',
+  'posts.edit.own', 
+  'posts.remove.own',
+];
+Users.groups.writers.can(writersActions);
+
+
+// Admin permissions
+const adminsActions = [
   'posts.view.pending',
   'posts.view.rejected',
   'posts.view.spam',
@@ -30,4 +40,4 @@ const adminActions = [
   'posts.edit.all',
   'posts.remove.all'
 ];
-Users.groups.admins.can(adminActions);
+Users.groups.admins.can(adminsActions);

@@ -19,5 +19,7 @@ import './comments/index.js';
 import './questions/index.js';
 import './answers/index.js';
 
+import './hospitals/index.js';
+
 import './api.js';
 import './rss.js';

@@ -8,10 +8,15 @@ addRoute([
   {name:'posts.list',         path:'posts',                         componentName: 'PostsHome'},
   {name:'posts.single',       path:'posts/:_id(/:slug)',            componentName: 'PostsSingle'},
 
-  {name:'questions.new',      path:'/questions/new(/:postId)',      componentName: 'QuestionsNewForm'},
+  {name:'questions.new',      path:'/questions/new(/:questionId)',      componentName: 'QuestionsNewForm'},
   {name:'questions.edit',     path:'questions/:_id(/:slug)/edit',   componentName: 'QuestionsEditForm'},
   {name:'questions.list',     path:'questions',                     componentName: 'QuestionsDaily'},
   {name:'questions.single',   path:'questions/:_id(/:slug)',        componentName: 'QuestionsSingle'},
+
+  {name:'hospitals.new',      path:'/hospitals/new(/:hospitalId)',      componentName: 'HospitalsNewForm'},
+  {name:'hospitals.edit',     path:'hospitals/:_id(/:slug)/edit',   componentName: 'HospitalsEditForm'},
+  {name:'hospitals.list',     path:'hospitals',                     componentName: 'HospitalsHome'},
+  {name:'hospitals.single',   path:'hospitals/:_id(/:slug)',        componentName: 'HospitalsSingle'},
 
   {name:'users.single',       path:'users/:slug',                   componentName: 'UsersSingle'},
   {name:'users.account',      path:'account',                       componentName: 'UsersAccount'},

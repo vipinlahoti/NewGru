@@ -1,33 +1,6 @@
 import Users from 'meteor/vulcan:users';
 import { addCallback } from 'meteor/vulcan:lib';
 
-// function userIsDoctor (modifier) {
-//   if (modifier.$set && modifier.$set.userRole === 'Doctor') {
-//     modifier.$set.isDoctor = 'true';
-//     modifier.$set.isPatient = 'false';
-//     modifier.$set.isStudent = 'false';
-
-//     console.log(`modifier isDoctor: ${modifier.$set.isDoctor}, isPatient: ${modifier.$set.isPatient}, isStudent: ${modifier.$set.isStudent}`);
-
-//   } else if (modifier.$set && modifier.$set.userRole === 'Patient') {
-//     modifier.$set.isDoctor = 'false';
-//     modifier.$set.isPatient = 'true';
-//     modifier.$set.isStudent = 'false';
-
-//     console.log(`modifier isDoctor: ${modifier.$set.isDoctor}, isPatient: ${modifier.$set.isPatient}, isStudent: ${modifier.$set.isStudent}`);
-
-//   } else {
-//     modifier.$set.isDoctor = 'false';
-//     modifier.$set.isPatient = 'false';
-//     modifier.$set.isStudent = 'true';
-    
-//     console.log(`modifier isDoctor: ${modifier.$set.isDoctor}, isPatient: ${modifier.$set.isPatient}, isStudent: ${modifier.$set.isStudent}`);
-//   }
-//   return modifier;
-
-// }
-// addCallback("users.edit.sync", userIsDoctor);
-
 function userRoleAddPrefix (modifier) {
   if (modifier.$set && modifier.$set.userRole === 'Doctor') {
     modifier.$set.userRolePrefix = 'Dr.';
@@ -53,65 +26,22 @@ Users.isDoctor = function (userOrUserId) {
     return false; // user not logged in
   }
 };
-Users.isAdminById = Users.isDoctor;
+Users.isDoctorById = Users.isDoctor;
+
 
 /**
- * @summary check if a user is a member of a group
- * @param {Array} user 
- * @param {String} group or array of groups
+ * @summary Check if a user is a writer
+ * @param {Object|string} userOrUserId - The user or their userId
  */
-Users.isMemberOf = (user, groupOrGroups) => {
-  const groups = Array.isArray(groupOrGroups) ? groupOrGroups : [groupOrGroups];
-  
-  // everybody is considered part of the guests group
-  if (groups.indexOf('guests') !== -1) return true;
-  
-  // every logged in user is part of the members group
-  if (groups.indexOf('members') !== -1) return !!user; 
-  
-  // the admin group have their own function
-  if (groups.indexOf('admin') !== -1) return Users.isAdmin(user);
-
-  // the doctor group have their own function
-  if (groups.indexOf('doctor') !== -1) return Users.isDoctor(user);
-
-  // else test for the `groups` field
-  return _.intersection(Users.getGroups(user), groups).length > 0;
-};
-
-/**
- * @summary get a list of a user's groups
- * @param {Object} user
- */
-Users.getGroups = user => {
-
-  let userGroups = [];
-
-  if (!user) { // guests user
-
-    userGroups = ["guests"];
-  
-  } else {
-  
-    userGroups = ["members"];
-
-    if (user.groups) { // custom groups
-      userGroups = userGroups.concat(user.groups);
-    } 
-    
-    if (Users.isAdmin(user)) { // admin
-      userGroups.push("admins");
-    }
-
-    if (Users.isDoctor(user)) { // doctor
-      userGroups.push("doctors");
-    }
-
+Users.isWriter = function (userOrUserId) {
+  try {
+    var user = Users.getUser(userOrUserId);
+    return !!user && !!user.isWriter;
+  } catch (e) {
+    return false; // user not logged in
   }
-
-  return userGroups;
-
 };
+Users.isWriterById = Users.isWriter;
 
 Users.getDisplayName = function (user) {
   let userRole = user.userRolePrefix ? user.userRolePrefix : '';

@@ -4,43 +4,13 @@ import Users from 'meteor/vulcan:users';
   Let's create a new 'writer' group that can edit and delete any posts
 */
 
-Users.createGroup('writer');
+////////////////////
+// Initialize     //
+////////////////////
 
-const writerActions = [
-  'posts.new', 
-  'posts.edit.own', 
-  'posts.remove.own',
-];
-Users.groups.writer.can(writerActions);
+/**
+ * @summary initialize the 3 out-of-the-box groups
+ */
 
-
-Users.createGroup('doctors');
-
-const doctorsActions = [
-  'users.new', 
-  'users.edit.own',
-  'questions.new',
-  'questions.edit.own', 
-  'questions.remove.own',
-  'questions.upvote', 
-  'questions.downvote',
-];
-Users.groups.doctors.can(doctorsActions);
-
-
-Users.createGroup('students');
-
-const students = [
-  'users.new', 
-  'users.edit.own', 
-];
-Users.groups.doctors.can(students);
-
-
-Users.createGroup('patients');
-
-const patients = [
-  'users.new', 
-  'users.edit.own', 
-];
-Users.groups.doctors.can(patients);
+// Users.createGroup("writers"); // Article writers
+// Users.createGroup("doctors"); // Doctors

@@ -287,6 +287,7 @@ const membersActions = [
 Users.groups.members.can(membersActions);
 
 Users.createGroup("admins"); // admin users
+Users.createGroup("writers"); // admin users
 
 const adminActions = [
   "users.new", 

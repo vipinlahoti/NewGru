@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 const AdminUsersQuestions = ({ document: user }) => 
   <ul>
     {user.questions && user.questions.map(question => 
-      <li key={question._id}><Link to={Questions.getLink(question)}>{question.title}</Link></li>
+      <li key={question._id}><Link to={Questions.getPageUrl(question)}>{question.title}</Link></li>
     )}
   </ul>
 

@@ -66,11 +66,9 @@ import '../components/questions/QuestionsCategories.jsx';
 // import '../components/questions/QuestionsAnswerers.jsx';
 import '../components/questions/QuestionsPage.jsx';
 import '../components/questions/QuestionsStats.jsx';
-
 import '../components/questions/QuestionsDaily.jsx';
 import '../components/questions/QuestionsDailyList.jsx';
 import '../components/questions/QuestionsDay.jsx';
-
 import '../components/questions/QuestionsThumbnail.jsx';
 import '../components/questions/QuestionsEditForm.jsx';
 import '../components/questions/QuestionsNewForm.jsx';
@@ -84,6 +82,32 @@ import '../components/answers/AnswersNode.jsx';
 import '../components/answers/AnswersNewForm.jsx';
 import '../components/answers/AnswersEditForm.jsx';
 import '../components/answers/AnswersLoadMore.jsx';
+
+
+
+// Hospitals
+import '../components/hospitals/HospitalsHome.jsx';
+import '../components/hospitals/HospitalsSingle.jsx';
+import '../components/hospitals/HospitalsNewButton.jsx';
+import '../components/hospitals/HospitalsLoadMore.jsx';
+// import '../components/hospitals/HospitalsNoMore.jsx';
+import '../components/hospitals/HospitalsNoResults.jsx';
+import '../components/hospitals/HospitalsItem.jsx';
+// import '../components/hospitals/HospitalsLoading.jsx';
+// import '../components/hospitals/HospitalsViews.jsx';
+import '../components/hospitals/HospitalsList.jsx';
+import '../components/hospitals/HospitalsListHeader.jsx';
+import '../components/hospitals/HospitalsCategories.jsx';
+// import '../components/hospitals/HospitalsHosReviewers.jsx';
+import '../components/hospitals/HospitalsPage.jsx';
+import '../components/hospitals/HospitalsStats.jsx';
+import '../components/hospitals/HospitalsDaily.jsx';
+import '../components/hospitals/HospitalsDailyList.jsx';
+import '../components/hospitals/HospitalsDay.jsx';
+import '../components/hospitals/HospitalsThumbnail.jsx';
+import '../components/hospitals/HospitalsEditForm.jsx';
+import '../components/hospitals/HospitalsNewForm.jsx';
+// import '../components/hospitals/HospitalsHosReviewsThread.jsx';
 
 
 // Categories

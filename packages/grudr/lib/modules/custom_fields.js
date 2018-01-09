@@ -177,6 +177,19 @@ Users.addField([
       order: 7
     }
   },
+  {
+    fieldName: 'isWriter',
+    fieldSchema: {
+      type: Boolean,
+      control: "checkbox",
+      optional: true,
+      insertableBy: ['admins'],
+      editableBy: ['admins'],
+      viewableBy: ['guests'],
+      group: formGroups.admin,
+      order: 7
+    }
+  },
 
   // General ==========================
   {

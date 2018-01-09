@@ -4,6 +4,7 @@ Custom fields on Posts collection
 
 import { Posts } from '../../modules/posts/index.js';
 import { Questions } from '../../modules/questions/index.js';
+import { Hospitals } from '../../modules/hospitals/index.js';
 import { getCategoriesAsOptions } from './schema.js';
 
 Posts.addField([
@@ -49,6 +50,48 @@ Posts.addField([
 ]);
 
 Questions.addField([
+  {
+    fieldName: 'categoriesIds',
+    fieldSchema: {
+      type: String,
+      control: 'select',
+      optional: true,
+      insertableBy: ['members'],
+      editableBy: ['members'],
+      viewableBy: ['guests'],
+      options: props => {
+        return getCategoriesAsOptions(props.data.CategoriesList);
+      },
+      query: `
+        CategoriesList{
+          _id
+          name
+          slug
+          order
+        }
+      `,
+      resolveAs: {
+        fieldName: 'categories',
+        type: '[Category]',
+        resolver: async (post, args, {currentUser, Users, Categories}) => {
+          if (!post.categories) return [];
+          const categories = _.compact(await Categories.loader.loadMany(post.categories));
+          return Users.restrictViewableFields(currentUser, Categories, categories);
+        },
+        addOriginalField: true,
+      }
+    }
+  },
+  {
+    fieldName: 'categoriesIds.$',
+    fieldSchema: {
+      type: String,
+      optional: true
+    }
+  }
+]);
+
+Hospitals.addField([
   {
     fieldName: 'categoriesIds',
     fieldSchema: {

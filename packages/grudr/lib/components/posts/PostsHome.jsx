@@ -28,9 +28,12 @@ const PostsHome = ({currentUser}, props, context) => {
               <Components.PostsNewButton />
             </Components.ShowIf>*/}
           {/*<Components.PostsNewButton />*/}
-          <Link to={`/posts/new`} className="btn btn-floating pull-right waves-effect waves-light">
-            <Components.Icon name="add"/>
-          </Link>
+          
+          <Components.ShowIf check={Users.isWriter} document={currentUser}>
+            <Link to={`/posts/new`} className="btn btn-floating pull-right waves-effect waves-light">
+              <Components.Icon name="add"/>
+            </Link>
+          </Components.ShowIf>
           <Components.PostsList terms={terms}/>
         </Grid>
       </div>

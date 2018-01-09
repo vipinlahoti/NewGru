@@ -73,4 +73,5 @@ registerFragment(`
 extendFragment('UsersCurrent', `
   userRole
   isDoctor
+  isWriter
 `);

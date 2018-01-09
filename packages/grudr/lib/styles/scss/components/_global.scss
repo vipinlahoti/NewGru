@@ -53,6 +53,7 @@ body {
   position: relative;
   z-index: 1;
   background: $white-color;
+  min-height: 250px;
   @extend .z-depth-2;
 }
 

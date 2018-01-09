@@ -23,6 +23,12 @@ const UsersMenu = ({currentUser, client}) =>
         <MenuItem className="dropdown-item" eventKey="2"><FormattedMessage id="users.edit_account"/></MenuItem>
       </LinkContainer>
 
+      {Users.isDoctor(currentUser) ? 
+      <LinkContainer to={`/hospitals`}>
+        <MenuItem className="dropdown-item" eventKey="2"><FormattedMessage id="hospitals.hospitals"/></MenuItem>
+      </LinkContainer>
+      : null }
+
       {Users.isAdmin(currentUser) ? 
       <LinkContainer to={`/admin`}>
         <MenuItem className="dropdown-item" eventKey="2">Admin</MenuItem>
