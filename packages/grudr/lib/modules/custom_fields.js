@@ -5,7 +5,7 @@ import { Questions } from './questions/index.js';
 import Users from "meteor/vulcan:users";
 import FormsUpload from 'meteor/vulcan:forms-upload';
 import { userRole, gender, areaPractise, medicalCollege, certification, affiliation, awards } from './data';
-import TinyMCE from 'react-tinymce';
+// import TinyMCE from 'react-tinymce';
 
 const formGroups = {
   admin: {
@@ -179,6 +179,19 @@ Users.addField([
   },
   {
     fieldName: 'isWriter',
+    fieldSchema: {
+      type: Boolean,
+      control: "checkbox",
+      optional: true,
+      insertableBy: ['admins'],
+      editableBy: ['admins'],
+      viewableBy: ['guests'],
+      group: formGroups.admin,
+      order: 7
+    }
+  },
+  {
+    fieldName: 'isStudent',
     fieldSchema: {
       type: Boolean,
       control: "checkbox",

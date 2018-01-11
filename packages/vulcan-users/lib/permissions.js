@@ -58,10 +58,23 @@ Users.getGroups = user => {
     if (user.groups) { // custom groups
       userGroups = userGroups.concat(user.groups);
     } 
-    
+
     if (Users.isAdmin(user)) { // admin
       userGroups.push("admins");
     }
+
+    if (Users.isDoctor(user)) { // doctor
+      userGroups.push("doctors");
+    }
+
+    if (Users.isWriter(user)) { // Writer
+      userGroups.push("writers");
+    }
+
+    if (Users.isStudent(user)) { // student
+      userGroups.push("students");
+    }
+
 
   }
 
@@ -103,6 +116,15 @@ Users.isMemberOf = (user, groupOrGroups) => {
   
   // the admin group have their own function
   if (groups.indexOf('admin') !== -1) return Users.isAdmin(user);
+
+  // the doctors group have their own function
+  if (groups.indexOf('doctor') !== -1) return Users.isDoctor(user);
+
+  // the writers group have their own function
+  if (groups.indexOf('writer') !== -1) return Users.isWriter(user);
+
+  // the students group have their own function
+  if (groups.indexOf('student') !== -1) return Users.isStudent(user);
 
   // else test for the `groups` field
   return _.intersection(Users.getGroups(user), groups).length > 0;
@@ -180,6 +202,49 @@ Users.isAdmin = function (userOrUserId) {
   }
 };
 Users.isAdminById = Users.isAdmin;
+
+
+/**
+ * @summary Check if a user is an doctor
+ * @param {Object|string} userOrUserId - The user or their userId
+ */
+Users.isDoctor = function (userOrUserId) {
+  try {
+    var user = Users.getUser(userOrUserId);
+    return !!user && !!user.isDoctor;
+  } catch (e) {
+    return false; // user not logged in
+  }
+};
+Users.isDoctorById = Users.isDoctor;
+
+/**
+ * @summary Check if a user is an writer
+ * @param {Object|string} userOrUserId - The user or their userId
+ */
+Users.isWriter = function (userOrUserId) {
+  try {
+    var user = Users.getUser(userOrUserId);
+    return !!user && !!user.isWriter;
+  } catch (e) {
+    return false; // user not logged in
+  }
+};
+Users.isWriterById = Users.isWriter;
+
+/**
+ * @summary Check if a user is an student
+ * @param {Object|string} userOrUserId - The user or their userId
+ */
+Users.isStudent = function (userOrUserId) {
+  try {
+    var user = Users.getUser(userOrUserId);
+    return !!user && !!user.isStudent;
+  } catch (e) {
+    return false; // user not logged in
+  }
+};
+Users.isStudentById = Users.isStudent;
 
 /**
  * @summary Check if a user can view a field
@@ -278,6 +343,10 @@ Users.canEditField = function (user, field, document) {
  */
 Users.createGroup("guests"); // non-logged-in users
 Users.createGroup("members"); // regular users
+Users.createGroup("admins"); // admin users
+Users.createGroup("doctors"); // doctor users
+Users.createGroup("writers"); // writer users
+Users.createGroup("students"); // student users
 
 const membersActions = [
   "users.new", 
@@ -285,9 +354,6 @@ const membersActions = [
   "users.remove.own"
 ];
 Users.groups.members.can(membersActions);
-
-Users.createGroup("admins"); // admin users
-Users.createGroup("writers"); // admin users
 
 const adminActions = [
   "users.new", 

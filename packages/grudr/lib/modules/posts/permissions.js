@@ -35,7 +35,7 @@ const adminsActions = [
   'posts.view.rejected',
   'posts.view.spam',
   'posts.view.deleted',
-  'posts.new',
+  // 'posts.new',
   'posts.new.approved',
   'posts.edit.all',
   'posts.remove.all'

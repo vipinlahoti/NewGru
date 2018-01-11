@@ -44,8 +44,6 @@ class ModalTrigger extends PureComponent {
           show={this.state.modalIsOpen}
           onHide={this.closeModal}
           dialogClassName={this.props.dialogClassName}
-          backdrop={'static'}
-          keyboard={false}
         >
           {this.props.title ? this.renderHeader() : null}
           <Modal.Body>

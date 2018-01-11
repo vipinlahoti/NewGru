@@ -45,10 +45,10 @@ const HospitalsNewForm = (props, context) =>
   </div>
 
 HospitalsNewForm.propTypes = {
-  // closeModal: React.PropTypes.func,
-  router: React.PropTypes.object,
-  flash: React.PropTypes.func,
-  redirect: React.PropTypes.string,
+  // closeModal: PropTypes.func,
+  router: PropTypes.object,
+  flash: PropTypes.func,
+  redirect: PropTypes.string,
 }
 
 HospitalsNewForm.contextTypes = {

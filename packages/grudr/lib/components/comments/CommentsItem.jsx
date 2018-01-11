@@ -18,12 +18,10 @@ class CommentsItem extends PureComponent {
   }
 
   showReply(event) {
-    event.preventDefault();
     this.setState({showReply: true});
   }
 
   replyCancelCallback(event) {
-    event.preventDefault();
     this.setState({showReply: false});
   }
 
@@ -32,12 +30,10 @@ class CommentsItem extends PureComponent {
   }
 
   showEdit(event) {
-    event.preventDefault();
-    this.setState({showEdit: true});
+    this.setState({showEdit: true, showReply: false});
   }
 
   editCancelCallback(event) {
-    event.preventDefault();
     this.setState({showEdit: false});
   }
 
@@ -87,7 +83,7 @@ class CommentsItem extends PureComponent {
   renderReply() {
 
     return (
-      <div className="comments-item-reply">
+      <div className="children-document-form">
         <Components.CommentsNewForm
           postId={this.props.comment.postId}
           parentComment={this.props.comment}
@@ -102,12 +98,14 @@ class CommentsItem extends PureComponent {
   renderEdit() {
 
     return (
-      <Components.CommentsEditForm
-        comment={this.props.comment}
-        successCallback={this.editSuccessCallback}
-        cancelCallback={this.editCancelCallback}
-        removeSuccessCallback={this.removeSuccessCallback}
-      />
+      <div className="children-document-form">
+        <Components.CommentsEditForm
+          comment={this.props.comment}
+          successCallback={this.editSuccessCallback}
+          cancelCallback={this.editCancelCallback}
+          removeSuccessCallback={this.removeSuccessCallback}
+        />
+      </div>
     )
   }
 
@@ -142,4 +140,4 @@ CommentsItem.contextTypes = {
   intl: intlShape
 };
 
-registerComponent('CommentsItem', CommentsItem);
+registerComponent('CommentsItem', CommentsItem, withMessages);

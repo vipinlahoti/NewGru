@@ -12,7 +12,7 @@ Posts.addField([
     fieldName: 'categoriesIds',
     fieldSchema: {
       type: String,
-      control: 'select',
+      control: 'checkboxgroup',
       optional: true,
       insertableBy: ['members'],
       editableBy: ['members'],
@@ -54,7 +54,7 @@ Questions.addField([
     fieldName: 'categoriesIds',
     fieldSchema: {
       type: String,
-      control: 'select',
+      control: 'checkboxgroup',
       optional: true,
       insertableBy: ['members'],
       editableBy: ['members'],

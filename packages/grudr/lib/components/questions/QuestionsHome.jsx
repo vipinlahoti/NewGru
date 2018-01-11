@@ -1,5 +1,6 @@
 import { Components, registerComponent } from 'meteor/vulcan:core';
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Users from 'meteor/vulcan:users';
 import { FormattedMessage } from 'meteor/vulcan:i18n';
 import { Grid, Row, Col, Jumbotron } from 'react-bootstrap';
