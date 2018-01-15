@@ -22,6 +22,16 @@ const NavLoggedIn = () =>
         <Components.Icon name="forum"/> Questions
       </NavItem>
     </LinkContainer>
+    <LinkContainer to="/doctors">
+      <NavItem eventKey={4}>
+        <Components.Icon name="people"/> Doctors
+      </NavItem>
+    </LinkContainer>
+    <LinkContainer to="/clinics">
+      <NavItem eventKey={4}>
+        <Components.Icon name="local_hospital"/> Clinics
+      </NavItem>
+    </LinkContainer>
     <Components.UsersMenu/>
   </Nav>
 

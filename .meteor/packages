@@ -11,6 +11,7 @@ vulcan:i18n-en-us
 accounts-password@1.4.0
 # accounts-twitter
 # accounts-facebook
+# accounts-google
 
 ############ Your Packages ############
 
@@ -26,3 +27,4 @@ accounts-password@1.4.0
 
 vulcan:debug
 grudr
+# erikdakoda:vulcan-material-ui

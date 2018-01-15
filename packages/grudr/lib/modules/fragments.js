@@ -27,6 +27,7 @@ registerFragment(`
     userRole
     userRolePrefix
     isDoctor
+    groups
   }
 `);
 

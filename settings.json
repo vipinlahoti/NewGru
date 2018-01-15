@@ -15,21 +15,52 @@
     "twitterAccount": "foo",
     "facebookPage": "http://facebook.com/foo",
 
-    "googleAnalyticsId":"123foo"
+    "googleAnalyticsId":"123foo",
+
+    "cloudinaryCloudName": "grudr",
+    "cloudinary": {
+      "cloudName": "grudr",
+      "apiKey": "991183798858865",
+      "apiSecret": "mveQju_0JQnN_qXgi2J_7vm9-kY"
+    },
+    "forum": {
+      "maxPostsPerDay" : "10"
+    }
 
   },
 
-  "defaultEmail": "hello@world.com",
-  "mailUrl": "smtp://username%40yourdomain.mailgun.org:yourpassword123@smtp.mailgun.org:587/",
+  "cloudinaryAPIKey": "991183798858865",
+  "cloudinaryAPISecret": "mveQju_0JQnN_qXgi2J_7vm9-kY",
 
+  "defaultEmail": "no-reply@grudr.com",
+  "mailUrl": "smtp://postmaster@support.grudr.com:02e5413aa560eeda1ba4012cd44725b0@smtp.mailgun.org:587/",
+
+  "categories": [
+    {
+      "name": "Dentistry",
+      "description": "Dentistry",
+      "order": 1,
+      "slug": "dentistry"
+    },
+    {
+      "name": "Dentistry - Community Dentistry",
+      "description": "Dentistry - Community Dentistry",
+      "order": 2,
+      "slug": "dentistry-community-dentistry"
+    }
+  ],
   "oAuth": {
     "twitter": {
       "consumerKey": "foo",
       "secret": "bar"
     },
+    "google": {
+      "clientId": "1040815008079-v39nlukl22qvt5kmvh9d65m4k0c4ek4k.apps.googleusercontent.com",
+      "secret": "dNY2M9EINupCoNnjOXtZqgua"
+    },
     "facebook": {
-      "appId": "foo",
-      "secret": "bar"
+      "appId": "298882297161655",
+      "secret": "bb2ef66461c326d2f8561f1e901cd287"
     }
   }
 }

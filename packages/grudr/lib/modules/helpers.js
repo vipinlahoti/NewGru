@@ -4,10 +4,8 @@ import { addCallback } from 'meteor/vulcan:lib';
 function userRoleAddPrefix (modifier) {
   if (modifier.$set && modifier.$set.userRole === 'Doctor') {
     modifier.$set.userRolePrefix = 'Dr.';
-    modifier.$set.isDoctor = true;
   } else {
     modifier.$set.userRolePrefix = ' ';
-    modifier.$set.isDoctor = false;
   }
   return modifier;
 }
@@ -51,3 +49,12 @@ Users.getDisplayName = function (user) {
     return (userRole + ' ' + user.displayName) ? (userRole + ' ' + user.displayName) : (userRole + ' ' + Users.getUserName(user));
   }
 };
+
+Users.addView('doctorsList', terms => ({
+  selector: {
+    isDoctor: true
+  },
+  options: {
+    sort: {createdAt: -1}
+  }
+}));

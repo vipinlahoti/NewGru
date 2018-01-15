@@ -47,14 +47,17 @@ class QuestionsDay extends PureComponent {
     }
 
     return (
-      <div className="questions-day">
-        <div className="questions-day-heading-wrapper">
-          { dateHeading }
-        </div>
-        { noQuestions ? <Components.QuestionsNoResults /> :
-          <div className="questions-list">
-            <div className="questions-list-content">
-              {questions.map((question, index) => <Components.QuestionsItem question={question} key={question._id} index={index} currentUser={this.props.currentUser} />)}
+      <div>
+        { noQuestions ? null :
+          <div className="questions-day">
+            <div className="questions-day-heading-wrapper">
+              { dateHeading }
+            </div>
+          
+            <div className="questions-list">
+              <div className="questions-list-content">
+                {questions.map((question, index) => <Components.QuestionsItem question={question} key={question._id} index={index} currentUser={this.props.currentUser} />)}
+              </div>
             </div>
           </div>
         }

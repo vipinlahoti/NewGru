@@ -174,24 +174,19 @@ Users.addField([
       editableBy: ['admins'],
       viewableBy: ['guests'],
       group: formGroups.admin,
-      order: 7
+      order: 7,
+      onEdit: (modifier) => {
+        if (modifier.$set.userRole === 'Doctor') {
+          return (
+            modifier.$set.isDoctor = true
+            // Utils.slugify(modifier.$set.title);
+          )
+        }
+      }
     }
   },
   {
     fieldName: 'isWriter',
-    fieldSchema: {
-      type: Boolean,
-      control: "checkbox",
-      optional: true,
-      insertableBy: ['admins'],
-      editableBy: ['admins'],
-      viewableBy: ['guests'],
-      group: formGroups.admin,
-      order: 7
-    }
-  },
-  {
-    fieldName: 'isStudent',
     fieldSchema: {
       type: Boolean,
       control: "checkbox",
@@ -283,9 +278,9 @@ Users.addField([
       type: String,
       control: "select",
       optional: true,
-      insertableBy: ['members'],
-      editableBy: ['members'],
-      viewableBy: ['members'],
+      viewableBy: ['admins'],
+      insertableBy: ['doctors'],
+      editableBy: ['doctors'],
       form: {
         options: medicalCollege
       },
@@ -369,9 +364,8 @@ Users.addField([
       type: String,
       control: "select",
       optional: true,
-      insertableBy: ['members'],
-      editableBy: ['members'],
-      viewableBy: ['members'],
+      insertableBy: ['doctors'],
+      editableBy: ['doctors'],
       form: {
         options: certification
       },
@@ -385,9 +379,8 @@ Users.addField([
       type: String,
       control: "select",
       optional: true,
-      insertableBy: ['members'],
-      editableBy: ['members'],
-      viewableBy: ['members'],
+      insertableBy: ['doctors'],
+      editableBy: ['doctors'],
       form: {
         options: affiliation
       },
@@ -401,9 +394,8 @@ Users.addField([
       type: String,
       control: "select",
       optional: true,
-      insertableBy: ['members'],
-      editableBy: ['members'],
-      viewableBy: ['members'],
+      insertableBy: ['doctors'],
+      editableBy: ['doctors'],
       form: {
         options: awards
       },

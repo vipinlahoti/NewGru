@@ -9,10 +9,12 @@ import '../components/common/NewsletterButton.jsx';
 import '../components/common/SearchForm.jsx';
 import '../components/common/Vote.jsx';
 import '../components/common/Error404.jsx';
+import '../components/common/Datatable.jsx';
 
 
 // Pages
 import '../components/pages/HomePage.jsx';
+import '../components/pages/Clinics.jsx';
 
 
 // Posts
@@ -128,3 +130,4 @@ import '../components/users/UsersAvatar.jsx';
 import '../components/users/UsersName.jsx';
 import '../components/users/UsersMenu.jsx';
 import '../components/users/UsersAccountMenu.jsx';
+import '../components/users/doctors/DoctorsList.jsx';

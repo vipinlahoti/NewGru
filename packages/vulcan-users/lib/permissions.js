@@ -118,13 +118,13 @@ Users.isMemberOf = (user, groupOrGroups) => {
   if (groups.indexOf('admin') !== -1) return Users.isAdmin(user);
 
   // the doctors group have their own function
-  if (groups.indexOf('doctor') !== -1) return Users.isDoctor(user);
+  if (groups.indexOf('doctors') !== -1) return Users.isDoctor(user);
 
   // the writers group have their own function
-  if (groups.indexOf('writer') !== -1) return Users.isWriter(user);
+  if (groups.indexOf('writers') !== -1) return Users.isWriter(user);
 
   // the students group have their own function
-  if (groups.indexOf('student') !== -1) return Users.isStudent(user);
+  if (groups.indexOf('students') !== -1) return Users.isStudent(user);
 
   // else test for the `groups` field
   return _.intersection(Users.getGroups(user), groups).length > 0;

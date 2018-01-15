@@ -7,7 +7,7 @@ Static data
 
 export const userRole = [
   { value: 'Doctor', label: 'Doctor' },
-  { value: 'Student', label: 'Student' }
+  { value: 'Patient', label: 'Patient' }
 ]
 
 export const gender = [

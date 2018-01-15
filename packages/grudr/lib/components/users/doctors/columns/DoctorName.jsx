@@ -3,16 +3,9 @@ import Users from 'meteor/vulcan:users';
 import { Components } from 'meteor/vulcan:core';
 
 const AdminUsersName = ({ document: user, flash }) => 
-  <div>
-
-    <Components.UsersAvatar user={user} size="small"/>
-
-    <span>{Users.getDisplayName(user)}</span>
-
-    &nbsp;
-
-    {_.rest(Users.getGroups(user)).map(group => <code key={group}>{group}</code>)}
-  
+  <div className="author">
+    <Components.UsersAvatar user={user} size="large"/>
+    <h5 className="title left"><Components.UsersName user={user}/></h5>
   </div>
 
 export default AdminUsersName;

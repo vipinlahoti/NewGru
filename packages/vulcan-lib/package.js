@@ -19,7 +19,7 @@ Package.onUse(function (api) {
     'mongo',
     'tracker',
     'service-configuration',
-    'standard-minifiers',
+    // 'standard-minifiers',
     'modules',
     'accounts-base',
     'check',

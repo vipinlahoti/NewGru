@@ -63,5 +63,7 @@ Utils.icons = {
   down: 'keyboard_arrow_down',
   up: 'keyboard_arrow_up',
   spinner: "spinner",
-  check_circle: 'check_circle'
+  check_circle: 'check_circle',
+  local_hospital: 'local_hospital',
+  people: 'people'
 };
