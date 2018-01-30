@@ -33,10 +33,7 @@ VulcanEmail.addEmails({
 
           _id
           title
-          url
           pageUrl
-          linkUrl
-          domain
           htmlBody
           thumbnailUrl
           commentsCount

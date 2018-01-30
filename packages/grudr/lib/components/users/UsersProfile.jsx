@@ -40,10 +40,7 @@ const UsersProfile = (props) => {
                         <Components.Avatar user={user} link={false} />
                       </div>
                       <div className="profile-initials left">
-                        <h4 className="title">{Users.getDisplayName(user)}
-
-                        <span>{Users.isDoctor(user)}</span>
-                        </h4>
+                        <h4 className="title">{Users.getDisplayName(user)}</h4>
                         <p className="title profile-certificates"></p>
                       </div>
                     </div>

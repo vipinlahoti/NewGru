@@ -14,35 +14,6 @@ registerSetting('forum.requirePostsApproval', false, 'Require posts to be approv
 registerSetting('twitterAccount', null, 'Twitter account associated with the app');
 registerSetting('siteUrl', null, 'Main site URL');
 
-//////////////////
-// Link Helpers //
-//////////////////
-
-/**
- * @summary Return a post's link if it has one, else return its post page URL
- * @param {Object} post
- */
-Posts.getLink = function (post, isAbsolute = false, isRedirected = true) {
-  const url = isRedirected ? Utils.getOutgoingUrl(post.url) : post.url;
-  return !!post.url ? url : Posts.getPageUrl(post, isAbsolute);
-};
-
-/**
- * @summary Depending on the settings, return either a post's URL link (if it has one) or its page URL.
- * @param {Object} post
- */
-Posts.getShareableLink = function (post) {
-  return getSetting('forum.outsideLinksPointTo', 'link') === 'link' ? Posts.getLink(post) : Posts.getPageUrl(post, true);
-};
-
-/**
- * @summary Whether a post's link should open in a new tab or not
- * @param {Object} post
- */
-Posts.getLinkTarget = function (post) {
-  return !!post.url ? '_blank' : '';
-};
-
 /**
  * @summary Get URL of a post page.
  * @param {Object} post
@@ -105,21 +76,6 @@ Posts.isApproved = function (post) {
  */
 Posts.isPending = function (post) {
   return post.status === Posts.config.STATUS_PENDING;
-};
-
-
-/**
- * @summary Check to see if post URL is unique.
- * We need the current user so we know who to upvote the existing post as.
- * @param {String} url
- */
-Posts.checkForSameUrl = function (url) {
-
-  // check that there are no previous posts with the same link in the past 6 months
-  var sixMonthsAgo = moment().subtract(6, 'months').toDate();
-  var postWithSameLink = Posts.findOne({url: url, postedAt: {$gte: sixMonthsAgo}});
-
-  return !!postWithSameLink;
 };
 
 /**

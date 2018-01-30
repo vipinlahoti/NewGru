@@ -37,8 +37,8 @@ const UsersEditForm = (props, context) => {
                           "avatarUrl",
                           "displayName",
                           "email",
+                          "mobileNumber",
                           "gender",
-                          "college",
                           "country",
                           "state",
                           "city",
@@ -54,13 +54,12 @@ const UsersEditForm = (props, context) => {
                       />
                     </Tab>
 
-                    <Components.ShowIf
-                      check={() => Users.isDoctor(props.currentUser)}
-                    >
+                    
                       <Tab eventKey={2} title="Profession">
                         <Components.SmartForm
                           layout="vertical"
                           fields={[
+                            "college",
                             "professionalLicenseNumber",
                             "certification",
                             "affiliation",
@@ -74,7 +73,6 @@ const UsersEditForm = (props, context) => {
                           showRemove={false}
                         />
                       </Tab>
-                    </Components.ShowIf>
 
                     <Tab eventKey={3} title="Notifications">
                       <Components.SmartForm

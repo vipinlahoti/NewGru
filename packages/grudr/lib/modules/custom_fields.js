@@ -99,6 +99,15 @@ Users.addField([
     }
   },
   {
+  fieldName: 'email',
+    fieldSchema: {
+      insertableBy: ['guests'],
+      editableBy: ['admins'],
+      group: formGroups.general,
+      order: 3
+    }
+  },
+  {
     fieldName: 'mobileNumber',
     fieldSchema: {
       type: String,
@@ -107,15 +116,6 @@ Users.addField([
       insertableBy: ['members'],
       editableBy: ['members'],
       viewableBy: ['members'],
-      group: formGroups.general,
-      order: 3
-    }
-  },
-  {
-  fieldName: 'email',
-    fieldSchema: {
-      insertableBy: ['guests'],
-      editableBy: ['admins'],
       group: formGroups.general,
       order: 4
     }
@@ -134,22 +134,6 @@ Users.addField([
       },
       group: formGroups.general,
       order: 5
-    }
-  },
-  {
-    fieldName: 'college',
-    fieldSchema: {
-      type: String,
-      control: "select",
-      optional: true,
-      insertableBy: ['members'],
-      editableBy: ['members'],
-      viewableBy: ['members'],
-      form: {
-        options: medicalCollege
-      },
-      group: formGroups.general,
-      order: 6
     }
   },
   {
@@ -212,9 +196,24 @@ Users.addField([
       order: 10
     }
   },
-  
 
   // Profession =========================
+  {
+    fieldName: 'college',
+    fieldSchema: {
+      type: String,
+      control: "select",
+      optional: true,
+      insertableBy: ['members'],
+      editableBy: ['members'],
+      viewableBy: ['members'],
+      form: {
+        options: medicalCollege
+      },
+      group: formGroups.profession,
+      order: 1
+    }
+  },
   {
   fieldName: 'professionalLicenseNumber',
     fieldSchema: {
@@ -226,7 +225,7 @@ Users.addField([
       insertableBy: ['members'],
       editableBy: ['members'],
       group: formGroups.profession,
-      order: 1
+      order: 2
     }
   },
   {

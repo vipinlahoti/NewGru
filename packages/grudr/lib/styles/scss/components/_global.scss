@@ -697,3 +697,18 @@ td, th{
     }
   }
 }
+
+
+.admin-layout {
+  nav.navbar {
+    position: static;
+  }
+  .subheader {
+    background: $rose-color;
+
+    nav.navbar {
+      height: 50px;
+      padding: 0;
+    }
+  }
+}

@@ -43,6 +43,7 @@ registerFragment(`
     # website
 
     gender
+    mobileNumber
     college
     city
     state
@@ -64,4 +65,11 @@ registerFragment(`
 
 extendFragment('UsersCurrent', `
   userRole
+`);
+
+
+extendFragment('UsersAdmin', `
+  posts(limit: 5){
+    ...PostsList
+  }
 `);

@@ -66,28 +66,6 @@ const schema = {
     }
   },
   /**
-    URL
-  */
-  url: {
-    type: String,
-    optional: true,
-    max: 500,
-    viewableBy: ['guests'],
-    insertableBy: ['members'],
-    editableBy: ['members'],
-    control: 'url',
-    order: 10,
-    searchable: true,
-    form: {
-      query: `
-        SiteData{
-          logoUrl
-          title
-        }
-      `,
-    },
-  },
-  /**
     Title
   */
   title: {
@@ -355,19 +333,6 @@ const schema = {
   },
 
   // GraphQL-only fields
-
-  domain: {
-    type: String,
-    optional: true,
-    viewableBy: ['guests'],
-    resolveAs: {
-      type: 'String',
-      resolver: (post, args, context) => {
-        return Utils.getDomain(post.url);
-      },
-    }
-  },
-
   pageUrl: {
     type: String,
     optional: true,
@@ -376,18 +341,6 @@ const schema = {
       type: 'String',
       resolver: (post, args, { Posts }) => {
         return Posts.getPageUrl(post, true);
-      },
-    }
-  },
-
-  linkUrl: {
-    type: String,
-    optional: true,
-    viewableBy: ['guests'],
-    resolveAs: {
-      type: 'String',
-      resolver: (post, args, { Posts }) => {
-        return post.url ? Utils.getOutgoingUrl(post.url) : Posts.getPageUrl(post, true);
       },
     }
   },

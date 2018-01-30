@@ -59,3 +59,12 @@ import '../components/users/UsersProfile.jsx';
 import '../components/users/UsersProfileCheck.jsx';
 import '../components/users/UsersName.jsx';
 import '../components/users/UsersMenu.jsx';
+
+
+// Admin
+import '../components/admin/AdminUsersPosts';
+import '../components/admin/PostsDashboard';
+import '../components/common/AdminHeader';
+import '../components/common/AdminLayout';
+
+

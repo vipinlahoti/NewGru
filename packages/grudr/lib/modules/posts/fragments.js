@@ -5,7 +5,6 @@ registerFragment(`
     # posts
     _id
     title
-    # url
     slug
     postedAt
     createdAt

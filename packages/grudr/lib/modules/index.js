@@ -1,3 +1,4 @@
+import './groups.js';
 import './voting.js';
 import './fragments.js';
 import './components.js';
@@ -9,6 +10,8 @@ import './icons.js';
 import './data.js';
 import './custom_fields.js';
 import './helpers.js';
+import './admin.js';
+
 
 export { Posts }  from './posts/index.js';
 export { Categories } from './categories/index.js';
