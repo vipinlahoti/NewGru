@@ -5,6 +5,8 @@ addRoute([
 
   {name:'posts.list',         path:'posts',                 componentName: 'PostsHome'},
   {name:'posts.single',       path:'posts/:_id(/:slug)',    componentName: 'PostsSingle'},
+
+  {name:'hospitals.new',      path:'hospitals/new',         componentName: 'HospitalsNewForm'},
   
   {name:'users.single',       path:'users/:slug',           componentName: 'UsersSingle'},
   {name:'users.account',      path:'account',               componentName: 'UsersAccount'},

@@ -15,6 +15,31 @@ import '../components/common/Loading.jsx';
 import '../components/common/Error404.jsx';
 
 
+// Users
+import '../components/users/UsersSingle.jsx';
+import '../components/users/UsersAccount.jsx';
+import '../components/users/UsersEditForm.jsx';
+import '../components/users/UsersProfile.jsx';
+import '../components/users/UsersProfileCheck.jsx';
+import '../components/users/UsersName.jsx';
+import '../components/users/UsersMenu.jsx';
+
+
+// Admin
+import '../components/admin/AdminUsersPosts';
+import '../components/admin/PostsDashboard';
+import '../components/common/AdminHeader';
+import '../components/common/AdminLayout';
+
+
+// Categories
+import '../components/categories/CategoriesList.jsx';
+import '../components/categories/CategoriesNode.jsx';
+import '../components/categories/Category.jsx';
+import '../components/categories/CategoriesEditForm.jsx';
+import '../components/categories/CategoriesNewForm.jsx';
+
+
 // Posts
 import '../components/posts/PostsHome.jsx';
 import '../components/posts/PostsSingle.jsx';
@@ -43,28 +68,10 @@ import '../components/comments/CommentsEditForm.jsx';
 import '../components/comments/CommentsLoadMore.jsx';
 
 
-// Categories
-import '../components/categories/CategoriesList.jsx';
-import '../components/categories/CategoriesNode.jsx';
-import '../components/categories/Category.jsx';
-import '../components/categories/CategoriesEditForm.jsx';
-import '../components/categories/CategoriesNewForm.jsx';
-
-
-// Users
-import '../components/users/UsersSingle.jsx';
-import '../components/users/UsersAccount.jsx';
-import '../components/users/UsersEditForm.jsx';
-import '../components/users/UsersProfile.jsx';
-import '../components/users/UsersProfileCheck.jsx';
-import '../components/users/UsersName.jsx';
-import '../components/users/UsersMenu.jsx';
-
-
-// Admin
-import '../components/admin/AdminUsersPosts';
-import '../components/admin/PostsDashboard';
-import '../components/common/AdminHeader';
-import '../components/common/AdminLayout';
-
-
+// Hospitals
+import '../components/hospitals/HospitalsEditForm.jsx';
+import '../components/hospitals/HospitalsNewForm.jsx';
+import '../components/hospitals/HospitalsPage.jsx';
+import '../components/hospitals/HospitalsSingle.jsx';
+import '../components/hospitals/HospitalsStats.jsx';
+import '../components/hospitals/HospitalsThumbnail.jsx';

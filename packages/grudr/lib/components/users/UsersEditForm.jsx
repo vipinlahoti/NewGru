@@ -5,6 +5,7 @@ import { FormattedMessage, intlShape } from 'meteor/vulcan:i18n';
 import Users from 'meteor/vulcan:users';
 import { STATES } from 'meteor/vulcan:accounts';
 import { Grid, Row, Col, Jumbotron, Tabs, Tab } from 'react-bootstrap';
+import { Hospitals } from '../../modules/hospitals/index.js';
 
 const UsersEditForm = (props, context) => {
   return (
@@ -54,7 +55,7 @@ const UsersEditForm = (props, context) => {
                       />
                     </Tab>
 
-                    
+                    <Components.ShowIf check={Hospitals.options.mutations.new.check}>
                       <Tab eventKey={2} title="Profession">
                         <Components.SmartForm
                           layout="vertical"
@@ -73,6 +74,7 @@ const UsersEditForm = (props, context) => {
                           showRemove={false}
                         />
                       </Tab>
+                    </Components.ShowIf>
 
                     <Tab eventKey={3} title="Notifications">
                       <Components.SmartForm

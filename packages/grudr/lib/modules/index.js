@@ -17,4 +17,7 @@ export { Posts }  from './posts/index.js';
 export { Categories } from './categories/index.js';
 export { Comments }  from './comments/index.js';
 
+export { Hospitals }  from './hospitals/index.js';
+export { Reviews }  from './reviews/index.js';
+
 import './notifications/index.js';

@@ -13,17 +13,11 @@ import Users from 'meteor/vulcan:users';
  * @namespace Posts
  */
 export const Posts = createCollection({
-
   collectionName: 'Posts',
-
   typeName: 'Post',
-
   schema,
-
   resolvers: getDefaultResolvers('Posts'),
-
   mutations: getDefaultMutations('Posts'),
-
 });
 
 // refactor: moved here from schema.js

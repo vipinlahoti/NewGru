@@ -8,6 +8,7 @@ import MenuItem from 'react-bootstrap/lib/MenuItem';
 import { LinkContainer } from 'react-router-bootstrap';
 import Users from 'meteor/vulcan:users';
 import { withApollo } from 'react-apollo';
+import { Hospitals } from '../../modules/hospitals/index.js';
 
 const UsersMenu = ({currentUser, client}) =>
   <Dropdown id="user-dropdown">
@@ -23,15 +24,21 @@ const UsersMenu = ({currentUser, client}) =>
         <MenuItem className="dropdown-item" eventKey="2"><FormattedMessage id="users.edit_account"/></MenuItem>
       </LinkContainer>
 
+      <Components.ShowIf check={Hospitals.options.mutations.new.check}>
+        <LinkContainer to={`/hospitals/new`}>
+          <MenuItem className="dropdown-item" eventKey="3">Add Hospital</MenuItem>
+        </LinkContainer>
+      </Components.ShowIf>
+
       <Components.ShowIf
         check={() => Users.isAdmin(currentUser)}
       >
         <LinkContainer to={`/admin`}>
-          <MenuItem className="dropdown-item" eventKey="3">Admin</MenuItem>
+          <MenuItem className="dropdown-item" eventKey="4">Admin</MenuItem>
         </LinkContainer>
       </Components.ShowIf>
 
-      <MenuItem className="dropdown-item" eventKey="4" onClick={() => Meteor.logout(() => client.resetStore())}><FormattedMessage id="users.log_out"/></MenuItem>
+      <MenuItem className="dropdown-item" eventKey="5" onClick={() => Meteor.logout(() => client.resetStore())}><FormattedMessage id="users.log_out"/></MenuItem>
     </Dropdown.Menu>
   </Dropdown>
 

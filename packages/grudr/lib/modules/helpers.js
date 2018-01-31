@@ -23,17 +23,3 @@ Users.getDisplayName = function (user) {
     return (userRole + ' ' + user.displayName) ? (userRole + ' ' + user.displayName) : (userRole + ' ' + Users.getUserName(user));
   }
 };
-
-/**
- * @summary Check if a user is a doctor
- * @param {Object|string} userOrUserId - The user or their userId
- */
-Users.isDoctor = function (userOrUserId) {
-  try {
-    var user = Users.getUser(userOrUserId);
-    return !!user && !!user.isDoctor;
-  } catch (e) {
-    return false; // user not logged in
-  }
-};
-Users.isDoctorById = Users.isDoctor;
