@@ -3,8 +3,41 @@
  */
 
 import Users from 'meteor/vulcan:users';
+import { getHospitalsAsOptions } from './schema.js';
 
 Users.addField([
+  /**
+    hospital list
+  */
+  {
+    fieldName: 'hospitalName',
+    fieldSchema: {
+      type: Array,
+      control: 'select',
+      optional: true,
+      insertableBy: ['members'],
+      editableBy: ['members'],
+      viewableBy: ['guests'],
+      options: props => {
+        return getHospitalsAsOptions(props.data.HospitalsList);
+      },
+      query: `
+        HospitalsList{
+          _id
+          name
+          slug
+        }
+      `,
+      
+    }
+  },
+  {
+    fieldName: 'hospitalName.$',
+    fieldSchema: {
+      type: String,
+      optional: true
+    }
+  },
   /**
     Count of the user's hospitals
   */

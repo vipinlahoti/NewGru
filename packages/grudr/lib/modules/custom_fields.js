@@ -136,66 +136,7 @@ Users.addField([
       order: 5
     }
   },
-  {
-  fieldName: 'country',
-    fieldSchema: {
-      type: String,
-      optional: true,
-      viewableBy: ['guests'],
-      insertableBy: ['members'],
-      editableBy: ['members'],
-      group: formGroups.general,
-      order: 7
-    }
-  },
-  {
-  fieldName: 'state',
-    fieldSchema: {
-      type: String,
-      optional: true,
-      viewableBy: ['guests'],
-      insertableBy: ['members'],
-      editableBy: ['members'],
-      group: formGroups.general,
-      order: 8
-    }
-  },
-  {
-  fieldName: 'city',
-    fieldSchema: {
-      type: String,
-      optional: true,
-      viewableBy: ['guests'],
-      insertableBy: ['members'],
-      editableBy: ['members'],
-      group: formGroups.general,
-      order: 9
-    }
-  },
-  {
-    fieldName: 'address',
-    fieldSchema: {
-      type: String,
-      optional: true,
-      viewableBy: ['guests'],
-      insertableBy: ['members'],
-      editableBy: ['members'],
-      group: formGroups.general,
-      order: 10
-    }
-  },
-  {
-    fieldName: 'address2',
-    fieldSchema: {
-      type: String,
-      optional: true,
-      viewableBy: ['guests'],
-      insertableBy: ['members'],
-      editableBy: ['members'],
-      group: formGroups.general,
-      order: 10
-    }
-  },
+  
 
   // Profession =========================
   {

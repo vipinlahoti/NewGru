@@ -55,12 +55,13 @@ const UsersEditForm = (props, context) => {
                       />
                     </Tab>
 
-                    <Components.ShowIf check={Hospitals.options.mutations.new.check}>
+                    {Users.canDo(props.currentUser, 'hospitals.new') ?
                       <Tab eventKey={2} title="Profession">
                         <Components.SmartForm
                           layout="vertical"
                           fields={[
                             "college",
+                            "hospitalName",
                             "professionalLicenseNumber",
                             "certification",
                             "affiliation",
@@ -74,7 +75,7 @@ const UsersEditForm = (props, context) => {
                           showRemove={false}
                         />
                       </Tab>
-                    </Components.ShowIf>
+                    : null }
 
                     <Tab eventKey={3} title="Notifications">
                       <Components.SmartForm

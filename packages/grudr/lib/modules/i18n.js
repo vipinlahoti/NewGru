@@ -4,6 +4,14 @@ addStrings('en', {
   'users.avatarUrl': 'Profile Image',
   "users.userRole": "Select your profile type",
 
+  'hospitals.name': 'Clinic / Hospital Name',
+  'hospitals.thumbnailUrl': 'Clinic / Hospital Logo',
+  'hospitals.contact': 'Contact number',
+  'hospitals.consultationFee': 'Consultation fee',
+  'hospitals.edit': 'Edit',
+  'hospitals.edit_success': 'Hospital “{title}” edited.',
+  'hospitals.no_results': 'No Hospitals to display.',
+
   'posts.new_post': 'New Post',
   'posts.edit': 'Edit',
   'posts.edit_success': 'Post “{title}” edited.',

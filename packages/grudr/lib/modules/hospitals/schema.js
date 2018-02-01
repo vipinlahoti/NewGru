@@ -6,6 +6,15 @@ import Users from 'meteor/vulcan:users';
 import { Utils } from 'meteor/vulcan:core';
 import FormsUpload from 'meteor/vulcan:forms-upload';
 
+export function getHospitalsAsOptions (hospitals) {
+  // give the form component (here: checkboxgroup) exploitable data
+  return hospitals.map(hospital => ({
+    value: hospital._id,
+    label: hospital.name,
+    // slug: hospital.slug, // note: it may be used to look up from prefilled props
+  }));
+}
+
 /**
  * @summary Hospitals config namespace
  * @type {Object}
@@ -86,6 +95,57 @@ const schema = {
         preset: 'article_thumbnail'
       }
     }
+  },
+  contact: {
+    type: String,
+    control: "number",
+    optional: true,
+    insertableBy: ['members'],
+    editableBy: ['members'],
+    viewableBy: ['members']
+  },
+  consultationFee: {
+    type: String,
+    control: "number",
+    optional: true,
+    insertableBy: ['members'],
+    editableBy: ['members'],
+    viewableBy: ['members']
+  },
+  country: {
+    type: String,
+    optional: true,
+    viewableBy: ['guests'],
+    insertableBy: ['members'],
+    editableBy: ['members']
+  },
+  state: {
+    type: String,
+    optional: true,
+    viewableBy: ['guests'],
+    insertableBy: ['members'],
+    editableBy: ['members']
+  },
+  city: {
+    type: String,
+    optional: true,
+    viewableBy: ['guests'],
+    insertableBy: ['members'],
+    editableBy: ['members']
+  },
+  address: {
+    type: String,
+    optional: true,
+    viewableBy: ['guests'],
+    insertableBy: ['members'],
+    editableBy: ['members']
+  },
+  address2: {
+    type: String,
+    optional: true,
+    viewableBy: ['guests'],
+    insertableBy: ['members'],
+    editableBy: ['members']
   },
   /**
     Count of how many times the hospital's page was viewed

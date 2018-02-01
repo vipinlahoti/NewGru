@@ -28,6 +28,8 @@ import '../components/users/UsersMenu.jsx';
 // Admin
 import '../components/admin/AdminUsersPosts';
 import '../components/admin/PostsDashboard';
+import '../components/admin/AdminUsersHospitals';
+import '../components/admin/HospitalsDashboard';
 import '../components/common/AdminHeader';
 import '../components/common/AdminLayout';
 
@@ -75,3 +77,4 @@ import '../components/hospitals/HospitalsPage.jsx';
 import '../components/hospitals/HospitalsSingle.jsx';
 import '../components/hospitals/HospitalsStats.jsx';
 import '../components/hospitals/HospitalsThumbnail.jsx';
+import '../components/hospitals/HospitalsList.jsx';

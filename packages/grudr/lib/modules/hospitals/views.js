@@ -7,8 +7,6 @@ import { Hospitals } from './collection.js'
 Hospitals.addView('userHospitals', terms => ({
   selector: {
     userId: terms.userId,
-    status: Hospitals.config.STATUS_APPROVED,
-    isFuture: {$ne: true}
   },
   options: {
     limit: 5,

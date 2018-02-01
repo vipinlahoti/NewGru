@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { intlShape, FormattedMessage } from 'meteor/vulcan:i18n';
 import { withRouter } from 'react-router'
 import { Hospitals } from '../../modules/hospitals/index.js';
+import { Grid, Row, Col, Jumbotron } from 'react-bootstrap';
+
 
 const HospitalsNewForm = (props, context) => {
   if (props.loading) {
@@ -21,31 +23,46 @@ const HospitalsNewForm = (props, context) => {
         </div>
       }
     >
-      <div className="hospitals-new-form">
-        <Components.SmartForm
-          layout="vertical"
-          collection={Hospitals}
-          mutationFragment={getFragment('HospitalsPage')}
-          successCallback={hospital => {
-            props.closeModal();
-            props.router.push({pathname: props.redirect || Hospitals.getPageUrl(hospital)});
-            props.flash(context.intl.formatMessage({id: "hospitals.created_message"}), "success");
-          }}
-        />
+      <div>
+        <Jumbotron>
+          <Grid>
+            <Row>
+              <Col md={8}>
+                <h3 className="title">Add a Hospital</h3>
+                <h5>Meet the amazing team behind this project and find out more about how we work.</h5>
+              </Col>
+            </Row>
+          </Grid>
+        </Jumbotron>
+        <div className="main">
+          <Grid>
+            <Row>
+              <Col md={8} mdOffset={2}>
+                <Components.SmartForm
+                  layout="vertical"
+                  collection={Hospitals}
+                  mutationFragment={getFragment('HospitalsPage')}
+                  successCallback={hospital => {
+                    props.router.push({pathname: props.redirect || Hospitals.getPageUrl(hospital)});
+                    props.flash(context.intl.formatMessage({id: "hospitals.created_message"}), "success");
+                  }}
+                />
+              </Col>
+            </Row>
+          </Grid>
+        </div>
       </div>
     </Components.ShowIf>
   );
 };
 
 HospitalsNewForm.propTypes = {
-  closeModal: PropTypes.func,
   router: PropTypes.object,
   flash: PropTypes.func,
   redirect: PropTypes.string,
 }
 
 HospitalsNewForm.contextTypes = {
-  closeCallback: PropTypes.func,
   intl: intlShape
 };
 

@@ -12,7 +12,8 @@ addRoute([
   {name:'users.account',      path:'account',               componentName: 'UsersAccount'},
   {name:'users.edit',         path:'users/:slug/edit',      componentName: 'UsersAccount'},
 
-  {name: 'posts.dashboard',   path:'/admin/posts',          componentName: 'PostsDashboard',    layoutName: 'AdminLayout'},
+  {name:'posts.dashboard',   path:'/admin/posts',          componentName: 'PostsDashboard',    layoutName: 'AdminLayout'},
+  {name:'hospitals.dashboard',   path:'/admin/hospitals',          componentName: 'HospitalsDashboard',    layoutName: 'AdminLayout'},
 
 ]);
 

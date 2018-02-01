@@ -19,6 +19,7 @@ const UsersProfile = (props) => {
 
     const user = props.document;
     const postTerms = {view: "userPosts", userId: user._id};
+    const hospitalTerms = {view: "userHospitals", userId: user._id};
 
     return (
       <div>
@@ -41,7 +42,7 @@ const UsersProfile = (props) => {
                       </div>
                       <div className="profile-initials left">
                         <h4 className="title">{Users.getDisplayName(user)}</h4>
-                        <p className="title profile-certificates"></p>
+                        <Components.HospitalsList terms={hospitalTerms} showHeader={false} />
                       </div>
                     </div>
                   </Col>

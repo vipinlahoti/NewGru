@@ -5,6 +5,13 @@ registerFragment(`
     # hospitals
     _id
     name
+    contact
+    consultationFee
+    country
+    state
+    city
+    address
+    address2
     slug
     createdAt
     sticky
@@ -22,12 +29,7 @@ registerFragment(`
     reviewers {
       ...UsersMinimumInfo
     }
-    # voting
-    currentUserVotes{
-      ...VoteFragment
-    }
-    baseScore
-    score
+
   }
 `);
 

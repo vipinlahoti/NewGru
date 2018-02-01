@@ -27,6 +27,7 @@ registerFragment(`
     avatarUrl
     userRole
     isDoctor
+    hospitalName
   }
 `);
 
@@ -45,9 +46,6 @@ registerFragment(`
     gender
     mobileNumber
     college
-    city
-    state
-    country
     professionalLicenseNumber
     # areaPractise
     certification
