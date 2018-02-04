@@ -1,11 +1,11 @@
 /*
-
-Custom fields on Posts collection
-
-*/
+ * Custom fields on collections
+ */
 
 import { Posts } from '../../modules/posts/index.js';
+import { Hospitals } from '../../modules/hospitals/index.js';
 import { getCategoriesAsOptions } from './schema.js';
+import Users from 'meteor/vulcan:users';
 
 Posts.addField([
   {
@@ -38,6 +38,70 @@ Posts.addField([
         },
         addOriginalField: true,
       }
+    }
+  },
+  {
+    fieldName: 'categoriesIds.$',
+    fieldSchema: {
+      type: String,
+      optional: true
+    }
+  }
+]);
+
+Users.addField([
+  {
+    fieldName: 'categoriesIds',
+    fieldSchema: {
+      type: Array,
+      control: 'checkboxgroup',
+      optional: true,
+      insertableBy: ['members'],
+      editableBy: ['members'],
+      viewableBy: ['guests'],
+      options: props => {
+        return getCategoriesAsOptions(props.data.CategoriesList);
+      },
+      query: `
+        CategoriesList{
+          _id
+          name
+          slug
+          order
+        }
+      `,
+    }
+  },
+  {
+    fieldName: 'categoriesIds.$',
+    fieldSchema: {
+      type: String,
+      optional: true
+    }
+  }
+]);
+
+Hospitals.addField([
+  {
+    fieldName: 'categoriesIds',
+    fieldSchema: {
+      type: Array,
+      control: 'checkboxgroup',
+      optional: true,
+      insertableBy: ['members'],
+      editableBy: ['members'],
+      viewableBy: ['guests'],
+      options: props => {
+        return getCategoriesAsOptions(props.data.CategoriesList);
+      },
+      query: `
+        CategoriesList{
+          _id
+          name
+          slug
+          order
+        }
+      `,
     }
   },
   {

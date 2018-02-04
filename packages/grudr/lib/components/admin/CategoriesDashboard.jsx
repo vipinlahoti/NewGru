@@ -11,19 +11,20 @@ import { Components, registerComponent } from 'meteor/vulcan:core';
 import compose from 'recompose/compose';
 import { FormattedMessage } from 'meteor/vulcan:i18n';
 
-import { Posts } from '../../modules/posts/index.js';
+import { Categories } from '../../modules/categories/index.js';
 
-const PostsDashboard = () =>
+const CategoriesDashboard = () =>
 
   <div>
     <Components.Datatable
-      collection={Posts}
+      collection={Categories}
       columns={[
-        'title',
-        'postedAt',
+        'name',
+        'description',
+        'slug',
       ]}
       showEdit={true}
     />
   </div>
 
-registerComponent('PostsDashboard', PostsDashboard);
+registerComponent('CategoriesDashboard', CategoriesDashboard);

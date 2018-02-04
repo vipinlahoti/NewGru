@@ -52,14 +52,12 @@ const Header = ({currentUser}) => {
   
   const logoUrl = getSetting('logoUrl');
   const siteTitle = getSetting('title', 'Grudr');
-  const tagline = getSetting('tagline');
 
   return (
     <Navbar className="" fluid={ true }>
       <Navbar.Header>
         <Navbar.Brand>
           <Components.Logo logoUrl={logoUrl} siteTitle={siteTitle} />
-          {tagline ? <h2 className="tagline">{tagline}</h2> : "" }
         </Navbar.Brand>
       </Navbar.Header>
 

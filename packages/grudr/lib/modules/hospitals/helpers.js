@@ -2,11 +2,11 @@
  * Hospitals helpers
  */
 
+import moment from 'moment';
 import { Hospitals } from './collection.js';
 import Users from 'meteor/vulcan:users';
 import { Utils, getSetting, registerSetting } from 'meteor/vulcan:core';
 
-registerSetting('twitterAccount', null, 'Twitter account associated with the app');
 registerSetting('siteUrl', null, 'Main site URL');
 
 /**
@@ -48,7 +48,7 @@ Hospitals.getThumbnailUrl = (hospital) => {
  */
 Hospitals.getTwitterShareUrl = hospital => {
   const via = getSetting('twitterAccount', null) ? `&via=${getSetting('twitterAccount')}` : '';
-  return `https://twitter.com/intent/tweet?text=${ encodeURIComponent(hospital.title) }%20${ encodeURIComponent(Hospitals.getLink(hospital, true)) }${via}`;
+  return `https://twitter.com/intent/tweet?text=${ encodeURIComponent(hospital.name) }%20${ encodeURIComponent(Hospitals.getLink(hospital, true)) }${via}`;
 };
 
 /**
@@ -64,10 +64,10 @@ Hospitals.getFacebookShareUrl = hospital => {
  * @param {Object} hospital
  */
 Hospitals.getEmailShareUrl = hospital => {
-  const subject = `Interesting link: ${hospital.title}`;
+  const subject = `Interesting link: ${hospital.name}`;
   const body = `I thought you might find this interesting:
 
-${hospital.title}
+${hospital.name}
 ${Hospitals.getLink(hospital, true, false)}
 
 (found via ${getSetting('siteUrl')})

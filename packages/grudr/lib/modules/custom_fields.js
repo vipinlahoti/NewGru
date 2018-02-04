@@ -139,22 +139,22 @@ Users.addField([
   
 
   // Profession =========================
-  {
-    fieldName: 'college',
-    fieldSchema: {
-      type: String,
-      control: "select",
-      optional: true,
-      insertableBy: ['members'],
-      editableBy: ['members'],
-      viewableBy: ['members'],
-      form: {
-        options: medicalCollege
-      },
-      group: formGroups.profession,
-      order: 1
-    }
-  },
+  // {
+  //   fieldName: 'college',
+  //   fieldSchema: {
+  //     type: String,
+  //     control: "select",
+  //     optional: true,
+  //     insertableBy: ['members'],
+  //     editableBy: ['members'],
+  //     viewableBy: ['members'],
+  //     form: {
+  //       options: medicalCollege
+  //     },
+  //     group: formGroups.profession,
+  //     order: 1
+  //   }
+  // },
   {
   fieldName: 'professionalLicenseNumber',
     fieldSchema: {
@@ -173,7 +173,7 @@ Users.addField([
     fieldName: 'certification',
     fieldSchema: {
       type: String,
-      control: "select",
+      control: "checkboxgroup",
       optional: true,
       insertableBy: ['members'],
       editableBy: ['members'],
@@ -189,7 +189,7 @@ Users.addField([
     fieldName: 'affiliation',
     fieldSchema: {
       type: String,
-      control: "select",
+      control: "checkboxgroup",
       optional: true,
       insertableBy: ['members'],
       editableBy: ['members'],
@@ -205,7 +205,7 @@ Users.addField([
     fieldName: 'awards',
     fieldSchema: {
       type: String,
-      control: "select",
+      control: "checkboxgroup",
       optional: true,
       insertableBy: ['members'],
       editableBy: ['members'],

@@ -27,7 +27,6 @@ registerFragment(`
     avatarUrl
     userRole
     isDoctor
-    hospitalName
   }
 `);
 
@@ -45,7 +44,7 @@ registerFragment(`
 
     gender
     mobileNumber
-    college
+    # college
     professionalLicenseNumber
     # areaPractise
     certification
@@ -54,6 +53,9 @@ registerFragment(`
 
     groups
     karma
+    # hospitals
+    hospitalName
+    categoriesIds
     # vulcan:posts
     postCount
     # vulcan:comments

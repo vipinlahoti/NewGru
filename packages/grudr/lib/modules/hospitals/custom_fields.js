@@ -2,18 +2,32 @@
  * Custom fields on Users collection
  */
 
+import React from 'react';
+import { Components } from 'meteor/vulcan:core';
 import Users from 'meteor/vulcan:users';
 import { getHospitalsAsOptions } from './schema.js';
 
 Users.addField([
   /**
-    hospital list
+    Count of the user's hospitals
+  */
+  {
+    fieldName: 'hospitalCount',
+    fieldSchema: {
+      type: Number,
+      optional: true,
+      defaultValue: 0,
+      viewableBy: ['guests'],
+    }
+  },
+  /**
+    Hospital names
   */
   {
     fieldName: 'hospitalName',
     fieldSchema: {
       type: Array,
-      control: 'select',
+      control: 'checkboxgroup',
       optional: true,
       insertableBy: ['members'],
       editableBy: ['members'],
@@ -28,7 +42,7 @@ Users.addField([
           slug
         }
       `,
-      
+      // afterComponent: <span className="component-help">Select hospital from dropdown, If does'nt found one please <a href="">add your hospital</a></span>
     }
   },
   {
@@ -36,18 +50,6 @@ Users.addField([
     fieldSchema: {
       type: String,
       optional: true
-    }
-  },
-  /**
-    Count of the user's hospitals
-  */
-  {
-    fieldName: 'hospitalCount',
-    fieldSchema: {
-      type: Number,
-      optional: true,
-      defaultValue: 0,
-      viewableBy: ['guests'],
     }
   },
   /**

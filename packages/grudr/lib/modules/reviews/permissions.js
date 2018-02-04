@@ -14,12 +14,16 @@ const membersActions = [
   'reviews.new', 
   'reviews.edit.own', 
   'reviews.remove.own', 
+];
+Users.groups.members.can(membersActions);
+
+const doctorsActions = [
   'reviews.upvote', 
   'reviews.cancelUpvote', 
   'reviews.downvote',
   'reviews.cancelDownvote'
-];
-Users.groups.members.can(membersActions);
+]
+Users.groups.doctors.can(doctorsActions);
 
 const adminActions = [
   'reviews.edit.all',

@@ -20,8 +20,6 @@ const AdminLayout = ({currentUser, children, currentRoute}) =>
 
     <div className="admin-layout">
       <Components.Header />
-      <Components.AdminHeader />
-
       <Jumbotron>
         <Grid>
           <Row>
@@ -33,6 +31,7 @@ const AdminLayout = ({currentUser, children, currentRoute}) =>
         </Grid>
       </Jumbotron>
       <div className="main">
+        <Components.AdminHeader />
         <Grid>
           <Components.FlashMessages />
           {React.cloneElement(children, { currentUser })}

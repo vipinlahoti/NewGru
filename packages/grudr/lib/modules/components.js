@@ -26,12 +26,13 @@ import '../components/users/UsersMenu.jsx';
 
 
 // Admin
+import '../components/common/AdminHeader';
+import '../components/common/AdminLayout';
 import '../components/admin/AdminUsersPosts';
 import '../components/admin/PostsDashboard';
 import '../components/admin/AdminUsersHospitals';
 import '../components/admin/HospitalsDashboard';
-import '../components/common/AdminHeader';
-import '../components/common/AdminLayout';
+import '../components/admin/CategoriesDashboard';
 
 
 // Categories
@@ -71,10 +72,19 @@ import '../components/comments/CommentsLoadMore.jsx';
 
 
 // Hospitals
-import '../components/hospitals/HospitalsEditForm.jsx';
-import '../components/hospitals/HospitalsNewForm.jsx';
-import '../components/hospitals/HospitalsPage.jsx';
+import '../components/hospitals/HospitalsHome.jsx';
 import '../components/hospitals/HospitalsSingle.jsx';
+import '../components/hospitals/HospitalsNewButton.jsx';
+import '../components/hospitals/HospitalsLoadMore.jsx';
+import '../components/hospitals/HospitalsItem.jsx';
+// import '../components/hospitals/HospitalsViews.jsx';
+import '../components/hospitals/HospitalsList.jsx';
+// import '../components/hospitals/HospitalsListHeader.jsx';
+// import '../components/hospitals/HospitalsCategories.jsx';
+// import '../components/hospitals/HospitalsCommenters.jsx';
+import '../components/hospitals/HospitalsPage.jsx';
 import '../components/hospitals/HospitalsStats.jsx';
 import '../components/hospitals/HospitalsThumbnail.jsx';
-import '../components/hospitals/HospitalsList.jsx';
+import '../components/hospitals/HospitalsEditForm.jsx';
+import '../components/hospitals/HospitalsNewForm.jsx';
+// import '../components/hospitals/HospitalsCommentsThread.jsx';

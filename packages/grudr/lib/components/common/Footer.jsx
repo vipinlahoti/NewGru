@@ -1,12 +1,12 @@
 import { getSetting, Components, registerComponent } from 'meteor/vulcan:core';
 import React from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Button, Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
 const Footer = props => {
   const logoUrl = getSetting("logoUrl");
   const siteTitle = getSetting("title", "Grudr");
-  
+
   return (
     <div className="footer">
       <Navbar>

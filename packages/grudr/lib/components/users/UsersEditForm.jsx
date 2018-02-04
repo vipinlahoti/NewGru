@@ -5,7 +5,6 @@ import { FormattedMessage, intlShape } from 'meteor/vulcan:i18n';
 import Users from 'meteor/vulcan:users';
 import { STATES } from 'meteor/vulcan:accounts';
 import { Grid, Row, Col, Jumbotron, Tabs, Tab } from 'react-bootstrap';
-import { Hospitals } from '../../modules/hospitals/index.js';
 
 const UsersEditForm = (props, context) => {
   return (
@@ -62,6 +61,7 @@ const UsersEditForm = (props, context) => {
                           fields={[
                             "college",
                             "hospitalName",
+                            "categoriesIds",
                             "professionalLicenseNumber",
                             "certification",
                             "affiliation",
@@ -77,11 +77,13 @@ const UsersEditForm = (props, context) => {
                       </Tab>
                     : null }
 
+                    {Users.isAdmin(props.currentUser) ?
                     <Tab eventKey={3} title="Notifications">
                       <Components.SmartForm
                         layout="vertical"
                         fields={[
                           "notifications_users",
+                          "notifications_hospitals",
                           "notifications_posts",
                           "notifications_comments",
                           "notifications_replies"
@@ -94,6 +96,8 @@ const UsersEditForm = (props, context) => {
                         showRemove={false}
                       />
                     </Tab>
+                    : null }
+
                   </Tabs>
                 </div>
               </Components.ShowIf>

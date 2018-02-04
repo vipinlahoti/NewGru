@@ -30,7 +30,7 @@ class HospitalsEditForm extends PureComponent {
           documentId={this.props.hospital._id}
           successCallback={hospital => {
             this.props.closeModal();
-            this.props.flash(this.context.intl.formatMessage({ id: 'hospitals.edit_success' }, { title: hospital.title }), 'success');
+            this.props.flash(this.context.intl.formatMessage({ id: 'hospitals.edit_success' }, { name: hospital.name }), 'success');
           }}
           showRemove={false}
         />

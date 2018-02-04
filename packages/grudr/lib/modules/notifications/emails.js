@@ -1,17 +1,10 @@
 /*
-
-Emails
-
-*/
+ * Emails
+ */
 
 import VulcanEmail from 'meteor/vulcan:email';
 
-/*
-
-Test
-
-*/
-
+/* Test */
 VulcanEmail.addEmails({
 
   test: {
@@ -27,12 +20,7 @@ VulcanEmail.addEmails({
 
 });
 
-/*
-
-Users
-
-*/
-
+/* Users */
 VulcanEmail.addEmails({
   
   newUser: {
@@ -72,12 +60,7 @@ VulcanEmail.addEmails({
 
 });
 
-/*
-
-Posts
-
-*/
-
+/* Posts */
 const postsQuery = `
   query PostsSingleQuery($documentId: String){
     PostsSingle(documentId: $documentId){
@@ -131,12 +114,7 @@ VulcanEmail.addEmails({
   
 });
   
-/*
-
-Comments
-
-*/
-
+/* Comments*/
 const commentsQuery = `
   query CommentsSingleQuery($documentId: String){
     CommentsSingle(documentId: $documentId){

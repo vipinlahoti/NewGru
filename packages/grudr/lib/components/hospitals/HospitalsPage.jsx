@@ -41,40 +41,40 @@ class HospitalsPage extends Component {
       return (
         <div>
 
-          <Components.HeadTags url={Hospitals.getPageUrl(hospital, true)} title={hospital.title} image={hospital.thumbnailUrl} description={hospital.excerpt} />
+          <Components.HeadTags url={Hospitals.getPageUrl(hospital, true)} title={hospital.name} image={hospital.thumbnailUrl} description={hospital.excerpt} />
           
           <Jumbotron>
-            <Grid>
-              <Row>
-                <Col md={9}>
-                  <h3 className="title">{ hospital.title }</h3>
-                  <h5>
-                    { hospital.user ? <div className="author"><Components.Avatar user={hospital.user} /> <Components.UsersName user={ hospital.user }/>, &nbsp;</div> : null }
-                    <span className="stats">{ hospital.createdAt ? moment(new Date(hospital.createdAt)).fromNow() : <FormattedMessage id="hospitals.dateNotDefined"/> }</span>
-
-                    {Hospitals.options.mutations.edit.check(this.props.currentUser, hospital) ? this.renderActions() : null}
-                  </h5>
-                </Col>
-              </Row>
-            </Grid>
-          </Jumbotron>
+          <Grid>
+          </Grid>
+        </Jumbotron>
 
           <div className="main">
             <Grid>
-              <Row>
-                <Col md={8} mdOffset={2}>
-                  {hospital.thumbnailUrl ?
-                  <div className="card card-single no-margin no-padding">
-                    <div className="card-image">
-                      <Components.HospitalsThumbnail hospital={hospital}/>
-                    </div>
-                  </div>
-                  : null}
-
-                  {hospital.htmlBody ? <div className="section-components-md" dangerouslySetInnerHTML={htmlBody}></div> : null}
-                  
-                </Col>
-              </Row>
+              <div className="profile-content">
+                <div className="profile-header">
+                  <Row>
+                    <Col md={8}>
+                      <div className="profile">
+                        <div className="avatar avatar-large avatar-hospital left">
+                          {hospital.thumbnailUrl ?
+                            <Components.HospitalsThumbnail hospital={hospital}/>
+                          : 
+                          <img className="avatar-image" src="https://www.susquehannahealth.org/sites/default/files/styles/wide/public/default_images/hospital-placeholder.jpg?itok=iWo4HDoj" />
+                        }
+                        </div>
+                        <div className="profile-initials left">
+                          <h4 className="title">{ hospital.name }</h4>
+                        </div>
+                      </div>
+                    </Col>
+                    <Col md={4}>
+                      <div className="follow">
+                        {Hospitals.options.mutations.edit.check(this.props.currentUser, hospital) ? this.renderActions() : null}
+                      </div>
+                    </Col>
+                  </Row>
+                </div>
+              </div>
             </Grid>
           </div>
 

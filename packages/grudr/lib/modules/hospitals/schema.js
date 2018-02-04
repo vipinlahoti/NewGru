@@ -3,7 +3,7 @@
  */
 
 import Users from 'meteor/vulcan:users';
-import { Utils } from 'meteor/vulcan:core';
+import { Utils  } from 'meteor/vulcan:core';
 import FormsUpload from 'meteor/vulcan:forms-upload';
 
 export function getHospitalsAsOptions (hospitals) {
@@ -51,7 +51,7 @@ const schema = {
     }
   },
   /**
-    Name
+    Hospital Name
   */
   name: {
     type: String,
@@ -61,7 +61,7 @@ const schema = {
     insertableBy: ['members'],
     editableBy: ['members'],
     control: 'text',
-    order: 20,
+    order: 1,
     searchable: true
   },
   /**
@@ -72,14 +72,124 @@ const schema = {
     optional: true,
     viewableBy: ['guests'],
     onInsert: (hospital) => {
-      return Utils.slugify(hospital.title);
+      return Utils.slugify(hospital.name);
     },
     onEdit: (modifier, hospital) => {
-      if (modifier.$set.title) {
-        return Utils.slugify(modifier.$set.title);
+      if (modifier.$set.name) {
+        return Utils.slugify(modifier.$set.name);
       }
     }
   },
+  /**
+    specialisation
+  */
+  specialisation: {
+    type: String,
+    optional: false,
+    max: 500,
+    viewableBy: ['guests'],
+    insertableBy: ['members'],
+    editableBy: ['members'],
+    control: 'text',
+    order: 2,
+    searchable: true
+  },
+  /**
+    Contact
+  */
+  Contact: {
+    type: String,
+    optional: false,
+    max: 12,
+    viewableBy: ['guests'],
+    insertableBy: ['members'],
+    editableBy: ['members'],
+    control: 'number',
+    order: 3
+  },
+  /**
+    Consultation Fee
+  */
+  ConsultationFee: {
+    type: String,
+    optional: false,
+    max: 5,
+    viewableBy: ['guests'],
+    insertableBy: ['members'],
+    editableBy: ['members'],
+    control: 'number',
+    order: 4
+  },
+  /**
+    Address
+  */
+  country: {
+    type: String,
+    optional: true,
+    viewableBy: ['guests'],
+    insertableBy: ['members'],
+    editableBy: ['members'],
+    order: 5
+  },
+
+  zipCode: {
+    type: String,
+    optional: true,
+    viewableBy: ['guests'],
+    insertableBy: ['members'],
+    editableBy: ['members'],
+    order: 6
+  },
+
+  state: {
+    type: String,
+    optional: true,
+    viewableBy: ['guests'],
+    insertableBy: ['members'],
+    editableBy: ['members'],
+    order: 7
+  },
+
+  city: {
+    type: String,
+    optional: true,
+    viewableBy: ['guests'],
+    insertableBy: ['members'],
+    editableBy: ['members'],
+    order: 8
+  },
+
+  address: {
+    type: String,
+    optional: true,
+    viewableBy: ['guests'],
+    insertableBy: ['members'],
+    editableBy: ['members'],
+    order: 9
+  },
+
+  address2: {
+    type: String,
+    optional: true,
+    viewableBy: ['guests'],
+    insertableBy: ['members'],
+    editableBy: ['members'],
+    order: 10
+  },
+
+  geoData: {
+    type: Object,
+    blackbox: true,
+    optional: true,
+  },
+
+  location: {
+    type: Object,
+    blackbox: true,
+    optional: true,
+    viewableBy: ['guests']
+  },
+
   /**
    Hospital Thumbnail
    */
@@ -90,62 +200,12 @@ const schema = {
     insertableBy: ['members'],
     editableBy: ['members'],
     control: FormsUpload, // use the FormsUpload form component
+    order: 99,
     form: {
       options: {
         preset: 'article_thumbnail'
       }
     }
-  },
-  contact: {
-    type: String,
-    control: "number",
-    optional: true,
-    insertableBy: ['members'],
-    editableBy: ['members'],
-    viewableBy: ['members']
-  },
-  consultationFee: {
-    type: String,
-    control: "number",
-    optional: true,
-    insertableBy: ['members'],
-    editableBy: ['members'],
-    viewableBy: ['members']
-  },
-  country: {
-    type: String,
-    optional: true,
-    viewableBy: ['guests'],
-    insertableBy: ['members'],
-    editableBy: ['members']
-  },
-  state: {
-    type: String,
-    optional: true,
-    viewableBy: ['guests'],
-    insertableBy: ['members'],
-    editableBy: ['members']
-  },
-  city: {
-    type: String,
-    optional: true,
-    viewableBy: ['guests'],
-    insertableBy: ['members'],
-    editableBy: ['members']
-  },
-  address: {
-    type: String,
-    optional: true,
-    viewableBy: ['guests'],
-    insertableBy: ['members'],
-    editableBy: ['members']
-  },
-  address2: {
-    type: String,
-    optional: true,
-    viewableBy: ['guests'],
-    insertableBy: ['members'],
-    editableBy: ['members']
   },
   /**
     Count of how many times the hospital's page was viewed

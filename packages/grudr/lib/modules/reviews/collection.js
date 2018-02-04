@@ -1,5 +1,5 @@
 /*
- * Hospital reviews collection
+ * Reviews collection
  */
 
 import schema from './schema.js';

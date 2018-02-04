@@ -603,12 +603,23 @@ td, th{
   margin-top: -$padding-base * 10;
 
   .avatar-large {
+    align-items: center;
+    display: flex;
+    height: 160px;
     margin: 0 $padding-base * 2 $padding-base * 2 0;
     width: 160px;
-    height: 160px;
 
     .avatar-image {
+      height: 100%;
       width: 100%;
+    }
+
+    &.avatar-hospital {
+      .avatar-image, img {
+        border-radius: $border-small;
+        width: 100%;
+        @extend .z-depth-2;
+      }
     }
   }
 
@@ -700,15 +711,31 @@ td, th{
 
 
 .admin-layout {
-  nav.navbar {
-    position: static;
-  }
   .subheader {
-    background: $rose-color;
+    background: $primary-color;
+    margin-bottom: $padding-base * 3;
+    border-radius: $border-base $border-base 0 0;
+    @extend .primary-shadow;
 
     nav.navbar {
+      position: static;
       height: 50px;
       padding: 0;
     }
   }
+
+  .main {
+    padding-top: 0;
+  }
+}
+
+.margin-t {
+  margin-top: $padding-base * 2;
+}
+
+.component-help {
+  color: $gray;
+  display: block;
+  font-size: 12px;
+  margin-top: -$padding-base / 2;
 }

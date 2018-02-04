@@ -24,18 +24,16 @@ nav {
 
   // Logo
   .navbar-brand {
-    a {
-      position: absolute;
-      color: $white-color;
-      display: inline-block;
-      font-family: $logo-font;
-      font-size: $navbar-brand-font-size;
-      padding: 0;
+    position: absolute;
+    color: $white-color;
+    display: inline-block;
+    font-family: $logo-font;
+    font-size: $navbar-brand-font-size;
+    padding: 0;
 
-      @media #{$medium-and-down} {
-        left: 50%;
-        transform: translateX(-50%);
-      }
+    @media #{$medium-and-down} {
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 

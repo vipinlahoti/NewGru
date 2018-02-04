@@ -1,8 +1,6 @@
 /*
-
-The Categories collection
-
-*/
+ * The Categories collection
+ */
 
 import { createCollection, getDefaultResolvers, getDefaultMutations } from 'meteor/vulcan:core';
 import schema from './schema.js';
@@ -12,15 +10,9 @@ import schema from './schema.js';
  * @namespace Categories
  */
  export const Categories = createCollection({
-
   collectionName: 'Categories',
-
   typeName: 'Category',
-
   schema,
-
   resolvers: getDefaultResolvers('Categories'),
-
-  mutations: getDefaultMutations('Categories'),
-
+  mutations: getDefaultMutations('Categories')
 });

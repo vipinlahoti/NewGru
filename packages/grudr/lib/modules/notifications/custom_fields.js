@@ -22,6 +22,20 @@ Users.addField([
     }
   },
   {
+    fieldName: 'notifications_hospitals',
+    fieldSchema: {
+      label: 'New hospitals',
+      type: Boolean,
+      optional: true,
+      defaultValue: false,
+      control: "checkbox",
+      viewableBy: ['guests'],
+      insertableBy: ['admins'],
+      editableBy: ['admins'],
+      group: notificationsGroup,
+    }
+  },
+  {
     fieldName: 'notifications_posts',
     fieldSchema: {
       label: 'New posts',

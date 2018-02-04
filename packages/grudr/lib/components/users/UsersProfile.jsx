@@ -19,7 +19,6 @@ const UsersProfile = (props) => {
 
     const user = props.document;
     const postTerms = {view: "userPosts", userId: user._id};
-    const hospitalTerms = {view: "userHospitals", userId: user._id};
 
     return (
       <div>
@@ -42,7 +41,7 @@ const UsersProfile = (props) => {
                       </div>
                       <div className="profile-initials left">
                         <h4 className="title">{Users.getDisplayName(user)}</h4>
-                        <Components.HospitalsList terms={hospitalTerms} showHeader={false} />
+                        <p className="title profile-certificates">{ user.categoriesIds } { user.categoriesIds && user.certification ? ',' : null } { user.certification } </p>
                       </div>
                     </div>
                   </Col>
@@ -87,12 +86,55 @@ const UsersProfile = (props) => {
                   </Col>
                   
                   <Col md={4} mdOffset={1}>
+                    
                     <div className="section-components-sm">
-                      <div>
-                        <h5 className="title">Education</h5>
-                        <p></p>
-                      </div>
+                      { user.hospitalName ? 
+                        <div>
+                          <h5 className="title">Hospital</h5>
+                          <p>{ user.hospitalName }</p>
+                        </div>
+                        :
+                        <Components.ShowIf check={Users.options.mutations.edit.check} document={user}>
+                          <div>
+                            <h5 className="title">Hospital</h5>
+                            <p><Link to={Users.getEditUrl(user)}>Click here</Link> to add a Hospital.</p>
+                          </div>
+                        </Components.ShowIf>
+                      }
                     </div>
+                    
+                    <div className="section-components-sm">
+                      { user.affiliation ? 
+                        <div>
+                          <h5 className="title">Affiliation</h5>
+                          <p>{ user.affiliation }</p>
+                        </div>
+                        :
+                        <Components.ShowIf check={Users.options.mutations.edit.check} document={user}>
+                          <div>
+                            <h5 className="title">Affiliation</h5>
+                            <p><Link to={Users.getEditUrl(user)}>Click here</Link> to add Affiliation.</p>
+                          </div>
+                        </Components.ShowIf>
+                      }
+                    </div>
+
+                    <div className="section-components-sm">
+                      { user.awards ? 
+                        <div>
+                          <h5 className="title">Awards</h5>
+                          <p>{ user.awards }</p>
+                        </div>
+                        :
+                        <Components.ShowIf check={Users.options.mutations.edit.check} document={user}>
+                          <div>
+                            <h5 className="title">Awards</h5>
+                            <p><Link to={Users.getEditUrl(user)}>Click here</Link> to add Awards.</p>
+                          </div>
+                        </Components.ShowIf>
+                      }
+                    </div>
+
                   </Col>
                 </Row>
               </div>

@@ -16,10 +16,7 @@ const HospitalsDashboard = () =>
       collection={Hospitals}
       columns={[
         'name',
-        'consultationFee',
-        'contact',
-        'city',
-        'displayName'
+        'createdAt',
       ]}
       showEdit={true}
     />

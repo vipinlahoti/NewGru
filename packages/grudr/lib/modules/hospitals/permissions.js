@@ -5,19 +5,23 @@
 import Users from 'meteor/vulcan:users';
 
 const guestsActions = [
-  'hospitals.view.approved',
-  'hospitals.upvote', 
-  'hospitals.downvote'
+  'hospitals.view.approved'
 ];
 Users.groups.guests.can(guestsActions);
 
-Users.createGroup("doctors");
 const membersActions = [
+  'hospitals.upvote', 
+  'hospitals.downvote'
+];
+Users.groups.members.can(membersActions);
+
+Users.createGroup('doctors');
+const doctorsActions = [
   'hospitals.new', 
   'hospitals.edit.own', 
   'hospitals.remove.own'
 ];
-Users.groups.doctors.can(membersActions);
+Users.groups.doctors.can(doctorsActions);
 
 const adminActions = [
   'hospitals.view.pending',

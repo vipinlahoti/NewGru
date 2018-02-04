@@ -44,7 +44,7 @@ const PostsList = ({className, results, loading, count, totalCount, loadMore, sh
         {showHeader ? <Components.PostsListHeader /> : null}
         {error ? <Error error={Utils.decodeIntlError(error)} /> : null }
         <div className="posts-list-content">
-          <p className="posts-no-results"><FormattedMessage id="posts.no_results"/></p>
+          <h5 className="title center-align"><FormattedMessage id="posts.no_results"/></h5>
         </div>
       </div>
     )  

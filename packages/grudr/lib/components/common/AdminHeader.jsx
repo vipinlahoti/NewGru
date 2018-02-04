@@ -18,9 +18,11 @@ const AdminHeader = ({ currentUser }, context) =>
         <LinkContainer to="/admin/posts">
           <NavItem eventKey={2}>Posts</NavItem>
         </LinkContainer>
-
         <LinkContainer to="/admin/hospitals">
-          <NavItem eventKey={2}>Hospitals</NavItem>
+          <NavItem eventKey={3}>Hospitals</NavItem>
+        </LinkContainer>
+        <LinkContainer to="/admin/categories">
+          <NavItem eventKey={4}>Categories</NavItem>
         </LinkContainer>
       </Nav>
     </Navbar>

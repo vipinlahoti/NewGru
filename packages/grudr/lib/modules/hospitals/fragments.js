@@ -5,16 +5,29 @@ registerFragment(`
     # hospitals
     _id
     name
-    contact
-    consultationFee
-    country
-    state
-    city
-    address
-    address2
     slug
-    createdAt
     sticky
+    # thumbnail
+    thumbnailUrl
+    # categories
+    categories {
+     ...CategoriesMinimumInfo
+    }
+    # reviews
+    reviewCount
+    # voting
+    currentUserVotes{
+      ...VoteFragment
+    }
+    baseScore
+    score
+  }
+`);
+
+registerFragment(`
+  fragment HospitalsPage on Hospital {
+    ...HospitalsList
+    createdAt
     viewCount
     clickCount
     # users
@@ -22,20 +35,9 @@ registerFragment(`
     user {
       ...UsersMinimumInfo
     }
-    # thumbnail
-    thumbnailUrl
-    # reviews
-    reviewCount
     reviewers {
       ...UsersMinimumInfo
     }
-
-  }
-`);
-
-registerFragment(`
-  fragment HospitalsPage on Hospital {
-    ...HospitalsList
   }
 `);
 

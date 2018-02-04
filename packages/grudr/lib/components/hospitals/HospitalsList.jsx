@@ -5,12 +5,10 @@ import { Hospitals } from '../../modules/hospitals/index.js';
 import Alert from 'react-bootstrap/lib/Alert'
 import { FormattedMessage, intlShape } from 'meteor/vulcan:i18n';
 import classNames from 'classnames';
-import { Link } from 'react-router';
-
 
 const Error = ({error}) => <Alert className="flash-message" bsStyle="danger"><FormattedMessage id={error.id} values={{value: error.value}}/>{error.message}</Alert>
 
-const HospitalsList = ({className, results, loading, count, totalCount, loadMore, showHeader = false, showLoadMore = true, networkStatus, currentUser, error, terms}) => {
+const HospitalsList = ({className, results, loading, count, totalCount, loadMore, showLoadMore = true, networkStatus, currentUser, error}) => {
 
   const loadingMore = networkStatus === 2;
 
@@ -19,13 +17,18 @@ const HospitalsList = ({className, results, loading, count, totalCount, loadMore
     const hasMore = totalCount > results.length;
 
     return (
-      <p className="title profile-certificates">
-        {results.map(hospital => 
-          <Link to={Hospitals.getPageUrl(hospital)} key={hospital._id}>
-            {hospital.name}
-          </Link>
-        )}
-      </p>
+      <div>
+        <div className={classNames(className, 'card-columns-one')}>
+          {error ? <Error error={Utils.decodeIntlError(error)} /> : null }
+          {results.map(hospital => <Components.HospitalsItem hospital={hospital} key={hospital._id} currentUser={currentUser} />)}
+        </div>
+        {showLoadMore ? 
+          hasMore ? 
+            <Components.HospitalsLoadMore loading={loadingMore} loadMore={loadMore} count={count} totalCount={totalCount} /> : 
+            null : 
+          null
+        }
+      </div>
     )
   } else if (loading) {
     return (
@@ -38,7 +41,7 @@ const HospitalsList = ({className, results, loading, count, totalCount, loadMore
       <div>
         {error ? <Error error={Utils.decodeIntlError(error)} /> : null }
         <div className="hospitals-list-content">
-          <p className="hospitals-no-results"><FormattedMessage id="hospitals.no_results"/></p>
+          <h5 className="title center-align"><FormattedMessage id="hospitals.no_results"/></h5>
         </div>
       </div>
     )  
@@ -50,12 +53,11 @@ HospitalsList.displayName = "HospitalsList";
 
 HospitalsList.propTypes = {
   results: PropTypes.array,
-  terms: PropTypes.object,
   hasMore: PropTypes.bool,
   loading: PropTypes.bool,
   count: PropTypes.number,
   totalCount: PropTypes.number,
-  loadMore: PropTypes.func,
+  loadMore: PropTypes.func
 };
 
 HospitalsList.contextTypes = {

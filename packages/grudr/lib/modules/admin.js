@@ -1,6 +1,5 @@
 /*
  * Extend the users admin dashboard
- * http://docs.vulcanjs.org/admin.html
  */
 
 import { extendFragment, addAdminColumn } from 'meteor/vulcan:core';

@@ -1,7 +1,7 @@
 {
   "public": {
 
-    "title": " ",
+    "title": "Grudr",
     "tagline":"",
 
     "logoUrl": "",
@@ -15,9 +15,19 @@
     "twitterAccount": "foo",
     "facebookPage": "http://facebook.com/foo",
 
-    "googleAnalyticsId":"123foo"
+    "googleAnalyticsId":"123foo",
+
+    "cloudinaryCloudName": "grudr",
+    "cloudinary": {
+      "cloudName": "grudr",
+      "apiKey": "991183798858865",
+      "apiSecret": "mveQju_0JQnN_qXgi2J_7vm9-kY"
+    }
 
   },
+
+  "cloudinaryAPIKey": "991183798858865",
+  "cloudinaryAPISecret": "mveQju_0JQnN_qXgi2J_7vm9-kY",
 
   "defaultEmail": "no-reply@grudr.com",
   "mailUrl": "smtp://postmaster@support.grudr.com:02e5413aa560eeda1ba4012cd44725b0@smtp.mailgun.org:587/",
