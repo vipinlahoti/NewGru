@@ -83,17 +83,17 @@ const schema = {
   /**
     specialisation
   */
-  specialisation: {
-    type: String,
-    optional: false,
-    max: 500,
-    viewableBy: ['guests'],
-    insertableBy: ['members'],
-    editableBy: ['members'],
-    control: 'text',
-    order: 2,
-    searchable: true
-  },
+  // specialisation: {
+  //   type: String,
+  //   optional: false,
+  //   max: 500,
+  //   viewableBy: ['guests'],
+  //   insertableBy: ['members'],
+  //   editableBy: ['members'],
+  //   control: 'text',
+  //   order: 2,
+  //   searchable: true
+  // },
   /**
     Contact
   */

@@ -23,6 +23,10 @@ class HospitalsPage extends Component {
       </span>
     )
   }
+
+  renderCategories() {
+    return this.props.document.categories && this.props.document.categories.length > 0 ? <Components.HospitalsCategories hospital={this.props.document} /> : "";
+  }
   
   render() {
     if (this.props.loading) {
@@ -64,6 +68,7 @@ class HospitalsPage extends Component {
                         </div>
                         <div className="profile-initials left">
                           <h4 className="title">{ hospital.name }</h4>
+                          <div className="title profile-certificates">{this.renderCategories()} </div>
                         </div>
                       </div>
                     </Col>

@@ -53,13 +53,13 @@ import '../components/posts/PostsViews.jsx';
 import '../components/posts/PostsList.jsx';
 import '../components/posts/PostsListHeader.jsx';
 import '../components/posts/PostsCategories.jsx';
-import '../components/posts/PostsCommenters.jsx';
+// import '../components/posts/PostsCommenters.jsx';
 import '../components/posts/PostsPage.jsx';
 import '../components/posts/PostsStats.jsx';
 import '../components/posts/PostsThumbnail.jsx';
 import '../components/posts/PostsEditForm.jsx';
 import '../components/posts/PostsNewForm.jsx';
-import '../components/posts/PostsCommentsThread.jsx';
+// import '../components/posts/PostsCommentsThread.jsx';
 
 
 // Comments
@@ -80,7 +80,7 @@ import '../components/hospitals/HospitalsItem.jsx';
 // import '../components/hospitals/HospitalsViews.jsx';
 import '../components/hospitals/HospitalsList.jsx';
 // import '../components/hospitals/HospitalsListHeader.jsx';
-// import '../components/hospitals/HospitalsCategories.jsx';
+import '../components/hospitals/HospitalsCategories.jsx';
 // import '../components/hospitals/HospitalsCommenters.jsx';
 import '../components/hospitals/HospitalsPage.jsx';
 import '../components/hospitals/HospitalsStats.jsx';

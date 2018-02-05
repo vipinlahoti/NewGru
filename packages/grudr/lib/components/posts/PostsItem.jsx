@@ -50,6 +50,7 @@ class PostsItem extends PureComponent {
               {post.title}
             </Link>
           </h3>
+          {this.renderCategories()}
           
           <div className="card-excerpt">
             {post.excerpt}

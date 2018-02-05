@@ -50,6 +50,7 @@ class HospitalsItem extends PureComponent {
               {hospital.name}
             </Link>
           </h3>
+          {this.renderCategories()}
           
           <div className="card-footer">
             {this.props.currentUser && this.props.currentUser.isAdmin ? <Components.HospitalsStats hospital={hospital} /> : null}
