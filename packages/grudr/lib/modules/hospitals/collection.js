@@ -18,6 +18,10 @@ export const Hospitals = createCollection({
   mutations: getDefaultMutations('Hospitals'),
 });
 
-// Hospitals.checkAccess = (currentUser, hospital) => {
-//   return Users.isAdmin(currentUser) || Users.owns(currentUser, hospital);
-// }
+Hospitals.checkAccess = (currentUser, hospital) => {
+  if (Users.isAdmin(currentUser) || Users.owns(currentUser, hospital)) {
+    return true;
+  } else { 
+    return true;
+  }
+}

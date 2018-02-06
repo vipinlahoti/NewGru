@@ -25,8 +25,8 @@ settings.json.not-used
 
 scratch
 
-.deploy
-.deploy/*
+# .deploy
+# .deploy/*
 ### Meteor template
 .meteor/local
 .meteor/meteorite

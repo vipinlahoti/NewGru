@@ -55,7 +55,9 @@ registerFragment(`
     karma
     # hospitals
     hospitalName
-    categoriesIds
+    categories {
+     ...CategoriesMinimumInfo
+    }
     # vulcan:posts
     postCount
     # vulcan:comments
@@ -71,5 +73,8 @@ extendFragment('UsersCurrent', `
 extendFragment('UsersAdmin', `
   posts(limit: 5){
     ...PostsList
+  }
+  hospitals(limit: 5){
+    ...HospitalsList
   }
 `);

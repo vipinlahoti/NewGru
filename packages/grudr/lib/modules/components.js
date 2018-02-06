@@ -23,6 +23,7 @@ import '../components/users/UsersProfile.jsx';
 import '../components/users/UsersProfileCheck.jsx';
 import '../components/users/UsersName.jsx';
 import '../components/users/UsersMenu.jsx';
+import '../components/users/UsersCategories.jsx';
 
 
 // Admin
