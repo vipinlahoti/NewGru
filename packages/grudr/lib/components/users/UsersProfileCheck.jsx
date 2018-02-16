@@ -25,18 +25,39 @@ const UsersProfileCheck = ({currentUser, document, loading, flash}, context) => 
 
     // if (fieldsToComplete.length > 0) {
     if ((currentUser.userRole == null) ) {
-      // console.log(`userRole: ${currentUser.userRole}, isDoctor: ${currentUser.isDoctor} `);
+      console.log(`userRole: ${currentUser.userRole}, isDoctor: ${currentUser.isDoctor} `);
       return (
         <Modal bsSize='small' show={ true }>
-          <Modal.Header>
-            <Modal.Title><FormattedMessage id="users.complete_profile"/></Modal.Title>
-          </Modal.Header>
           <Modal.Body>
             <Components.SmartForm
               layout="vertical"
               collection={ Users }
               documentId={ currentUser._id }
               fields={ fieldsToComplete }
+            />
+          </Modal.Body>
+          <Modal.Footer>
+            <FormattedMessage id="app.or"/> <a className="complete-profile-logout" onClick={ () => Meteor.logout(() => window.location.reload() /* something is broken here when giving the apollo client as a prop*/) }><FormattedMessage id="users.log_out"/></a>
+          </Modal.Footer>
+        </Modal>
+      )
+    } else if ((currentUser.userRole == 'Doctor') && (currentUser.professionalLicenseNumber == null)) {
+      console.log(`userRole: ${currentUser.userRole}, isDoctor: ${currentUser.isDoctor}, Category: ${currentUser.professionalLicenseNumber} `);
+      return (
+        <Modal bsSize='large' show={ true }>
+          <Modal.Body className='profile-complete'>
+            <Components.SmartForm
+              layout="vertical"
+              fields={[
+                "displayName",
+                "gender",
+                "mobileNumber",
+                "categoriesIds",
+                "professionalLicenseNumber",
+                "college"
+              ]}
+              collection={ Users }
+              documentId={ currentUser._id }
               successCallback={user => {
                 const newUser = {...currentUser, ...user};
                 if (Users.hasCompletedProfile(newUser)) {
@@ -45,11 +66,9 @@ const UsersProfileCheck = ({currentUser, document, loading, flash}, context) => 
               }}
             />
           </Modal.Body>
-          <Modal.Footer>
-            <FormattedMessage id="app.or"/> <a className="complete-profile-logout" onClick={ () => Meteor.logout(() => window.location.reload() /* something is broken here when giving the apollo client as a prop*/) }><FormattedMessage id="users.log_out"/></a>
-          </Modal.Footer>
         </Modal>
-      )
+      );
+
     } else {
       
       return null;

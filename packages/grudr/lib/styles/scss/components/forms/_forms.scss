@@ -1,4 +1,4 @@
-label {
+label, .control-label {
   font-size: $label-font-size;
   color: $off-black;
 }
@@ -67,7 +67,7 @@ textarea {
 }
 
 .form-section {
-  margin-bottom: $padding-base * 3;
+  // margin-bottom: $padding-base * 3;
 
   &.form-section-default {
     margin-bottom: 0;
@@ -282,4 +282,13 @@ textarea {
 
 .form-submit {
   margin-top: $padding-base * 2;
+}
+
+.form-errors {
+  @extend .hide;
+}
+
+.form-input-errors {
+  position: absolute;
+  bottom: -5px;
 }

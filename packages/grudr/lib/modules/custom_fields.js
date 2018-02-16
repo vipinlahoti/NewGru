@@ -45,7 +45,7 @@ Users.addField([
       type: String,
       control: "radiogroup",
       mustComplete: true,
-      optional: true,
+      // optional: true,
       insertableBy: ['members'],
       editableBy: ['members'],
       viewableBy: ['guests'],
@@ -53,7 +53,7 @@ Users.addField([
         options: userRole
       },
       group: formGroups.roles,
-      order: 5
+      order: 1
     }
   },
   {
@@ -112,7 +112,7 @@ Users.addField([
     fieldSchema: {
       type: String,
       control: "number",
-      optional: true,
+      // optional: true,
       insertableBy: ['members'],
       editableBy: ['members'],
       viewableBy: ['members'],
@@ -125,7 +125,7 @@ Users.addField([
     fieldSchema: {
       type: String,
       control: "radiogroup",
-      optional: true,
+      // optional: true,
       insertableBy: ['members'],
       editableBy: ['members'],
       viewableBy: ['members'],
@@ -139,32 +139,32 @@ Users.addField([
   
 
   // Profession =========================
-  // {
-  //   fieldName: 'college',
-  //   fieldSchema: {
-  //     type: String,
-  //     control: "select",
-  //     optional: true,
-  //     insertableBy: ['members'],
-  //     editableBy: ['members'],
-  //     viewableBy: ['members'],
-  //     form: {
-  //       options: medicalCollege
-  //     },
-  //     group: formGroups.profession,
-  //     order: 1
-  //   }
-  // },
+  {
+    fieldName: 'college',
+    fieldSchema: {
+      type: String,
+      control: "select",
+      // optional: true,
+      insertableBy: ['members'],
+      editableBy: ['members'],
+      viewableBy: ['members'],
+      form: {
+        options: medicalCollege
+      },
+      group: formGroups.profession,
+      order: 1
+    }
+  },
   {
   fieldName: 'professionalLicenseNumber',
     fieldSchema: {
       type: String,
       // mustComplete: true,
-      optional: true,
+      // optional: true,
       control: "text",
       viewableBy: ['admins'],
       insertableBy: ['members'],
-      editableBy: ['members'],
+      editableBy: ['admins'],
       group: formGroups.profession,
       order: 2
     }

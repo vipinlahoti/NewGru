@@ -44,7 +44,7 @@ registerFragment(`
 
     gender
     mobileNumber
-    # college
+    college
     professionalLicenseNumber
     # areaPractise
     certification
@@ -67,6 +67,12 @@ registerFragment(`
 
 extendFragment('UsersCurrent', `
   userRole
+  isDoctor
+  college
+  professionalLicenseNumber
+  categories {
+   ...CategoriesMinimumInfo
+  }
 `);
 
 

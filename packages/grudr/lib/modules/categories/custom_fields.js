@@ -7,6 +7,14 @@ import { Hospitals } from '../../modules/hospitals/index.js';
 import { getCategoriesAsOptions } from './schema.js';
 import Users from 'meteor/vulcan:users';
 
+const formGroups = {
+  profession: {
+    name: 'profession',
+    label: 'Profession',
+    order: 20
+  }
+};
+
 Posts.addField([
   {
     fieldName: 'categoriesIds',
@@ -122,7 +130,8 @@ Users.addField([
           return Users.restrictViewableFields(currentUser, Categories, categories);
         },
         addOriginalField: true,
-      }
+      },
+      group: formGroups.profession
     }
   },
   {
