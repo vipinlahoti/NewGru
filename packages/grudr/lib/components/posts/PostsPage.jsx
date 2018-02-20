@@ -20,7 +20,6 @@ class PostsPage extends Component {
 
     } else {
       const post = this.props.document;
-
       const htmlBody = {__html: post.htmlBody};
 
       return (

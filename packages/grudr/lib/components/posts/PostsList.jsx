@@ -26,7 +26,7 @@ const PostsList = ({className, results, loading, count, totalCount, loadMore, sh
         {showLoadMore ? 
           hasMore ? 
             <Components.PostsLoadMore loading={loadingMore} loadMore={loadMore} count={count} totalCount={totalCount} /> : 
-            <Components.PostsNoMore/> : 
+            null : 
           null
         }
       </div>
@@ -37,7 +37,7 @@ const PostsList = ({className, results, loading, count, totalCount, loadMore, sh
         {showHeader ? <Components.PostsListHeader /> : null}
         {error ? <Error error={Utils.decodeIntlError(error)} /> : null }
         <div className="posts-list-content">
-          <Components.PostsLoading/>
+          <Components.Loading/>
         </div>
       </div>
     )
@@ -47,7 +47,7 @@ const PostsList = ({className, results, loading, count, totalCount, loadMore, sh
         {showHeader ? <Components.PostsListHeader /> : null}
         {error ? <Error error={Utils.decodeIntlError(error)} /> : null }
         <div className="posts-list-content">
-          <Components.PostsNoResults/>
+          <p className="posts-no-results"><FormattedMessage id="posts.no_results"/></p>
         </div>
       </div>
     )  

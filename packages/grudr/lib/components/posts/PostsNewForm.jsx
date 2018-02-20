@@ -1,11 +1,4 @@
-import {
-  Components,
-  registerComponent,
-  getRawComponent,
-  getFragment,
-  withMessages,
-  withList,
-} from 'meteor/vulcan:core';
+import { Components, registerComponent, getRawComponent, getFragment, withMessages, withList } from 'meteor/vulcan:core';
 import { Posts } from '../../modules/posts/index.js';
 import React from 'react';
 import PropTypes from 'prop-types';
