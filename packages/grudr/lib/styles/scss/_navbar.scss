@@ -1,0 +1,122 @@
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacer;
+}
+
+.navbar-brand {
+  color: $body-color;
+  display: inline-block;
+  font-family: $logo-font;
+  font-size: $navbar-brand-font-size;
+  line-height: inherit;
+  white-space: nowrap;
+
+  @include hover-focus {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+
+  .nav-link {
+    color: $body-color;
+    display: flex;
+    line-height: $navbar-height;
+
+    &:hover {
+      color: inherit;
+    }
+
+    i {
+      line-height: $navbar-height;
+      margin-right: $spacer / 3;
+    }
+  }
+
+  .dropdown {
+    .avatar-image {
+      border-radius: $border-round;
+      width: 50px;
+    }
+  }
+
+  .dropdown-menu {
+    position: static;
+    float: none;
+  }
+}
+
+.navbar-collapse {
+  flex-basis: 100%;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.navbar-toggler {
+  cursor: pointer;
+  padding: $spacer / 3 $spacer / 2;
+  line-height: 1;
+  border: 0;
+  border-radius: $border-small;
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+}
+
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+  content: "";
+  background: no-repeat center center;
+  background-size: 100% 100%;
+}
+
+.navbar-expand {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($next, $grid-breakpoints);
+
+    &#{$infix} {
+      @include media-breakpoint-up($next) {
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        padding: $spacer $spacer * 2;
+
+        .navbar-nav {
+          flex-direction: row;
+
+          .dropdown-menu {
+            position: absolute;
+          }
+
+          .dropdown-menu-right {
+            right: 0;
+            left: auto;
+          }
+        }
+
+        .navbar-collapse {
+          display: flex !important;
+          flex-basis: auto;
+        }
+
+        .navbar-toggler {
+          display: none;
+        }
+      }
+    }
+  }
+}

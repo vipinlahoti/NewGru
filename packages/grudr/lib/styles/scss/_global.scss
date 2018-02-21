@@ -1,0 +1,11 @@
+.main {
+  padding: $spacer * 5 0;
+  border-radius: $border-base;
+  position: relative;
+  z-index: 1;
+  min-height: 250px;
+}
+
+.footer {
+  padding: $spacer * 1.5 0;
+}

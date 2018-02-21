@@ -8,6 +8,9 @@ import '../components/common/NewsletterButton.jsx';
 import '../components/common/SearchForm.jsx';
 import '../components/common/Vote.jsx';
 import '../components/common/ModalTrigger.jsx';
+import '../components/common/Loading.jsx';
+import '../components/common/Error404.jsx';
+import '../components/common/FormGroup.jsx';
 
 
 // Posts
