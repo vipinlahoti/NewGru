@@ -7,7 +7,7 @@ import { Button } from 'reactstrap';
 const PostsNewButton = (props, context) => {
 
   const size = props.currentUser ? 'lg' : 'sm';
-  const button = <Button color="danger" className="pull-right"><Components.Icon name="add"/></Button>;
+  const button = <Button color="danger" className="btn-floating pull-right"><Components.Icon name="add"/></Button>;
   return (
     <Components.ModalTrigger size={size} title={context.intl.formatMessage({ id: 'posts.new_post' })} component={button}>
       <Components.PostsNewForm />

@@ -17,12 +17,14 @@ const PostsList = ({className, results, loading, count, totalCount, loadMore, sh
     const hasMore = totalCount > results.length;
 
     return (
-      <div className={classNames(className, 'posts-list', `posts-list-${terms.view}`)}>
-        {showHeader ? <Components.PostsListHeader/> : null}
-        {error ? <Error error={Utils.decodeIntlError(error)} /> : null }
-        <div className="posts-list-content">
+      <div>
+        <div className={classNames(className, 'card-columns', `card-columns-${terms.view}`)}>
+          {showHeader ? <Components.PostsListHeader/> : null}
+          {error ? <Error error={Utils.decodeIntlError(error)} /> : null }
+          
           {results.map(post => <Components.PostsItem post={post} key={post._id} currentUser={currentUser} terms={terms} />)}
         </div>
+        
         {showLoadMore ? 
           hasMore ? 
             <Components.PostsLoadMore loading={loadingMore} loadMore={loadMore} count={count} totalCount={totalCount} /> : 
@@ -33,12 +35,8 @@ const PostsList = ({className, results, loading, count, totalCount, loadMore, sh
     )
   } else if (loading) {
     return (
-      <div className={classNames(className, 'posts-list')}>
-        {showHeader ? <Components.PostsListHeader /> : null}
-        {error ? <Error error={Utils.decodeIntlError(error)} /> : null }
-        <div className="posts-list-content">
-          <Components.Loading/>
-        </div>
+      <div>
+        <Components.Loading/>
       </div>
     )
   } else {

@@ -23,6 +23,10 @@
       "apiKey": "991183798858865",
       "apiSecret": "mveQju_0JQnN_qXgi2J_7vm9-kY"
     },
+    "cloudinaryPresets": {
+      "avatar": "article_thumbnail",
+      "posts": "article_thumbnail"
+    },
 
     "forum": {
       "requirePostsApproval": false,

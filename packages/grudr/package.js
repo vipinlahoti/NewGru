@@ -16,10 +16,11 @@ Package.onUse(function (api) {
     'vulcan:voting@1.8.9',
     'vulcan:accounts@1.8.9',
     'vulcan:email@1.8.9',
-    'vulcan:forms@1.8.9',
+    'vulcan:forms-upload@1.8.9',
     'vulcan:newsletter@1.8.9',
     'vulcan:events@1.8.9',
-    'vulcan:embed@1.8.9',
+    'vulcan:admin',
+    'vulcan:debug',
 
   ]);
 

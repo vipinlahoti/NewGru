@@ -5,7 +5,7 @@ import { Posts } from '../../modules/posts/index.js';
 import { Jumbotron, Button, Container, Row } from 'reactstrap';
 
 const PostsHome = (props, context) => {
-  const terms = _.isEmpty(props.location && props.location.query) ? {view: 'top'}: props.location.query;
+  const terms = _.isEmpty(props.location && props.location.query) ? {view: 'new'}: props.location.query;
   return (
     <div>
       <Jumbotron>

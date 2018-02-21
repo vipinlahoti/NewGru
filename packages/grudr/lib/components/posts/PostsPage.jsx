@@ -5,8 +5,22 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { FormattedMessage } from 'meteor/vulcan:i18n';
+import { Jumbotron, Button, Container, Row, Col } from 'reactstrap';
+import moment from 'moment';
 
 class PostsPage extends Component {
+
+  renderActions() {
+    const post = this.props.document;
+
+    return (
+      <span className="stats">
+        <Components.ModalTrigger title="Edit an Article" component={ <Button color="danger" size="sm"><Components.Icon name="mode_edit" /> <FormattedMessage id="posts.edit"/></Button> }>
+          <Components.PostsEditForm post={post} />
+        </Components.ModalTrigger>
+      </span>
+    )
+  }
   
   render() {
     if (this.props.loading) {
@@ -23,15 +37,34 @@ class PostsPage extends Component {
       const htmlBody = {__html: post.htmlBody};
 
       return (
-        <div className="posts-page">
+        <div>
 
           <Components.HeadTags url={Posts.getPageUrl(post, true)} title={post.title} image={post.thumbnailUrl} description={post.excerpt} />
           
-          <Components.PostsItem post={post} currentUser={this.props.currentUser} />
+          <div className="main">
+            <Container>
+              <Row>
+                <Col md={{ size: 8, offset: 2 }}>
+                  <h3 className="title">{ post.title }</h3>
+                  <div className="card-footer">
+                    { post.user ? <div className="author"><Components.Avatar user={post.user} /><Components.UsersName user={ post.user }/>, &nbsp;</div> : null }
+                    <span className="article-time">{ post.postedAt ? moment(new Date(post.postedAt)).fromNow() : <FormattedMessage id="posts.dateNotDefined"/> }</span>
 
-          {post.htmlBody ? <div className="posts-page-body" dangerouslySetInnerHTML={htmlBody}></div> : null}
+                    {Posts.options.mutations.edit.check(this.props.currentUser, post) ? this.renderActions() : null}
+                  </div>
 
-          <Components.PostsCommentsThread terms={{postId: post._id, view: 'postComments'}} />
+                  {post.thumbnailUrl ?
+                  <div className="card-img">
+                    <Components.PostsThumbnail post={post}/>
+                  </div>
+                  : null}
+
+                  {post.htmlBody ? <div className="posts-page-body" dangerouslySetInnerHTML={htmlBody}></div> : null}
+
+                </Col>
+              </Row>
+            </Container>
+          </div>
 
         </div> 
       );

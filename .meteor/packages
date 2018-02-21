@@ -26,4 +26,7 @@ accounts-password@1.4.0
 # example-interfaces
 # example-reactions
 
+vulcan:admin
+vulcan:debug
+vulcan:forms-upload
 grudr

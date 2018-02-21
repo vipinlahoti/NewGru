@@ -3,7 +3,7 @@
  */
 
 import Users from 'meteor/vulcan:users';
-import { Utils, getSetting, registerSetting, getCollection } from 'meteor/vulcan:core';
+import { Utils, getComponent, getSetting, registerSetting, getCollection } from 'meteor/vulcan:core';
 import moment from 'moment';
 import marked from 'marked';
 
@@ -145,6 +145,38 @@ const schema = {
       }
     }
   },
+  /**
+   Post Thumbnail
+   */
+  thumbnailUrl: {
+    type: String,
+    optional: true,
+    control: getComponent('Upload'),
+    insertableBy: ['members'],
+    editableBy: ['members'],
+    viewableBy: ['guests'],
+    form: {
+      options: {
+        preset: getSetting('cloudinaryPresets').posts // this setting refers to the transformation you want to apply to the image
+      },
+    }
+  },
+  /**
+   Post Thumbnail
+   */
+  // thumbnailUrl: {
+  //   type: String,
+  //   optional: true,
+  //   viewableBy: ['guests'],
+  //   insertableBy: ['members'],
+  //   editableBy: ['members'],
+  //   control: FormsUpload, // use the FormsUpload form component
+  //   form: {
+  //     options: {
+  //       preset: 'article_thumbnail'
+  //     }
+  //   }
+  // },
   /**
     Count of how many times the post's page was viewed
   */

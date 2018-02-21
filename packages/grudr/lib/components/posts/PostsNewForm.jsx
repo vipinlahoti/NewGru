@@ -23,6 +23,7 @@ const PostsNewForm = (props, context) => {
     >
       <div className="posts-new-form">
         <Components.SmartForm
+          layout="vertical"
           collection={Posts}
           mutationFragment={getFragment('PostsPage')}
           successCallback={post => {

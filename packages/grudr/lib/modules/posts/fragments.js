@@ -19,7 +19,7 @@ registerFragment(`
       ...UsersMinimumInfo
     }
     # thumbnail
-    # thumbnailUrl
+    thumbnailUrl
     # categories
     categories {
       ...CategoriesMinimumInfo
