@@ -15,7 +15,7 @@ class PostsPage extends Component {
 
     return (
       <span className="stats">
-        <Components.ModalTrigger title="Edit an Article" component={ <Button color="danger" size="sm"><Components.Icon name="mode_edit" /> <FormattedMessage id="posts.edit"/></Button> }>
+        <Components.ModalTrigger title="Edit an Article" component={ <Button color="secondary" size="sm"><Components.Icon name="mode_edit" /> <FormattedMessage id="posts.edit"/></Button> }>
           <Components.PostsEditForm post={post} />
         </Components.ModalTrigger>
       </span>
