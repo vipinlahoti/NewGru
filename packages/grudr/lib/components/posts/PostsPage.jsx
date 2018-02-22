@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { FormattedMessage } from 'meteor/vulcan:i18n';
-import { Jumbotron, Button, Container, Row, Col } from 'reactstrap';
+import { Jumbotron, Button, Container, Row, Col, CardHeader, CardBody, CardFooter } from 'reactstrap';
 import moment from 'moment';
 
 class PostsPage extends Component {
@@ -45,13 +45,15 @@ class PostsPage extends Component {
             <Container>
               <Row>
                 <Col md={{ size: 8, offset: 2 }}>
-                  <h3 className="title">{ post.title }</h3>
-                  <div className="card-footer">
-                    { post.user ? <div className="author"><Components.Avatar user={post.user} /><Components.UsersName user={ post.user }/>, &nbsp;</div> : null }
-                    <span className="article-time">{ post.postedAt ? moment(new Date(post.postedAt)).fromNow() : <FormattedMessage id="posts.dateNotDefined"/> }</span>
+                  <CardHeader>
+                    <h3 className="title">{ post.title }</h3>
+                    <CardFooter>
+                      { post.user ? <div className="author"><Components.Avatar user={post.user} /><Components.UsersName user={ post.user }/>, &nbsp;</div> : null }
+                      <span className="article-time">{ post.postedAt ? moment(new Date(post.postedAt)).fromNow() : <FormattedMessage id="posts.dateNotDefined"/> }</span>
 
-                    {Posts.options.mutations.edit.check(this.props.currentUser, post) ? this.renderActions() : null}
-                  </div>
+                      {Posts.options.mutations.edit.check(this.props.currentUser, post) ? this.renderActions() : null}
+                    </CardFooter>
+                  </CardHeader>
 
                   {post.thumbnailUrl ?
                   <div className="card-img">
@@ -59,7 +61,7 @@ class PostsPage extends Component {
                   </div>
                   : null}
 
-                  {post.htmlBody ? <div className="posts-page-body" dangerouslySetInnerHTML={htmlBody}></div> : null}
+                  {post.htmlBody ? <CardBody dangerouslySetInnerHTML={htmlBody}></CardBody> : null}
 
                 </Col>
               </Row>

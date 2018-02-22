@@ -16,11 +16,13 @@
   .card-img {
     border-radius: $border-base $border-base 0 0;
     margin: -1.2rem -1.2rem $spacer * 1.5;
+    overflow: hidden;
   }
 
   .card-img-top {
     border-radius: $border-base $border-base 0 0;
-    margin: -1.2rem -1.2rem $spacer * 1.5;
+    margin: -1.2rem -1.2rem 0;
+    width: calc(100% + 2.5rem);
   }
 }
 
@@ -53,11 +55,19 @@
 
   .users-name {
     color: $body-color;
-    margin: 0 $spacer / 2;
+    margin-left: $spacer / 2;
 
     @include hover-focus {
       text-decoration: none;
     }
+  }
+}
+
+.card-header {
+  margin: 0 0 $spacer * 1.5;
+
+  .title {
+    margin-bottom: $spacer / 2;
   }
 }
 
