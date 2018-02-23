@@ -60,7 +60,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  size: 'large'
+  size: 'lg'
 };
 
 replaceComponent('ModalTrigger', ModalTrigger);

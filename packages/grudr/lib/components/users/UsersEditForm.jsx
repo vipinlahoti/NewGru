@@ -98,7 +98,7 @@ class UsersEditForm extends React.Component {
                         successCallback={user => {
                           props.flash(context.intl.formatMessage({ id: 'users.edit_success' }, {name: Users.getDisplayName(user)}), 'success')
                         }}
-                        showRemove={true}
+                        showRemove={false}
                       />
                     </TabPane>
 
@@ -119,7 +119,7 @@ class UsersEditForm extends React.Component {
                         successCallback={user => {
                           props.flash(context.intl.formatMessage({ id: 'users.edit_success' }, {name: Users.getDisplayName(user)}), 'success')
                         }}
-                        showRemove={true}
+                        showRemove={false}
                       />
                     </TabPane>
 
@@ -138,7 +138,7 @@ class UsersEditForm extends React.Component {
                         successCallback={user => {
                           props.flash(context.intl.formatMessage({ id: 'users.edit_success' }, {name: Users.getDisplayName(user)}), 'success')
                         }}
-                        showRemove={true}
+                        showRemove={false}
                       />
                     </TabPane>
                   </TabContent>

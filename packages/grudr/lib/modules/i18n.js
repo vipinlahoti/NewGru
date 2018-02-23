@@ -1,6 +1,9 @@
 import { addStrings } from 'meteor/vulcan:core';
 
 addStrings('en', {
+  'users.avatarUrl': 'Profile Image',
+  "users.userRole": "Select your profile type",
+  "users.categoriesIds": "Area of Practise",
 
   'posts.new_post': 'New Post',
   'posts.edit': 'Edit',
@@ -9,6 +12,7 @@ addStrings('en', {
   'posts.delete_confirm': 'Delete post “{title}”?',
   'posts.delete_success': 'Post “{title}” deleted.',
   'posts.title': 'Title',
+  'posts.url': 'URL',
   'posts.body': 'Body',
   'posts.categories': 'Categories',
   'posts.thumbnailUrl': 'Thumbnail URL',
@@ -83,5 +87,26 @@ addStrings('en', {
   'categories.delete_confirm': 'Delete category “{title}”?',
   'categories.delete_success': 'Category “{name}” deleted.',
   'categories.invalid': 'Invalid category',
+
+  'hospitals.new_hospital': 'New Hospital',
+  'hospitals.edit': 'Edit Hospital',
+  'hospitals.edit_success': 'Hospital “{name}” edited.',
+  'hospitals.delete': 'Delete',
+  'hospitals.delete_confirm': 'Delete hospital “{name}”?',
+  'hospitals.delete_success': 'Hospital “{name}” deleted.',
+  'hospitals.name': 'Hospital Name',
+  'hospitals.thumbnailUrl': 'Hospital Image',
+  'hospitals.sticky': 'Sticky',
+  'hospitals.load_more': 'Load More',
+  'hospitals.load_more_days': 'Load More Days',
+  'hospitals.no_results': 'No hospitals to display.',
+  'hospitals.clear_thumbnail': 'Clear Image',
+  'hospitals.clear_thumbnail?': 'Clear image?',
+  'hospitals.created_message': 'Hospital created.',
+  'hospitals.rate_limit_error': 'Please wait {value} seconds before hospitaling again.',
+  'hospitals.sign_up_or_log_in_first': 'Please sign up or log in first.',
+  'hospitals.createdAt': 'Created at',
+  'hospitals.dateNotDefined': 'Date not defined',
+  'hospitals.max_per_day': 'Sorry you cannot submit more than {value} hospitals per day.',
 
 });

@@ -73,7 +73,13 @@
 
 .nav-pills {
   .nav-link {
+    cursor: pointer;
+    padding: $spacer / 2 $spacer * 1.5;
     @include border-radius($nav-pills-border-radius);
+
+    @include hover-focus {
+      color: $white;
+    }
   }
 
   .nav-link.active,
@@ -109,6 +115,7 @@
 // Hide tabbable panes to start, show them when `.active`
 
 .tab-content {
+  padding: $spacer * 3 0 $spacer;
   > .tab-pane {
     display: none;
   }

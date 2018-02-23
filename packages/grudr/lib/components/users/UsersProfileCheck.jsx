@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Modal from 'react-bootstrap/lib/Modal'
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
 import Users from 'meteor/vulcan:users';
 import { withDocument, Components, registerComponent, withMessages } from 'meteor/vulcan:core';
 import { FormattedMessage, intlShape } from 'meteor/vulcan:i18n';
@@ -26,12 +26,10 @@ const UsersProfileCheck = ({currentUser, document, loading, flash}, context) => 
     if (fieldsToComplete.length > 0) {
 
       return (
-        <Modal bsSize='small' show={ true }>
-          <Modal.Header>
-            <Modal.Title><FormattedMessage id="users.complete_profile"/></Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
+        <Modal size='sm' isOpen={ true }>
+          <ModalBody>
             <Components.SmartForm
+              layout="vertical"
               collection={ Users }
               documentId={ currentUser._id }
               fields={ fieldsToComplete }
@@ -42,10 +40,10 @@ const UsersProfileCheck = ({currentUser, document, loading, flash}, context) => 
                 }
               }}
             />
-          </Modal.Body>
-          <Modal.Footer>
-            <FormattedMessage id="app.or"/> <a className="complete-profile-logout" onClick={ () => Meteor.logout(() => window.location.reload() /* something is broken here when giving the apollo client as a prop*/) }><FormattedMessage id="users.log_out"/></a>
-          </Modal.Footer>
+          </ModalBody>
+          <ModalFooter>
+            <Button color="link" size="sm" onClick={ () => Meteor.logout(() => window.location.reload()) }><FormattedMessage id="users.log_out"/></Button>
+          </ModalFooter>
         </Modal>
       )
     } else {

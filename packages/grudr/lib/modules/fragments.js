@@ -33,10 +33,21 @@ registerFragment(`
     ...UsersMinimumInfo
     createdAt
     isAdmin
-    bio
-    htmlBio
-    twitterUsername
-    website
+
+    # bio
+    # htmlBio
+    # twitterUsername
+    # website
+    
+    gender
+    mobileNumber
+    college
+    professionalLicenseNumber
+    # areaPractise
+    certification
+    affiliation
+    awards
+    
     groups
     karma
     # vulcan:posts

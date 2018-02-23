@@ -1,4 +1,4 @@
-import { addRoute } from 'meteor/vulcan:core';
+import { addRoute, extendRoute } from 'meteor/vulcan:core';
 
 addRoute([
   {name:'posts.list',     path: '/',                    componentName: 'PostsHome'},
@@ -8,3 +8,5 @@ addRoute([
   {name:'users.account',  path:'account',               componentName: 'UsersAccount'},
   {name:'users.edit',     path:'users/:slug/edit',      componentName: 'UsersAccount'},
 ]);
+
+extendRoute('admin', { layoutName: 'AdminLayout' });

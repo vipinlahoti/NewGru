@@ -1,3 +1,4 @@
+import './custom_fields.js';
 import './voting.js';
 import './fragments.js';
 import './components.js';
