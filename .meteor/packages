@@ -1,13 +1,29 @@
-### Telescope Core ###
+# see http://docs.vulcanjs.org/packages
 
-telescope:core
+vulcan:core@1.8.9
 
+############ Language Packages ############
 
-### Telescope Packages ###
-telescope:datetimepicker
-telescope:email
-telescope:getting-started
-telescope:notifications
-telescope:scoring
-telescope:theme-base
-telescope:theme-hubble
+vulcan:i18n-en-us
+
+############ Accounts Packages ############
+
+accounts-password@1.4.0
+# accounts-twitter
+# accounts-facebook
+
+############ Your Packages ############
+
+# getting-started
+
+# example-simple
+# example-movies
+# example-instagram
+# example-forum
+# example-customization
+# example-permissions
+# example-membership
+# example-interfaces
+# example-reactions
+
+grudr
