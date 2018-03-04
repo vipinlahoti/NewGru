@@ -1,10 +1,14 @@
 /** @module vulcan-material-ui */
+
 import { createMuiTheme } from 'material-ui/styles/index';
 import { registerSetting, getSetting } from 'meteor/vulcan:core';
 
-registerSetting('muiTheme', 'grudrTheme', 'Material UI theme used by erikdakota:vulcan-material-ui');
+
+registerSetting('muiTheme', 'Sample', 'Material UI theme used by erikdakota:vulcan-material-ui');
+
 
 export const ThemesTable = {}; // storage for info about themes
+
 
 /**
  * Register a theme with a name
@@ -22,6 +26,7 @@ export const registerTheme = (name, theme) => {
   ThemesTable[name] = themeInfo;
 };
 
+
 /**
  * Get a theme registered with registerTheme()
  *
@@ -35,13 +40,14 @@ export const getTheme = (name) => {
   return createMuiTheme(themeInfo.theme);
 };
 
+
 /**
  * Get the theme specified in the 'muiTheme' setting
  * 
  * @returns {Object}
  */
 export const getCurrentTheme = () => {
-  const themeName = getSetting('muiTheme', 'grudrTheme');
+  const themeName = getSetting('muiTheme', 'Sample');
   const theme = getTheme(themeName);
   return theme;
 };

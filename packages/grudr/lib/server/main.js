@@ -14,7 +14,4 @@ import './categories/index.js';
 
 import './posts/index.js';
 
-import './api.js';
-import './rss.js';
-
 import './wrapWithMuiTheme';

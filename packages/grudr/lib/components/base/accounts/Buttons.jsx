@@ -5,6 +5,7 @@ import { CardActions } from 'material-ui/Card';
 import { withStyles } from 'material-ui/styles';
 import classNames from 'classnames';
 
+
 const styles = theme => ({
   root: {
     flexDirection: 'row-reverse',
@@ -12,6 +13,7 @@ const styles = theme => ({
     height: 'auto',
   },
 });
+
 
 export class Buttons extends Component {
   render () {
@@ -32,12 +34,15 @@ export class Buttons extends Component {
   }
 }
 
+
 Buttons.propTypes = {
   classes: PropTypes.object.isRequired,
   buttons: PropTypes.object,
   className: PropTypes.string,
 };
 
+
 Buttons.displayName = 'AccountsButtons';
+
 
 replaceComponent('AccountsButtons', Buttons, [withStyles, styles]);

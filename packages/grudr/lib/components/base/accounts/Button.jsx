@@ -4,10 +4,17 @@ import Button from 'material-ui/Button';
 import { replaceComponent, Utils } from 'meteor/vulcan:core';
 import classNames from 'classnames';
 
+
 export class AccountsButton extends Component {
   render () {
     
-    const { label, type, disabled = false, className, onClick } = this.props;
+    const {
+      label,
+      type,
+      disabled = false,
+      className,
+      onClick
+    } = this.props;
     
     return (
       <Button
@@ -26,6 +33,7 @@ export class AccountsButton extends Component {
   }
 }
 
+
 AccountsButton.propTypes = {
   label: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['link', 'submit']),
@@ -33,5 +41,6 @@ AccountsButton.propTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func.isRequired,
 };
+
 
 replaceComponent('AccountsButton', AccountsButton);

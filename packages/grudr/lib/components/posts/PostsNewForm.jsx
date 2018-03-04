@@ -1,11 +1,4 @@
-import {
-  Components,
-  registerComponent,
-  getRawComponent,
-  getFragment,
-  withMessages,
-  withList,
-} from 'meteor/vulcan:core';
+import { Components, registerComponent, getRawComponent, getFragment, withMessages, withList } from 'meteor/vulcan:core';
 import { Posts } from '../../modules/posts/index.js';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -17,6 +10,7 @@ const PostsNewForm = (props, context) => {
     return <div className="posts-new-form"><Components.Loading/></div>;
   }
   return (
+    <div className="container">
     <Components.ShowIf
       check={Posts.options.mutations.new.check}
       failureComponent={
@@ -30,28 +24,27 @@ const PostsNewForm = (props, context) => {
     >
       <div className="posts-new-form">
         <Components.SmartForm
+          layout="vertical"
           collection={Posts}
           mutationFragment={getFragment('PostsPage')}
           successCallback={post => {
-            props.closeModal();
             props.router.push({pathname: props.redirect || Posts.getPageUrl(post)});
             props.flash(context.intl.formatMessage({id: "posts.created_message"}), "success");
           }}
         />
       </div>
     </Components.ShowIf>
+    </div>
   );
 };
 
 PostsNewForm.propTypes = {
-  closeModal: PropTypes.func,
   router: PropTypes.object,
   flash: PropTypes.func,
   redirect: PropTypes.string,
 }
 
 PostsNewForm.contextTypes = {
-  closeCallback: PropTypes.func,
   intl: intlShape
 };
 

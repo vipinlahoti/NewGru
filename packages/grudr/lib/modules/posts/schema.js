@@ -1,11 +1,9 @@
 /*
-
-Posts schema
-
-*/
+ * Posts schema
+ */
 
 import Users from 'meteor/vulcan:users';
-import { Utils, getSetting, registerSetting, getCollection } from 'meteor/vulcan:core';
+import { Utils, getComponent, getSetting, registerSetting, getCollection } from 'meteor/vulcan:core';
 import moment from 'moment';
 import marked from 'marked';
 
@@ -53,9 +51,6 @@ const schema = {
     type: Date,
     optional: true,
     viewableBy: ['guests'],
-    insertableBy: ['admins'],
-    editableBy: ['admins'],
-    control: 'datetime',
     group: formGroups.admin,
     onInsert: (post, currentUser) => {
       // Set the post's postedAt if it's going to be approved
@@ -63,28 +58,6 @@ const schema = {
         return new Date();
       }
     }
-  },
-  /**
-    URL
-  */
-  url: {
-    type: String,
-    optional: true,
-    max: 500,
-    viewableBy: ['guests'],
-    insertableBy: ['members'],
-    editableBy: ['members'],
-    control: 'url',
-    order: 10,
-    searchable: true,
-    form: {
-      query: `
-        SiteData{
-          logoUrl
-          title
-        }
-      `,
-    },
   },
   /**
     Title
@@ -113,6 +86,22 @@ const schema = {
     onEdit: (modifier, post) => {
       if (modifier.$set.title) {
         return Utils.slugify(modifier.$set.title);
+      }
+    }
+  },
+  /**
+   Post Thumbnail
+   */
+  thumbnailUrl: {
+    type: String,
+    optional: true,
+    control: getComponent('Upload'),
+    viewableBy: ['guests'],
+    insertableBy: ['members'],
+    editableBy: ['members'],
+    form: {
+      options: {
+        preset: getSetting('cloudinaryPresets').posts
       }
     }
   },
@@ -222,36 +211,6 @@ const schema = {
     group: formGroups.admin
   },
   /**
-    Whether a post is scheduled in the future or not
-  */
-  isFuture: {
-    type: Boolean,
-    optional: true,
-    viewableBy: ['guests'],
-    onInsert: (post) => {
-      // Set the post's isFuture to true if necessary
-      if (post.postedAt) {
-        const postTime = new Date(post.postedAt).getTime();
-        const currentTime = new Date().getTime() + 1000;
-        return postTime > currentTime; // round up to the second
-      }
-    },
-    onEdit: (modifier, post) => {
-      // Set the post's isFuture to true if necessary
-      if (modifier.$set.postedAt) {
-        const postTime = new Date(modifier.$set.postedAt).getTime();
-        const currentTime = new Date().getTime() + 1000;
-        if (postTime > currentTime) {
-          // if a post's postedAt date is in the future, set isFuture to true
-          return true;
-        } else if (post.isFuture) {
-          // else if a post has isFuture to true but its date is in the past, set isFuture to false
-          return false;
-        }
-      }
-    }
-  },
-  /**
     Whether the post is sticky (pinned to the top of posts lists)
   */
   sticky: {
@@ -338,19 +297,6 @@ const schema = {
   },
 
   // GraphQL-only fields
-
-  domain: {
-    type: String,
-    optional: true,
-    viewableBy: ['guests'],
-    resolveAs: {
-      type: 'String',
-      resolver: (post, args, context) => {
-        return Utils.getDomain(post.url);
-      },
-    }
-  },
-
   pageUrl: {
     type: String,
     optional: true,
@@ -359,18 +305,6 @@ const schema = {
       type: 'String',
       resolver: (post, args, { Posts }) => {
         return Posts.getPageUrl(post, true);
-      },
-    }
-  },
-
-  linkUrl: {
-    type: String,
-    optional: true,
-    viewableBy: ['guests'],
-    resolveAs: {
-      type: 'String',
-      resolver: (post, args, { Posts }) => {
-        return post.url ? Utils.getOutgoingUrl(post.url) : Posts.getPageUrl(post, true);
       },
     }
   },

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Components, replaceComponent } from 'meteor/vulcan:core';
 import { CardContent } from 'material-ui/Card';
 
+
 export class AccountsFields extends Component {
   render () {
     const {
@@ -20,5 +21,6 @@ export class AccountsFields extends Component {
     );
   }
 }
+
 
 replaceComponent('AccountsFields', AccountsFields);

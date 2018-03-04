@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 const PostsHome = (props, context) => {
-  const terms = _.isEmpty(props.location && props.location.query) ? {view: 'top'}: props.location.query;
+  const terms = _.isEmpty(props.location && props.location.query) ? {view: 'new'}: props.location.query;
   return <Components.PostsList terms={terms}/>
 };
 

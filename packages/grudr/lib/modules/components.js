@@ -1,4 +1,5 @@
-// Base Replace
+// Base
+// import '../components/base/Upload.jsx';
 import '../components/base/accounts/Button';
 import '../components/base/accounts/Buttons';
 import '../components/base/accounts/Field';
@@ -34,6 +35,7 @@ export * from '../components/base/forms/countries';
 
 
 // Common
+import '../components/common/FlashMessages.jsx';
 import '../components/common/Footer.jsx';
 import '../components/common/Header.jsx';
 import '../components/common/Layout.jsx';
@@ -47,12 +49,8 @@ import '../components/common/Vote.jsx';
 // Posts
 import '../components/posts/PostsHome.jsx';
 import '../components/posts/PostsSingle.jsx';
-import '../components/posts/PostsNewButton.jsx';
 import '../components/posts/PostsLoadMore.jsx';
-import '../components/posts/PostsNoMore.jsx';
-import '../components/posts/PostsNoResults.jsx';
 import '../components/posts/PostsItem.jsx';
-import '../components/posts/PostsLoading.jsx';
 import '../components/posts/PostsViews.jsx';
 import '../components/posts/PostsList.jsx';
 import '../components/posts/PostsListHeader.jsx';
@@ -60,9 +58,6 @@ import '../components/posts/PostsCategories.jsx';
 import '../components/posts/PostsCommenters.jsx';
 import '../components/posts/PostsPage.jsx';
 import '../components/posts/PostsStats.jsx';
-import '../components/posts/PostsDaily.jsx';
-import '../components/posts/PostsDailyList.jsx';
-import '../components/posts/PostsDay.jsx';
 import '../components/posts/PostsThumbnail.jsx';
 import '../components/posts/PostsEditForm.jsx';
 import '../components/posts/PostsNewForm.jsx';
@@ -92,7 +87,6 @@ import '../components/users/UsersAccount.jsx';
 import '../components/users/UsersEditForm.jsx';
 import '../components/users/UsersProfile.jsx';
 import '../components/users/UsersProfileCheck.jsx';
-import '../components/users/UsersAvatar.jsx';
 import '../components/users/UsersName.jsx';
 import '../components/users/UsersMenu.jsx';
 import '../components/users/UsersAccountMenu.jsx';

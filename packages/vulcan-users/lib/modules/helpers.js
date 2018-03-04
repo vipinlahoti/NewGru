@@ -240,14 +240,14 @@ Users.getRequiredFields = function () {
   return fields;
 };
 
-Users.adminUsers = function (options) {
-  return this.find({isAdmin : true}, options).fetch();
-};
+// Users.adminUsers = function (options) {
+//   return this.find({isAdmin : true}, options).fetch();
+// };
 
-Users.getCurrentUserEmail = function () {
-  return Meteor.user() ? Users.getEmail(Meteor.user()) : '';
-};
+// Users.getCurrentUserEmail = function () {
+//   return Meteor.user() ? Users.getEmail(Meteor.user()) : '';
+// };
 
-Users.findByEmail = function (email) {
-  return Users.findOne({"email": email});
-};
+// Users.findByEmail = function (email) {
+//   return Users.findOne({"email": email});
+// };

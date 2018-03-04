@@ -1,8 +1,9 @@
-import { registerTheme } from './themeSetup';
+import { registerTheme } from './themes';
 import indigo from 'material-ui/colors/indigo';
 import blue from 'material-ui/colors/blue';
 import red from 'material-ui/colors/red';
 import grey from 'material-ui/colors/grey';
+
 
 /** @ignore */
 
@@ -15,20 +16,24 @@ import grey from 'material-ui/colors/grey';
  * 
  */
 
+
 const serif = (fontFamily) => {
   return `${fontFamily}, Times, serif`;
 };
+
 
 const sansSerif = (fontFamily) => {
   return `${fontFamily}, Helvetica, Arial, sans-serif`;
 };
 
+
 const palettes = {
-  primary: blue,
-  secondary: indigo,
+  primary: indigo,
+  secondary: blue,
   error: red,
   background: grey,
 };
+
 
 const display = {
   fontFamily: 'Roboto',
@@ -38,6 +43,7 @@ const display = {
   color: palettes.primary[500],
 };
 
+
 const title = {
   fontFamily: 'Roboto Condensed',
   fontSize: 18,
@@ -45,6 +51,7 @@ const title = {
   lineHeight: 1.2,
   fontWeight: 400,
 };
+
 
 const body = {
   fontFamily: 'Roboto',
@@ -56,12 +63,13 @@ const body = {
   fontColorLight: 'rgba(0, 0, 0, 0.54)',
 };
 
-const theme = {
 
+const theme = {
+  
   palette: {
     primary: {
       light: palettes.primary[200],
-      main: palettes.primary['A400'],
+      main: palettes.primary[500],
       dark: palettes.primary[800],
       ...palettes.primary
     },
@@ -178,7 +186,9 @@ const theme = {
       fontFamily: sansSerif(body.fontFamily),
     }
     
-  }
+  },
+  
 };
 
-registerTheme('grudrTheme', theme);
+
+registerTheme('Sample', theme);

@@ -1,8 +1,6 @@
 /*
-
-Categories parameter
-
-*/
+ * Categories parameter
+ */
 
 import { addCallback, getSetting, registerSetting } from 'meteor/vulcan:core';
 import gql from 'graphql-tag';

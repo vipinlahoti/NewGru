@@ -1,8 +1,6 @@
 /*
-
-Posts parameters
-
-*/
+ * Posts parameters
+ */
 
 import { Injected } from 'meteor/meteorhacks:inject-initial';
 import moment from 'moment';

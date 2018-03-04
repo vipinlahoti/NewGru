@@ -1,8 +1,6 @@
 /*
-
-Comments permissions
-
-*/
+ * Comments permissions
+ */
 
 import Users from 'meteor/vulcan:users';
 

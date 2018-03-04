@@ -1,8 +1,6 @@
 /*
-
-Posts collection
-
-*/
+ * Posts collection
+ */
 
 import schema from './schema.js';
 import { createCollection, getDefaultResolvers, getDefaultMutations } from 'meteor/vulcan:core';
@@ -13,17 +11,11 @@ import Users from 'meteor/vulcan:users';
  * @namespace Posts
  */
 export const Posts = createCollection({
-
   collectionName: 'Posts',
-
   typeName: 'Post',
-
   schema,
-
   resolvers: getDefaultResolvers('Posts'),
-
-  mutations: getDefaultMutations('Posts'),
-
+  mutations: getDefaultMutations('Posts')
 });
 
 // refactor: moved here from schema.js
@@ -66,8 +58,6 @@ Posts.statuses = [
 Posts.checkAccess = (currentUser, post) => {
   if (Users.isAdmin(currentUser) || Users.owns(currentUser, post)) { // admins can always see everything, users can always see their own posts
     return true;
-  } else if (post.isFuture) {
-    return false;
   } else { 
     const status = _.findWhere(Posts.statuses, {value: post.status});
     return Users.canDo(currentUser, `posts.view.${status.label}`);

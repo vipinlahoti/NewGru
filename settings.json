@@ -1,7 +1,7 @@
 {
   "public": {
 
-    "title": " ",
+    "title": "Grudr",
     "tagline":"",
 
     "logoUrl": "",
@@ -22,6 +22,18 @@
       "cloudName": "grudr",
       "apiKey": "991183798858865",
       "apiSecret": "mveQju_0JQnN_qXgi2J_7vm9-kY"
+    },
+    "cloudinaryPresets": {
+      "avatar": "article_thumbnail",
+      "posts": "article_thumbnail"
+    },
+
+    "forum": {
+      "requirePostsApproval": false,
+      "forum.postExcerptLength": 30,
+      "commentInterval": 15,
+      "postInterval": 30,
+      "maxPostsPerDay": 5
     }
 
   },

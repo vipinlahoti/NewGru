@@ -1,8 +1,6 @@
 /*
-
-Comments collection
-
-*/
+ * Comments collection
+ */
 
 import schema from './schema.js';
 import { createCollection, getDefaultResolvers, getDefaultMutations } from 'meteor/vulcan:core';
@@ -13,17 +11,11 @@ import Users from 'meteor/vulcan:users';
  * @namespace Comments
  */
  export const Comments = createCollection({
-
    collectionName: 'Comments',
-
    typeName: 'Comment',
-
    schema,
-
    resolvers: getDefaultResolvers('Comments'),
-
-   mutations: getDefaultMutations('Comments'),
-
+   mutations: getDefaultMutations('Comments')
 });
 
 Comments.checkAccess = (currentUser, comment) => {

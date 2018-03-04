@@ -1,8 +1,6 @@
 /*
-
-Custom fields on Users collection
-
-*/
+ * Custom fields on Users collection
+ */
 
 import Users from 'meteor/vulcan:users';
 

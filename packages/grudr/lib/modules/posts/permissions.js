@@ -1,8 +1,6 @@
 /*
-
-Posts permissions
-
-*/
+ * Posts permissions
+ */
 
 import Users from 'meteor/vulcan:users';
 

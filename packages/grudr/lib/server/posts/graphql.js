@@ -1,8 +1,6 @@
 /*
-
-GraphQL config
-
-*/
+ * GraphQL config
+ */
 
 import { addGraphQLMutation, addGraphQLResolvers } from 'meteor/vulcan:core';
 
@@ -16,6 +14,3 @@ const specificResolvers = {
 
 addGraphQLResolvers(specificResolvers);
 addGraphQLMutation('increasePostViewCount(postId: String): Float');
-
-
-

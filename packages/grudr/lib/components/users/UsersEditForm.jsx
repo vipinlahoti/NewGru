@@ -27,7 +27,7 @@ const UsersEditForm = (props, context) => {
           successCallback={user => {
             props.flash(context.intl.formatMessage({ id: 'users.edit_success' }, {name: Users.getDisplayName(user)}), 'success')
           }}
-          showRemove={true}
+          showRemove={false}
         />
       </div>
     </Components.ShowIf>

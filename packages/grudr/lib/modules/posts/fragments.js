@@ -5,7 +5,6 @@ registerFragment(`
     # posts
     _id
     title
-    url
     slug
     postedAt
     createdAt
@@ -19,7 +18,7 @@ registerFragment(`
     user {
       ...UsersMinimumInfo
     }
-    # embedly
+    # thumbnail
     thumbnailUrl
     # categories
     categories {

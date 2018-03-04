@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { replaceComponent } from 'meteor/vulcan:core';
 import TextField from 'material-ui/TextField';
 
+
 const autocompleteValues = {
   'username': 'username',
   'usernameOrEmail': 'email',
@@ -10,7 +11,9 @@ const autocompleteValues = {
   'password': 'current-password'
 };
 
+
 export class AccountsField extends PureComponent {
+  
   
   constructor (props) {
     super(props);
@@ -18,6 +21,7 @@ export class AccountsField extends PureComponent {
       mount: true
     };
   }
+  
   
   triggerUpdate () {
     // Trigger an onChange on initial load, to support browser pre-filled values.
@@ -27,9 +31,11 @@ export class AccountsField extends PureComponent {
     }
   }
   
+  
   componentDidMount () {
     this.triggerUpdate();
   }
+  
   
   componentDidUpdate (prevProps) {
     // Re-mount component so that we don't expose browser pre-filled passwords if the component was
@@ -41,6 +47,7 @@ export class AccountsField extends PureComponent {
       this.triggerUpdate();
     }
   }
+  
   
   render () {
     const {
@@ -87,8 +94,10 @@ export class AccountsField extends PureComponent {
   }
 }
 
+
 AccountsField.propTypes = {
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };
+
 
 replaceComponent('AccountsField', AccountsField);

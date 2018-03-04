@@ -1,8 +1,6 @@
 /*
-
-Admin dashboard extension
-
-*/
+ * Admin dashboard extension
+ */
 
 import { extendFragment, addAdminColumn, addStrings } from 'meteor/vulcan:core';
 import AdminUsersPosts from '../../components/admin/AdminUsersPosts';
@@ -18,7 +16,6 @@ addAdminColumn({
   order: 50,
   component: AdminUsersPosts
 });
-
 
 addStrings('en', {
   'admin.users.posts': 'Posts',

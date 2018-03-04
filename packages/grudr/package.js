@@ -8,7 +8,7 @@ Package.onUse(function (api) {
   api.versionsFrom('METEOR@1.5.2');
 
   api.use([
-    // 'ecmascript',
+
     'promise',
     'fourseven:scss@4.5.0',
 
@@ -16,10 +16,11 @@ Package.onUse(function (api) {
     'vulcan:voting',
     'vulcan:accounts',
     'vulcan:email',
-    'vulcan:forms',
+    'vulcan:forms-upload',
     'vulcan:newsletter',
     'vulcan:events',
-    'vulcan:embed',
+    'vulcan:admin',
+    'vulcan:debug'
 
   ]);
 
@@ -52,7 +53,7 @@ Package.onUse(function (api) {
 
   api.addFiles([
     // 'lib/stylesheets/bootstrap.css',
-    'lib/stylesheets/main.scss'
+    'lib/styles/scss/main.scss'
   ], ['client']);
 
   api.mainModule("lib/server/main.js", "server");

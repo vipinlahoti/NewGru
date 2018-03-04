@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { Components, registerComponent } from 'meteor/vulcan:core';
 import withStyles from 'material-ui/styles/withStyles';
 
+
 const styles = theme => ({
   messages: {
     backgroundColor: theme.palette.error.main,
@@ -13,8 +14,10 @@ const styles = theme => ({
   },
 });
 
-export class AccountsForm extends Component {
 
+export class AccountsForm extends Component {
+  
+  
   componentDidMount () {
     let form = this.form;
     if (form) {
@@ -23,6 +26,7 @@ export class AccountsForm extends Component {
       });
     }
   }
+  
   
   render () {
     const {
@@ -48,7 +52,10 @@ export class AccountsForm extends Component {
       </form>
     );
   }
+  
+  
 }
+
 
 AccountsForm.propTypes = {
   oauthServices: PropTypes.object,
@@ -59,6 +66,8 @@ AccountsForm.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
+
 AccountsForm.displayName = 'AccountsForm';
+
 
 registerComponent('AccountsForm', AccountsForm, [withStyles, styles]);

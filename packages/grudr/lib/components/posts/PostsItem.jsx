@@ -19,9 +19,12 @@ class PostsItem extends PureComponent {
   renderActions() {
     return (
       <div className="posts-actions">
-        <ModalTrigger title="Edit Post" component={<a className="posts-action-edit"><FormattedMessage id="posts.edit"/></a>}>
+        <Link to={{pathname:'/post/edit', query:{postId: this.props.post._id}}}>
+          Edit
+        </Link>
+        {/*<ModalTrigger title="Edit Post" component={<a className="posts-action-edit"><FormattedMessage id="posts.edit"/></a>}>
           <Components.PostsEditForm post={this.props.post} />
-        </ModalTrigger>
+        </ModalTrigger>*/}
       </div>
     )
   }
@@ -45,14 +48,14 @@ class PostsItem extends PureComponent {
         <div className="posts-item-content">
 
           <h3 className="posts-item-title">
-            <Link to={Posts.getLink(post)} className="posts-item-title-link" target={Posts.getLinkTarget(post)}>
+            <Link to={Posts.getPageUrl(post)} className="posts-item-title-link">
               {post.title}
             </Link>
             {this.renderCategories()}
           </h3>
 
           <div className="posts-item-meta">
-            {post.user? <div className="posts-item-user"><Components.UsersAvatar user={post.user} size="small"/><Components.UsersName user={post.user}/></div> : null}
+            {post.user? <div className="posts-item-user"><Components.Avatar user={post.user}/><Components.UsersName user={post.user}/></div> : null}
             <div className="posts-item-date">{post.postedAt ? moment(new Date(post.postedAt)).fromNow() : <FormattedMessage id="posts.dateNotDefined"/>}</div>
             <div className="posts-item-comments">
               <Link to={Posts.getPageUrl(post)}>

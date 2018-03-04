@@ -12,6 +12,7 @@ import MoreIcon from 'mdi-material-ui/More';
 import ScrollTrigger from './ScrollTrigger';
 import classNames from 'classnames';
 
+
 const styles = theme => ({
   root: {
     textAlign: 'center',
@@ -29,6 +30,7 @@ const styles = theme => ({
     margin: 0,
   }
 });
+
 
 const LoadMore = ({
                     classes,
@@ -106,6 +108,7 @@ const LoadMore = ({
   );
 };
 
+
 LoadMore.propTypes = {
   classes: PropTypes.object.isRequired,
   count: PropTypes.number,
@@ -118,10 +121,14 @@ LoadMore.propTypes = {
   infiniteScroll: PropTypes.bool,
 };
 
+
 LoadMore.contextTypes = {
   intl: intlShape.isRequired,
 };
 
+
 LoadMore.displayName = 'LoadMore';
 
+
 registerComponent('LoadMore', LoadMore, [withStyles, styles]);
+

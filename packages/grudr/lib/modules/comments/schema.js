@@ -1,8 +1,6 @@
 /*
-
-Comments schema
-
-*/
+ * Comments schema
+ */
 
 import Users from 'meteor/vulcan:users';
 import marked from 'marked';
