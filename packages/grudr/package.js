@@ -53,7 +53,7 @@ Package.onUse(function (api) {
 
   api.addFiles([
     // 'lib/stylesheets/bootstrap.css',
-    'lib/styles/scss/main.scss'
+    'lib/styles/scss/grid.scss'
   ], ['client']);
 
   api.mainModule("lib/server/main.js", "server");

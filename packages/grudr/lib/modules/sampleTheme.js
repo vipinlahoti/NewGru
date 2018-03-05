@@ -47,7 +47,6 @@ const display = {
 const title = {
   fontFamily: 'Roboto Condensed',
   fontSize: 18,
-  letterSpacing: '-.008em',
   lineHeight: 1.2,
   fontWeight: 400,
 };
@@ -55,12 +54,22 @@ const title = {
 
 const body = {
   fontFamily: 'Roboto',
-  fontSize: 15,
+  fontSize: 16,
   fontWeightLight: 300,
-  fontWeightRegular: 300,
-  fontWeightMedium: 400,
+  fontWeightRegular: 400,
+  fontWeightMedium: 500,
   fontColorRegular: 'rgba(0, 0, 0, 0.92)',
   fontColorLight: 'rgba(0, 0, 0, 0.54)',
+};
+
+const logo = {
+  fontFamily: 'Poppins',
+  fontSize: '1.5rem'
+};
+
+const heading = {
+  fontFamily: 'Roboto Slab',
+  margin: '0 0 0.5rem',
 };
 
 
@@ -127,12 +136,11 @@ const theme = {
     },
     
     headline: {
-      fontSize: title.fontSize + 8,
+      fontSize: title.fontSize + 4,
       fontWeight: title.fontWeight,
-      fontFamily: sansSerif(title.fontFamily),
-      letterSpacing: title.letterSpacing,
+      fontFamily: serif(heading.fontFamily),
       lineHeight: title.lineHeight,
-      color: display.color,
+      margin: heading.margin,
     },
     
     title: {
@@ -153,6 +161,14 @@ const theme = {
       color: body.fontColorRegular,
     },
     
+    body: {
+      fontSize: body.fontSize,
+      fontWeight: body.fontWeightRegular,
+      fontFamily: sansSerif(body.fontFamily),
+      lineHeight: '24px',
+      color: body.fontColorRegular,
+    },
+
     body2: {
       fontSize: body.fontSize,
       fontWeight: body.fontWeightMedium,
@@ -180,10 +196,22 @@ const theme = {
     },
     
     button: {
-      fontSize: 14,
+      fontSize: 15,
       textTransform: 'uppercase',
       fontWeight: body.fontWeightMedium,
       fontFamily: sansSerif(body.fontFamily),
+
+      '& svg': {
+        marginRight: '5px',
+        height: '20px',
+        width: '20px',
+      }
+    },
+
+    brandLogo: {
+      fontSize: logo.fontSize,
+      fontFamily: sansSerif(logo.fontFamily),
+      fontWeight: body.fontWeightRegular,
     }
     
   },

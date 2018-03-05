@@ -82,6 +82,7 @@ import '../components/categories/CategoriesNewForm.jsx';
 
 
 // Users
+import '../components/users/UsersAvatar.jsx';
 import '../components/users/UsersSingle.jsx';
 import '../components/users/UsersAccount.jsx';
 import '../components/users/UsersEditForm.jsx';

@@ -1,10 +1,27 @@
 import { Components, registerComponent, ModalTrigger } from 'meteor/vulcan:core';
+import { FormattedMessage } from 'meteor/vulcan:i18n';
+import { Posts } from '../../modules/posts/index.js';
+
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'meteor/vulcan:i18n';
 import { Link } from 'react-router';
-import { Posts } from '../../modules/posts/index.js';
+
+import { withStyles } from 'material-ui/styles';
+import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
+import Button from 'material-ui/Button';
+import Typography from 'material-ui/Typography';
+
+import classNames from 'classnames';
 import moment from 'moment';
+
+const styles = theme => ({
+  card: {
+    borderRadius: '5px',
+    margin: theme.spacing.unit,
+    padding: theme.spacing.unit * 2,
+    position: 'relative',
+  }
+});
 
 class PostsItem extends PureComponent {
 
@@ -12,68 +29,45 @@ class PostsItem extends PureComponent {
     return this.props.post.categories && this.props.post.categories.length > 0 ? <Components.PostsCategories post={this.props.post} /> : "";
   }
 
-  renderCommenters() {
-    return this.props.post.commenters && this.props.post.commenters.length > 0 ? <Components.PostsCommenters post={this.props.post}/> : "";
-  }
-
   renderActions() {
     return (
-      <div className="posts-actions">
-        <Link to={{pathname:'/post/edit', query:{postId: this.props.post._id}}}>
-          Edit
-        </Link>
-        {/*<ModalTrigger title="Edit Post" component={<a className="posts-action-edit"><FormattedMessage id="posts.edit"/></a>}>
-          <Components.PostsEditForm post={this.props.post} />
-        </ModalTrigger>*/}
-      </div>
+      <Button component={Link} to={{pathname:'/post/edit', query:{postId: this.props.post._id}}}>Edit</Button>
     )
   }
   
   render() {
 
-    const {post} = this.props;
+    const { post, classes } = this.props;
 
-    let postClass = "posts-item";
-    if (post.sticky) postClass += " posts-sticky";
+    let postClass = "card-item";
+    if (post.sticky) postClass += " card-sticky";
 
     return (
-      <div className={postClass}>
-
-        <div className="posts-item-vote">
-          <Components.Vote collection={Posts} document={post} currentUser={this.props.currentUser} />
-        </div>
-
+      <Card elevation={4} className={classNames(classes.card, postClass)}>
         {post.thumbnailUrl ? <Components.PostsThumbnail post={post}/> : null}
 
-        <div className="posts-item-content">
-
-          <h3 className="posts-item-title">
+        <CardContent>
+          <Typography variant="headline" component="h3">
             <Link to={Posts.getPageUrl(post)} className="posts-item-title-link">
               {post.title}
             </Link>
-            {this.renderCategories()}
-          </h3>
+          </Typography>
 
-          <div className="posts-item-meta">
-            {post.user? <div className="posts-item-user"><Components.Avatar user={post.user}/><Components.UsersName user={post.user}/></div> : null}
-            <div className="posts-item-date">{post.postedAt ? moment(new Date(post.postedAt)).fromNow() : <FormattedMessage id="posts.dateNotDefined"/>}</div>
-            <div className="posts-item-comments">
-              <Link to={Posts.getPageUrl(post)}>
-                {!post.commentCount || post.commentCount === 0 ? <FormattedMessage id="comments.count_0"/> : 
-                  post.commentCount === 1 ? <FormattedMessage id="comments.count_1" /> :
-                    <FormattedMessage id="comments.count_2" values={{count: post.commentCount}}/>
-                }
-              </Link>
-            </div>
-            {this.props.currentUser && this.props.currentUser.isAdmin ? <Components.PostsStats post={post} /> : null}
-            {Posts.options.mutations.edit.check(this.props.currentUser, post) ? this.renderActions() : null}
-          </div>
+          {this.renderCategories()}
 
-        </div>
+          <Typography component="p">
+            {post.excerpt}
+          </Typography>
+        </CardContent>
 
-        {this.renderCommenters()}
+        <CardActions>
+          {post.user ? <div className="posts-item-user"><Components.UsersAvatar user={post.user}/><Components.UsersName user={post.user}/></div> : null}
+          <div className="posts-item-date">{post.postedAt ? moment(new Date(post.postedAt)).fromNow() : <FormattedMessage id="posts.dateNotDefined"/>}</div>
 
-      </div>
+          {Posts.options.mutations.edit.check(this.props.currentUser, post) ? this.renderActions() : null}
+        </CardActions>
+      </Card>
+
     )
   }
 }
@@ -84,4 +78,4 @@ PostsItem.propTypes = {
   terms: PropTypes.object,
 };
 
-registerComponent('PostsItem', PostsItem);
+registerComponent('PostsItem', PostsItem, [withStyles, styles]);

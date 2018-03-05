@@ -1,6 +1,8 @@
 import { addRoute } from 'meteor/vulcan:core';
 
 addRoute([
+  {name: 'theme',         path: '/theme',                 componentName: 'ThemeStyles'},
+
   {name:'posts.list',     path: '/',                      componentName: 'PostsHome'},
   {name:'posts.single',   path:'posts/:_id(/:slug)',      componentName: 'PostsSingle'},
   {name:'posts.new',      path:'post/new(/:postId)',      componentName: 'PostsNewForm'},
