@@ -35,7 +35,7 @@ class Layout extends PureComponent {
       <div className={classNames('wrapper', `wrapper-${routeName}`)} id="wrapper">
 
         <Helmet>
-          <link name="font-face" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:300,400&text=Grudr|Roboto+Slab:400,500"/>
+          <link name="font-face" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,700|Roboto+Slab:400,500,600,700|Material+Icons"/>
         </Helmet>
        
         <Components.HeadTags />

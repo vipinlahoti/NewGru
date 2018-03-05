@@ -4,7 +4,13 @@ import PropTypes from 'prop-types';
 
 const PostsHome = (props, context) => {
   const terms = _.isEmpty(props.location && props.location.query) ? {view: 'new'}: props.location.query;
-  return <Components.PostsList terms={terms}/>
+  return (
+    <div className="container">
+      <div className="row">
+        <Components.PostsList terms={terms}/>
+      </div>
+    </div>
+  )
 };
 
 PostsHome.displayName = "PostsHome";

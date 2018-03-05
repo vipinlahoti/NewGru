@@ -18,7 +18,7 @@ import grey from 'material-ui/colors/grey';
 
 
 const serif = (fontFamily) => {
-  return `${fontFamily}, Times, serif`;
+  return `"${fontFamily}", "Times New Roman", serif`;
 };
 
 

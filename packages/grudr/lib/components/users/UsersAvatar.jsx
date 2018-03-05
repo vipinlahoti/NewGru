@@ -15,11 +15,30 @@ const styles = theme => ({
   }
 });
 
-const UsersAvatar = ({className, classes, user, link}) => {
+const UsersAvatar = ({className, classes, size, user, link}) => {
+
+  const sizes = {
+    xsmall: '30px',
+    small: '50px',
+    medium: '60px',
+    large: '80px',
+    xlarge: '120px',
+    exlarge: '160px',
+  }
+
+  const aStyle = {
+    height: sizes[size],
+    width: sizes[size]
+  };
+
+  const imgStyle = {
+    height: sizes[size],
+    width: sizes[size]
+  };
 
   const avatarUrl = user.avatarUrl || Users.avatar.getUrl(user);
 
-  const img = <Avatar alt={Users.getDisplayName(user)} src={avatarUrl} className={classNames(classes.avatar)} />
+  const img = <Avatar alt={Users.getDisplayName(user)} src={avatarUrl} style={imgStyle} className={classNames(classes.avatar)} />
   const initials = <span>{Users.avatar.getInitials(user)}</span>;
 
   const avatar = avatarUrl ? img : initials;

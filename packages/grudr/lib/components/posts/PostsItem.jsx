@@ -15,11 +15,15 @@ import classNames from 'classnames';
 import moment from 'moment';
 
 const styles = theme => ({
-  card: {
+  root: {
     borderRadius: '5px',
     margin: theme.spacing.unit,
     padding: theme.spacing.unit * 2,
     position: 'relative',
+  },
+  cardAuthor: {
+    display: 'flex',
+    lineHeight: 2,
   }
 });
 
@@ -39,11 +43,11 @@ class PostsItem extends PureComponent {
 
     const { post, classes } = this.props;
 
-    let postClass = "card-item";
+    let postClass = "card";
     if (post.sticky) postClass += " card-sticky";
 
     return (
-      <Card elevation={4} className={classNames(classes.card, postClass)}>
+      <Card elevation={4} className={classNames(classes.root, postClass)}>
         {post.thumbnailUrl ? <Components.PostsThumbnail post={post}/> : null}
 
         <CardContent>
@@ -61,7 +65,7 @@ class PostsItem extends PureComponent {
         </CardContent>
 
         <CardActions>
-          {post.user ? <div className="posts-item-user"><Components.UsersAvatar user={post.user}/><Components.UsersName user={post.user}/></div> : null}
+          {post.user ? <div className={classNames(classes.cardAuthor)}><Components.UsersAvatar user={post.user} size="xsmall"/><Components.UsersName user={post.user}/></div> : null}
           <div className="posts-item-date">{post.postedAt ? moment(new Date(post.postedAt)).fromNow() : <FormattedMessage id="posts.dateNotDefined"/>}</div>
 
           {Posts.options.mutations.edit.check(this.props.currentUser, post) ? this.renderActions() : null}
