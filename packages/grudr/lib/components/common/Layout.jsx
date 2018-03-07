@@ -1,11 +1,10 @@
 import { Components, registerComponent, withCurrentUser } from 'meteor/vulcan:core';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import Helmet from 'react-helmet';
+import classNames from 'classnames';
 
-const Layout = ({currentUser, children, currentRoute}) =>
-
+const Layout = ({currentUser, children, currentRoute, }) =>
   <div className={classNames('wrapper', `wrapper-${currentRoute.name.replace('.', '-')}`)} id="wrapper">
 
     <Helmet>
@@ -22,7 +21,6 @@ const Layout = ({currentUser, children, currentRoute}) =>
     {children}
     <Components.Footer />
     <Components.FlashMessages />
-  
   </div>
 
 registerComponent('Layout', Layout, withCurrentUser);

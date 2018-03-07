@@ -50,7 +50,7 @@ const schema = {
   postedAt: {
     type: Date,
     optional: true,
-    viewableBy: ['admins'],
+    viewableBy: ['guests'],
     group: formGroups.admin,
     onInsert: (post, currentUser) => {
       // Set the post's postedAt if it's going to be approved

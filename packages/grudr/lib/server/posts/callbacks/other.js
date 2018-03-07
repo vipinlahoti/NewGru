@@ -1,7 +1,6 @@
 /*
 
 Callbacks to:
-
 - Increment a user's post count
 - Run post approved callbacks
 - Update a user's post count
