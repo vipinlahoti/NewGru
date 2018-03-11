@@ -1,8 +1,8 @@
-import { Components, registerComponent, withCurrentUser, Utils } from 'meteor/vulcan:core';
-import React, { PureComponent } from 'react';
+import { Components, registerComponent, withCurrentUser } from 'meteor/vulcan:core';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import Helmet from 'react-helmet';
+import classNames from 'classnames';
 
 import { withStyles } from 'material-ui/styles';
 import Drawer from 'material-ui/Drawer';
@@ -10,44 +10,39 @@ import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Reboot from 'material-ui/Reboot';
 
+const drawerWidth = 240;
+const topBarHeight = 100;
+
 const styles = theme => ({
   '@global': {
-    body: {
-      ...theme.typography.body,
+    html: {
+      background: theme.palette.background.default,
+      WebkitFontSmoothing: 'antialiased',
+      MozOsxFontSmoothing: 'grayscale',
+      ...theme.typography.body1,
     },
     a: {
-      color: theme.palette.background[900],
+      color: theme.palette.common.black,
       textDecoration: 'none',
-      '& hover': {
-        color: theme.palette.background[900],
-        textDecoration: 'none',
-      }
-    },
-  },
+    }
+  }
 });
 
-class Layout extends PureComponent {
-  render() {
-    const routeName = Utils.slugify(this.props.currentRoute.name);
-    const classes = this.props.classes;
+const Layout = ({currentUser, children, currentRoute, }) =>
+  <div className={classNames('wrapper', `wrapper-${currentRoute.name.replace('.', '-')}`)} id="wrapper">
 
-    return (
-      <div className={classNames('wrapper', `wrapper-${routeName}`)} id="wrapper">
+    <Helmet>
+      <link name="font-face" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,700|Roboto+Slab:400,500,600,700|Material+Icons"/>
+      <link name="font-awesome" rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    </Helmet>
+   
+    <Components.HeadTags />
+    <Reboot />
+    {currentUser ? <Components.UsersProfileCheck currentUser={currentUser} documentId={currentUser._id} /> : null}
 
-        <Helmet>
-          <link name="font-face" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,700|Roboto+Slab:400,500,600,700|Material+Icons"/>
-        </Helmet>
-       
-        <Components.HeadTags />
-        <Reboot />
-
-        <Components.Header />
-        {this.props.children}
-        <Components.Footer />
-        <Components.FlashMessages />
-      </div>
-    )
-  }
-}
+    <Components.Header />
+    {children}
+    <Components.FlashMessages />
+  </div>
 
 registerComponent('Layout', Layout, withCurrentUser, [withStyles, styles]);

@@ -1,5 +1,5 @@
-export * from './themes';
-import './sampleTheme';
+export * from './themeSetup';
+import './themes';
 import './voting.js';
 import './fragments.js';
 import './components.js';

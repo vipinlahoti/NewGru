@@ -1,5 +1,4 @@
 // Base
-// import '../components/base/Upload.jsx';
 import '../components/base/accounts/Button';
 import '../components/base/accounts/Buttons';
 import '../components/base/accounts/Field';
@@ -35,8 +34,7 @@ export * from '../components/base/forms/countries';
 
 
 // Common
-import '../components/common/FlashMessages.jsx';
-import '../components/common/Footer.jsx';
+// import '../components/common/Footer.jsx';
 import '../components/common/Header.jsx';
 import '../components/common/Layout.jsx';
 import '../components/common/Logo.jsx';

@@ -1,6 +1,5 @@
 import { registerComponent } from 'meteor/vulcan:core';
 import Users from 'meteor/vulcan:users';
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
@@ -9,13 +8,14 @@ import classNames from 'classnames';
 import { withStyles } from 'material-ui/styles';
 import Avatar from 'material-ui/Avatar';
 
+
 const styles = theme => ({
-  avatar: {
+  root: {
     marginRight: theme.spacing.unit - 3,
   }
 });
 
-const UsersAvatar = ({className, classes, size, user, link}) => {
+const UsersAvatar = ({className, classes, user, size, link}) => {
 
   const sizes = {
     xsmall: '30px',
@@ -38,16 +38,16 @@ const UsersAvatar = ({className, classes, size, user, link}) => {
 
   const avatarUrl = user.avatarUrl || Users.avatar.getUrl(user);
 
-  const img = <Avatar alt={Users.getDisplayName(user)} src={avatarUrl} style={imgStyle} className={classNames(classes.avatar)} />
-  const initials = <span>{Users.avatar.getInitials(user)}</span>;
+  const img = <Avatar alt={Users.getDisplayName(user)} style={imgStyle} src={avatarUrl} title={user.username} />;
+  const initials = <span className="avatar-initials"><span>{Users.avatar.getInitials(user)}</span></span>;
 
   const avatar = avatarUrl ? img : initials;
 
   return (
-    <div>
+    <div className={classes.root}>
       {link ? 
         <Link to={Users.getProfileUrl(user)}>
-          {avatar}
+          { avatar }
         </Link> 
         : <span>{avatar}</span>
       }

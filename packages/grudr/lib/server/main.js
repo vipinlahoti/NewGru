@@ -13,5 +13,4 @@ import './comments/index.js';
 import './categories/index.js';
 
 import './posts/index.js';
-
-import './wrapWithMuiTheme';
+import './wrapWithMuiTheme.jsx';

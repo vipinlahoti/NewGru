@@ -1,2 +1,2 @@
 export * from '../modules/index.js';
-import './wrapWithMuiTheme';
+import './wrapWithMuiTheme.jsx';

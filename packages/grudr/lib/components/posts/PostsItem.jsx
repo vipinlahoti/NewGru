@@ -1,29 +1,31 @@
 import { Components, registerComponent, ModalTrigger } from 'meteor/vulcan:core';
 import { FormattedMessage } from 'meteor/vulcan:i18n';
 import { Posts } from '../../modules/posts/index.js';
-
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
+import moment from 'moment';
 
 import { withStyles } from 'material-ui/styles';
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
-
 import classNames from 'classnames';
-import moment from 'moment';
 
 const styles = theme => ({
-  root: {
-    borderRadius: '5px',
-    margin: theme.spacing.unit,
-    padding: theme.spacing.unit * 2,
-    position: 'relative',
+  card: {
+    display: 'inline-block',
+    marginTop: theme.spacing.unit,
+    marginBottom: theme.spacing.unit,
   },
-  cardAuthor: {
+  title: {
+    marginBottom: theme.spacing.unit,
+  },
+  avatarUser: {
     display: 'flex',
-    lineHeight: 2,
+  },
+  cardActions: {
+    paddingBottom: theme.spacing.unit * 2,
   }
 });
 
@@ -35,7 +37,11 @@ class PostsItem extends PureComponent {
 
   renderActions() {
     return (
-      <Button component={Link} to={{pathname:'/post/edit', query:{postId: this.props.post._id}}}>Edit</Button>
+      <div className="posts-actions">
+        <Link to={{pathname:'/post/edit', query:{postId: this.props.post._id}}}>
+          Edit
+        </Link>
+      </div>
     )
   }
   
@@ -43,35 +49,32 @@ class PostsItem extends PureComponent {
 
     const { post, classes } = this.props;
 
-    let postClass = "card";
-    if (post.sticky) postClass += " card-sticky";
+    let postClass = "posts-item";
+    if (post.sticky) postClass += " posts-sticky";
 
     return (
-      <Card elevation={4} className={classNames(classes.root, postClass)}>
+      <Card className={classNames(classes.card, postClass)}>
         {post.thumbnailUrl ? <Components.PostsThumbnail post={post}/> : null}
-
         <CardContent>
-          <Typography variant="headline" component="h3">
-            <Link to={Posts.getPageUrl(post)} className="posts-item-title-link">
+          {this.renderCategories()}
+          <Typography variant="subheading" className={classes.title}>
+            <Link to={Posts.getPageUrl(post)}>
               {post.title}
             </Link>
           </Typography>
-
-          {this.renderCategories()}
-
           <Typography component="p">
             {post.excerpt}
           </Typography>
         </CardContent>
-
-        <CardActions>
-          {post.user ? <div className={classNames(classes.cardAuthor)}><Components.UsersAvatar user={post.user} size="xsmall"/><Components.UsersName user={post.user}/></div> : null}
-          <div className="posts-item-date">{post.postedAt ? moment(new Date(post.postedAt)).fromNow() : <FormattedMessage id="posts.dateNotDefined"/>}</div>
-
-          {Posts.options.mutations.edit.check(this.props.currentUser, post) ? this.renderActions() : null}
+        
+        <CardActions className={classes.cardActions}>
+          {post.user? <div className={classes.avatarUser}><Components.UsersAvatar size="xsmall" user={post.user}/><Components.UsersName user={post.user}/></div> : null}
+        {/*  <div className="posts-item-date">{post.postedAt ? moment(new Date(post.postedAt)).fromNow() : <FormattedMessage id="posts.dateNotDefined"/>}</div>
+          <Components.Vote collection={Posts} document={post} currentUser={this.props.currentUser} />
+          {Posts.options.mutations.edit.check(this.props.currentUser, post) ? this.renderActions() : null}*/}
         </CardActions>
-      </Card>
-
+        
+      </Card>      
     )
   }
 }

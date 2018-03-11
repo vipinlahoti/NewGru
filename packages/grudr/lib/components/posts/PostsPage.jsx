@@ -1,17 +1,43 @@
 import { Components, registerComponent, withDocument, withCurrentUser, getActions, withMutation } from 'meteor/vulcan:core';
+import { FormattedMessage } from 'meteor/vulcan:i18n';
 import { Posts } from '../../modules/posts/index.js';
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { FormattedMessage } from 'meteor/vulcan:i18n';
+import { browserHistory } from 'react-router';
+
+import { withStyles } from 'material-ui/styles';
+import Typography from 'material-ui/Typography';
+import Paper from 'material-ui/Paper';
+import AppBar from 'material-ui/AppBar';
+import Toolbar from 'material-ui/Toolbar';
+import IconButton from 'material-ui/IconButton';
+import ArrowLeftIcon from 'mdi-material-ui/ArrowLeft';
+
+const styles = theme => ({
+  root: {
+    // marginTop: theme.spacing.unit * 7,
+  },
+  appBar: {
+    backgroundColor: theme.palette.common.white,
+  },
+  paper: theme.mixins.gutters({
+    paddingTop: theme.spacing.unit * 3,
+    paddingBottom: theme.spacing.unit * 3,
+  }),
+  menuButton: {
+    marginRight: theme.spacing.unit,
+  }
+});
 
 class PostsPage extends Component {
   
   render() {
     if (this.props.loading) {
       
-      return <div className="posts-page"><Components.Loading/></div>
+      return <Components.Loading/>
       
     } else if (!this.props.document) {
       
@@ -20,19 +46,33 @@ class PostsPage extends Component {
 
     } else {
       const post = this.props.document;
-
       const htmlBody = {__html: post.htmlBody};
+      const { classes, router } = this.props;
 
       return (
-        <div className="posts-page">
-
+        <div className={classes.root}>
           <Components.HeadTags url={Posts.getPageUrl(post, true)} title={post.title} image={post.thumbnailUrl} description={post.excerpt} />
           
-          <Components.PostsItem post={post} currentUser={this.props.currentUser} />
+          <AppBar color="default" position="fixed" className={classes.appBar}>
+            <Toolbar>
+              <IconButton aria-label="back" color="inherit" className={classes.menuButton} onClick={router}>
+                <ArrowLeftIcon />
+              </IconButton>
+              <Typography variant="title" color="inherit" className={classes.flex}>
+                Articles
+              </Typography>
+            </Toolbar>
+          </AppBar>
 
-          {post.htmlBody ? <div className="posts-page-body" dangerouslySetInnerHTML={htmlBody}></div> : null}
+          {post.thumbnailUrl ? <Components.PostsThumbnail post={post}/> : null}
+          
+          <Paper className={classes.paper} elevation={4}>
+            <Typography variant="subheading" component="h2">
+            {post.title}
+          </Typography>
 
-          <Components.PostsCommentsThread terms={{postId: post._id, view: 'postComments'}} />
+          {post.htmlBody ? <div dangerouslySetInnerHTML={htmlBody}></div> : null}
+          </Paper>
 
         </div> 
       );
@@ -48,6 +88,7 @@ class PostsPage extends Component {
       const { 
         // from the parent component, used in withDocument, GraphQL HOC
         documentId,
+        routerBack,
         // from connect, Redux HOC 
         setViewed, 
         postsViewed, 
@@ -75,6 +116,7 @@ PostsPage.displayName = "PostsPage";
 
 PostsPage.propTypes = {
   documentId: PropTypes.string,
+  routerBack: PropTypes.string,
   document: PropTypes.object,
   postsViewed: PropTypes.array,
   setViewed: PropTypes.func,
@@ -100,6 +142,7 @@ registerComponent(
   'PostsPage', 
   // React component 
   PostsPage,
+  [withStyles, styles],
   // HOC to give access to the current user
   withCurrentUser, 
   // HOC to load the data of the document, based on queryOptions & a documentId props

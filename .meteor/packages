@@ -15,19 +15,4 @@ accounts-password@1.4.0
 
 ############ Your Packages ############
 
-# getting-started
-
-# example-simple
-# example-movies
-# example-instagram
-# example-forum
-# example-customization
-# example-permissions
-# example-membership
-# example-interfaces
-# example-reactions
-
-vulcan:admin
-vulcan:forms-upload
-vulcan:debug
 grudr

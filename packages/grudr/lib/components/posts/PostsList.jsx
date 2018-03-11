@@ -1,14 +1,26 @@
 import { Components, registerComponent, withList, withCurrentUser, Utils } from 'meteor/vulcan:core';
+import { FormattedMessage, intlShape } from 'meteor/vulcan:i18n';
+import { Posts } from '../../modules/posts/index.js';
+
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Posts } from '../../modules/posts/index.js';
 import Alert from 'react-bootstrap/lib/Alert'
-import { FormattedMessage, intlShape } from 'meteor/vulcan:i18n';
 import classNames from 'classnames';
+
+import { withStyles } from 'material-ui/styles';
+
+
+const styles = theme => ({
+  root: {
+    columnCount: 2,
+    paddingTop: theme.spacing.unit * 7,
+    paddingBottom: theme.spacing.unit * 7,
+  },
+});
 
 const Error = ({error}) => <Alert className="flash-message" bsStyle="danger"><FormattedMessage id={error.id} values={{value: error.value}}/>{error.message}</Alert>
 
-const PostsList = ({className, results, loading, count, totalCount, loadMore, showHeader = true, showLoadMore = true, networkStatus, currentUser, error, terms}) => {
+const PostsList = ({className, classes, results, loading, count, totalCount, loadMore, showHeader = true, showLoadMore = true, networkStatus, currentUser, error, terms}) => {
 
   const loadingMore = networkStatus === 2;
 
@@ -17,10 +29,11 @@ const PostsList = ({className, results, loading, count, totalCount, loadMore, sh
     const hasMore = totalCount > results.length;
 
     return (
-      <div className={classNames(className, 'posts-list', `posts-list-${terms.view}`)}>
-        {showHeader ? <Components.PostsListHeader/> : null}
-        {error ? <Error error={Utils.decodeIntlError(error)} /> : null }
-        <div className="posts-list-content">
+      <div>
+        <div className={classNames(classes.root)}>
+          {showHeader ? <Components.PostsListHeader/> : null}
+          {error ? <Error error={Utils.decodeIntlError(error)} /> : null }
+
           {results.map(post => <Components.PostsItem post={post} key={post._id} currentUser={currentUser} terms={terms} />)}
         </div>
         {showLoadMore ? 
@@ -33,17 +46,13 @@ const PostsList = ({className, results, loading, count, totalCount, loadMore, sh
     )
   } else if (loading) {
     return (
-      <div className={classNames(className, 'posts-list')}>
-        {showHeader ? <Components.PostsListHeader /> : null}
-        {error ? <Error error={Utils.decodeIntlError(error)} /> : null }
-        <div className="posts-list-content">
-          <Components.Loading/>
-        </div>
+      <div>
+        <Components.Loading/>
       </div>
     )
   } else {
     return (
-      <div className={classNames(className, 'posts-list')}>
+      <div>
         {showHeader ? <Components.PostsListHeader /> : null}
         {error ? <Error error={Utils.decodeIntlError(error)} /> : null }
         <div className="posts-list-content">
@@ -78,4 +87,4 @@ const options = {
   fragmentName: 'PostsList',
 };
 
-registerComponent('PostsList', PostsList, withCurrentUser, [withList, options]);
+registerComponent('PostsList', PostsList, withCurrentUser, [withList, options], [withStyles, styles]);

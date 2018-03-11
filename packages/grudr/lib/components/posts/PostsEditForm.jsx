@@ -15,7 +15,7 @@ class PostsEditForm extends PureComponent {
       <Components.ShowIf check={Posts.options.mutations.edit.check} document={this.props.post}>
         <div className="posts-edit-form-admin">
           <div className="posts-edit-form-id">ID: {postId}</div>
-          {<Components.PostsStats post={postId} />}
+          <Components.PostsStats post={postId} />
         </div>
       </Components.ShowIf>
     )

@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 
+
 class JssCleanup extends PureComponent {
+
 
   // Remove the server-side injected CSS.
   componentDidMount() {
@@ -16,5 +18,6 @@ class JssCleanup extends PureComponent {
     return this.props.children;
   }
 }
+
 
 export default JssCleanup;
