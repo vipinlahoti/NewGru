@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { browserHistory } from 'react-router';
+import { Link } from 'react-router';
 
 import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
@@ -47,7 +47,9 @@ class PostsPage extends Component {
     } else {
       const post = this.props.document;
       const htmlBody = {__html: post.htmlBody};
-      const { classes, router } = this.props;
+      const { classes, routerBack, router } = this.props;
+      const goBack = routerBack[routerBack.length - 2];
+      console.log(goBack);
 
       return (
         <div className={classes.root}>
@@ -55,7 +57,7 @@ class PostsPage extends Component {
           
           <AppBar color="default" position="fixed" className={classes.appBar}>
             <Toolbar>
-              <IconButton aria-label="back" color="inherit" className={classes.menuButton} onClick={router}>
+              <IconButton aria-label="back" color="inherit" className={classes.menuButton} component={Link} to={`goBack.path`}>
                 <ArrowLeftIcon />
               </IconButton>
               <Typography variant="title" color="inherit" className={classes.flex}>
@@ -116,7 +118,7 @@ PostsPage.displayName = "PostsPage";
 
 PostsPage.propTypes = {
   documentId: PropTypes.string,
-  routerBack: PropTypes.string,
+  // routerBack: PropTypes.func,
   document: PropTypes.object,
   postsViewed: PropTypes.array,
   setViewed: PropTypes.func,
@@ -142,6 +144,7 @@ registerComponent(
   'PostsPage', 
   // React component 
   PostsPage,
+
   [withStyles, styles],
   // HOC to give access to the current user
   withCurrentUser, 
