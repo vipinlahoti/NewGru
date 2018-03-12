@@ -1,6 +1,7 @@
 import { Components, registerComponent, withDocument, withCurrentUser, getActions, withMutation } from 'meteor/vulcan:core';
 import { FormattedMessage } from 'meteor/vulcan:i18n';
 import { Posts } from '../../modules/posts/index.js';
+import { withRouter } from 'react-router'
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -15,18 +16,23 @@ import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
 import ArrowLeftIcon from 'mdi-material-ui/ArrowLeft';
+import BookmarkOutlineIcon from 'mdi-material-ui/BookmarkOutline';
+import ShareVariantIcon from 'mdi-material-ui/ShareVariant';
 
 const styles = theme => ({
   root: {
     // marginTop: theme.spacing.unit * 7,
   },
   appBar: {
-    backgroundColor: theme.palette.common.white,
+    // backgroundColor: theme.palette.common.white,
   },
   paper: theme.mixins.gutters({
     paddingTop: theme.spacing.unit * 3,
     paddingBottom: theme.spacing.unit * 3,
   }),
+  headerMid: {
+    flexGrow: 1,
+  },
   menuButton: {
     marginRight: theme.spacing.unit,
   }
@@ -48,33 +54,50 @@ class PostsPage extends Component {
       const post = this.props.document;
       const htmlBody = {__html: post.htmlBody};
       const { classes, routerBack, router } = this.props;
-      const goBack = routerBack[routerBack.length - 2];
-      console.log(goBack);
+      // const goBack = routerBack[routerBack.length - 2];
+      // console.log(goBack.path);
 
       return (
         <div className={classes.root}>
           <Components.HeadTags url={Posts.getPageUrl(post, true)} title={post.title} image={post.thumbnailUrl} description={post.excerpt} />
           
-          <AppBar color="default" position="fixed" className={classes.appBar}>
+          <AppBar position="fixed" className={classes.appBar}>
             <Toolbar>
-              <IconButton aria-label="back" color="inherit" className={classes.menuButton} component={Link} to={`goBack.path`}>
+            
+              <IconButton aria-label="back" color="inherit" className={classes.menuButton} component={Link} onClick={() => router.push({pathname: this.props.redirect})}>
                 <ArrowLeftIcon />
               </IconButton>
-              <Typography variant="title" color="inherit" className={classes.flex}>
-                Articles
-              </Typography>
+
+              <div className={classes.headerMid}>
+                <Typography variant="title" color="inherit" className={classes.flex}>
+                  Articles
+                </Typography>
+              </div>
+
+              <IconButton aria-label="bookmark" color="inherit" >
+                <BookmarkOutlineIcon />
+              </IconButton>
+
+              <IconButton aria-label="share" color="inherit" >
+                <ShareVariantIcon />
+              </IconButton>
+
             </Toolbar>
           </AppBar>
 
-          {post.thumbnailUrl ? <Components.PostsThumbnail post={post}/> : null}
-          
-          <Paper className={classes.paper} elevation={4}>
-            <Typography variant="subheading" component="h2">
-            {post.title}
-          </Typography>
+          <div className="container">
+            <div className="col-md-offset-1 col-md-10">
+              {post.thumbnailUrl ? <Components.PostsThumbnail post={post}/> : null}
+              
+              <Paper className={classes.paper} elevation={4}>
+                <Typography variant="subheading" component="h2">
+                  {post.title}
+                </Typography>
 
-          {post.htmlBody ? <div dangerouslySetInnerHTML={htmlBody}></div> : null}
-          </Paper>
+                {post.htmlBody ? <div dangerouslySetInnerHTML={htmlBody}></div> : null}
+              </Paper>
+            </div>
+          </div>
 
         </div> 
       );
@@ -90,7 +113,6 @@ class PostsPage extends Component {
       const { 
         // from the parent component, used in withDocument, GraphQL HOC
         documentId,
-        routerBack,
         // from connect, Redux HOC 
         setViewed, 
         postsViewed, 
@@ -118,7 +140,6 @@ PostsPage.displayName = "PostsPage";
 
 PostsPage.propTypes = {
   documentId: PropTypes.string,
-  // routerBack: PropTypes.func,
   document: PropTypes.object,
   postsViewed: PropTypes.array,
   setViewed: PropTypes.func,
@@ -144,6 +165,8 @@ registerComponent(
   'PostsPage', 
   // React component 
   PostsPage,
+
+  withRouter,
 
   [withStyles, styles],
   // HOC to give access to the current user

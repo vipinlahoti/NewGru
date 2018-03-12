@@ -20,9 +20,10 @@ const drawerWidth = 240;
 
 const styles = theme => ({
   appBar: {
-    backgroundColor: theme.palette.common.white,
+    // backgroundColor: theme.palette.common.white,
   },
   brandLogo: {
+    color: theme.palette.common.white,
     ...theme.typography.brandLogo,
   },
   headerMid: {
@@ -41,7 +42,7 @@ const Header = (props, context) => {
   const siteTitle = getSetting('title', 'Grudr');
   
   return (
-    <AppBar color="default" elevation={0} className={classes.appBar}>
+    <AppBar elevation={0} className={classes.appBar}>
       <Toolbar>
         <IconButton
           aria-label="open drawer"

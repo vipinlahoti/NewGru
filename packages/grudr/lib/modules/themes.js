@@ -35,7 +35,7 @@ const display = {
   fontWeight: 300,
   letterSpacing: '.035em',
   lineHeight: 1.1,
-  // color: '#FFFFFF',
+  color: '#FFFFFF',
 };
 
 const title = {
@@ -93,7 +93,7 @@ const theme = {
       fontFamily: sansSerif(display.fontFamily),
       letterSpacing: display.letterSpacing,
       lineHeight: display.lineHeight,
-      color: body.fontColorRegular,
+      color: display.color,
     },
     
     display3: {

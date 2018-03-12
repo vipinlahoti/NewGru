@@ -25,6 +25,7 @@ const styles = theme => ({
     display: 'flex',
   },
   cardActions: {
+    lineHeight: '30px',
     paddingBottom: theme.spacing.unit * 2,
   }
 });
@@ -69,8 +70,8 @@ class PostsItem extends PureComponent {
         
         <CardActions className={classes.cardActions}>
           {post.user? <div className={classes.avatarUser}><Components.UsersAvatar size="xsmall" user={post.user}/><Components.UsersName user={post.user}/></div> : null}
-        {/*  <div className="posts-item-date">{post.postedAt ? moment(new Date(post.postedAt)).fromNow() : <FormattedMessage id="posts.dateNotDefined"/>}</div>
-          <Components.Vote collection={Posts} document={post} currentUser={this.props.currentUser} />
+          <div className="posts-item-date">{post.postedAt ? moment(new Date(post.postedAt)).fromNow() : <FormattedMessage id="posts.dateNotDefined"/>}</div>
+          {/*<Components.Vote collection={Posts} document={post} currentUser={this.props.currentUser} />
           {Posts.options.mutations.edit.check(this.props.currentUser, post) ? this.renderActions() : null}*/}
         </CardActions>
         
