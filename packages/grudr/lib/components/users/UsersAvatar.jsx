@@ -19,7 +19,7 @@ const UsersAvatar = ({className, classes, user, size, link}) => {
 
   const sizes = {
     xsmall: '30px',
-    small: '50px',
+    small: '40px',
     medium: '60px',
     large: '80px',
     xlarge: '120px',

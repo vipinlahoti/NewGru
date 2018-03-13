@@ -141,7 +141,7 @@ const theme = {
     },
     
     subheading: {
-      fontSize: title.fontSize + 2,
+      fontSize: title.fontSize - 2,
       fontWeight: title.fontWeight,
       fontFamily: sansSerif(title.fontFamily),
       letterSpacing: title.letterSpacing,
