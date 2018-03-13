@@ -5,6 +5,9 @@ import classNames from 'classnames';
 import { withVote, hasVotedClient } from 'meteor/vulcan:voting';
 import { FormattedMessage, intlShape } from 'meteor/vulcan:i18n';
 
+import IconButton from 'material-ui/IconButton';
+import BookmarkOutlineIcon from 'mdi-material-ui/BookmarkOutline';
+
 class Vote extends PureComponent {
 
   constructor() {
@@ -45,13 +48,11 @@ class Vote extends PureComponent {
 
   render() {
     return (
-      <div className={this.getActionClass()}>
-        <a className="upvote-button" onClick={this.vote}>
-          <Components.Icon name="upvote" />
-          <div className="sr-only"><FormattedMessage id="voting.upvote"/></div>
-          <div className="vote-count">{this.props.document.baseScore || 0}</div>
-        </a>
-      </div>
+      <span className={this.getActionClass()}>
+        <IconButton aria-label="bookmark" color="inherit" onClick={this.vote}>
+          <BookmarkOutlineIcon /> {this.props.document.baseScore || 0}
+        </IconButton>
+      </span>
     )
   }
 

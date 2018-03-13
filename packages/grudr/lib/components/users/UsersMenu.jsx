@@ -13,7 +13,7 @@ const UsersMenu = ({currentUser, client}) =>
   <div className="users-menu">
     <Dropdown id="user-dropdown">
       <Dropdown.Toggle>
-        <Components.Avatar user={currentUser} />
+        <Components.UsersAvatar size="small" user={currentUser} />
       </Dropdown.Toggle>
       <Dropdown.Menu>
         <LinkContainer to={`/users/${currentUser.slug}`}>

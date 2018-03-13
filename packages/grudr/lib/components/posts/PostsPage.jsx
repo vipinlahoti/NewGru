@@ -22,6 +22,8 @@ import ShareVariantIcon from 'mdi-material-ui/ShareVariant';
 const styles = theme => ({
   root: {
     // marginTop: theme.spacing.unit * 7,
+    paddingTop: theme.spacing.unit * 7,
+    paddingBottom: theme.spacing.unit * 7,
   },
   appBar: {
     // backgroundColor: theme.palette.common.white,
@@ -61,7 +63,7 @@ class PostsPage extends Component {
         <div className={classes.root}>
           <Components.HeadTags url={Posts.getPageUrl(post, true)} title={post.title} image={post.thumbnailUrl} description={post.excerpt} />
           
-          <AppBar position="fixed" className={classes.appBar}>
+          {/*<AppBar position="fixed" className={classes.appBar}>
             <Toolbar>
             
               <IconButton aria-label="back" color="inherit" className={classes.menuButton} component={Link} onClick={() => router.push({pathname: this.props.redirect})}>
@@ -83,7 +85,7 @@ class PostsPage extends Component {
               </IconButton>
 
             </Toolbar>
-          </AppBar>
+          </AppBar>*/}
 
           <div className="container">
             <div className="col-md-offset-1 col-md-10">

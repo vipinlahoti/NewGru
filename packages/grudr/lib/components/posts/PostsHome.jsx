@@ -39,11 +39,11 @@ const PostsHome = (props, context) => {
   
   return (
     <div className={classes.root}>
-      <Paper className={classNames(classes.paper, classes.hero)} elevation={3} square={true}>
+      {/*<Paper className={classNames(classes.paper, classes.hero)} elevation={3} square={true}>
         <Typography variant="display4" component="h2" className={classes.heroTitle}>
           Articles
         </Typography>
-      </Paper>
+      </Paper>*/}
       <div className="container">
         <div className="col-md-offset-1 col-md-10">
           <Components.PostsList terms={terms}/>

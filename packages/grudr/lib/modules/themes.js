@@ -1,5 +1,5 @@
 import { registerTheme } from './themeSetup';
-import indigo from 'material-ui/colors/indigo';
+import deepPurple from 'material-ui/colors/deepPurple';
 import pink from 'material-ui/colors/pink';
 import red from 'material-ui/colors/red';
 import grey from 'material-ui/colors/grey';
@@ -24,7 +24,7 @@ const sansSerif = (fontFamily) => {
 };
 
 const palettes = {
-  primary: indigo,
+  primary: deepPurple,
   secondary: pink,
   error: red,
   background: grey,
@@ -65,7 +65,7 @@ const theme = {
   palette: {
     primary: {
       light: palettes.primary[200],
-      main: palettes.primary[500],
+      main: palettes.primary[700],
       dark: palettes.primary[900],
       ...palettes.primary
     },
