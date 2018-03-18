@@ -1,10 +1,13 @@
 import { Components, registerComponent, ModalTrigger } from 'meteor/vulcan:core';
+import { FormattedMessage } from 'meteor/vulcan:i18n';
+import { Posts } from '../../modules/posts/index.js';
+
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'meteor/vulcan:i18n';
 import { Link } from 'react-router';
-import { Posts } from '../../modules/posts/index.js';
 import moment from 'moment';
+
+import { Card, CardImg, CardText, CardBody, CardTitle, CardFooter, Button } from 'reactstrap';
 
 class PostsItem extends PureComponent {
 
@@ -19,12 +22,9 @@ class PostsItem extends PureComponent {
   renderActions() {
     return (
       <div className="posts-actions">
-        <Link to={{pathname:'/post/edit', query:{postId: this.props.post._id}}}>
-          Edit
-        </Link>
-        {/*<ModalTrigger title="Edit Post" component={<a className="posts-action-edit"><FormattedMessage id="posts.edit"/></a>}>
+        <ModalTrigger title="Edit Post" component={<a className="posts-action-edit"><FormattedMessage id="posts.edit"/></a>}>
           <Components.PostsEditForm post={this.props.post} />
-        </ModalTrigger>*/}
+        </ModalTrigger>
       </div>
     )
   }
@@ -37,43 +37,24 @@ class PostsItem extends PureComponent {
     if (post.sticky) postClass += " posts-sticky";
 
     return (
-      <div className={postClass}>
-
-        <div className="posts-item-vote">
-          <Components.Vote collection={Posts} document={post} currentUser={this.props.currentUser} />
+      <Card className={postClass}>
+        <div className="card-img">
+          {post.thumbnailUrl ? <Components.PostsThumbnail post={post}/> : null}
         </div>
-
-        {post.thumbnailUrl ? <Components.PostsThumbnail post={post}/> : null}
-
-        <div className="posts-item-content">
-
-          <h3 className="posts-item-title">
+        <CardBody>
+          {this.renderCategories()}
+          <CardTitle>
             <Link to={Posts.getPageUrl(post)} className="posts-item-title-link">
               {post.title}
             </Link>
-            {this.renderCategories()}
-          </h3>
-
-          <div className="posts-item-meta">
-            {post.user? <div className="posts-item-user"><Components.Avatar user={post.user}/><Components.UsersName user={post.user}/></div> : null}
-            <div className="posts-item-date">{post.postedAt ? moment(new Date(post.postedAt)).fromNow() : <FormattedMessage id="posts.dateNotDefined"/>}</div>
-            <div className="posts-item-comments">
-              <Link to={Posts.getPageUrl(post)}>
-                {!post.commentCount || post.commentCount === 0 ? <FormattedMessage id="comments.count_0"/> : 
-                  post.commentCount === 1 ? <FormattedMessage id="comments.count_1" /> :
-                    <FormattedMessage id="comments.count_2" values={{count: post.commentCount}}/>
-                }
-              </Link>
-            </div>
-            {this.props.currentUser && this.props.currentUser.isAdmin ? <Components.PostsStats post={post} /> : null}
-            {Posts.options.mutations.edit.check(this.props.currentUser, post) ? this.renderActions() : null}
-          </div>
-
-        </div>
-
-        {this.renderCommenters()}
-
-      </div>
+          </CardTitle>
+          <CardText>{post.excerpt}</CardText>
+        </CardBody>
+        <CardFooter>
+          {post.user? <div className="author"><Components.Avatar user={post.user}/><Components.UsersName user={post.user}/>, &nbsp;</div> : null}
+          <div className="article-time">{post.postedAt ? moment(new Date(post.postedAt)).fromNow() : <FormattedMessage id="posts.dateNotDefined"/>}</div>
+        </CardFooter>
+      </Card>
     )
   }
 }

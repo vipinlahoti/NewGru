@@ -5,7 +5,6 @@
     "npm": "^3.0"
   },
   "scripts": {
-    "prestart": "node .vulcan/prestart_vulcan.js",
     "start": "meteor --settings settings.json",
     "lint": "eslint --cache --ext .jsx,js packages"
   },
@@ -75,6 +74,7 @@
     "react-router-scroll": "^0.4.4",
     "react-stripe-checkout": "^2.4.0",
     "react-syntax-highlighter": "^6.1.2",
+    "reactstrap": "^5.0.0-beta",
     "recompose": "^0.26.0",
     "redux": "^3.6.0",
     "rss": "^1.2.1",

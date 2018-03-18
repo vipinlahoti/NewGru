@@ -1,0 +1,115 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: $white;
+  background-clip: border-box;
+  @include border-radius($border-small);
+  @extend .z-depth-1;
+
+  &.card-single {
+    background: transparent;
+    box-shadow: none;
+
+    .card-img {
+      margin: $spacer 0 $spacer * 2;
+    }
+  }
+}
+
+.card-body {
+  // Enable `flex-grow: 1` for decks and groups so that card blocks take up
+  // as much space as possible, ensuring footers are aligned to the bottom.
+  flex: 1 1 auto;
+  padding: $spacer;
+}
+
+.card-text {
+  margin: 0;
+}
+
+.card-header {
+  padding: $spacer;
+  margin-bottom: 0; // Removes the default margin-bottom of <hN>
+}
+
+.card-footer {
+  color: $gray-600;
+  display: flex;
+  font-size: $font-size-sm;
+  line-height: 2;
+  padding: 0 $spacer $spacer;
+
+  a {
+    color: $gray-600;
+  }
+
+  .author {
+    display: flex;
+    line-height: 2;
+
+    .avatar-image {
+      margin-right: $spacer / 3;
+    }
+  }
+}
+
+.card-subtitle {
+  display: flex;
+  line-height: 2;
+
+  a {
+    color: inherit;
+  }
+}
+
+// Card image
+.card-img-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: $spacer;
+}
+
+.card-img {
+  img {
+    width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+    @include border-radius($border-small);
+  }
+}
+
+// Card image caps
+.card-img-top {
+  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+  @include border-top-radius($border-small);
+}
+
+.card-img-bottom {
+  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+  @include border-bottom-radius($border-small);
+}
+
+// Columns
+.card-columns {
+  .card {
+    margin: $spacer / 5 $spacer / 5 $spacer;
+  }
+
+  @include media-breakpoint-up(sm) {
+    column-count: $card-columns-count;
+    column-gap: $card-columns-gap;
+
+    .card {
+      display: inline-block; // Don't let them vertically span multiple columns
+      width: 100%; // Don't let their width change
+    }
+  }
+
+  &.card-columns-userPosts {
+    column-count: 1;
+  }
+}

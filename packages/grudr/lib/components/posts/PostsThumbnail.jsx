@@ -3,7 +3,7 @@ import React from 'react';
 import { Posts } from '../../modules/posts/index.js';
 
 const PostsThumbnail = ({post}) => 
-  <a className="posts-thumbnail" href={Posts.getPageUrl(post)}>
+  <a href={Posts.getPageUrl(post)}>
     <img src={Posts.getThumbnailUrl(post)} />
   </a>
 

@@ -1,6 +1,6 @@
 Package.describe({
   name: "grudr",
-  version: '1.0.0'
+  version: '0.0.1'
 });
 
 Package.onUse(function (api) {
@@ -20,7 +20,8 @@ Package.onUse(function (api) {
     'vulcan:newsletter',
     'vulcan:events',
     'vulcan:admin',
-    'vulcan:debug'
+    'vulcan:debug',
+    'vulcan:embed'
 
   ]);
 

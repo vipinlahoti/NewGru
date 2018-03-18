@@ -1,9 +1,9 @@
 import { Components, registerComponent, withList, withCurrentUser, Utils } from 'meteor/vulcan:core';
+import { FormattedMessage, intlShape } from 'meteor/vulcan:i18n';
+import { Posts } from '../../modules/posts/index.js';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Posts } from '../../modules/posts/index.js';
 import Alert from 'react-bootstrap/lib/Alert'
-import { FormattedMessage, intlShape } from 'meteor/vulcan:i18n';
 import classNames from 'classnames';
 
 const Error = ({error}) => <Alert className="flash-message" bsStyle="danger"><FormattedMessage id={error.id} values={{value: error.value}}/>{error.message}</Alert>
@@ -17,10 +17,11 @@ const PostsList = ({className, results, loading, count, totalCount, loadMore, sh
     const hasMore = totalCount > results.length;
 
     return (
-      <div className={classNames(className, 'posts-list', `posts-list-${terms.view}`)}>
+      <div>
+        <div className={classNames(className, 'card-columns', `card-columns-${terms.view}`)}>
         {showHeader ? <Components.PostsListHeader/> : null}
         {error ? <Error error={Utils.decodeIntlError(error)} /> : null }
-        <div className="posts-list-content">
+        
           {results.map(post => <Components.PostsItem post={post} key={post._id} currentUser={currentUser} terms={terms} />)}
         </div>
         {showLoadMore ? 
@@ -33,22 +34,16 @@ const PostsList = ({className, results, loading, count, totalCount, loadMore, sh
     )
   } else if (loading) {
     return (
-      <div className={classNames(className, 'posts-list')}>
-        {showHeader ? <Components.PostsListHeader /> : null}
-        {error ? <Error error={Utils.decodeIntlError(error)} /> : null }
-        <div className="posts-list-content">
-          <Components.Loading/>
-        </div>
+      <div>
+        <Components.Loading/>
       </div>
     )
   } else {
     return (
-      <div className={classNames(className, 'posts-list')}>
+      <div>
         {showHeader ? <Components.PostsListHeader /> : null}
         {error ? <Error error={Utils.decodeIntlError(error)} /> : null }
-        <div className="posts-list-content">
-          <p className="posts-no-results"><FormattedMessage id="posts.no_results"/></p>
-        </div>
+        <h5 className="title text-center"><FormattedMessage id="posts.no_results"/></h5>
       </div>
     )  
   }

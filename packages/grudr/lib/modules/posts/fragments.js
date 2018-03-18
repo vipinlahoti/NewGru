@@ -1,10 +1,11 @@
 import { registerFragment } from 'meteor/vulcan:core';
 
-registerFragment(`
+registerFragment(/* GraphQL */`
   fragment PostsList on Post {
     # posts
     _id
     title
+    url
     slug
     postedAt
     createdAt
@@ -18,7 +19,7 @@ registerFragment(`
     user {
       ...UsersMinimumInfo
     }
-    # thumbnail
+    # embedly
     thumbnailUrl
     # categories
     categories {
@@ -38,7 +39,7 @@ registerFragment(`
   }
 `);
 
-registerFragment(`
+registerFragment(/* GraphQL */`
   fragment PostsPage on Post {
     ...PostsList
     body

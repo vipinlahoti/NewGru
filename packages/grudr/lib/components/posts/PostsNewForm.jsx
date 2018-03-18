@@ -1,16 +1,15 @@
 import { Components, registerComponent, getRawComponent, getFragment, withMessages, withList } from 'meteor/vulcan:core';
+import { intlShape, FormattedMessage } from 'meteor/vulcan:i18n';
 import { Posts } from '../../modules/posts/index.js';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { intlShape, FormattedMessage } from 'meteor/vulcan:i18n';
 import { withRouter } from 'react-router'
 
 const PostsNewForm = (props, context) => {
   if (props.loading) {
-    return <div className="posts-new-form"><Components.Loading/></div>;
+    return <div><Components.Loading/></div>;
   }
   return (
-    <div className="container">
     <Components.ShowIf
       check={Posts.options.mutations.new.check}
       failureComponent={
@@ -34,7 +33,6 @@ const PostsNewForm = (props, context) => {
         />
       </div>
     </Components.ShowIf>
-    </div>
   );
 };
 

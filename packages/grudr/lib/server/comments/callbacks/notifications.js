@@ -1,6 +1,8 @@
 /*
- * Comment notification callbacks
- */
+
+Comment notification callbacks
+
+*/
 
 import Users from 'meteor/vulcan:users';
 import { addCallback } from 'meteor/vulcan:core';
@@ -16,6 +18,7 @@ function CommentsNewNotifications (comment) {
 
     const post = Posts.findOne(comment.postId);
     const postAuthor = Users.findOne(post.userId);
+
 
     let userIdsNotified = [];
 

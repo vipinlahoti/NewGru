@@ -27,7 +27,4 @@ accounts-google
 # example-interfaces
 # example-reactions
 
-vulcan:admin
-vulcan:forms-upload
-vulcan:debug
 grudr

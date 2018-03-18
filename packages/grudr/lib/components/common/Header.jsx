@@ -1,49 +1,65 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { withCurrentUser, getSetting, Components, registerComponent } from 'meteor/vulcan:core';
 import { Posts } from '../../modules/posts/index.js';
+
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import Headroom from 'react-headroom'
+
 import { Link } from 'react-router';
-import Button from 'react-bootstrap/lib/Button';
-import { FormattedMessage, intlShape } from 'meteor/vulcan:i18n';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button } from 'reactstrap';
 
-const Header = (props) => {
+
+const NavLoggedIn = () =>
+  <Nav navbar className="ml-auto">
+    <Components.UsersMenu/>
+  </Nav>
+
+
+const NavLoggedOut = () =>
+  <Nav navbar className="ml-auto">
+    <Components.ModalTrigger size="small" component={<Button color="white"><Components.Icon name="lock"/> Login</Button>}>
+      <Components.AccountsLoginForm />
+    </Components.ModalTrigger>
+  </Nav>
+
+
+class Header extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false
+    };
+  }
+
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
+
+  render() {
+    const { currentUser } = this.props;
   
-  const logoUrl = getSetting('logoUrl');
-  const siteTitle = getSetting('title', 'Grudr');
+    return (
+      <Headroom downTolerance={10} upTolerance={10} >
+        <Navbar expand="md">
+          <NavbarBrand tag={Link} to="/">{getSetting('title')}</NavbarBrand>
 
-  return (
-    <div className="header-wrapper">
-
-      <header className="header">
-
-        <div className="logo">
-          <Components.Logo logoUrl={logoUrl} siteTitle={siteTitle} />
-        </div>
-        
-        <div className="nav">
-          
-          <div className="nav-user">
-            {!!props.currentUser ? <Components.UsersMenu/> : 
-              <Components.ModalTrigger size="small" component={<Button><Components.Icon name="lock"/> Login</Button>}>
-                <Components.AccountsLoginForm />
-              </Components.ModalTrigger>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            {!!currentUser ? 
+              <NavLoggedIn currentUser={currentUser}/> : 
+              <NavLoggedOut currentUser={currentUser}/>
             }
-          </div>
-
-          <div className="nav-new-post">
-            <Components.ShowIf check={Posts.options.mutations.new.check}>
-              <Link to={`post/new`}>
-                <FormattedMessage id="posts.new_post"/>
-              </Link>
-            </Components.ShowIf>
-          </div>
-
-        </div>
-
-      </header>
-    </div>
-  )
+          </Collapse>
+        </Navbar>
+      </Headroom>
+    );
+  }
 }
+
 
 Header.displayName = "Header";
 

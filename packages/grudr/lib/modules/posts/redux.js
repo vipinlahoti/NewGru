@@ -1,6 +1,8 @@
 /*
- * Redux
- */
+
+Redux
+
+*/
 
 import { addAction, addReducer } from 'meteor/vulcan:core';
 

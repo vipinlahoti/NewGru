@@ -4,10 +4,13 @@ import { FormattedMessage } from 'meteor/vulcan:i18n';
 import Users from 'meteor/vulcan:users';
 import { Link } from 'react-router';
 
+import { Jumbotron, Container, Row, Col, Button } from 'reactstrap';
+
+
 const UsersProfile = (props) => {
   if (props.loading) {
 
-    return <div className="page users-profile"><Components.Loading/></div>
+    return <div><Components.Loading/></div>
 
   } else if (!props.document) {
 
@@ -17,23 +20,86 @@ const UsersProfile = (props) => {
   } else {
 
     const user = props.document;
-
     const terms = {view: "userPosts", userId: user._id};
 
     return (
-      <div className="page users-profile">
+      <div>
         <Components.HeadTags url={Users.getProfileUrl(user, true)} title={Users.getDisplayName(user)} />
-        <h2 className="page-title">{Users.getDisplayName(user)}</h2>
-        {user.htmlBio ? <div dangerouslySetInnerHTML={{__html: user.htmlBio}}></div> : null }
-        <ul>
-          {user.twitterUsername ? <li><a href={"http://twitter.com/" + user.twitterUsername}>@{user.twitterUsername}</a></li> : null }
-          {user.website ? <li><a href={user.website}>{user.website}</a></li> : null }
-          <Components.ShowIf check={Users.options.mutations.edit.check} document={user}>
-            <li><Link to={Users.getEditUrl(user)}><FormattedMessage id="users.edit_account"/></Link></li>
-          </Components.ShowIf>
-        </ul>
-        <h3><FormattedMessage id="users.posts"/></h3>
-        <Components.PostsList terms={terms} showHeader={false} />
+        
+        <Jumbotron>
+        </Jumbotron>
+
+        <div className="main">
+          <Container>
+             <div className="profile-header">
+              <Row>
+                <Col md={8}>
+                  <div className="profile">
+                    <div className="avatar avatar-large">
+                      <Components.Avatar user={user} link={false} />
+                    </div>
+                    <div className="profile-initials">
+                      <h4 className="title">{Users.getDisplayName(user)}</h4>
+                      <div className="profile-certificates">MBBS</div>
+                    </div>
+                  </div>
+                </Col>
+                <Col md={4}>
+                  <div className="follow float-right">
+                    <Components.ShowIf check={Users.options.mutations.edit.check} document={user}>
+                      <Button tag={Link} to={Users.getEditUrl(user)} size="sm"><Components.Icon name="mode_edit" /> <FormattedMessage id="users.edit_account"/></Button>
+                    </Components.ShowIf>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+
+            <div className="section-half stories">
+              <Row>
+                <Col md={7}>
+                  <Components.PostsList terms={terms} showHeader={false} />
+                </Col>
+
+                <Col md={{ size: 4, offset: 1 }}>
+                  <div>
+                    <div className="section-components">
+                      { user.affiliation ? 
+                        <div>
+                          <h5 className="title">Affiliation</h5>
+                          <p>{ user.affiliation }</p>
+                        </div>
+                        :
+                        <Components.ShowIf check={Users.options.mutations.edit.check} document={user}>
+                          <div>
+                            <h5 className="title">Affiliation</h5>
+                            <p><Link to={Users.getEditUrl(user)}>Click here</Link> to add Affiliation.</p>
+                          </div>
+                        </Components.ShowIf>
+                      }
+                    </div>
+
+                    <div className="section-components">
+                      { user.awards ? 
+                        <div>
+                          <h5 className="title">Awards</h5>
+                          <p>{ user.awards }</p>
+                        </div>
+                        :
+                        <Components.ShowIf check={Users.options.mutations.edit.check} document={user}>
+                          <div>
+                            <h5 className="title">Awards</h5>
+                            <p><Link to={Users.getEditUrl(user)}>Click here</Link> to add Awards.</p>
+                          </div>
+                        </Components.ShowIf>
+                      }
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+
+          </Container>
+        </div>
       </div>
     )
   }

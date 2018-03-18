@@ -1,39 +1,31 @@
 import { Components, registerComponent, withCurrentUser } from 'meteor/vulcan:core';
+import { FormattedMessage } from 'meteor/vulcan:i18n';
+import Users from 'meteor/vulcan:users';
+
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'meteor/vulcan:i18n';
+
 import { Meteor } from 'meteor/meteor';
-import Dropdown from 'react-bootstrap/lib/Dropdown';
-import MenuItem from 'react-bootstrap/lib/MenuItem';
-import { LinkContainer } from 'react-router-bootstrap';
-import Users from 'meteor/vulcan:users';
+import { Link } from 'react-router';
 import { withApollo } from 'react-apollo';
+import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+
 
 const UsersMenu = ({currentUser, client}) =>
-  <div className="users-menu">
-    <Dropdown id="user-dropdown">
-      <Dropdown.Toggle>
-        <Components.Avatar user={currentUser} />
-      </Dropdown.Toggle>
-      <Dropdown.Menu>
-        <LinkContainer to={`/users/${currentUser.slug}`}>
-          <MenuItem className="dropdown-item" eventKey="1"><FormattedMessage id="users.profile"/></MenuItem>
-        </LinkContainer>
-        <LinkContainer to={`/account`}>
-          <MenuItem className="dropdown-item" eventKey="2"><FormattedMessage id="users.edit_account"/></MenuItem>
-        </LinkContainer>
-
-        <Components.ShowIf
-          check={() => Users.isAdmin(currentUser)}
-        >
-          <LinkContainer to={`/admin`}>
-            <MenuItem className="dropdown-item" eventKey="2">Admin</MenuItem>
-          </LinkContainer>
-        </Components.ShowIf>
-        <MenuItem className="dropdown-item" eventKey="4" onClick={() => Meteor.logout(() => client.resetStore())}><FormattedMessage id="users.log_out"/></MenuItem>
-      </Dropdown.Menu>
-    </Dropdown>
-  </div>
+  <UncontrolledDropdown nav inNavbar>
+    <DropdownToggle nav caret>
+      <Components.Avatar user={currentUser} link={false} />
+      <Components.Icon name="down" />
+    </DropdownToggle>
+    <DropdownMenu right>
+      <DropdownItem tag={Link} to={`/users/${currentUser.slug}`}><FormattedMessage id="users.profile"/></DropdownItem>
+      <DropdownItem tag={Link} to={`/account`}><FormattedMessage id="users.edit_account"/></DropdownItem>
+      <Components.ShowIf check={() => Users.isAdmin(currentUser)}>
+        <DropdownItem tag={Link} to={`/admin`}>Admin</DropdownItem>
+      </Components.ShowIf>
+      <DropdownItem tag={Link} onClick={() => Meteor.logout(() => client.resetStore())}><FormattedMessage id="users.log_out"/></DropdownItem>
+    </DropdownMenu>
+  </UncontrolledDropdown>
 
 
 UsersMenu.propsTypes = {

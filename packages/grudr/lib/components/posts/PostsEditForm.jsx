@@ -9,30 +9,26 @@ import { withRouter } from 'react-router'
 class PostsEditForm extends PureComponent {
 
   renderAdminArea() {
-    const postId = this.props.location.query.postId;
-
     return (
       <Components.ShowIf check={Posts.options.mutations.edit.check} document={this.props.post}>
         <div className="posts-edit-form-admin">
-          <div className="posts-edit-form-id">ID: {postId}</div>
-          {<Components.PostsStats post={postId} />}
+          <div className="posts-edit-form-id">ID: {this.props.post._id}</div>
+          <Components.PostsStats post={this.props.post} />
         </div>
       </Components.ShowIf>
     )
   }
 
   render() {
-    const postId = this.props.location.query.postId;
-    
+
     return (
       <div className="posts-edit-form">
         {Users.isAdmin(this.props.currentUser) ? this.renderAdminArea() : null}
         <Components.SmartForm
-          layout="vertical"
           collection={Posts}
-          documentId={postId}
+          documentId={this.props.post._id}
           successCallback={post => {
-            this.props.router.push({pathname: this.props.redirect || Posts.getPageUrl(post)});
+            this.props.closeModal();
             this.props.flash(this.context.intl.formatMessage({ id: 'posts.edit_success' }, { title: post.title }), 'success');
           }}
           mutationFragmentName="PostsPage"
@@ -48,7 +44,7 @@ class PostsEditForm extends PureComponent {
             // todo: handle events in collection callbacks
             // this.context.events.track("post deleted", {_id: documentId});
           }}
-          showRemove={false}
+          showRemove={true}
         />
       </div>
     );
@@ -57,9 +53,9 @@ class PostsEditForm extends PureComponent {
 }
 
 PostsEditForm.propTypes = {
-  router: PropTypes.object,
+  closeModal: PropTypes.func,
   flash: PropTypes.func,
-  redirect: PropTypes.string,
+  post: PropTypes.object.isRequired,
 }
 
 PostsEditForm.contextTypes = {

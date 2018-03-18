@@ -1,8 +1,9 @@
-// Base
-// import '../components/base/Upload.jsx';
+// Admin
+import '../components/common/AdminLayout.jsx';
 
 
 // Common
+import '../components/common/ModalTrigger.jsx';
 import '../components/common/Footer.jsx';
 import '../components/common/Header.jsx';
 import '../components/common/Layout.jsx';
@@ -16,6 +17,7 @@ import '../components/common/Vote.jsx';
 // Posts
 import '../components/posts/PostsHome.jsx';
 import '../components/posts/PostsSingle.jsx';
+import '../components/posts/PostsNewButton.jsx';
 import '../components/posts/PostsLoadMore.jsx';
 import '../components/posts/PostsItem.jsx';
 import '../components/posts/PostsViews.jsx';
@@ -39,8 +41,8 @@ import '../components/comments/CommentsNewForm.jsx';
 import '../components/comments/CommentsEditForm.jsx';
 import '../components/comments/CommentsLoadMore.jsx';
 
+// categories
 
-// Categories
 import '../components/categories/CategoriesList.jsx';
 import '../components/categories/CategoriesNode.jsx';
 import '../components/categories/Category.jsx';

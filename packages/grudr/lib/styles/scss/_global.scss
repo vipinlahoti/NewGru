@@ -1,26 +1,136 @@
-body{
-  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", sans-serif;
+// Z-levels
+.z-depth-0 {
+  box-shadow: none !important;
 }
 
-.main, .footer, .header{
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 $hmargin;
-  max-width: 1200px;
+/* 2dp elevation modified*/
+.z-depth-1 {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
+              0 3px 1px -2px rgba(0,0,0,0.12),
+              0 1px 5px 0 rgba(0,0,0,0.2);
+}
+.z-depth-1-half {
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.15);
 }
 
-.main{
-  margin-bottom: $vmargin;
+/* 6dp elevation modified*/
+.z-depth-2 {
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14),
+              0 1px 10px 0 rgba(0,0,0,0.12),
+              0 2px 4px -1px rgba(0,0,0,0.3);
 }
 
-a{
-  cursor: pointer;
+/* 12dp elevation modified*/
+.z-depth-3 {
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .14),
+              0 1px 18px 0 rgba(0, 0, 0, .12),
+              0 3px 5px -1px rgba(0, 0, 0, .2);
 }
 
-.page-title{
-  margin-bottom: $vmargin*2;
+/* 16dp elevation */
+.z-depth-4 {
+  box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14),
+              0 6px 30px 5px rgba(0,0,0,0.12),
+              0 8px 10px -7px rgba(0,0,0,0.2);
 }
 
-.message.error {
-  color: $red;
+/* 24dp elevation */
+.z-depth-5 {
+  box-shadow: 0 24px 38px 3px rgba(0,0,0,0.14),
+              0 9px 46px 8px rgba(0,0,0,0.12),
+              0 11px 15px -7px rgba(0,0,0,0.2);
+}
+
+
+.main {
+  background: $white;
+  margin: -$spacer * 5 $spacer * 2 0;
+  padding: $spacer * 5 0;
+  position: relative;
+  z-index: 9;
+  @include border-radius($border-base);
+  @extend .z-depth-4;
+}
+
+.avatar-image {
+  width: 30px;
+  @include border-radius($border-circle);
+  @extend .z-depth-3;
+}
+
+.footer {
+  font-weight: 300;
+  padding: $spacer * 2 0;
+
+  a {
+    color: $gray-700;
+  }
+}
+
+.author {
+  display: flex;
+  line-height: 2;
+
+  .avatar-image {
+    margin-right: $spacer / 3;
+    width: 30px;
+  }
+}
+
+.profile {
+  display: flex;
+  margin-top: -$spacer * 10;
+
+  .avatar-large {
+    margin-right: $spacer;
+
+    .avatar-image {
+      height: 160px;
+      width: 160px;
+    }
+  }
+
+  .profile-initials {
+    margin-top: $spacer * 2;
+
+    .title {
+      color: $white;
+    }
+  }
+
+  .profile-certificates {
+    margin-top: $spacer * 2;
+    font-weight: 400;
+  }
+}
+
+.profile-header {
+  .follow {
+    margin-top: -$spacer * 4;
+  }
+}
+
+.section {
+  padding: $spacer * 4 0;
+  width: 100%;
+}
+
+.section-half {
+  padding: $spacer * 2 0;
+}
+
+.section-half-full {
+  padding: $spacer * 2;
+}
+
+.section-quarter {
+  padding: $spacer / 1.5 0;
+}
+
+.section-quarter-full {
+  padding: $spacer / 1.5;
+}
+
+.section-components {
+  margin-bottom: $spacer * 2;
 }

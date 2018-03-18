@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 const AdminUsersPosts = ({ document: user }) => 
   <ul>
     {user.posts && user.posts.map(post => 
-      <li key={post._id}><Link to={Posts.getPageUrl(post)}>{post.title}</Link></li>
+      <li key={post._id}><Link to={Posts.getLink(post)}>{post.title}</Link></li>
     )}
   </ul>
 

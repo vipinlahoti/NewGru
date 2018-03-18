@@ -57,10 +57,10 @@ class Image extends PureComponent {
     return (
       <div className="upload-image">
         <div className="upload-image-contents">
-          <img style={{width: 150}} src={getImageUrl(this.props.image)} />
+          <img style={{height: 90}} src={getImageUrl(this.props.image)} />
           {this.props.image.loading ? <div className="upload-loading"><Components.Loading /></div> : null}
         </div>
-        <a href="javascript:void(0)" onClick={this.clearImage}><Components.Icon name="close"/> Remove image</a>
+        <a href="javascript:void(0)" onClick={this.clearImage}><Components.Icon name="delete"/> Remove image</a>
       </div>
     )
   }
@@ -182,33 +182,31 @@ class Upload extends PureComponent {
     const imageData = this.enableMultiple() ? (preview ? value.concat(preview) : value) : value || preview;
 
     return (
-      <div className="form-group row">
-        <label className="control-label col-sm-3">{this.props.label}</label>
-        <div className="col-sm-9">
-          <div className="upload-field">
-            <Dropzone ref="dropzone"
-              multiple={this.enableMultiple()}
-              onDrop={this.onDrop}
-              accept="image/*"
-              className="dropzone-base"
-              activeClassName="dropzone-active"
-              rejectClassName="dropzone-reject"
-            >
-              <div><FormattedMessage id="upload.prompt"/></div>
-              {uploading ? <div className="upload-uploading"><span><FormattedMessage id="upload.uploading"/></span></div> : null}
-            </Dropzone>
+      <div className="form-group">
+        <label className="control-label">{this.props.label}</label>
+        <div className="upload-field">
+          <Dropzone ref="dropzone"
+            multiple={this.enableMultiple()}
+            onDrop={this.onDrop}
+            accept="image/*"
+            className="dropzone-base"
+            activeClassName="dropzone-active"
+            rejectClassName="dropzone-reject"
+          >
+            <div><FormattedMessage id="upload.prompt"/></div>
+            {uploading ? <div className="upload-uploading"><span><FormattedMessage id="upload.uploading"/></span></div> : null}
+          </Dropzone>
 
-            {imageData && (Array.isArray(imageData) ? imageData.length > 0 : true) ?
-              <div className="upload-state">
-                <div className="upload-images">
-                  {this.enableMultiple() ? 
-                    imageData.map((image, index) => <Image clearImage={this.clearImage} key={index} index={index} image={image}/>) : 
-                    <Image clearImage={this.clearImage} image={imageData}/>
-                  }
-                </div>
+          {imageData && (Array.isArray(imageData) ? imageData.length > 0 : true) ?
+            <div className="upload-state">
+              <div className="upload-images">
+                {this.enableMultiple() ? 
+                  imageData.map((image, index) => <Image clearImage={this.clearImage} key={index} index={index} image={image}/>) : 
+                  <Image clearImage={this.clearImage} image={imageData}/>
+                }
               </div>
-            : null}
-          </div>
+            </div>
+          : null}
         </div>
       </div>
     );

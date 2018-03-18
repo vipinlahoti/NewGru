@@ -1,52 +1,43 @@
-// @import '{}/node_modules/bootstrap/scss/bootstrap.scss';
+/*!
+ * Bootstrap v4.0.0 (https://getbootstrap.com)
+ * Copyright 2011-2018 The Bootstrap Authors
+ * Copyright 2011-2018 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
 
-@import "breakpoints";
-@import "colors";
+@import "functions";
 @import "variables";
-@import "spinner";
+@import "mixins";
+@import "root";
+@import "reboot";
+@import "type";
+@import "images";
+@import "code";
+@import "grid";
+@import "tables";
+@import "forms";
+@import "buttons";
+@import "transitions";
+@import "dropdown";
+@import "button-group";
+@import "input-group";
+@import "custom-forms";
+@import "nav";
+@import "navbar";
+@import "card";
+@import "breadcrumb";
+@import "pagination";
+@import "badge";
+@import "jumbotron";
+@import "alert";
+@import "progress";
+@import "media";
+@import "list-group";
+@import "close";
+@import "modal";
+@import "tooltip";
+@import "popover";
+@import "carousel";
+@import "utilities";
 @import "global";
-
-@import "accounts";
-@import "categories";
-@import "cheatsheet";
-@import "comments";
-@import "header";
-@import "newsletter";
-@import "other";
-@import "posts";
-@import "users";
-
-.new-post-button{
-  margin-bottom: 15px;
-}
-
-code{
-  font-family: monospace;
-  background: #fafafa;
-  border: 1px solid #ddd;
-  padding: 3px 6px;
-}
-
-.avatar{
-  height: 20px;
-  width: 20px;
-  display: block;
-  a, span, img{
-    display: block;
-    border-radius: 100%;
-    height: 100%;
-    widows: 100%;
-  }
-}
-
-.sr-only{
-  display: none;
-}
-
-.upvoted .upvote{
-  opacity: 0.3;
-}
-
-.posts-day h2{
-  font-weight: bold;
-}
+@import "print";

@@ -1,6 +1,8 @@
 /*
- * Categories schema
- */
+
+Categories schema
+
+*/
 
 import { Utils } from 'meteor/vulcan:core';
 

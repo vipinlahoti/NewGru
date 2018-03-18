@@ -3,7 +3,7 @@ import { registerFragment } from 'meteor/vulcan:core';
 // ------------------------------ Vote ------------------------------ //
 
 // note: fragment used by default on the UsersProfile fragment
-registerFragment(`
+registerFragment(/* GraphQL */`
   fragment VotedItem on Vote {
     # vulcan:voting
     documentId
@@ -15,7 +15,7 @@ registerFragment(`
 // ------------------------------ Users ------------------------------ //
 
 // note: fragment used by default on UsersProfile, PostsList & CommentsList fragments
-registerFragment(`
+registerFragment(/* GraphQL */`
   fragment UsersMinimumInfo on User {
     # vulcan:users
     _id
@@ -25,25 +25,41 @@ registerFragment(`
     emailHash
     avatarUrl
     pageUrl
+    # userRole
   }
 `);
 
-registerFragment(`
+registerFragment(/* GraphQL */`
   fragment UsersProfile on User {
     # vulcan:users
     ...UsersMinimumInfo
     createdAt
     isAdmin
-    bio
-    htmlBio
-    twitterUsername
-    website
+
+    # bio
+    # htmlBio
+    # twitterUsername
+    # website
+
+    gender
+    mobileNumber
+    college
+    professionalLicenseNumber
+    # areaPractise
+    certification
+    affiliation
+    awards
+    
     groups
     karma
     # vulcan:posts
     postCount
     # vulcan:comments
     commentCount
+    # categories
+    categories {
+      ...CategoriesMinimumInfo
+    }
   }
 `);
 

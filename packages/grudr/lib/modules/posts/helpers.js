@@ -1,6 +1,8 @@
 /*
- * Posts helpers
- */
+
+Posts helpers
+
+*/
 
 import moment from 'moment';
 import { Posts } from './collection.js';
@@ -12,6 +14,35 @@ registerSetting('forum.requirePostsApproval', false, 'Require posts to be approv
 registerSetting('twitterAccount', null, 'Twitter account associated with the app');
 registerSetting('siteUrl', null, 'Main site URL');
 
+//////////////////
+// Link Helpers //
+//////////////////
+
+/**
+ * @summary Return a post's link if it has one, else return its post page URL
+ * @param {Object} post
+ */
+Posts.getLink = function (post, isAbsolute = false, isRedirected = true) {
+  const url = isRedirected ? Utils.getOutgoingUrl(post.url) : post.url;
+  return !!post.url ? url : Posts.getPageUrl(post, isAbsolute);
+};
+
+/**
+ * @summary Depending on the settings, return either a post's URL link (if it has one) or its page URL.
+ * @param {Object} post
+ */
+Posts.getShareableLink = function (post) {
+  return getSetting('forum.outsideLinksPointTo', 'link') === 'link' ? Posts.getLink(post) : Posts.getPageUrl(post, true);
+};
+
+/**
+ * @summary Whether a post's link should open in a new tab or not
+ * @param {Object} post
+ */
+Posts.getLinkTarget = function (post) {
+  return !!post.url ? '_blank' : '';
+};
+
 /**
  * @summary Get URL of a post page.
  * @param {Object} post
@@ -20,6 +51,10 @@ Posts.getPageUrl = function(post, isAbsolute = false){
   const prefix = isAbsolute ? Utils.getSiteUrl().slice(0,-1) : '';
   return `${prefix}/posts/${post._id}/${post.slug}`;
 };
+
+///////////////////
+// Other Helpers //
+///////////////////
 
 /**
  * @summary Get a post author's name
@@ -72,6 +107,36 @@ Posts.isPending = function (post) {
   return post.status === Posts.config.STATUS_PENDING;
 };
 
+
+/**
+ * @summary Check to see if post URL is unique.
+ * We need the current user so we know who to upvote the existing post as.
+ * @param {String} url
+ */
+Posts.checkForSameUrl = function (url) {
+
+  // check that there are no previous posts with the same link in the past 6 months
+  var sixMonthsAgo = moment().subtract(6, 'months').toDate();
+  var postWithSameLink = Posts.findOne({url: url, postedAt: {$gte: sixMonthsAgo}});
+
+  return !!postWithSameLink;
+};
+
+/**
+ * @summary When on a post page, return the current post
+ */
+Posts.current = function () {
+  return Posts.findOne('foo');
+};
+
+/**
+ * @summary Check to see if a post is a link to a video
+ * @param {Object} post
+ */
+Posts.isVideo = function (post) {
+  return post.media && post.media.type === 'video';
+};
+
 /**
  * @summary Get the complete thumbnail url whether it is hosted on Embedly or on an external website, or locally in the app.
  * @param {Object} post
@@ -89,7 +154,7 @@ Posts.getThumbnailUrl = (post) => {
  */
 Posts.getTwitterShareUrl = post => {
   const via = getSetting('twitterAccount', null) ? `&via=${getSetting('twitterAccount')}` : '';
-  return `https://twitter.com/intent/tweet?text=${ encodeURIComponent(post.title) }%20${ encodeURIComponent(Posts.getPageUrl(post, true)) }${via}`;
+  return `https://twitter.com/intent/tweet?text=${ encodeURIComponent(post.title) }%20${ encodeURIComponent(Posts.getLink(post, true)) }${via}`;
 };
 
 /**
@@ -97,7 +162,7 @@ Posts.getTwitterShareUrl = post => {
  * @param {Object} post
  */
 Posts.getFacebookShareUrl = post => {
-  return `https://www.facebook.com/sharer/sharer.php?u=${ encodeURIComponent(Posts.getPageUrl(post, true)) }`;
+  return `https://www.facebook.com/sharer/sharer.php?u=${ encodeURIComponent(Posts.getLink(post, true)) }`;
 };
 
 /**
@@ -109,7 +174,7 @@ Posts.getEmailShareUrl = post => {
   const body = `I thought you might find this interesting:
 
 ${post.title}
-${Posts.getPageUrl(post, true, false)}
+${Posts.getLink(post, true, false)}
 
 (found via ${getSetting('siteUrl')})
   `;

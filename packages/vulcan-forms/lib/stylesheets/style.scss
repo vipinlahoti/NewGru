@@ -4,7 +4,11 @@ $vmargin: 15px;
 $light-border: $light-grey;
 
 select.form-control{
-  height: 38px;
+  height: 100px;
+
+  option {
+    padding: 0.3rem 0;
+  }
 }
 
 /* Example Styles for React Tags*/

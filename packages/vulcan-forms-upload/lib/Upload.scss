@@ -1,18 +1,25 @@
-.upload-field {
+.upload-field {
   display: flex;
-  align-items: center;
   justify-content: flex-start;
+  position: relative;
 }
 
 .dropzone-base {
   border: 4px dashed #ccc;
-  padding: 30px;
+  padding: 2.5rem;
+  text-align: center;
   transition: "all 0.5s";
-  width: 250px;
+  width: 100%;
   cursor: pointer;
   color: #ccc;
-  margin-right: 10px;
-  position: relative;
+}
+
+.dropzone-active {
+  border: #4FC47F 4px solid;
+}
+
+.dropzone-reject {
+  border: #DD3A0A 4px solid;
 }
 
 .upload-uploading{
@@ -25,18 +32,32 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   span{
     display: block;
     font-size: 1.5rem;
   }
 }
 
-.dropzone-active {
-  border: #4FC47F 4px solid;
-}
+.upload-state {
+  flex-basis: 150px;
+  margin: -0.2rem 0 0;
+  text-align: right;
 
-.dropzone-reject {
-  border: #DD3A0A 4px solid;
+  a, span {
+    display: block;
+    font-size: 12px;
+    margin-left: 1rem;
+
+    i {
+      font-size: 12px;
+    }
+  }
+
+  img {
+    height: 55px;
+    margin-left: 1rem;
+  }
 }
 
 .upload-images{
@@ -47,13 +68,10 @@
   // align-items: center;
 }
 .upload-image{
-  margin-right: 10px;
-  a, img{
-    display: block;
-    text-align: center;
-  }
-  a{
+  button {
     font-size: 0.8rem;
+    display: inline-block;
+    margin: 0.3rem 0 0;
   }
 }
 

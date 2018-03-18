@@ -1,6 +1,9 @@
 /*
- * Callbacks to validate categories and generate category slugs
- */
+
+
+Callbacks to validate categories and generate category slugs
+
+*/
 
 import { addCallback } from 'meteor/vulcan:core';
 import { Categories } from '../../modules/categories/collection.js';
@@ -34,3 +37,39 @@ function PostEditCheckCategories (modifier) {
   return modifier;
 }
 addCallback("posts.edit.sync", PostEditCheckCategories);
+
+// TODO: debug this
+
+// function addParentCategoriesOnSubmit (post) {
+//   var categories = post.categories;
+//   var newCategories = [];
+//   if (categories) {
+//     categories.forEach(function (categoryId) {
+//       var category = Categories.findOne(categoryId);
+//       newCategories = newCategories.concat(_.pluck(category.getParents().reverse(), "_id"));
+//       newCategories.push(category._id);
+//     });
+//   }
+//   post.categories = _.unique(newCategories);
+//   return post;
+// }
+// addCallback("posts.new.sync", addParentCategoriesOnSubmit);
+
+// function addParentCategoriesOnEdit (modifier, post) {
+//   if (modifier.$unset && modifier.$unset.categories !== undefined) {
+//     return modifier;
+//   }
+
+//   var categories = modifier.$set.categories;
+//   var newCategories = [];
+//   if (categories) {
+//     categories.forEach(function (categoryId) {
+//       var category = Categories.findOne(categoryId);
+//       newCategories = newCategories.concat(_.pluck(category.getParents().reverse(), "_id"));
+//       newCategories.push(category._id);
+//     });
+//   }
+//   modifier.$set.categories = _.unique(newCategories);
+//   return modifier;
+// }
+// addCallback("posts.edit.sync", addParentCategoriesOnEdit);

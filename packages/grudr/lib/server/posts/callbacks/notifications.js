@@ -1,6 +1,8 @@
 /*
- * Notifications for new posts and post approval.
- */
+
+Notifications for new posts and post approval.
+
+*/
 
 import { Posts } from '../../../modules/posts/index.js'
 import Users from 'meteor/vulcan:users';

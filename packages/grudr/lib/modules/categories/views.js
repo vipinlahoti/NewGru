@@ -1,6 +1,8 @@
 /*
- * Default sort
- */
+
+Default sort
+
+*/
 
 import { Categories } from './collection.js';
 

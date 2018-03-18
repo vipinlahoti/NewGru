@@ -1,6 +1,8 @@
 /*
- * Comments views
- */
+
+Comments views
+
+*/
 
 import { Comments } from './index.js';
 

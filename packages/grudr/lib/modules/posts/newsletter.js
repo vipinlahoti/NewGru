@@ -1,6 +1,8 @@
 /*
- * Newsletter setup
- */
+
+Newsletter setup
+
+*/
 
 import VulcanEmail from 'meteor/vulcan:email';
 import { addCallback } from 'meteor/vulcan:core';
@@ -31,7 +33,10 @@ VulcanEmail.addEmails({
 
           _id
           title
+          url
           pageUrl
+          linkUrl
+          domain
           htmlBody
           thumbnailUrl
           commentsCount

@@ -1,6 +1,8 @@
 /*
- * Post validation and rate limiting callbacks
- */
+
+Post validation and rate limiting callbacks
+
+*/
 
 import { Posts } from '../../../modules/posts/index.js'
 import Users from 'meteor/vulcan:users';
@@ -37,3 +39,27 @@ function PostsNewRateLimit (post, user) {
   return post;
 }
 addCallback('posts.new.validate', PostsNewRateLimit);
+
+/**
+ * @summary Check for duplicate links
+ */
+function PostsNewDuplicateLinksCheck (post, user) {
+  if(!!post.url && Posts.checkForSameUrl(post.url)) {
+    const DuplicateError = createError('posts.link_already_posted', {message: 'posts.link_already_posted'});
+    throw new DuplicateError({data: {break: true, url: post.url}});
+  }
+  return post;
+}
+addCallback('posts.new.sync', PostsNewDuplicateLinksCheck);
+
+
+/**
+ * @summary Check for duplicate links
+ */
+function PostsEditDuplicateLinksCheck (modifier, post) {
+  if(post.url !== modifier.$set.url && !!modifier.$set.url) {
+    Posts.checkForSameUrl(modifier.$set.url);
+  }
+  return modifier;
+}
+addCallback('posts.edit.sync', PostsEditDuplicateLinksCheck);

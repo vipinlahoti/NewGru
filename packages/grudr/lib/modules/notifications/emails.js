@@ -1,12 +1,16 @@
 /*
-* Emails
- */
+
+Emails
+
+*/
 
 import VulcanEmail from 'meteor/vulcan:email';
 
 /*
- * Test
- */
+
+Test
+
+*/
 
 VulcanEmail.addEmails({
 
@@ -24,8 +28,10 @@ VulcanEmail.addEmails({
 });
 
 /*
- * Users
- */
+
+Users
+
+*/
 
 VulcanEmail.addEmails({
   
@@ -67,14 +73,18 @@ VulcanEmail.addEmails({
 });
 
 /*
- * Posts
- */
+
+Posts
+
+*/
 
 const postsQuery = `
   query PostsSingleQuery($documentId: String){
     PostsSingle(documentId: $documentId){
       title
+      url
       pageUrl
+      linkUrl
       htmlBody
       thumbnailUrl
       user{
@@ -122,8 +132,10 @@ VulcanEmail.addEmails({
 });
   
 /*
- * Comments
- */
+
+Comments
+
+*/
 
 const commentsQuery = `
   query CommentsSingleQuery($documentId: String){
