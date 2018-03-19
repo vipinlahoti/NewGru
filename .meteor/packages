@@ -9,22 +9,10 @@ vulcan:i18n-en-us
 ############ Accounts Packages ############
 
 accounts-password@1.4.0
-accounts-twitter
-accounts-facebook
-accounts-google
+# accounts-twitter
+# accounts-facebook
+# accounts-google
 
 ############ Your Packages ############
-
-# getting-started
-
-# example-simple
-# example-movies
-# example-instagram
-# example-forum
-# example-customization
-# example-permissions
-# example-membership
-# example-interfaces
-# example-reactions
 
 grudr

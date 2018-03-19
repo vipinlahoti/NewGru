@@ -6,7 +6,7 @@ import { Posts } from '../../modules/posts/index.js';
 import { Jumbotron, Container, Row, Button } from 'reactstrap';
 
 const PostsHome = (props, context) => {
-  const terms = _.isEmpty(props.location && props.location.query) ? {view: 'top'}: props.location.query;
+  const terms = _.isEmpty(props.location && props.location.query) ? {view: 'new'}: props.location.query;
   return (
     <div>
       <Jumbotron>
@@ -17,7 +17,7 @@ const PostsHome = (props, context) => {
           <Row>
             <Components.ShowIf check={Posts.options.mutations.new.check}>
               <Button tag={Link} to={`post/new`}>
-                <FormattedMessage id="posts.new_post"/>
+                New
               </Button>
             </Components.ShowIf>
             <Components.PostsList terms={terms}/>

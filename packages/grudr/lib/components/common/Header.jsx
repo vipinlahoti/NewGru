@@ -3,7 +3,7 @@ import { Posts } from '../../modules/posts/index.js';
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Headroom from 'react-headroom'
+import Headroom from 'react-headroom';
 
 import { Link } from 'react-router';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button } from 'reactstrap';
