@@ -18,12 +18,12 @@ const UsersMenu = ({currentUser, client}) =>
       <Components.Icon name="down" />
     </DropdownToggle>
     <DropdownMenu right>
-      <DropdownItem tag={Link} to={`/users/${currentUser.slug}`}><FormattedMessage id="users.profile"/></DropdownItem>
-      <DropdownItem tag={Link} to={`/account`}><FormattedMessage id="users.edit_account"/></DropdownItem>
+      <DropdownItem tag={Link} to={`/users/${currentUser.slug}`} className="waves-effect waves-light"><FormattedMessage id="users.profile"/></DropdownItem>
+      <DropdownItem tag={Link} to={`/account`} className="waves-effect waves-light"><FormattedMessage id="users.edit_account"/></DropdownItem>
       <Components.ShowIf check={() => Users.isAdmin(currentUser)}>
-        <DropdownItem tag={Link} to={`/admin`}>Admin</DropdownItem>
+        <DropdownItem tag={Link} to={`/admin`} className="waves-effect waves-light">Admin</DropdownItem>
       </Components.ShowIf>
-      <DropdownItem tag={Link} onClick={() => Meteor.logout(() => client.resetStore())}><FormattedMessage id="users.log_out"/></DropdownItem>
+      <DropdownItem tag={Link} onClick={() => Meteor.logout(() => client.resetStore())} className="waves-effect waves-light"><FormattedMessage id="users.log_out"/></DropdownItem>
     </DropdownMenu>
   </UncontrolledDropdown>
 

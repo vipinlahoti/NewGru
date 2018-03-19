@@ -30,6 +30,11 @@ const formGroups = {
 };
 
 /*
+#### Posts fields #######################################
+*/
+Posts.removeField('url');
+
+/*
 #### Users fields #######################################
 */
 Users.addField([
@@ -143,9 +148,9 @@ Users.addField([
       // mustComplete: true,
       optional: true,
       control: "text",
-      viewableBy: ['admins'],
+      viewableBy: ['members'],
       insertableBy: ['members'],
-      editableBy: ['admins'],
+      editableBy: ['members'],
       group: formGroups.profession,
       order: 2
     }

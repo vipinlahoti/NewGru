@@ -1,6 +1,6 @@
 .btn {
   border: 0;
-  display: inline-block;
+  display: flex;
   font-weight: $font-weight-normal;
   text-align: center;
   text-transform: uppercase;
@@ -42,6 +42,11 @@
     &:focus {
       @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
     }
+  }
+
+  i {
+    font-size: 1.3rem;
+    margin-right: $spacer / 7;
   }
 }
 

@@ -5,6 +5,7 @@ import './config.js';
 import './routes.js';
 import './headtags.js';
 import './i18n.js';
+import './icons.js';
 import './data.js';
 import './custom_fields.js';
 

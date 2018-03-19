@@ -47,7 +47,7 @@ class UsersEditForm extends PureComponent {
                     <Nav pills>
                       <NavItem>
                         <NavLink
-                          className={classNames({ active: this.state.activeTab === '1' })}
+                          className={classNames({ active: this.state.activeTab === '1' }, `waves-effect waves-light`)}
                           onClick={() => { this.toggle('1'); }}
                         >
                           General
@@ -55,7 +55,7 @@ class UsersEditForm extends PureComponent {
                       </NavItem>
                       <NavItem>
                         <NavLink
-                          className={classNames({ active: this.state.activeTab === '2' })}
+                          className={classNames({ active: this.state.activeTab === '2' }, `waves-effect waves-light`)}
                           onClick={() => { this.toggle('2'); }}
                         >
                           Profession

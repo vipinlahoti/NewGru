@@ -5,7 +5,7 @@ registerFragment(/* GraphQL */`
     # posts
     _id
     title
-    url
+    # url
     slug
     postedAt
     createdAt

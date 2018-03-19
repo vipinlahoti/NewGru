@@ -49,6 +49,13 @@
     }
   }
 
+  .dropdown-toggle {
+    i {
+      color: $white;
+      line-height: 2;
+    }
+  }
+
   .dropdown-menu {
     position: static;
     float: none;

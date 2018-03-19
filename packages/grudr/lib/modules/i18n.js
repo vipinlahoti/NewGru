@@ -1,7 +1,10 @@
 import { addStrings } from 'meteor/vulcan:core';
 
 addStrings('en', {
-
+  'users.avatarUrl': 'Profile Image',
+  "users.userRole": "Select your profile type",
+  "users.categoriesIds": "Area of Practise",
+  
   'posts.new_post': 'New Post',
   'posts.edit': 'Edit',
   'posts.edit_success': 'Post “{title}” edited.',
@@ -11,7 +14,7 @@ addStrings('en', {
   'posts.title': 'Title',
   'posts.url': 'URL',
   'posts.body': 'Body',
-  'posts.categories': 'Categories',
+  'posts.categoriesIds': 'Categories',
   'posts.thumbnailUrl': 'Thumbnail URL',
   'posts.status': 'Status',
   'posts.sticky': 'Sticky',

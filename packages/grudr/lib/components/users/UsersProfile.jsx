@@ -47,7 +47,7 @@ const UsersProfile = (props) => {
                 <Col md={4}>
                   <div className="follow float-right">
                     <Components.ShowIf check={Users.options.mutations.edit.check} document={user}>
-                      <Button tag={Link} to={Users.getEditUrl(user)} size="sm"><Components.Icon name="mode_edit" /> <FormattedMessage id="users.edit_account"/></Button>
+                      <Button tag={Link} to={Users.getEditUrl(user)} size="sm" className="waves-effect waves-light"><Components.Icon name="mode_edit" /> <FormattedMessage id="users.edit_account"/></Button>
                     </Components.ShowIf>
                   </div>
                 </Col>

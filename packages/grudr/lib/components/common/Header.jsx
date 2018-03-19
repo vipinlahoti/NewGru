@@ -8,9 +8,13 @@ import Headroom from 'react-headroom';
 import { Link } from 'react-router';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button } from 'reactstrap';
 
-
 const NavLoggedIn = () =>
   <Nav navbar className="ml-auto">
+    <NavItem>
+      <NavLink>
+        {<Components.Icon name="bell_outline"/>}
+      </NavLink>
+    </NavItem>
     <Components.UsersMenu/>
   </Nav>
 

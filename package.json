@@ -1,11 +1,10 @@
 {
-  "name": "Vulcan",
+  "name": "Grudr",
   "version": "1.8.11",
   "engines": {
     "npm": "^3.0"
   },
   "scripts": {
-    "prestart": "node .vulcan/prestart_vulcan.js",
     "start": "meteor --settings settings.json",
     "lint": "eslint --cache --ext .jsx,js packages"
   },

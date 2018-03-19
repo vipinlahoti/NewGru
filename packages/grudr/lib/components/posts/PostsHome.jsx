@@ -16,7 +16,7 @@ const PostsHome = (props, context) => {
         <Container>
           <Row>
             <Components.ShowIf check={Posts.options.mutations.new.check}>
-              <Button tag={Link} to={`post/new`}>
+              <Button tag={Link} to={`post/new`} className="waves-effect waves-light">
                 New
               </Button>
             </Components.ShowIf>

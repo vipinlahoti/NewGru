@@ -8,7 +8,7 @@ Package.onUse(function (api) {
   api.versionsFrom('METEOR@1.5.2');
 
   api.use([
-
+    'jquery',
     'promise',
     'fourseven:scss@4.5.0',
 
@@ -54,7 +54,19 @@ Package.onUse(function (api) {
 
   api.addFiles([
     // 'lib/stylesheets/bootstrap.css',
-    'lib/styles/scss/main.scss'
+    'lib/styles/scss/main.scss',
+
+    // Js
+    // 'lib/styles/js/bootstrap.js',
+    // 'lib/styles/js/bootstrap-selectpicker.js',
+    
+    'lib/styles/js/global.js',
+    // 'lib/styles/js/anime.min.js',
+    'lib/styles/js/waves.js',
+    'lib/styles/js/forms.js',
+    'lib/styles/js/cash.js',
+    'lib/styles/js/toasts.js',
+
   ], ['client']);
 
   api.mainModule("lib/server/main.js", "server");
