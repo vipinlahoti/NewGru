@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux';
 import { FormattedMessage } from 'meteor/vulcan:i18n';
 import { Jumbotron, Container, Row, Col, Button, Card, CardText, CardSubtitle, CardBody, CardTitle, CardFooter } from 'reactstrap';
 import moment from 'moment';
+import { Link } from 'react-router';
 
 class PostsPage extends Component {
   renderActions() {
@@ -14,9 +15,9 @@ class PostsPage extends Component {
 
     return (
       <span className="stats">
-        <Components.ModalTrigger title="Edit an Article" component={ <Button className="pull-right" size="sm"><Components.Icon name="mode_edit" /> <FormattedMessage id="posts.edit"/></Button> }>
-          <Components.PostsEditForm post={post} />
-        </Components.ModalTrigger>
+        <Button tag={Link} to={{pathname:'/post/edit', query:{postId: post._id}}}>
+          Edit
+        </Button>
       </span>
     )
   }
@@ -46,6 +47,9 @@ class PostsPage extends Component {
               <h6 className="card-subtitle">
                 {post.user? <div className="author"><Components.Avatar user={post.user}/><Components.UsersName user={post.user}/>, &nbsp;</div> : null}
                 <div className="article-time">{post.postedAt ? moment(new Date(post.postedAt)).fromNow() : <FormattedMessage id="posts.dateNotDefined"/>}</div>
+
+                {Posts.options.mutations.edit.check(this.props.currentUser, post) ? this.renderActions() : null}
+
               </h6>
             </Col>
           </Jumbotron>
@@ -56,9 +60,13 @@ class PostsPage extends Component {
                 <Col md={{ size: 10, offset: 1 }}>
                   
                   <Card className="card-single">
-                    <div className="card-img">
-                      {post.thumbnailUrl ? <Components.PostsThumbnail post={post}/> : null}
-                    </div>
+                    
+                    {post.thumbnailUrl ? 
+                      <div className="card-img">
+                        <Components.PostsThumbnail post={post}/> 
+                      </div>
+                    : null}
+
                     <CardBody>
                       {post.htmlBody ? <div className="card-text" dangerouslySetInnerHTML={htmlBody}></div> : null}
                     </CardBody>

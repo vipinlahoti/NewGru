@@ -134,3 +134,35 @@
 .section-components {
   margin-bottom: $spacer * 2;
 }
+
+.new-button {
+  position: fixed;
+  bottom: $spacer * 2.2;
+  right: $spacer * 2.2;
+  z-index: 999;
+
+  button {
+    border-radius: 50px;
+    width: 70px;
+    height: 70px;
+    padding: 0;
+    text-align: center;
+    @extend .z-depth-3;
+
+    i {
+      margin: 0;
+      font-size: 2rem;
+      width: 100%;
+    }
+  }
+
+  .dropdown-menu.show {
+    background: $white;
+    display: block;
+    left: -2rem !important;
+    top: -20px !important;
+    min-width: 400px;
+    padding: 1rem 0.5rem;
+    @extend .z-depth-2;
+  }
+}

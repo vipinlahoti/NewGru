@@ -64,5 +64,7 @@ Utils.icons = {
   up: 'keyboard_arrow_up',
   spinner: "spinner",
   check_circle: 'check_circle',
-  bell_outline: 'bell_outline'
+  notifications_none: 'notifications_none',
+  add_circle_outline: 'add_circle_outline',
+  menu: 'menu'
 };

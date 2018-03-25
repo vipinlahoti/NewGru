@@ -8,7 +8,7 @@ const Layout = ({currentUser, children, currentRoute}) =>
   <div className={classNames('wrapper', `wrapper-${currentRoute.name.replace('.', '-')}`)} id="wrapper">
 
     <Helmet>
-      <link name="font-face" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,700|Roboto+Slab:400,500,600,700|Material+Icons"/>
+      <link name="font-face" rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:300|Roboto:300,400,500|Roboto+Slab:400,500,600,700|Material+Icons"/>
     </Helmet>
    
     <Components.HeadTags />

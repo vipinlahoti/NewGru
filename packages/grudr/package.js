@@ -64,8 +64,8 @@ Package.onUse(function (api) {
     // 'lib/styles/js/anime.min.js',
     'lib/styles/js/waves.js',
     'lib/styles/js/forms.js',
-    'lib/styles/js/cash.js',
-    'lib/styles/js/toasts.js',
+    // 'lib/styles/js/cash.js',
+    // 'lib/styles/js/toasts.js',
 
   ], ['client']);
 

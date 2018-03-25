@@ -50,6 +50,12 @@
       "description": "Dentistry",
       "order": 1,
       "slug": "dentistry"
+    },
+    {
+      "name": "MBBS",
+      "description": "Dentistry",
+      "order": 2,
+      "slug": "mbbs"
     }
   ],
   

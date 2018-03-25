@@ -3,13 +3,14 @@
   margin-bottom: $spacer;
   background-color: $jumbotron-bg;
   color: $white;
-  height: 40vh;
+  // height: 40vh;
+  height: 280px;
   position: relative;
   // z-index: 2;
   @extend .z-depth-1-half;
 
   @include media-breakpoint-up(sm) {
-    padding: $spacer * 4 $spacer * 2;
+    padding: $spacer * 4 $spacer * 4.2;
   }
 }
 

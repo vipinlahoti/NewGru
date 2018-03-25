@@ -6,6 +6,7 @@
 .badge {
   display: inline-block;
   padding: $badge-padding-y $badge-padding-x;
+  margin: 0 $spacer / 3 $spacer / 2 0;
   font-size: $badge-font-size;
   font-weight: $badge-font-weight;
   line-height: 1;

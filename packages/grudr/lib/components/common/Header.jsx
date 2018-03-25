@@ -6,13 +6,19 @@ import PropTypes from 'prop-types';
 import Headroom from 'react-headroom';
 
 import { Link } from 'react-router';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button } from 'reactstrap';
+import { Badge, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button } from 'reactstrap';
 
 const NavLoggedIn = () =>
-  <Nav navbar className="ml-auto">
+  <Nav navbar className="ml-auto secondary-nav">
     <NavItem>
-      <NavLink>
-        {<Components.Icon name="bell_outline"/>}
+      <NavLink tag={Link} to={`post/new`} className="icon-only">
+        <Components.Icon name="add_circle_outline"/>
+      </NavLink>
+    </NavItem>
+    <NavItem>
+      <NavLink className="icon-only">
+        <Components.Icon name="notifications_none"/>
+        <Badge color="light">4</Badge>
       </NavLink>
     </NavItem>
     <Components.UsersMenu/>
@@ -49,6 +55,7 @@ class Header extends PureComponent {
     return (
       <Headroom downTolerance={10} upTolerance={10} >
         <Navbar expand="md">
+          <Link to="#" className="menu-toggle"><Components.Icon name="menu"/></Link>
           <NavbarBrand tag={Link} to="/">{getSetting('title')}</NavbarBrand>
 
           <NavbarToggler onClick={this.toggle} />

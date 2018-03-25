@@ -17,6 +17,19 @@
   // @extend .z-depth-1-half;
 }
 
+.menu-toggle {
+  color: $white;
+  margin-right: $spacer;
+
+  i {
+    line-height: 2;
+
+    &:hover {
+      color: inherit;
+    }
+  }
+}
+
 // Navbar brand
 .navbar-brand {
   color: $white;
@@ -42,6 +55,10 @@
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+
+  .nav-link {
+    color: $white;
+  }
 
   .dropdown {
     .avatar-image {
@@ -136,6 +153,26 @@
           display: none;
         }
       }
+    }
+  }
+}
+
+.secondary-nav {
+  .nav-link {
+    padding: 0;
+    margin: 0 $spacer / 1.5;
+  }
+  .icon-only {
+    position: relative;
+
+    .badge {
+      position: absolute;
+      margin: 0;
+    }
+
+    i {
+      font-size: 2.2rem;
+      line-height: 1.5;
     }
   }
 }

@@ -12,6 +12,7 @@
 }
 
 .nav-link {
+  cursor: pointer;
   display: flex;
   line-height: $navbar-height;
   padding: 0 $spacer;
@@ -121,6 +122,10 @@
 
 .tab-content {
   padding: $spacer * 4 0 $spacer;
+
+  .form-section-heading {
+    @extend .d-none;
+  }
 
   > .tab-pane {
     display: none;
